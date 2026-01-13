@@ -41,12 +41,19 @@ render_header(
 API_BASE = st.session_state.get("api_base_url", "http://localhost:8000")
 
 # Demo data
+# Restricted nationalities (matching database)
 NATIONALITIES = {
     "EGY": "Egypt",
-    "BGD": "Bangladesh",
     "IND": "India",
-    "NPL": "Nepal",
     "PAK": "Pakistan",
+    "NPL": "Nepal",
+    "BGD": "Bangladesh",
+    "PHL": "Philippines",
+    "IRN": "Iran",
+    "IRQ": "Iraq",
+    "YEM": "Yemen",
+    "SYR": "Syria",
+    "AFG": "Afghanistan",
 }
 
 PROFESSIONS = {

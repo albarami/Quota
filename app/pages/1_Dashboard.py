@@ -50,19 +50,19 @@ API_BASE = st.session_state.get("api_base_url", "http://localhost:8000")
 st.markdown("### Select Nationality")
 render_gold_accent()
 
-# Restricted nationalities (would come from API in production)
+# Restricted nationalities (matching database)
 NATIONALITIES = {
     "EGY": "Egypt",
-    "BGD": "Bangladesh",
     "IND": "India",
-    "NPL": "Nepal",
     "PAK": "Pakistan",
-    "LKA": "Sri Lanka",
+    "NPL": "Nepal",
+    "BGD": "Bangladesh",
     "PHL": "Philippines",
-    "IDN": "Indonesia",
-    "VNM": "Vietnam",
-    "KEN": "Kenya",
-    "ETH": "Ethiopia",
+    "IRN": "Iran",
+    "IRQ": "Iraq",
+    "YEM": "Yemen",
+    "SYR": "Syria",
+    "AFG": "Afghanistan",
 }
 
 selected_code = st.selectbox(

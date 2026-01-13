@@ -36,18 +36,19 @@ render_header(
 API_BASE = st.session_state.get("api_base_url", "http://localhost:8000")
 
 # Nationality selector
+# Restricted nationalities (matching database)
 NATIONALITIES = {
     "EGY": "Egypt",
-    "BGD": "Bangladesh",
     "IND": "India",
-    "NPL": "Nepal",
     "PAK": "Pakistan",
-    "LKA": "Sri Lanka",
+    "NPL": "Nepal",
+    "BGD": "Bangladesh",
     "PHL": "Philippines",
-    "IDN": "Indonesia",
-    "VNM": "Vietnam",
-    "KEN": "Kenya",
-    "ETH": "Ethiopia",
+    "IRN": "Iran",
+    "IRQ": "Iraq",
+    "YEM": "Yemen",
+    "SYR": "Syria",
+    "AFG": "Afghanistan",
 }
 
 col1, col2 = st.columns([2, 1])
