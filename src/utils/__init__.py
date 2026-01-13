@@ -1,0 +1,5 @@
+"""
+Utility functions package.
+
+Contains helper functions and shared utilities.
+"""
