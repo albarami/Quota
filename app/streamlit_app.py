@@ -54,31 +54,34 @@ if "api_base_url" not in st.session_state:
 # Sidebar
 with st.sidebar:
     st.markdown("""
-    <div style="text-align: center; padding: 1rem 0;">
-        <h1 style="font-size: 1.5rem; margin: 0;">🇶🇦 Qatar</h1>
-        <p style="margin: 0.25rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Ministry of Labour</p>
+    <div style="text-align: center; padding: 1.5rem 0;">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🇶🇦</div>
+        <h1 style="font-size: 1.8rem; margin: 0; color: #FFFFFF !important; font-weight: 700;">Qatar</h1>
+        <p style="margin: 0.5rem 0 0 0; font-size: 1.1rem; color: rgba(255,255,255,0.9) !important;">Ministry of Labour</p>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
     
     st.markdown("""
-    ### Navigation
-    """)
+    <h3 style="color: #D4AF37 !important; font-size: 1.3rem !important; margin-bottom: 1rem;">Navigation</h3>
+    """, unsafe_allow_html=True)
     
-    # Navigation hints
+    # Navigation hints with explicit white color
     st.markdown("""
-    <div style="font-size: 0.85rem; opacity: 0.9;">
-        <p>📊 <b>Dashboard</b> - Live monitoring</p>
-        <p>🎯 <b>Cap Management</b> - Set quotas</p>
-        <p>📝 <b>Request Portal</b> - Submit requests</p>
+    <div style="font-size: 1.1rem; line-height: 2.2;">
+        <p style="color: #FFFFFF !important; margin: 0.75rem 0;">📊 <strong style="color: #FFFFFF !important;">Dashboard</strong> <span style="color: rgba(255,255,255,0.8);">- Live monitoring</span></p>
+        <p style="color: #FFFFFF !important; margin: 0.75rem 0;">🎯 <strong style="color: #FFFFFF !important;">Cap Management</strong> <span style="color: rgba(255,255,255,0.8);">- Set quotas</span></p>
+        <p style="color: #FFFFFF !important; margin: 0.75rem 0;">📝 <strong style="color: #FFFFFF !important;">Request Portal</strong> <span style="color: rgba(255,255,255,0.8);">- Submit requests</span></p>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
     
-    # Quick stats (mock data for landing page)
-    st.markdown("### Quick Stats")
+    # Quick stats
+    st.markdown("""
+    <h3 style="color: #D4AF37 !important; font-size: 1.3rem !important; margin-bottom: 1rem;">Quick Stats</h3>
+    """, unsafe_allow_html=True)
     
     st.metric("Restricted Nations", "11", help="Nationalities under quota management")
     st.metric("Total Workers", "148,523", help="Current workforce in restricted categories")
