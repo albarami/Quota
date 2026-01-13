@@ -1,10 +1,9 @@
 """
 API routes package.
 
-Contains endpoint handlers for:
-- dashboard: Live monitoring data
-- caps: Cap management
-- requests: Quota request processing
-- queue: Queue management
-- alerts: Dominance alerts
+Exports all route modules for inclusion in the main app.
 """
+
+from src.api.routes import dashboard, caps, requests, queue, alerts
+
+__all__ = ["dashboard", "caps", "requests", "queue", "alerts"]
