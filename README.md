@@ -207,4 +207,4 @@ The system manages quotas for 11 restricted nationalities:
 
 ## Contact
 
-For questions or support, contact the Ministry of Labour IT Department.
+For questions or support, contact the Ministry of Labour Digital Transformation Office.
