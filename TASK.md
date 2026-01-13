@@ -27,35 +27,36 @@
 
 ## Phase 2: Data Layer & Synthetic Data
 
-**Status:** [ ] Not Started  
-**Date Added:** 2026-01-13
+**Status:** [x] Completed  
+**Date Added:** 2026-01-13  
+**Date Completed:** 2026-01-13
 
 ### 2A: Database Models
 
 | Task ID | Task | Status | Date Completed |
 |---------|------|--------|----------------|
-| 2.1 | Create src/models/base.py (SQLAlchemy base, engine setup) | [ ] | |
-| 2.2 | Create src/models/core.py (Nationality, Profession, EconomicActivity, Establishment) | [ ] | |
-| 2.3 | Create src/models/quota.py (NationalityCap, NationalityTier, DominanceAlert) | [ ] | |
-| 2.4 | Create src/models/worker.py (WorkerStock with state enum) | [ ] | |
-| 2.5 | Create src/models/request.py (QuotaRequest, RequestQueue, DecisionLog) | [ ] | |
-| 2.6 | Create src/models/config.py (ParameterRegistry) | [ ] | |
-| 2.7 | Create scripts/init_db.py (database initialization) | [ ] | |
+| 2.1 | Create src/models/base.py (SQLAlchemy base, engine setup) | [x] | 2026-01-13 |
+| 2.2 | Create src/models/core.py (Nationality, Profession, EconomicActivity, Establishment) | [x] | 2026-01-13 |
+| 2.3 | Create src/models/quota.py (NationalityCap, NationalityTier, DominanceAlert) | [x] | 2026-01-13 |
+| 2.4 | Create src/models/worker.py (WorkerStock with state enum) | [x] | 2026-01-13 |
+| 2.5 | Create src/models/request.py (QuotaRequest, RequestQueue, DecisionLog) | [x] | 2026-01-13 |
+| 2.6 | Create src/models/config.py (ParameterRegistry) | [x] | 2026-01-13 |
+| 2.7 | Create scripts/init_db.py (database initialization) | [x] | 2026-01-13 |
 
 ### 2B: Synthetic Data Generation
 
 | Task ID | Task | Status | Date Completed |
 |---------|------|--------|----------------|
-| 2.8 | Define 11 restricted nationalities with realistic profiles | [ ] | |
-| 2.9 | Define 50+ professions across sectors | [ ] | |
-| 2.10 | Generate 500+ establishments with varying utilization | [ ] | |
-| 2.11 | Generate 150,000+ worker records with visa expiry distribution | [ ] | |
-| 2.12 | Generate tier patterns per nationality (e.g., Egypt 33% Construction) | [ ] | |
-| 2.13 | Generate dominance scenarios (e.g., Egypt 52% in Construction Supervisors) | [ ] | |
-| 2.14 | Generate 12 months historical requests | [ ] | |
-| 2.15 | Generate current queue (200-500 pending items) | [ ] | |
-| 2.16 | Run data validation tests | [ ] | |
-| 2.17 | Git commit: "feat: database models and synthetic data" | [ ] | |
+| 2.8 | Define 11 restricted nationalities with realistic profiles | [x] | 2026-01-13 |
+| 2.9 | Define 50+ professions across sectors | [x] | 2026-01-13 |
+| 2.10 | Generate 500+ establishments with varying utilization | [x] | 2026-01-13 |
+| 2.11 | Generate 150,000+ worker records with visa expiry distribution | [x] | 2026-01-13 |
+| 2.12 | Generate tier patterns per nationality (e.g., Egypt 33% Construction) | [x] | 2026-01-13 |
+| 2.13 | Generate dominance scenarios (e.g., Egypt 52% in Construction Supervisors) | [x] | 2026-01-13 |
+| 2.14 | Generate 12 months historical requests | [x] | 2026-01-13 |
+| 2.15 | Generate current queue (200-500 pending items) | [x] | 2026-01-13 |
+| 2.16 | Run data validation tests | [x] | 2026-01-13 |
+| 2.17 | Git commit: "feat: database models and synthetic data" | [x] | 2026-01-13 |
 
 ---
 
@@ -181,13 +182,13 @@
 | Phase | Description | Tasks | Completed | Percentage |
 |-------|-------------|-------|-----------|------------|
 | 1 | Environment Setup | 5 | 5 | 100% |
-| 2 | Data Layer & Synthetic Data | 17 | 0 | 0% |
+| 2 | Data Layer & Synthetic Data | 17 | 17 | 100% |
 | 3 | Business Logic Engines | 12 | 0 | 0% |
 | 4 | API Layer | 9 | 0 | 0% |
 | 5 | Streamlit Frontend | 12 | 0 | 0% |
 | 6 | Testing | 9 | 0 | 0% |
 | 7 | Deployment & Documentation | 8 | 0 | 0% |
-| **Total** | | **72** | **5** | **7%** |
+| **Total** | | **72** | **22** | **31%** |
 
 ---
 
