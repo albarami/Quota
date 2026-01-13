@@ -1,0 +1,30 @@
+[theme]
+primaryColor = "#7B1E3D"
+backgroundColor = "#F8F5F0"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1A1A2E"
+font = "sans serif"
+
+[server]
+headless = true
+port = 8501
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+serverAddress = "localhost"
+serverPort = 8501
+
+[runner]
+magicEnabled = true
+installTracer = false
+fixMatplotlib = true
+
+[deprecation]
+showfileUploaderEncoding = false
+showPyplotGlobalUse = false
+
+[logger]
+level = "info"
+messageFormat = "%(asctime)s %(message)s"
