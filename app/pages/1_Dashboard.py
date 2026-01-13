@@ -74,18 +74,30 @@ selected_code = st.selectbox(
 
 
 def fetch_dashboard_data(nationality_code: str):
-    """Fetch dashboard data from API."""
+    """
+    Fetch dashboard data - tries API first, then direct DB, then demo data.
+    """
+    # Try API first (for local development with FastAPI running)
     try:
         response = requests.get(
             f"{API_BASE}/api/v1/dashboard/{nationality_code}",
-            timeout=5
+            timeout=2  # Short timeout
         )
         if response.status_code == 200:
             return response.json()
-    except Exception as e:
-        st.warning(f"Could not connect to API. Using demo data. ({e})")
+    except Exception:
+        pass  # API not available, try database
     
-    # Return demo data if API unavailable
+    # Try direct database query (for Streamlit Cloud)
+    try:
+        from app.utils.db_queries import get_dashboard_data as db_get_dashboard
+        data = db_get_dashboard(nationality_code)
+        if data and data.get("nationality_id"):
+            return data
+    except Exception:
+        pass  # Database not available, use demo
+    
+    # Fallback to demo data
     return {
         "nationality_id": 1,
         "nationality_code": nationality_code,
