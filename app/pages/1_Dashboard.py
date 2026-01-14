@@ -97,41 +97,115 @@ def fetch_dashboard_data(nationality_code: str):
     except Exception:
         pass  # Database not available, use demo
     
-    # Fallback to demo data
+    # Fallback to realistic demo data that varies by nationality
+    return _generate_demo_data(nationality_code)
+
+
+def _generate_demo_data(nationality_code: str) -> dict:
+    """Generate realistic demo data that varies by nationality."""
+    import hashlib
+    
+    # Use nationality code to generate consistent but varying numbers
+    seed = int(hashlib.md5(nationality_code.encode()).hexdigest()[:8], 16)
+    
+    # Realistic data ranges per nationality (based on typical Qatar workforce)
+    demo_profiles = {
+        "EGY": {"cap": 45000, "stock": 38500, "tier1_status": "RATIONED"},
+        "IND": {"cap": 85000, "stock": 78200, "tier1_status": "LIMITED"},
+        "PAK": {"cap": 35000, "stock": 29800, "tier1_status": "OPEN"},
+        "NPL": {"cap": 55000, "stock": 48900, "tier1_status": "RATIONED"},
+        "BGD": {"cap": 62000, "stock": 54300, "tier1_status": "RATIONED"},
+        "PHL": {"cap": 28000, "stock": 21500, "tier1_status": "OPEN"},
+        "IRN": {"cap": 8000, "stock": 5200, "tier1_status": "OPEN"},
+        "IRQ": {"cap": 12000, "stock": 9800, "tier1_status": "RATIONED"},
+        "YEM": {"cap": 6000, "stock": 4100, "tier1_status": "OPEN"},
+        "SYR": {"cap": 9500, "stock": 7200, "tier1_status": "OPEN"},
+        "AFG": {"cap": 7500, "stock": 5800, "tier1_status": "RATIONED"},
+    }
+    
+    profile = demo_profiles.get(nationality_code, {
+        "cap": 15000 + (seed % 10000),
+        "stock": 12000 + (seed % 8000),
+        "tier1_status": "OPEN"
+    })
+    
+    cap = profile["cap"]
+    stock = profile["stock"]
+    headroom = cap - stock
+    utilization = stock / cap if cap > 0 else 0
+    
+    # Vary tier capacities based on headroom
+    t1_cap = int(headroom * 0.45)
+    t2_cap = int(headroom * 0.30)
+    t3_cap = int(headroom * 0.15)
+    t4_cap = int(headroom * 0.10)
+    
+    # Determine tier statuses based on utilization
+    if utilization > 0.92:
+        tier_statuses = [
+            {"tier_level": 1, "tier_name": "Primary", "status": "LIMITED", "capacity": t1_cap, "share_pct": 0.35},
+            {"tier_level": 2, "tier_name": "Secondary", "status": "CLOSED", "capacity": 0, "share_pct": 0.10},
+            {"tier_level": 3, "tier_name": "Minor", "status": "CLOSED", "capacity": 0, "share_pct": 0.03},
+            {"tier_level": 4, "tier_name": "Unusual", "status": "CLOSED", "capacity": 0, "share_pct": 0.01},
+        ]
+    elif utilization > 0.85:
+        tier_statuses = [
+            {"tier_level": 1, "tier_name": "Primary", "status": profile["tier1_status"], "capacity": t1_cap, "share_pct": 0.32},
+            {"tier_level": 2, "tier_name": "Secondary", "status": "RATIONED", "capacity": t2_cap, "share_pct": 0.11},
+            {"tier_level": 3, "tier_name": "Minor", "status": "LIMITED", "capacity": t3_cap, "share_pct": 0.04},
+            {"tier_level": 4, "tier_name": "Unusual", "status": "CLOSED", "capacity": 0, "share_pct": 0.01},
+        ]
+    else:
+        tier_statuses = [
+            {"tier_level": 1, "tier_name": "Primary", "status": "OPEN", "capacity": t1_cap, "share_pct": 0.28},
+            {"tier_level": 2, "tier_name": "Secondary", "status": "OPEN", "capacity": t2_cap, "share_pct": 0.09},
+            {"tier_level": 3, "tier_name": "Minor", "status": "RATIONED", "capacity": t3_cap, "share_pct": 0.03},
+            {"tier_level": 4, "tier_name": "Unusual", "status": "LIMITED", "capacity": t4_cap, "share_pct": 0.01},
+        ]
+    
+    # Generate dominance alerts (vary by nationality)
+    alert_professions = [
+        ("Construction Supervisor", 0.52, 0.08, "CRITICAL"),
+        ("Site Engineer", 0.42, 0.04, "HIGH"),
+        ("General Labourer", 0.38, 0.03, "WATCH"),
+        ("Heavy Equipment Operator", 0.35, 0.02, "WATCH"),
+    ]
+    
+    # Select alerts based on nationality seed
+    num_alerts = (seed % 3) + 1
+    alerts = []
+    for i in range(num_alerts):
+        prof = alert_professions[(seed + i) % len(alert_professions)]
+        alerts.append({
+            "profession_id": i + 1,
+            "profession_name": prof[0],
+            "share_pct": prof[1] - (i * 0.05),
+            "velocity": prof[2],
+            "alert_level": prof[3] if i == 0 else "HIGH" if i == 1 else "WATCH",
+            "is_blocking": prof[3] == "CRITICAL" and i == 0,
+        })
+    
+    # Queue counts vary by utilization
+    queue_multiplier = 1 + (utilization * 2)
+    queue_counts = {
+        1: int(35 * queue_multiplier + (seed % 30)),
+        2: int(65 * queue_multiplier + (seed % 50)),
+        3: int(15 * queue_multiplier + (seed % 20)),
+        4: int(5 * queue_multiplier + (seed % 10)),
+    }
+    
     return {
-        "nationality_id": 1,
+        "nationality_id": list(NATIONALITIES.keys()).index(nationality_code) + 1 if nationality_code in NATIONALITIES else 1,
         "nationality_code": nationality_code,
         "nationality_name": NATIONALITIES.get(nationality_code, nationality_code),
-        "cap": 15000,
-        "stock": 12450,
-        "headroom": 1875,
-        "utilization_pct": 0.83,
-        "tier_statuses": [
-            {"tier_level": 1, "tier_name": "Primary", "status": "OPEN", "capacity": 800, "share_pct": 0.33},
-            {"tier_level": 2, "tier_name": "Secondary", "status": "RATIONED", "capacity": 320, "share_pct": 0.12},
-            {"tier_level": 3, "tier_name": "Minor", "status": "LIMITED", "capacity": 45, "share_pct": 0.03},
-            {"tier_level": 4, "tier_name": "Unusual", "status": "CLOSED", "capacity": 0, "share_pct": 0.01},
-        ],
-        "dominance_alerts": [
-            {
-                "profession_id": 1,
-                "profession_name": "Construction Supervisor",
-                "share_pct": 0.52,
-                "velocity": 0.08,
-                "alert_level": "CRITICAL",
-                "is_blocking": True,
-            },
-            {
-                "profession_id": 2,
-                "profession_name": "Site Engineer",
-                "share_pct": 0.42,
-                "velocity": 0.04,
-                "alert_level": "HIGH",
-                "is_blocking": False,
-            },
-        ],
-        "queue_counts": {1: 45, 2: 89, 3: 12, 4: 3},
-        "projected_outflow": 187,
+        "cap": cap,
+        "stock": stock,
+        "headroom": headroom,
+        "utilization_pct": utilization,
+        "tier_statuses": tier_statuses,
+        "dominance_alerts": alerts,
+        "queue_counts": queue_counts,
+        "projected_outflow": int(stock * 0.015),  # ~1.5% monthly outflow
         "last_updated": datetime.now().isoformat(),
     }
 
