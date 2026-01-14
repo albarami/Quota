@@ -335,37 +335,48 @@ render_info_box(
 
 form_cols = st.columns([2, 1, 1])
 
-with form_cols[0]:
-    new_cap = st.number_input(
-        "New Cap Limit",
-        min_value=1000,
-        max_value=100000,
-        value=recommendation["recommended_cap"],
-        step=500,
-        help="Enter the new annual cap limit for this nationality"
-    )
+# Initialize session state for cap value
+cap_key = f"new_cap_{selected_code}"
+if cap_key not in st.session_state:
+    st.session_state[cap_key] = recommendation["recommended_cap"]
 
 with form_cols[1]:
     option = st.radio(
         "Quick Select",
-        ["Conservative", "Moderate", "Flexible", "Custom"],
-        index=1,
+        ["Custom", "Conservative", "Moderate", "Flexible"],
+        index=0,
         horizontal=True,
+        key=f"cap_option_{selected_code}",
     )
     
+    # Update value based on quick select
     if option == "Conservative":
-        new_cap = recommendation["conservative_cap"]
+        default_value = recommendation["conservative_cap"]
     elif option == "Moderate":
-        new_cap = recommendation["moderate_cap"]
+        default_value = recommendation["moderate_cap"]
     elif option == "Flexible":
-        new_cap = recommendation["flexible_cap"]
+        default_value = recommendation["flexible_cap"]
+    else:  # Custom
+        default_value = st.session_state.get(cap_key, recommendation["recommended_cap"])
+
+with form_cols[0]:
+    new_cap = st.number_input(
+        "New Cap Limit",
+        min_value=1000,
+        max_value=500000,
+        value=default_value,
+        step=500,
+        help="Enter the new annual cap limit for this nationality",
+        key=f"cap_input_{selected_code}",
+    )
+    # Store user's custom value
+    st.session_state[cap_key] = new_cap
 
 with form_cols[2]:
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("Apply Cap", type="primary", use_container_width=True):
         # Would call API in production
-        st.success(f"Cap updated to {new_cap:,} for {selected_code}")
-        st.balloons()
+        st.success(f"✅ Cap updated to {new_cap:,} for {selected_code} ({NATIONALITIES[selected_code]})")
 
 # Display impact preview
 if new_cap != cap_data["cap_limit"]:
@@ -374,6 +385,7 @@ if new_cap != cap_data["cap_limit"]:
     impact_cols = st.columns(4)
     diff = new_cap - cap_data["cap_limit"]
     pct = diff / cap_data["cap_limit"] * 100
+    current_stock = recommendation["current_stock"]
     
     with impact_cols[0]:
         st.metric("New Cap", f"{new_cap:,}")
@@ -382,4 +394,4 @@ if new_cap != cap_data["cap_limit"]:
     with impact_cols[2]:
         st.metric("Percentage", f"{pct:+.1f}%")
     with impact_cols[3]:
-        st.metric("Est. New Headroom", f"{new_cap - 12450:,}")
+        st.metric("Est. New Headroom", f"{new_cap - current_stock:,}")
