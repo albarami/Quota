@@ -182,6 +182,22 @@
 
 ---
 
+## Post-Release Enhancements
+
+**Date:** 2026-01-14
+
+| Enhancement | Description | Status |
+|-------------|-------------|--------|
+| UI/UX Improvements | Fixed sidebar text readability (white text on maroon), increased font sizes | ✅ Done |
+| Nationality Updates | Added Iran, Iraq, Yemen, Syria, Afghanistan to dashboard and data | ✅ Done |
+| Dynamic Demo Data | Numbers change per nationality when API unavailable | ✅ Done |
+| Cap Management Fix | Fixed "Apply Cap" to use user input, removed balloons animation | ✅ Done |
+| OpenAI Integration | Support for regular OpenAI API (not just Azure) | ✅ Done |
+| 6-Month Cap Calculation | Changed cap calculation period from monthly to 6-month rolling basis | ✅ Done |
+| Direct DB Access | Streamlit can query DB directly when API unavailable (for Cloud deployment) | ✅ Done |
+
+---
+
 ## Completed Summary
 
 | Phase | Description | Tasks | Completed | Percentage |
@@ -204,9 +220,10 @@
 1. **Outflow = FINAL EXITS ONLY** (not vacation travel, Ramadan visits, business trips)
 2. **Pipeline Commitments:** Must subtract COMMITTED and PENDING from headroom
 3. **Confidence Factor:** Apply 0.75 to outflow projections
-4. **Queue Expiry:** 90 days, with confirmation required at day 30
-5. **Dominance MIN_PROFESSION_SIZE:** 200 (don't apply to small professions)
-6. **Tier Hysteresis:** ±2% to prevent oscillation
+4. **Cap Calculation Period:** 6-month rolling basis (180 days) for historical data
+5. **Queue Expiry:** 90 days, with confirmation required at day 30
+6. **Dominance MIN_PROFESSION_SIZE:** 200 (don't apply to small professions)
+7. **Tier Hysteresis:** ±2% to prevent oscillation
 
 ### The Golden Formula
 

@@ -25,7 +25,7 @@ effective_headroom = cap - stock - committed - (pending × 0.8) + (outflow × 0.
 | Backend | Python 3.11+ / FastAPI |
 | Frontend | Streamlit |
 | Database | SQLite (demo) / PostgreSQL (production) |
-| AI | Azure OpenAI |
+| AI | OpenAI / Azure OpenAI |
 | Charts | Plotly |
 | Validation | Pydantic |
 
@@ -54,12 +54,16 @@ Create a `.env` file in the project root:
 # Database
 DATABASE_URL=sqlite:///data/quota.db
 
-# Azure OpenAI (optional)
-AZURE_OPENAI_API_KEY=your_key_here
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_DEPLOYMENT=gpt-4
-AZURE_OPENAI_API_VERSION=2024-02-15-preview
+# OpenAI API Key (works with both regular OpenAI and Azure OpenAI)
+OPENAI_API_KEY=your_key_here
+
+# Azure OpenAI (optional - only needed if using Azure instead of regular OpenAI)
+# AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+# AZURE_OPENAI_DEPLOYMENT=gpt-4
+# AZURE_OPENAI_API_VERSION=2024-02-15-preview
 ```
+
+For **Streamlit Cloud**, add `OPENAI_API_KEY` in your app secrets.
 
 ### 3. Initialize Database
 
@@ -169,9 +173,10 @@ Azure OpenAI integration for intelligent recommendations.
 1. **Outflow = FINAL EXITS ONLY** (not vacation travel)
 2. **Pipeline Commitments**: Subtract COMMITTED and PENDING from headroom
 3. **Confidence Factor**: Apply 0.75 to outflow projections
-4. **Queue Expiry**: 90 days, confirmation required at day 30
-5. **Dominance MIN_PROFESSION_SIZE**: 200 (rules apply only above this)
-6. **Tier Hysteresis**: ±2% to prevent oscillation
+4. **Cap Calculation Period**: 6-month rolling basis (180 days)
+5. **Queue Expiry**: 90 days, confirmation required at day 30
+6. **Dominance MIN_PROFESSION_SIZE**: 200 (rules apply only above this)
+7. **Tier Hysteresis**: ±2% to prevent oscillation
 
 ## Running Tests
 
@@ -190,16 +195,16 @@ pytest tests/ --cov=src --cov-report=html
 
 The system manages quotas for 11 restricted nationalities:
 - Egypt (EGY)
-- Bangladesh (BGD)
 - India (IND)
-- Nepal (NPL)
 - Pakistan (PAK)
-- Sri Lanka (LKA)
+- Nepal (NPL)
+- Bangladesh (BGD)
 - Philippines (PHL)
-- Indonesia (IDN)
-- Vietnam (VNM)
-- Kenya (KEN)
-- Ethiopia (ETH)
+- Iran (IRN)
+- Iraq (IRQ)
+- Yemen (YEM)
+- Syria (SYR)
+- Afghanistan (AFG)
 
 ## License
 
