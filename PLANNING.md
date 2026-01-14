@@ -286,7 +286,7 @@ D:/Quota/
 
 | Parameter | Default | Range | Description |
 |-----------|---------|-------|-------------|
-| `PROJECTION_HORIZON_DAYS` | 30 | 14-60 | Rolling forecast window |
+| `PROJECTION_HORIZON_DAYS` | 180 | 90-180 | Rolling forecast window (6 months) |
 | `OUTFLOW_CONFIDENCE_FACTOR` | 0.75 | 0.6-0.9 | Conservative buffer on projections |
 | `PENDING_APPROVAL_RATE` | 0.8 | 0.7-0.9 | Assumed approval rate for pending |
 | `QUEUE_EXPIRY_DAYS` | 90 | 60-120 | Request expires if not processed |

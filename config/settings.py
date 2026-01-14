@@ -123,7 +123,7 @@ class ParameterRegistry:
     # =========================================
     # Capacity & Queue Parameters
     # =========================================
-    PROJECTION_HORIZON_DAYS: int = 30  # Rolling forecast window
+    PROJECTION_HORIZON_DAYS: int = 180  # Rolling forecast window (6 months)
     OUTFLOW_CONFIDENCE_FACTOR: float = 0.75  # Conservative buffer
     PENDING_APPROVAL_RATE: float = 0.80  # Assumed approval rate for pending
     

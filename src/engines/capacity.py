@@ -275,7 +275,8 @@ class CapacityEngine:
         """
         Calculate projected demand for each tier.
         
-        Uses historical average monthly inflow by tier.
+        Uses historical average 6-month inflow by tier.
+        Cap calculations are done on a 6-month basis.
         """
         # Get tier shares
         tiers = self.db.query(NationalityTier).filter(
@@ -283,9 +284,9 @@ class CapacityEngine:
             NationalityTier.valid_to.is_(None)
         ).all()
         
-        # Calculate total monthly inflow (average from last 12 months)
+        # Calculate total 6-month inflow (average from last 12 months, projected to 6 months)
         twelve_months_ago = datetime.utcnow() - timedelta(days=365)
-        monthly_inflow = self.db.query(
+        yearly_inflow = self.db.query(
             func.sum(QuotaRequest.approved_count)
         ).filter(
             QuotaRequest.nationality_id == nationality_id,
@@ -293,13 +294,14 @@ class CapacityEngine:
             QuotaRequest.status.in_([RequestStatus.APPROVED, RequestStatus.PARTIAL])
         ).scalar() or 0
         
-        avg_monthly_inflow = monthly_inflow / 12
+        # Average 6-month inflow (half of yearly)
+        avg_six_month_inflow = yearly_inflow / 2
         
-        # Calculate demand per tier
+        # Calculate demand per tier (for 6-month period)
         tier_demands = {1: 0, 2: 0, 3: 0, 4: 0}
         
         for tier in tiers:
-            demand = int(avg_monthly_inflow * tier.share_pct)
+            demand = int(avg_six_month_inflow * tier.share_pct)
             tier_demands[tier.tier_level] = tier_demands.get(tier.tier_level, 0) + demand
         
         return tier_demands
