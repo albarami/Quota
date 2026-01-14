@@ -78,71 +78,206 @@ ESTABLISHMENTS = {
 }
 
 
-def check_eligibility(nationality_id: int, profession_id: int, establishment_id: int, count: int):
+def check_eligibility(nationality_code: str, profession_id: int, establishment_id: int, count: int):
     """Check eligibility for request."""
     try:
         response = requests.post(
             f"{API_BASE}/api/v1/requests/check-eligibility",
             json={
-                "nationality_id": nationality_id,
+                "nationality_id": list(NATIONALITIES.keys()).index(nationality_code) + 1,
                 "profession_id": profession_id,
                 "establishment_id": establishment_id,
                 "requested_count": count,
             },
-            timeout=5
+            timeout=2
         )
         if response.status_code == 200:
             return response.json()
     except Exception:
         pass
     
-    # Demo response
+    # Dynamic demo response based on nationality and profession
+    return _generate_eligibility_demo(nationality_code, profession_id, count)
+
+
+def _generate_eligibility_demo(nationality_code: str, profession_id: int, count: int) -> dict:
+    """Generate realistic eligibility result that varies by nationality/profession."""
+    import hashlib
+    
+    # Generate a consistent seed from nationality + profession
+    seed_str = f"{nationality_code}-{profession_id}"
+    seed = int(hashlib.md5(seed_str.encode()).hexdigest()[:8], 16)
+    
+    # Nationality profiles (utilization affects tier status)
+    nat_profiles = {
+        "EGY": {"util": 0.86, "alerts": 2},
+        "IND": {"util": 0.92, "alerts": 4},
+        "PAK": {"util": 0.85, "alerts": 1},
+        "NPL": {"util": 0.89, "alerts": 3},
+        "BGD": {"util": 0.88, "alerts": 3},
+        "PHL": {"util": 0.77, "alerts": 1},
+        "IRN": {"util": 0.65, "alerts": 0},
+        "IRQ": {"util": 0.82, "alerts": 2},
+        "YEM": {"util": 0.68, "alerts": 0},
+        "SYR": {"util": 0.76, "alerts": 1},
+        "AFG": {"util": 0.77, "alerts": 1},
+    }
+    
+    profile = nat_profiles.get(nationality_code, {"util": 0.80, "alerts": 1})
+    util = profile["util"]
+    alerts = profile["alerts"]
+    
+    # Determine tier based on profession (Primary professions = 1-3, Secondary = 4-6, etc.)
+    if profession_id <= 3:
+        tier_level = 1
+        tier_name = "Primary"
+    elif profession_id <= 6:
+        tier_level = 2
+        tier_name = "Secondary"
+    elif profession_id <= 8:
+        tier_level = 3
+        tier_name = "Minor"
+    else:
+        tier_level = 4
+        tier_name = "Unusual"
+    
+    # Determine tier status based on utilization
+    if util > 0.90:
+        tier_status = "CLOSED" if tier_level > 2 else "LIMITED"
+    elif util > 0.85:
+        tier_status = "LIMITED" if tier_level > 2 else "RATIONED"
+    elif util > 0.75:
+        tier_status = "RATIONED" if tier_level > 1 else "OPEN"
+    else:
+        tier_status = "OPEN"
+    
+    # Check for dominance alert (certain profession + nationality combos)
+    has_dominance = (seed % 10) < alerts and profession_id <= 5
+    dominance_alert = "HIGH" if has_dominance else None
+    
+    # Determine eligibility and outcome
+    if tier_status == "CLOSED":
+        is_eligible = False
+        estimated_outcome = "QUEUED"
+    elif has_dominance and alerts >= 3:
+        is_eligible = True
+        estimated_outcome = "PARTIAL"
+    elif tier_status == "LIMITED":
+        is_eligible = True
+        estimated_outcome = "PARTIAL" if count > 10 else "APPROVED"
+    elif tier_status == "RATIONED":
+        is_eligible = True
+        estimated_outcome = "APPROVED"
+    else:
+        is_eligible = True
+        estimated_outcome = "APPROVED"
+    
+    # Priority score (varies by establishment size, sector, etc.)
+    priority_score = 50 + (seed % 40) + (10 if profession_id <= 3 else 0)
+    
+    # Generate messages
+    messages = [
+        f"Tier {tier_level} ({tier_name}) is {tier_status} for {NATIONALITIES.get(nationality_code, nationality_code)}",
+    ]
+    
+    if has_dominance:
+        messages.append(f"⚠️ Dominance alert: HIGH concentration in {PROFESSIONS.get(profession_id, 'this profession')}")
+    else:
+        messages.append("✓ No dominance concerns for this profession")
+    
+    if priority_score >= 80:
+        messages.append("★ High priority score due to strategic sector bonus")
+    elif priority_score >= 60:
+        messages.append("Priority score within normal range")
+    else:
+        messages.append("Lower priority - consider high-demand professions")
+    
     return {
-        "is_eligible": True,
-        "tier_level": 1,
-        "tier_name": "Primary",
-        "tier_status": "OPEN",
-        "dominance_alert": None,
-        "estimated_outcome": "APPROVED",
-        "priority_score": 80,
-        "messages": [
-            "Tier 1 (Primary) is OPEN for this nationality",
-            "No dominance concerns for this profession",
-            "High priority score due to strategic sector bonus",
-        ],
+        "is_eligible": is_eligible,
+        "tier_level": tier_level,
+        "tier_name": tier_name,
+        "tier_status": tier_status,
+        "dominance_alert": dominance_alert,
+        "estimated_outcome": estimated_outcome,
+        "priority_score": priority_score,
+        "messages": messages,
     }
 
 
-def submit_request(nationality_id: int, profession_id: int, establishment_id: int, count: int):
+def submit_request(nationality_code: str, profession_id: int, establishment_id: int, count: int):
     """Submit a quota request."""
     try:
         response = requests.post(
             f"{API_BASE}/api/v1/requests",
             json={
                 "establishment_id": establishment_id,
-                "nationality_id": nationality_id,
+                "nationality_id": list(NATIONALITIES.keys()).index(nationality_code) + 1,
                 "profession_id": profession_id,
                 "requested_count": count,
             },
-            timeout=10
+            timeout=2
         )
         if response.status_code == 200:
             return response.json()
     except Exception:
         pass
     
-    # Demo response
+    # Generate dynamic demo response
+    return _generate_submit_demo(nationality_code, profession_id, count)
+
+
+def _generate_submit_demo(nationality_code: str, profession_id: int, count: int) -> dict:
+    """Generate realistic submission result."""
+    import random
+    
+    # Get eligibility to determine decision
+    elig = _generate_eligibility_demo(nationality_code, profession_id, count)
+    
+    decision = elig["estimated_outcome"]
+    tier_level = elig["tier_level"]
+    tier_status = elig["tier_status"]
+    priority_score = elig["priority_score"]
+    
+    # Generate request ID
+    request_id = random.randint(10000, 99999)
+    
+    # Determine approved/queued counts
+    if decision == "APPROVED":
+        approved = count
+        queued = 0
+        reason = f"APPROVED: Tier {tier_level} {tier_status}, dominance OK. All {count} workers approved."
+    elif decision == "PARTIAL":
+        approved = max(1, int(count * 0.6))
+        queued = count - approved
+        reason = f"PARTIAL: {approved} approved due to capacity limits. {queued} added to auto-queue."
+    elif decision == "QUEUED":
+        approved = 0
+        queued = count
+        reason = f"QUEUED: Tier {tier_level} currently {tier_status}. All {count} workers added to auto-queue."
+    else:  # BLOCKED
+        approved = 0
+        queued = 0
+        reason = f"BLOCKED: Dominance threshold exceeded. Diversification required."
+    
+    alternatives = []
+    if decision in ["QUEUED", "BLOCKED"]:
+        alternatives = [
+            "Consider workers from other nationalities with lower concentration",
+            "Monitor dashboard for capacity openings",
+            "Contact support for priority review if urgent",
+        ]
+    
     return {
-        "request_id": 12345,
-        "decision": "APPROVED",
-        "approved_count": count,
-        "queued_count": 0,
-        "priority_score": 80,
-        "tier_level": 1,
-        "tier_status": "OPEN",
-        "dominance_alert": None,
-        "reason": f"APPROVED: Tier 1 OPEN, dominance OK. All {count} workers approved.",
-        "alternatives": [],
+        "request_id": request_id,
+        "decision": decision,
+        "approved_count": approved,
+        "queued_count": queued,
+        "priority_score": priority_score,
+        "tier_level": tier_level,
+        "tier_status": tier_status,
+        "dominance_alert": elig["dominance_alert"],
+        "reason": reason,
+        "alternatives": alternatives,
     }
 
 
@@ -188,7 +323,7 @@ render_gold_accent()
 if st.button("Check Eligibility", type="secondary"):
     with st.spinner("Checking eligibility..."):
         result = check_eligibility(
-            nationality_id=list(NATIONALITIES.keys()).index(nationality) + 1,
+            nationality_code=nationality,
             profession_id=profession,
             establishment_id=establishment,
             count=count,
@@ -290,7 +425,7 @@ with submit_col2:
     ):
         with st.spinner("Processing request..."):
             decision = submit_request(
-                nationality_id=list(NATIONALITIES.keys()).index(nationality) + 1,
+                nationality_code=nationality,
                 profession_id=profession,
                 establishment_id=establishment,
                 count=count,
