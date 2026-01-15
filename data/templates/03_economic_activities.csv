@@ -1,0 +1,13 @@
+code,name,name_ar,sector_group,is_strategic,strategic_weight
+CONST,Construction,البناء والتشييد,Construction,false,1.0
+OIL_GAS,Oil & Gas,النفط والغاز,Energy,true,1.5
+HEALTHCARE,Healthcare Services,الخدمات الصحية,Healthcare,true,1.5
+IT_SERVICES,IT Services,خدمات تقنية المعلومات,IT,true,1.5
+EDUCATION,Education,التعليم,Education,true,1.5
+HOSPITALITY,Hospitality & Tourism,الضيافة والسياحة,Hospitality,false,1.0
+RETAIL,Retail Trade,تجارة التجزئة,Retail,false,1.0
+FINANCE,Financial Services,الخدمات المالية,Finance,true,1.5
+TRANSPORT,Transportation & Logistics,النقل واللوجستيات,Transport,false,1.0
+MANUFACTURING,Manufacturing,التصنيع,Manufacturing,false,1.0
+SECURITY,Security Services,خدمات الأمن,Security,false,1.0
+REAL_ESTATE,Real Estate,العقارات,Real Estate,false,1.0

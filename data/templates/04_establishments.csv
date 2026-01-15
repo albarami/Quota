@@ -1,0 +1,16 @@
+name,license_number,activity_code,total_approved,total_used,size_category,is_active
+Qatar Construction LLC,CR100001,CONST,500,420,Large,true
+Gulf Engineering WLL,CR100002,CONST,250,210,Medium,true
+Al Rayyan Contracting,CR100003,CONST,120,98,Medium,true
+National IT Solutions,CR100004,IT_SERVICES,80,65,Medium,true
+Qatar Healthcare Group,CR100005,HEALTHCARE,300,275,Large,true
+Premier Hospitality Services,CR100006,HOSPITALITY,150,120,Medium,true
+Elite Security Services,CR100007,SECURITY,200,180,Medium,true
+Diamond Trading LLC,CR100008,RETAIL,45,38,Small,true
+Crown Transport WLL,CR100009,TRANSPORT,180,155,Medium,true
+Phoenix Manufacturing,CR100010,MANUFACTURING,350,290,Large,true
+Atlas Oil Services,CR100011,OIL_GAS,400,350,Large,true
+Star Education Center,CR100012,EDUCATION,60,52,Medium,true
+Golden Finance Corp,CR100013,FINANCE,40,35,Small,true
+United Real Estate,CR100014,REAL_ESTATE,30,25,Small,true
+Royal Construction Group,CR100015,CONST,800,700,Large,true

@@ -1,0 +1,12 @@
+nationality_code,year,cap_limit,previous_cap,set_by,set_date,notes
+EGY,2026,10000,9000,Policy Committee,2026-01-01,Annual cap based on demand analysis
+IND,2026,50000,45000,Policy Committee,2026-01-01,Largest workforce - construction and IT demand
+PAK,2026,28000,25000,Policy Committee,2026-01-01,Strong construction sector demand
+NPL,2026,38000,35000,Policy Committee,2026-01-01,Security and hospitality sector demand
+BGD,2026,32000,29000,Policy Committee,2026-01-01,Manufacturing and construction demand
+PHL,2026,25000,22000,Policy Committee,2026-01-01,Healthcare and hospitality specialists
+IRN,2026,8000,7500,Policy Committee,2026-01-01,Engineering and medical professionals
+IRQ,2026,5000,4500,Policy Committee,2026-01-01,Transport sector demand
+YEM,2026,3000,2800,Policy Committee,2026-01-01,Limited quota - monitoring
+SYR,2026,5000,4500,Policy Committee,2026-01-01,Hospitality and retail sector demand
+AFG,2026,2500,2200,Policy Committee,2026-01-01,Security sector concentration

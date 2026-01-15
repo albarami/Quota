@@ -1,0 +1,52 @@
+code,name,name_ar,category,high_demand_flag,non_skilled_fast_track,description
+CONST_SUP,Construction Supervisor,مشرف بناء,Construction,true,false,Supervises construction workers and projects
+CONST_ENG,Construction Engineer,مهندس بناء,Construction,true,false,Plans and oversees construction projects
+CONST_LAB,Construction Labourer,عامل بناء,Construction,false,true,General construction labor
+WELDER,Welder,لحّام,Construction,true,false,Metal welding and fabrication
+ELEC,Electrician,كهربائي,Construction,true,false,Electrical installation and maintenance
+PLUMBER,Plumber,سبّاك,Construction,false,false,Plumbing installation and repair
+CARPENTER,Carpenter,نجّار,Construction,false,false,Wood construction and finishing
+MASON,Mason,بنّاء,Construction,false,false,Brick and stone work
+PAINTER,Painter,دهّان,Construction,false,false,Painting and finishing
+HVAC_TECH,HVAC Technician,فني تكييف,Construction,true,false,Heating/cooling system installation
+CIVIL_ENG,Civil Engineer,مهندس مدني,Engineering,true,false,Civil infrastructure design
+MECH_ENG,Mechanical Engineer,مهندس ميكانيكي,Engineering,true,false,Mechanical systems design
+ELEC_ENG,Electrical Engineer,مهندس كهربائي,Engineering,true,false,Electrical systems design
+CHEM_ENG,Chemical Engineer,مهندس كيميائي,Engineering,true,false,Chemical process engineering
+PROJ_MGR,Project Manager,مدير مشروع,Engineering,true,false,Project planning and management
+SW_DEV,Software Developer,مطور برمجيات,IT,true,false,Software development and programming
+NET_ENG,Network Engineer,مهندس شبكات,IT,true,false,Network infrastructure design
+DATA_ANALYST,Data Analyst,محلل بيانات,IT,true,false,Data analysis and reporting
+IT_SUPPORT,IT Support Specialist,دعم تقني,IT,false,false,Technical support services
+CYBER_SEC,Cybersecurity Specialist,أمن سيبراني,IT,true,false,Information security
+DOCTOR,Medical Doctor,طبيب,Healthcare,true,false,Medical diagnosis and treatment
+NURSE,Nurse,ممرض/ة,Healthcare,true,false,Patient care and nursing
+PHARMACIST,Pharmacist,صيدلي,Healthcare,true,false,Medication dispensing
+LAB_TECH,Laboratory Technician,فني مختبر,Healthcare,false,false,Medical laboratory testing
+RADIOLOGIST,Radiologist,أخصائي أشعة,Healthcare,true,false,Medical imaging specialist
+TRUCK_DRV,Heavy Truck Driver,سائق شاحنة,Transport,true,false,Heavy vehicle operation
+BUS_DRV,Bus Driver,سائق حافلة,Transport,false,false,Passenger bus operation
+LOGISTICS,Logistics Coordinator,منسق لوجستي,Transport,false,false,Supply chain coordination
+FORKLIFT,Forklift Operator,مشغل رافعة,Transport,false,false,Warehouse equipment operation
+HOTEL_MGR,Hotel Manager,مدير فندق,Hospitality,false,false,Hotel operations management
+CHEF,Chef,طاهي,Hospitality,false,false,Food preparation and cooking
+WAITER,Waiter,نادل,Hospitality,false,true,Restaurant service
+HOUSEKEEP,Housekeeper,عامل نظافة,Hospitality,false,true,Cleaning and housekeeping
+RECEPTIONIST,Receptionist,موظف استقبال,Hospitality,false,false,Front desk services
+SEC_GUARD,Security Guard,حارس أمن,Security,false,false,Security services
+SEC_SUP,Security Supervisor,مشرف أمن,Security,false,false,Security team supervision
+ACCOUNTANT,Accountant,محاسب,Finance,false,false,Financial accounting
+FIN_ANALYST,Financial Analyst,محلل مالي,Finance,true,false,Financial analysis and planning
+AUDITOR,Auditor,مدقق حسابات,Finance,false,false,Financial auditing
+TEACHER,Teacher,معلم,Education,true,false,Teaching and instruction
+PROFESSOR,Professor,أستاذ جامعي,Education,true,false,Higher education teaching
+TRAINER,Corporate Trainer,مدرب,Education,false,false,Corporate training
+SALES_MGR,Sales Manager,مدير مبيعات,Retail,false,false,Sales team management
+CASHIER,Cashier,أمين صندوق,Retail,false,true,Point of sale operations
+STORE_SUP,Store Supervisor,مشرف متجر,Retail,false,false,Retail store supervision
+FACTORY_WKR,Factory Worker,عامل مصنع,Manufacturing,false,true,Factory production work
+QUALITY_CTL,Quality Controller,مراقب جودة,Manufacturing,false,false,Quality assurance
+MACHINE_OP,Machine Operator,مشغل آلات,Manufacturing,false,false,Industrial machinery operation
+PETRO_ENG,Petroleum Engineer,مهندس بترول,Oil & Gas,true,false,Oil and gas extraction engineering
+RIG_WORKER,Rig Worker,عامل منصة,Oil & Gas,false,false,Oil rig operations
+PIPELINE_TECH,Pipeline Technician,فني أنابيب,Oil & Gas,true,false,Pipeline installation and maintenance

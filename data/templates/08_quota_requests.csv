@@ -1,0 +1,13 @@
+establishment_license,nationality_code,profession_code,requested_count,approved_count,status,priority_score,tier_at_submission,submitted_date,decided_date,decision_reason
+CR100001,EGY,CONST_SUP,25,25,APPROVED,85,1,2025-11-15 09:30:00,2025-11-15 14:45:00,Tier 1 profession with available capacity
+CR100001,IND,CONST_LAB,50,50,APPROVED,72,1,2025-11-20 10:00:00,2025-11-20 15:30:00,Full approval - high utilization establishment
+CR100002,EGY,CIVIL_ENG,15,15,APPROVED,88,1,2025-12-01 08:45:00,2025-12-01 12:00:00,Strategic sector bonus applied
+CR100004,IND,SW_DEV,20,20,APPROVED,95,1,2025-12-05 11:00:00,2025-12-05 14:00:00,IT sector priority - full approval
+CR100005,PHL,NURSE,30,30,APPROVED,92,1,2025-12-10 09:00:00,2025-12-10 13:00:00,Healthcare sector - critical need
+CR100006,NPL,HOUSEKEEP,40,28,PARTIAL,45,1,2025-12-15 10:30:00,2025-12-16 09:00:00,Partial approval due to capacity constraints
+CR100007,PAK,SEC_GUARD,35,35,APPROVED,60,1,2025-12-18 14:00:00,2025-12-18 17:30:00,Approved within tier allocation
+CR100010,BGD,FACTORY_WKR,25,25,APPROVED,55,1,2026-01-05 08:00:00,2026-01-05 11:00:00,Manufacturing sector demand met
+CR100001,EGY,CONST_SUP,30,0,QUEUED,78,1,2026-01-10 09:00:00,,Added to queue - tier capacity reached
+CR100009,IRQ,TRUCK_DRV,20,0,BLOCKED,40,1,2026-01-12 10:00:00,2026-01-12 10:30:00,Blocked - dominance threshold exceeded
+CR100004,IND,DATA_ANALYST,10,7,PARTIAL,82,2,2026-01-13 11:00:00,2026-01-13 15:00:00,Partial approval - limited tier 2 capacity
+CR100006,SYR,CHEF,15,15,APPROVED,65,1,2026-01-14 08:30:00,2026-01-14 12:00:00,Hospitality sector request approved

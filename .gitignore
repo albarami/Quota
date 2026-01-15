@@ -170,6 +170,11 @@ data/synthetic/*.csv
 data/synthetic/*.json
 data/synthetic/*.pkl
 
+# Keep templates folder (for ministry data import)
+!data/templates/
+!data/templates/*.csv
+!data/templates/*.md
+
 # Logs
 logs/
 *.log

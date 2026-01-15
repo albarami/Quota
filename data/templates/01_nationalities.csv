@@ -1,0 +1,21 @@
+code,name,name_ar,is_restricted,is_gcc,continent
+EGY,Egypt,مصر,true,false,Africa
+IND,India,الهند,true,false,Asia
+PAK,Pakistan,باكستان,true,false,Asia
+NPL,Nepal,نيبال,true,false,Asia
+BGD,Bangladesh,بنغلاديش,true,false,Asia
+PHL,Philippines,الفلبين,true,false,Asia
+IRN,Iran,إيران,true,false,Asia
+IRQ,Iraq,العراق,true,false,Asia
+YEM,Yemen,اليمن,true,false,Asia
+SYR,Syria,سوريا,true,false,Asia
+AFG,Afghanistan,أفغانستان,true,false,Asia
+SAU,Saudi Arabia,السعودية,false,true,Asia
+UAE,United Arab Emirates,الإمارات,false,true,Asia
+KWT,Kuwait,الكويت,false,true,Asia
+BHR,Bahrain,البحرين,false,true,Asia
+OMN,Oman,عُمان,false,true,Asia
+LKA,Sri Lanka,سريلانكا,false,false,Asia
+IDN,Indonesia,إندونيسيا,false,false,Asia
+JOR,Jordan,الأردن,false,false,Asia
+LBN,Lebanon,لبنان,false,false,Asia
