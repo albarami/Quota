@@ -165,6 +165,10 @@ Thumbs.db
 data/*.db
 data/*.sqlite
 
+# Real ministry data (NEVER commit - sensitive data)
+real_data/
+data/real/
+
 # Data files (keep structure, ignore generated data)
 data/synthetic/*.csv
 data/synthetic/*.json
