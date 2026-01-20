@@ -1,0 +1,168 @@
+==========================================================================================
+  NEPAL - COMPREHENSIVE QUOTA ANALYSIS REPORT
+  Nationality Code: 524
+  Report Generated: 2026-01-20 17:36:40
+  Data Source: D:\Quota\real_data\07_worker_stock.csv
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+  SECTION 1: EXECUTIVE SUMMARY
+------------------------------------------------------------------------------------------
+
+  KEY PERFORMANCE INDICATORS
+  +--------------------------------------------------------------------------------------+
+  | Metric                              |                  Value |               Status |
+  +--------------------------------------------------------------------------------------+
+  | Annual Cap (2026)                   |                437,178 |           Policy Set |
+  | Current Stock (In-Country)          |                346,515 |                79.3% |
+  | Available Headroom                  |                 90,663 |             Capacity |
+  | Out of Country                      |                291,320 |             Inactive |
+  | Committed/Pending                   |                      0 |           In Process |
+  | Total Records                       |                637,835 |           All States |
+  +--------------------------------------------------------------------------------------+
+
+  CAP UTILIZATION: [#######################################-----------] 79.3%
+                   0%                      50%                     100%
+
+------------------------------------------------------------------------------------------
+  SECTION 2: WORKFORCE COMPOSITION
+------------------------------------------------------------------------------------------
+
+  WORKER STATE DISTRIBUTION
+    In Country:              346,515  ( 54.3%)
+    Out of Country:          291,320  ( 45.7%)
+    Committed:                     0  (  0.0%)
+    Pending:                       0  (  0.0%)
+    =============================================
+    TOTAL RECORDS:           637,835
+
+  AVERAGE EMPLOYMENT TENURE: 8.6 years
+
+  UNIQUE PROFESSIONS: 1,077
+
+------------------------------------------------------------------------------------------
+  SECTION 3: TIER CLASSIFICATION & STATUS
+------------------------------------------------------------------------------------------
+
+  TIER SUMMARY
+  +--------------------+------------+---------------+------------+--------------------+
+  | Tier               |   Status   |       Workers |    Share % |          Available |
+  +--------------------+------------+---------------+------------+--------------------+
+  | Tier 1 (Highest Demand) |    OPEN    |       116,070 |      33.5% |             40,798 |
+  | Tier 2 (High Demand) |    OPEN    |        63,299 |      18.3% |             27,198 |
+  | Tier 3 (Moderate)  |    OPEN    |        70,785 |      20.4% |             13,599 |
+  | Tier 4 (Low/Specialized) |  RATIONED  |        96,361 |      27.8% |              4,533 |
+  +--------------------+------------+---------------+------------+--------------------+
+
+  TOP PROFESSIONS BY TIER
+
+    TIER 1 - Highest Demand (>15%) - Priority Allocation
+      - LABOURER                                         116,070  ( 33.5%)
+
+    TIER 2 - High Demand (5-15%)
+      - GEN  CLEAN  WORKER                                34,617  ( 10.0%)
+      - DRIVER                                            28,682  (  8.3%)
+
+    TIER 3 - Moderate Demand (1-5%)
+      - FOREMAN                                            9,369  (  2.7%)
+      - GUARD                                              7,633  (  2.2%)
+      - SUPERVISOR.                                        7,153  (  2.1%)
+      - SALESMAN                                           6,901  (  2.0%)
+      - WAITER                                             6,227  (  1.8%)
+
+    TIER 4 - Low Demand (<1%)
+      - TAILOR                                             3,109  (  0.9%)
+      - CARPENTER                                          2,930  (  0.8%)
+      - COOKER                                             2,898  (  0.8%)
+      - PLUMBER                                            2,877  (  0.8%)
+      - CASHIER                                            2,866  (  0.8%)
+
+------------------------------------------------------------------------------------------
+  SECTION 4: DOMINANT JOBS ANALYSIS
+------------------------------------------------------------------------------------------
+
+  TOP 15 PROFESSIONS BY WORKER COUNT
+  #   Profession                                    Tier        Workers    Share %
+  --------------------------------------------------------------------------------
+  1   LABOURER                                      T1          116,070      33.5%
+  2   GEN  CLEAN  WORKER                            T2           34,617      10.0%
+  3   DRIVER                                        T2           28,682       8.3%
+  4   FOREMAN                                       T3            9,369       2.7%
+  5   GUARD                                         T3            7,633       2.2%
+  6   SUPERVISOR.                                   T3            7,153       2.1%
+  7   SALESMAN                                      T3            6,901       2.0%
+  8   WAITER                                        T3            6,227       1.8%
+  9   REPRESENTATIVE                                T3            6,146       1.8%
+  10  MASON                                         T3            5,522       1.6%
+  11  Technician                                    T3            5,520       1.6%
+  12  BUILDING WORKER                               T3            5,120       1.5%
+  13  CARPENTER.                                    T3            4,016       1.2%
+  14  PAINTER                                       T3            3,597       1.0%
+  15  HEAVY VEHICLE DRIVER                          T3            3,581       1.0%
+
+------------------------------------------------------------------------------------------
+  SECTION 5: DOMINANCE RISK ASSESSMENT
+------------------------------------------------------------------------------------------
+
+  ACTIVE DOMINANCE ALERTS
+
+    [!] WATCH ALERT
+        Profession: LABOURER
+        Share:      33.5% (116,070 workers)
+        Threshold:  30%
+
+  DOMINANCE THRESHOLDS:
+    - WATCH:    30-40% share in profession
+    - HIGH:     40-50% share (partial approval only)
+    - CRITICAL: >50% share (blocks new approvals)
+
+------------------------------------------------------------------------------------------
+  SECTION 6: GROWTH ANALYSIS & PROJECTIONS
+------------------------------------------------------------------------------------------
+
+  6-MONTH TREND ANALYSIS
+    New Entries:                  10,658
+    Exits:                        24,626
+    Net Change:                  -13,968
+    Growth Rate:                  -4.03%
+
+  12-MONTH PROJECTIONS
+    Projected Growth:            -27,936
+    Projected Stock:             318,579
+    Projected Headroom:          118,599
+    Projected Util.:               72.9%
+
+  TREND: DECLINING - Workforce contracting
+
+------------------------------------------------------------------------------------------
+  SECTION 7: AI CAP RECOMMENDATION
+------------------------------------------------------------------------------------------
+
+  CAP OPTIONS ANALYSIS
+  +----------------------+------------------+------------------+------------------+
+  | Option               |        Cap Value |           Change |           Growth |
+  +----------------------+------------------+------------------+------------------+
+  | Conservative (+5%)   |          459,036 |          +21,858 |            +5.0% |
+  | Moderate (+10%)      |          480,895 |          +43,717 |           +10.0% |
+  | Flexible (+20%)      |          524,613 |          +87,435 |           +20.0% |
+  +----------------------+------------------+------------------+------------------+
+
+  >>> RECOMMENDED: MODERATE - 480,895 <<<
+
+  RECOMMENDATION RATIONALE:
+    A moderate cap increase is recommended to:
+    - Balance growth with risk management
+    - Accommodate projected demand
+    - Current utilization: 79.3%
+
+------------------------------------------------------------------------------------------
+  SECTION 8: CAP HISTORY
+------------------------------------------------------------------------------------------
+
+    2026 Cap:             437,178
+    2025 Cap:             397,435
+    YoY Change:           +39,743 (+10.0%)
+
+==========================================================================================
+  END OF REPORT
+==========================================================================================

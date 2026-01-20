@@ -1,0 +1,169 @@
+==========================================================================================
+  PAKISTAN - COMPREHENSIVE QUOTA ANALYSIS REPORT
+  Nationality Code: 586
+  Report Generated: 2026-01-20 17:36:40
+  Data Source: D:\Quota\real_data\07_worker_stock.csv
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+  SECTION 1: EXECUTIVE SUMMARY
+------------------------------------------------------------------------------------------
+
+  KEY PERFORMANCE INDICATORS
+  +--------------------------------------------------------------------------------------+
+  | Metric                              |                  Value |               Status |
+  +--------------------------------------------------------------------------------------+
+  | Annual Cap (2026)                   |                242,955 |           Policy Set |
+  | Current Stock (In-Country)          |                196,277 |                80.8% |
+  | Available Headroom                  |                 46,678 |             Capacity |
+  | Out of Country                      |                150,382 |             Inactive |
+  | Committed/Pending                   |                      0 |           In Process |
+  | Total Records                       |                346,659 |           All States |
+  +--------------------------------------------------------------------------------------+
+
+  CAP UTILIZATION: [########################################----------] 80.8%
+                   0%                      50%                     100%
+
+------------------------------------------------------------------------------------------
+  SECTION 2: WORKFORCE COMPOSITION
+------------------------------------------------------------------------------------------
+
+  WORKER STATE DISTRIBUTION
+    In Country:              196,277  ( 56.6%)
+    Out of Country:          150,382  ( 43.4%)
+    Committed:                     0  (  0.0%)
+    Pending:                       0  (  0.0%)
+    =============================================
+    TOTAL RECORDS:           346,659
+
+  AVERAGE EMPLOYMENT TENURE: 5.4 years
+
+  UNIQUE PROFESSIONS: 1,303
+
+------------------------------------------------------------------------------------------
+  SECTION 3: TIER CLASSIFICATION & STATUS
+------------------------------------------------------------------------------------------
+
+  TIER SUMMARY
+  +--------------------+------------+---------------+------------+--------------------+
+  | Tier               |   Status   |       Workers |    Share % |          Available |
+  +--------------------+------------+---------------+------------+--------------------+
+  | Tier 1 (Highest Demand) |    OPEN    |        64,632 |      32.9% |             21,005 |
+  | Tier 2 (High Demand) |    OPEN    |        32,340 |      16.5% |             14,003 |
+  | Tier 3 (Moderate)  |    OPEN    |        35,867 |      18.3% |              7,001 |
+  | Tier 4 (Low/Specialized) |  RATIONED  |        63,438 |      32.3% |              2,333 |
+  +--------------------+------------+---------------+------------+--------------------+
+
+  TOP PROFESSIONS BY TIER
+
+    TIER 1 - Highest Demand (>15%) - Priority Allocation
+      - DRIVER                                            64,632  ( 32.9%)
+
+    TIER 2 - High Demand (5-15%)
+      - LABOURER                                          11,098  (  5.7%)
+      - EMPLOYEE                                          11,079  (  5.6%)
+      - FOREMAN                                           10,163  (  5.2%)
+
+    TIER 3 - Moderate Demand (1-5%)
+      - SUPERVISOR.                                        6,860  (  3.5%)
+      - REPRESENTATIVE                                     5,764  (  2.9%)
+      - POLICE ARMY STAFF                                  4,478  (  2.3%)
+      - GUARD                                              4,433  (  2.3%)
+      - HEAVY VEHICLE DRIVER                               3,773  (  1.9%)
+
+    TIER 4 - Low Demand (<1%)
+      - MANAGER                                            1,709  (  0.9%)
+      - Unknown (CMF)                                      1,633  (  0.8%)
+      - ACCOUNTANT                                         1,606  (  0.8%)
+      - Unknown (CMG)                                      1,534  (  0.8%)
+      - PLUMBER                                            1,511  (  0.8%)
+
+------------------------------------------------------------------------------------------
+  SECTION 4: DOMINANT JOBS ANALYSIS
+------------------------------------------------------------------------------------------
+
+  TOP 15 PROFESSIONS BY WORKER COUNT
+  #   Profession                                    Tier        Workers    Share %
+  --------------------------------------------------------------------------------
+  1   DRIVER                                        T1           64,632      32.9%
+  2   LABOURER                                      T2           11,098       5.7%
+  3   EMPLOYEE                                      T2           11,079       5.6%
+  4   FOREMAN                                       T2           10,163       5.2%
+  5   SUPERVISOR.                                   T3            6,860       3.5%
+  6   REPRESENTATIVE                                T3            5,764       2.9%
+  7   POLICE ARMY STAFF                             T3            4,478       2.3%
+  8   GUARD                                         T3            4,433       2.3%
+  9   HEAVY VEHICLE DRIVER                          T3            3,773       1.9%
+  10  GENERAL SUPERVISOR                            T3            3,003       1.5%
+  11  Technician                                    T3            2,803       1.4%
+  12  BUSIN. EXECUTIVE.                             T3            2,787       1.4%
+  13  MASON                                         T3            1,966       1.0%
+  14  MANAGER                                       T4            1,709       0.9%
+  15  Unknown (CMF)                                 T4            1,633       0.8%
+
+------------------------------------------------------------------------------------------
+  SECTION 5: DOMINANCE RISK ASSESSMENT
+------------------------------------------------------------------------------------------
+
+  ACTIVE DOMINANCE ALERTS
+
+    [!] WATCH ALERT
+        Profession: DRIVER
+        Share:      32.9% (64,632 workers)
+        Threshold:  30%
+
+  DOMINANCE THRESHOLDS:
+    - WATCH:    30-40% share in profession
+    - HIGH:     40-50% share (partial approval only)
+    - CRITICAL: >50% share (blocks new approvals)
+
+------------------------------------------------------------------------------------------
+  SECTION 6: GROWTH ANALYSIS & PROJECTIONS
+------------------------------------------------------------------------------------------
+
+  6-MONTH TREND ANALYSIS
+    New Entries:                  19,851
+    Exits:                        14,943
+    Net Change:                   +4,908
+    Growth Rate:                  +2.50%
+
+  12-MONTH PROJECTIONS
+    Projected Growth:             +9,816
+    Projected Stock:             206,093
+    Projected Headroom:           36,862
+    Projected Util.:               84.8%
+
+  TREND: GROWING - Workforce expanding
+
+------------------------------------------------------------------------------------------
+  SECTION 7: AI CAP RECOMMENDATION
+------------------------------------------------------------------------------------------
+
+  CAP OPTIONS ANALYSIS
+  +----------------------+------------------+------------------+------------------+
+  | Option               |        Cap Value |           Change |           Growth |
+  +----------------------+------------------+------------------+------------------+
+  | Conservative (+5%)   |          255,102 |          +12,147 |            +5.0% |
+  | Moderate (+10%)      |          267,250 |          +24,295 |           +10.0% |
+  | Flexible (+20%)      |          291,546 |          +48,591 |           +20.0% |
+  +----------------------+------------------+------------------+------------------+
+
+  >>> RECOMMENDED: MODERATE - 267,250 <<<
+
+  RECOMMENDATION RATIONALE:
+    A moderate cap increase is recommended to:
+    - Balance growth with risk management
+    - Accommodate projected demand
+    - Current utilization: 80.8%
+
+------------------------------------------------------------------------------------------
+  SECTION 8: CAP HISTORY
+------------------------------------------------------------------------------------------
+
+    2026 Cap:             242,955
+    2025 Cap:             220,869
+    YoY Change:           +22,086 (+10.0%)
+
+==========================================================================================
+  END OF REPORT
+==========================================================================================

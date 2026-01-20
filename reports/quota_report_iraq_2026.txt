@@ -1,0 +1,140 @@
+================================================================================
+  IRAQ - COMPREHENSIVE QUOTA REPORT
+  Nationality Code: 368
+  Report Generated: 2026-01-16 19:11:41
+================================================================================
+
+--------------------------------------------------------------------------------
+  SECTION 1: EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+
+  KEY PERFORMANCE INDICATORS
+  +----------------------------------------------------------------------------+
+  | Metric                         |                Value |             Status |
+  +----------------------------------------------------------------------------+
+  | Annual Cap (2026)              |                1,959 |      Set by Policy |
+  | Current Stock                  |                1,658 |              84.6% |
+  | Available Headroom             |                  301 |           Capacity |
+  | Projected Outflow (90 days)    |                   74 |          Estimated |
+  +----------------------------------------------------------------------------+
+
+  CAP UTILIZATION: [##########################################--------] 84.6%
+                   0%                      50%                     100%
+
+--------------------------------------------------------------------------------
+  SECTION 2: WORKFORCE COMPOSITION
+--------------------------------------------------------------------------------
+
+  WORKER STATE DISTRIBUTION
+    In Country:             1,658  ( 69.3%)
+    Out of Country:           736  ( 30.7%)
+    Committed:                  0  (  0.0%)
+    Pending:                    0  (  0.0%)
+    ========================================
+    TOTAL RECORDS:          2,394
+
+  AVERAGE EMPLOYMENT TENURE: 15.6 years
+
+--------------------------------------------------------------------------------
+  SECTION 3: TIER CLASSIFICATION & STATUS
+--------------------------------------------------------------------------------
+
+  TIER STATUS SUMMARY
+  +-----------------+------------+------------+------------+------------------+
+  | Tier            |   Status   |    Workers |    Share % |         Capacity |
+  +-----------------+------------+------------+------------+------------------+
+  | Tier 1 (Primary) |    OPEN    |          0 |       0.0% |              135 |
+  | Tier 2 (Secondary) |    OPEN    |        339 |      20.4% |               90 |
+  | Tier 3 (Minor)  |    OPEN    |        574 |      34.6% |               45 |
+  | Tier 4 (Unusual) |  RATIONED  |        745 |      44.9% |               15 |
+  +-----------------+------------+------------+------------+------------------+
+
+  TOP PROFESSIONS BY TIER
+
+    TIER 2 - Secondary (5-15%)
+      - EMPLOYEE                                      195  ( 11.8%)
+      - DOCTOR                                        144  (  8.7%)
+
+    TIER 3 - Minor (1-5%)
+      - ENGINEER                                       74  (  4.5%)
+      - MANAGER                                        51  (  3.1%)
+      - GENERAL SUPERVISOR                             41  (  2.5%)
+      - OTHERS                                         40  (  2.4%)
+      - SUPERVISOR.                                    30  (  1.8%)
+
+    TIER 4 - Unusual (<1%)
+      - RESEARCHER                                     16  (  1.0%)
+      - PHARMACIST                                     16  (  1.0%)
+      - POLICE ARMY STAFF                              15  (  0.9%)
+      - PLAYER                                         15  (  0.9%)
+      - GENERAL DIRECTOR                               15  (  0.9%)
+
+--------------------------------------------------------------------------------
+  SECTION 4: DOMINANCE RISK ASSESSMENT
+--------------------------------------------------------------------------------
+
+  [OK] No active dominance alerts
+  All professions are below the 30% concentration threshold.
+
+--------------------------------------------------------------------------------
+  SECTION 5: GROWTH ANALYSIS & PROJECTIONS
+--------------------------------------------------------------------------------
+
+  6-MONTH TREND ANALYSIS
+    New Entries:                   40
+    Exits:                         88
+    Net Change:                   -48
+    Growth Rate:               -2.90%
+
+  12-MONTH PROJECTIONS
+    Projected Growth:             -96
+    Projected Stock:            1,562
+    Projected Headroom:           397
+    Projected Util.:            79.7%
+
+  TREND: DECLINING - Workforce contracting
+
+--------------------------------------------------------------------------------
+  SECTION 6: AI CAP RECOMMENDATION
+--------------------------------------------------------------------------------
+
+  CAP OPTIONS ANALYSIS
+  +--------------------+---------------+---------------+--------------------+
+  | Option             |     Cap Value |        Change |     Growth Allowed |
+  +--------------------+---------------+---------------+--------------------+
+  | Conservative (+5%) |         2,056 |           +97 |              +5.0% |
+  | Moderate (+10%)    |         2,154 |          +195 |             +10.0% |
+  | Flexible (+20%)    |         2,350 |          +391 |             +20.0% |
+  +--------------------+---------------+---------------+--------------------+
+
+  >>> RECOMMENDED: MODERATE - 2,154 <<<
+
+  RECOMMENDATION RATIONALE:
+    A moderate cap of 2,154 is recommended to:
+    - Balance growth with risk management
+    - Accommodate projected demand
+    - Monitor 0 dominance concern(s)
+
+  KEY FACTORS:
+    - Current stock: 1,658 workers
+    - Current cap: 1,959
+    - Utilization: 84.6%
+    - Active alerts: 0
+    - Growth trend: -2.9%
+
+  RISKS:
+    - No significant risks identified
+
+--------------------------------------------------------------------------------
+  SECTION 7: CAP HISTORY
+--------------------------------------------------------------------------------
+
+    2026 Cap:            1,959
+    2025 Cap:            1,781
+    Change:               +178 (+10.0%)
+
+
+================================================================================
+  END OF REPORT
+================================================================================
+

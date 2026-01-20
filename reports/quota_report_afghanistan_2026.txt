@@ -1,0 +1,143 @@
+================================================================================
+  AFGHANISTAN - COMPREHENSIVE QUOTA REPORT
+  Nationality Code: 004
+  Report Generated: 2026-01-16 19:11:41
+================================================================================
+
+--------------------------------------------------------------------------------
+  SECTION 1: EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+
+  KEY PERFORMANCE INDICATORS
+  +----------------------------------------------------------------------------+
+  | Metric                         |                Value |             Status |
+  +----------------------------------------------------------------------------+
+  | Annual Cap (2026)              |                3,016 |      Set by Policy |
+  | Current Stock                  |                2,532 |              84.0% |
+  | Available Headroom             |                  484 |           Capacity |
+  | Projected Outflow (90 days)    |                  113 |          Estimated |
+  +----------------------------------------------------------------------------+
+
+  CAP UTILIZATION: [#########################################---------] 84.0%
+                   0%                      50%                     100%
+
+--------------------------------------------------------------------------------
+  SECTION 2: WORKFORCE COMPOSITION
+--------------------------------------------------------------------------------
+
+  WORKER STATE DISTRIBUTION
+    In Country:             2,532  ( 66.7%)
+    Out of Country:         1,264  ( 33.3%)
+    Committed:                  0  (  0.0%)
+    Pending:                    0  (  0.0%)
+    ========================================
+    TOTAL RECORDS:          3,796
+
+  AVERAGE EMPLOYMENT TENURE: 8.2 years
+
+--------------------------------------------------------------------------------
+  SECTION 3: TIER CLASSIFICATION & STATUS
+--------------------------------------------------------------------------------
+
+  TIER STATUS SUMMARY
+  +-----------------+------------+------------+------------+------------------+
+  | Tier            |   Status   |    Workers |    Share % |         Capacity |
+  +-----------------+------------+------------+------------+------------------+
+  | Tier 1 (Primary) |    OPEN    |        548 |      21.6% |              217 |
+  | Tier 2 (Secondary) |    OPEN    |        371 |      14.7% |              145 |
+  | Tier 3 (Minor)  |    OPEN    |        893 |      35.3% |               72 |
+  | Tier 4 (Unusual) |  RATIONED  |        720 |      28.4% |               24 |
+  +-----------------+------------+------------+------------+------------------+
+
+  TOP PROFESSIONS BY TIER
+
+    TIER 1 - Primary (>15%)
+      - DRIVER                                        548  ( 21.6%)
+
+    TIER 2 - Secondary (5-15%)
+      - LABOURER                                      225  (  8.9%)
+      - FOREMAN                                       146  (  5.8%)
+
+    TIER 3 - Minor (1-5%)
+      - EMPLOYEE                                      100  (  3.9%)
+      - ACCOUNTANT                                     99  (  3.9%)
+      - SUPERVISOR.                                    86  (  3.4%)
+      - ADMIN  MANAGER                                 78  (  3.1%)
+      - REPRESENTATIVE                                 75  (  3.0%)
+
+    TIER 4 - Unusual (<1%)
+      - ENGINEER                                       24  (  0.9%)
+      - MASON                                          21  (  0.8%)
+      - GENERAL DIRECTOR                               21  (  0.8%)
+      - COOKER                                         21  (  0.8%)
+      - DECOR ENGINEER                                 19  (  0.8%)
+
+--------------------------------------------------------------------------------
+  SECTION 4: DOMINANCE RISK ASSESSMENT
+--------------------------------------------------------------------------------
+
+  [OK] No active dominance alerts
+  All professions are below the 30% concentration threshold.
+
+--------------------------------------------------------------------------------
+  SECTION 5: GROWTH ANALYSIS & PROJECTIONS
+--------------------------------------------------------------------------------
+
+  6-MONTH TREND ANALYSIS
+    New Entries:                  158
+    Exits:                        132
+    Net Change:                   +26
+    Growth Rate:               +1.03%
+
+  12-MONTH PROJECTIONS
+    Projected Growth:             +52
+    Projected Stock:            2,584
+    Projected Headroom:           432
+    Projected Util.:            85.7%
+
+  TREND: STABLE - Minor fluctuations
+
+--------------------------------------------------------------------------------
+  SECTION 6: AI CAP RECOMMENDATION
+--------------------------------------------------------------------------------
+
+  CAP OPTIONS ANALYSIS
+  +--------------------+---------------+---------------+--------------------+
+  | Option             |     Cap Value |        Change |     Growth Allowed |
+  +--------------------+---------------+---------------+--------------------+
+  | Conservative (+5%) |         3,166 |          +150 |              +5.0% |
+  | Moderate (+10%)    |         3,317 |          +301 |             +10.0% |
+  | Flexible (+20%)    |         3,619 |          +603 |             +20.0% |
+  +--------------------+---------------+---------------+--------------------+
+
+  >>> RECOMMENDED: MODERATE - 3,317 <<<
+
+  RECOMMENDATION RATIONALE:
+    A moderate cap of 3,317 is recommended to:
+    - Balance growth with risk management
+    - Accommodate projected demand
+    - Monitor 0 dominance concern(s)
+
+  KEY FACTORS:
+    - Current stock: 2,532 workers
+    - Current cap: 3,016
+    - Utilization: 84.0%
+    - Active alerts: 0
+    - Growth trend: +1.0%
+
+  RISKS:
+    - No significant risks identified
+
+--------------------------------------------------------------------------------
+  SECTION 7: CAP HISTORY
+--------------------------------------------------------------------------------
+
+    2026 Cap:            3,016
+    2025 Cap:            2,742
+    Change:               +274 (+10.0%)
+
+
+================================================================================
+  END OF REPORT
+================================================================================
+

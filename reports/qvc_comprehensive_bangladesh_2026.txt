@@ -1,0 +1,157 @@
+==========================================================================================
+  BANGLADESH - COMPREHENSIVE QUOTA ANALYSIS REPORT
+  Nationality Code: 050
+  Report Generated: 2026-01-20 17:36:40
+  Data Source: D:\Quota\real_data\07_worker_stock.csv
+==========================================================================================
+
+------------------------------------------------------------------------------------------
+  SECTION 1: EXECUTIVE SUMMARY
+------------------------------------------------------------------------------------------
+
+  KEY PERFORMANCE INDICATORS
+  +--------------------------------------------------------------------------------------+
+  | Metric                              |                  Value |               Status |
+  +--------------------------------------------------------------------------------------+
+  | Annual Cap (2026)                   |                487,741 |           Policy Set |
+  | Current Stock (In-Country)          |                400,273 |                82.1% |
+  | Available Headroom                  |                 87,468 |             Capacity |
+  | Out of Country                      |                228,317 |             Inactive |
+  | Committed/Pending                   |                      0 |           In Process |
+  | Total Records                       |                628,590 |           All States |
+  +--------------------------------------------------------------------------------------+
+
+  CAP UTILIZATION: [#########################################---------] 82.1%
+                   0%                      50%                     100%
+
+------------------------------------------------------------------------------------------
+  SECTION 2: WORKFORCE COMPOSITION
+------------------------------------------------------------------------------------------
+
+  WORKER STATE DISTRIBUTION
+    In Country:              400,273  ( 63.7%)
+    Out of Country:          228,317  ( 36.3%)
+    Committed:                     0  (  0.0%)
+    Pending:                       0  (  0.0%)
+    =============================================
+    TOTAL RECORDS:           628,590
+
+  AVERAGE EMPLOYMENT TENURE: 7.2 years
+
+  UNIQUE PROFESSIONS: 1,354
+
+------------------------------------------------------------------------------------------
+  SECTION 3: TIER CLASSIFICATION & STATUS
+------------------------------------------------------------------------------------------
+
+  TIER SUMMARY
+  +--------------------+------------+---------------+------------+--------------------+
+  | Tier               |   Status   |       Workers |    Share % |          Available |
+  +--------------------+------------+---------------+------------+--------------------+
+  | Tier 1 (Highest Demand) |    OPEN    |             0 |       0.0% |             39,360 |
+  | Tier 2 (High Demand) |    OPEN    |       114,369 |      28.6% |             26,240 |
+  | Tier 3 (Moderate)  |    OPEN    |       114,586 |      28.6% |             13,120 |
+  | Tier 4 (Low/Specialized) |  RATIONED  |       171,318 |      42.8% |              4,373 |
+  +--------------------+------------+---------------+------------+--------------------+
+
+  TOP PROFESSIONS BY TIER
+
+    TIER 2 - High Demand (5-15%)
+      - DRIVER                                            50,847  ( 12.7%)
+      - LABOURER                                          39,625  (  9.9%)
+      - FOREMAN                                           23,897  (  6.0%)
+
+    TIER 3 - Moderate Demand (1-5%)
+      - ACCOUNTANT                                        15,386  (  3.8%)
+      - SUPERVISOR.                                       12,511  (  3.1%)
+      - ACCOUNTANT (GEN )                                 11,833  (  3.0%)
+      - REPRESENTATIVE                                    11,750  (  2.9%)
+      - ADMIN  MANAGER                                     9,906  (  2.5%)
+
+    TIER 4 - Low Demand (<1%)
+      - ASST EXECUTIVE MAN                                 3,943  (  1.0%)
+      - SALES MANAGER                                      3,900  (  1.0%)
+      - SALESMAN                                           3,723  (  0.9%)
+      - BRICK MASON                                        3,719  (  0.9%)
+      - GENERAL SUPERVISOR                                 3,630  (  0.9%)
+
+------------------------------------------------------------------------------------------
+  SECTION 4: DOMINANT JOBS ANALYSIS
+------------------------------------------------------------------------------------------
+
+  TOP 15 PROFESSIONS BY WORKER COUNT
+  #   Profession                                    Tier        Workers    Share %
+  --------------------------------------------------------------------------------
+  1   DRIVER                                        T2           50,847      12.7%
+  2   LABOURER                                      T2           39,625       9.9%
+  3   FOREMAN                                       T2           23,897       6.0%
+  4   ACCOUNTANT                                    T3           15,386       3.8%
+  5   SUPERVISOR.                                   T3           12,511       3.1%
+  6   ACCOUNTANT (GEN )                             T3           11,833       3.0%
+  7   REPRESENTATIVE                                T3           11,750       2.9%
+  8   ADMIN  MANAGER                                T3            9,906       2.5%
+  9   GEN  CLEAN  WORKER                            T3            8,586       2.1%
+  10  MASON                                         T3            8,536       2.1%
+  11  ADMIN  DIRECTOR                               T3            6,515       1.6%
+  12  Technician                                    T3            5,840       1.5%
+  13  CARPENTER.                                    T3            5,416       1.4%
+  14  CARPENTER                                     T3            4,991       1.2%
+  15  BUSIN. EXECUTIVE.                             T3            4,694       1.2%
+
+------------------------------------------------------------------------------------------
+  SECTION 5: DOMINANCE RISK ASSESSMENT
+------------------------------------------------------------------------------------------
+
+  [OK] No active dominance alerts
+  All professions are below the 30% concentration threshold.
+
+------------------------------------------------------------------------------------------
+  SECTION 6: GROWTH ANALYSIS & PROJECTIONS
+------------------------------------------------------------------------------------------
+
+  6-MONTH TREND ANALYSIS
+    New Entries:                  32,777
+    Exits:                        25,475
+    Net Change:                   +7,302
+    Growth Rate:                  +1.82%
+
+  12-MONTH PROJECTIONS
+    Projected Growth:            +14,604
+    Projected Stock:             414,877
+    Projected Headroom:           72,864
+    Projected Util.:               85.1%
+
+  TREND: STABLE - Minor fluctuations
+
+------------------------------------------------------------------------------------------
+  SECTION 7: AI CAP RECOMMENDATION
+------------------------------------------------------------------------------------------
+
+  CAP OPTIONS ANALYSIS
+  +----------------------+------------------+------------------+------------------+
+  | Option               |        Cap Value |           Change |           Growth |
+  +----------------------+------------------+------------------+------------------+
+  | Conservative (+5%)   |          512,128 |          +24,387 |            +5.0% |
+  | Moderate (+10%)      |          536,515 |          +48,774 |           +10.0% |
+  | Flexible (+20%)      |          585,289 |          +97,548 |           +20.0% |
+  +----------------------+------------------+------------------+------------------+
+
+  >>> RECOMMENDED: MODERATE - 536,515 <<<
+
+  RECOMMENDATION RATIONALE:
+    A moderate cap increase is recommended to:
+    - Balance growth with risk management
+    - Accommodate projected demand
+    - Current utilization: 82.1%
+
+------------------------------------------------------------------------------------------
+  SECTION 8: CAP HISTORY
+------------------------------------------------------------------------------------------
+
+    2026 Cap:             487,741
+    2025 Cap:             443,401
+    YoY Change:           +44,340 (+10.0%)
+
+==========================================================================================
+  END OF REPORT
+==========================================================================================

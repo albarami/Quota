@@ -1,0 +1,100 @@
+================================================================================
+  BANGLADESH - QVC TIER ANALYSIS REPORT
+  Report Generated: 2026-01-20 17:27:00
+================================================================================
+
+--------------------------------------------------------------------------------
+  SECTION 1: EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+
+  KEY PERFORMANCE INDICATORS
+  +----------------------------------------------------------------------------+
+  | Metric                              |              Value |          Status |
+  +----------------------------------------------------------------------------+
+  | Total VP Allocated                  |             69,928 |        Capacity |
+  | VP Used                             |             58,544 |           83.7% |
+  | VP Unused (Available)               |             11,384 |        Headroom |
+  | Number of Establishments            |             10,555 |       Employers |
+  | Number of Professions               |                793 |       Diversity |
+  +----------------------------------------------------------------------------+
+
+  VP UTILIZATION: [#########################################---------] 83.7%
+                  0%                      50%                     100%
+
+  ESTABLISHMENT SIZE DISTRIBUTION:
+    Large     :        8,803 VP ( 12.6%)
+    Medium    :            0 VP (  0.0%)
+    Small     :            0 VP (  0.0%)
+
+--------------------------------------------------------------------------------
+  SECTION 2: TIER CLASSIFICATION & STATUS
+--------------------------------------------------------------------------------
+
+  TIER SUMMARY
+  +------------------+------------+---------------+------------+------------+
+  | Tier             |      Profs |      Total VP |    Share % |    Usage % |
+  +------------------+------------+---------------+------------+------------+
+  | Tier 1 (Primary) |          0 |             0 |       0.0% |       0.0% |
+  | Tier 2 (Secondary) |          3 |        17,535 |      25.1% |      87.2% |
+  | Tier 3 (Minor)   |         17 |        24,224 |      34.6% |      62.8% |
+  | Tier 4 (Unusual) |        773 |        28,169 |      40.3% |      16.2% |
+  +------------------+------------+---------------+------------+------------+
+
+  TOP PROFESSIONS BY TIER
+
+    TIER 2 - Secondary (5-15%)
+      - DRIVER                                 8,869 VP ( 12.7%) | Usage:  85.8%
+      - FOREMAN                                4,485 VP (  6.4%) | Usage:  90.9%
+      - REPRESENTATIVE                         4,181 VP (  6.0%) | Usage:  86.1%
+
+    TIER 3 - Minor (1-5%)
+      - SUPERVISOR.                            3,394 VP (  4.9%) | Usage:  90.6%
+      - ACCOUNTANT (GEN )                      2,398 VP (  3.4%) | Usage:  85.2%
+      - ACCOUNTANT                             2,300 VP (  3.3%) | Usage:  83.2%
+      - LABOURER                               2,246 VP (  3.2%) | Usage:  68.2%
+      - GEN  CLEAN  WORKER                     1,991 VP (  2.8%) | Usage:  87.9%
+
+    TIER 4 - Unusual (<1%)
+      - SALESMAN                                 686 VP (  1.0%) | Usage:  83.1%
+      - RECEPTIONIST                             618 VP (  0.9%) | Usage:  74.8%
+      - WAITER                                   603 VP (  0.9%) | Usage:  62.7%
+      - ADMIN  DIRECTOR                          554 VP (  0.8%) | Usage:  90.4%
+      - STORES MANAGER                           549 VP (  0.8%) | Usage:  90.2%
+
+--------------------------------------------------------------------------------
+  SECTION 3: DOMINANCE RISK ASSESSMENT
+--------------------------------------------------------------------------------
+
+  [OK] No active dominance alerts
+  All professions are below the 30% concentration threshold.
+
+--------------------------------------------------------------------------------
+  SECTION 4: TOP 20 PROFESSIONS BY VP ALLOCATION
+--------------------------------------------------------------------------------
+
+  #   Profession                          Tier     Total VP       Used   Usage%   Share%
+  -------------------------------------------------------------------------------------
+  1   DRIVER                              T2          8,869      7,613    85.8%    12.7%
+  2   FOREMAN                             T2          4,485      4,076    90.9%     6.4%
+  3   REPRESENTATIVE                      T2          4,181      3,599    86.1%     6.0%
+  4   SUPERVISOR.                         T3          3,394      3,076    90.6%     4.9%
+  5   ACCOUNTANT (GEN )                   T3          2,398      2,044    85.2%     3.4%
+  6   ACCOUNTANT                          T3          2,300      1,913    83.2%     3.3%
+  7   LABOURER                            T3          2,246      1,531    68.2%     3.2%
+  8   GEN  CLEAN  WORKER                  T3          1,991      1,750    87.9%     2.8%
+  9   SUPERVISOR                          T3          1,436      1,318    91.8%     2.1%
+  10  MANAGER                             T3          1,140        984    86.3%     1.6%
+  11  ADMIN  MANAGER                      T3          1,109        962    86.7%     1.6%
+  12  BUSIN. EXECUTIVE.                   T3          1,102        938    85.1%     1.6%
+  13  PROJECT COORDINATOR                 T3          1,089        707    64.9%     1.6%
+  14  Accountant, General                 T3            962        773    80.4%     1.4%
+  15  MASON                               T3            922        828    89.8%     1.3%
+  16  GENERAL SUPERVISOR                  T3            895        791    88.4%     1.3%
+  17  CASHIER                             T3            892        719    80.6%     1.3%
+  18  General civil engineer              T3            859        793    92.3%     1.2%
+  19  DRY CLEAN WORKER                    T3            751        573    76.3%     1.1%
+  20  BUILDING WORKER                     T3            738        649    87.9%     1.1%
+
+================================================================================
+  END OF REPORT
+================================================================================
