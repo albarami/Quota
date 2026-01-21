@@ -11,6 +11,8 @@ Generates a detailed analysis using real ministry data from:
 Countries analyzed:
 - QVC Countries (6): Bangladesh, India, Nepal, Pakistan, Philippines, Sri Lanka
 - Non-QVC Countries (6): Egypt, Yemen, Syria, Iraq, Iran, Afghanistan
+  - Outflow-Based (5): Egypt, Yemen, Syria, Iraq, Iran (Cap = Stock)
+  - Standard Cap (1): Afghanistan (normal recommendations)
 """
 
 import csv
@@ -248,7 +250,8 @@ def process_worker_data():
         is_qvc = d['is_qvc']
         
         # Apply Cap = Stock rule for non-QVC negative growth
-        is_outflow_based = not is_qvc and growth_rate < 0
+        # EXCEPTION: Afghanistan (AFG) uses standard cap, NOT outflow-based
+        is_outflow_based = not is_qvc and growth_rate < 0 and iso_code != 'AFG'
         effective_cap = stock if is_outflow_based else original_cap
         
         # Utilization

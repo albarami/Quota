@@ -1,0 +1,2283 @@
+{
+  "qvc": [
+    {
+      "code": "IND",
+      "name": "INDIA",
+      "is_qvc": true,
+      "stock": 488672,
+      "original_cap": 676569,
+      "effective_cap": 676569,
+      "is_outflow_based": false,
+      "utilization": 72.2279619669243,
+      "headroom": 204389,
+      "growth_rate": -11.95,
+      "left_2024": 157395,
+      "left_2025": 109767,
+      "joined_2024": 56799,
+      "joined_2025": 1373,
+      "monthly_outflow": 11615,
+      "qvc_daily_capacity": 805,
+      "qvc_monthly_capacity": 17710,
+      "dominance_alerts": [
+        {
+          "profession": "METAL POUR TECH ",
+          "level": "CRITICAL",
+          "share": 0.7978723404255319,
+          "count": 450,
+          "total": 564
+        },
+        {
+          "profession": "HORSE STABLEMAN",
+          "level": "CRITICAL",
+          "share": 0.7444589308996089,
+          "count": 571,
+          "total": 767
+        },
+        {
+          "profession": "OPTICS TECHNICIAN",
+          "level": "CRITICAL",
+          "share": 0.7438423645320197,
+          "count": 151,
+          "total": 203
+        },
+        {
+          "profession": "DIGGER",
+          "level": "CRITICAL",
+          "share": 0.7155866900175132,
+          "count": 2043,
+          "total": 2855
+        },
+        {
+          "profession": "SEAMEN",
+          "level": "CRITICAL",
+          "share": 0.6572108345534406,
+          "count": 3591,
+          "total": 5464
+        },
+        {
+          "profession": "INSPECTOR",
+          "level": "CRITICAL",
+          "share": 0.650399290150843,
+          "count": 733,
+          "total": 1127
+        },
+        {
+          "profession": "PIPE WELDER",
+          "level": "CRITICAL",
+          "share": 0.618230563002681,
+          "count": 1153,
+          "total": 1865
+        },
+        {
+          "profession": "Mechanical engineer general",
+          "level": "CRITICAL",
+          "share": 0.596244131455399,
+          "count": 127,
+          "total": 213
+        },
+        {
+          "profession": "Mechanical Technician",
+          "level": "CRITICAL",
+          "share": 0.5845985287212396,
+          "count": 3735,
+          "total": 6389
+        },
+        {
+          "profession": "WORK TECHNICIAN",
+          "level": "CRITICAL",
+          "share": 0.5788113695090439,
+          "count": 448,
+          "total": 774
+        },
+        {
+          "profession": "ENGINEER (ELECTRO )",
+          "level": "CRITICAL",
+          "share": 0.5620860927152318,
+          "count": 679,
+          "total": 1208
+        },
+        {
+          "profession": "JEWELER",
+          "level": "CRITICAL",
+          "share": 0.56,
+          "count": 238,
+          "total": 425
+        },
+        {
+          "profession": "PETROCHEMICALS",
+          "level": "CRITICAL",
+          "share": 0.5552341597796143,
+          "count": 4031,
+          "total": 7260
+        },
+        {
+          "profession": "SITE TECHNICIAN",
+          "level": "CRITICAL",
+          "share": 0.5347938144329897,
+          "count": 415,
+          "total": 776
+        },
+        {
+          "profession": "MECHAN  ENGINEER",
+          "level": "CRITICAL",
+          "share": 0.5330812854442344,
+          "count": 1974,
+          "total": 3703
+        },
+        {
+          "profession": "WELD  TECHNICIAN",
+          "level": "CRITICAL",
+          "share": 0.5287158528715853,
+          "count": 2458,
+          "total": 4649
+        },
+        {
+          "profession": "WELDER",
+          "level": "CRITICAL",
+          "share": 0.5204654895666132,
+          "count": 1297,
+          "total": 2492
+        },
+        {
+          "profession": "DECOR WOODWORKER",
+          "level": "CRITICAL",
+          "share": 0.5136986301369864,
+          "count": 825,
+          "total": 1606
+        },
+        {
+          "profession": "Computer operator",
+          "level": "CRITICAL",
+          "share": 0.5134099616858238,
+          "count": 134,
+          "total": 261
+        },
+        {
+          "profession": "Mechanic tech.-general mechanical maint.",
+          "level": "CRITICAL",
+          "share": 0.5069767441860465,
+          "count": 109,
+          "total": 215
+        },
+        {
+          "profession": "Systems analyst",
+          "level": "HIGH",
+          "share": 0.496551724137931,
+          "count": 360,
+          "total": 725
+        },
+        {
+          "profession": "WATCHES SALESMAN",
+          "level": "HIGH",
+          "share": 0.4918032786885246,
+          "count": 120,
+          "total": 244
+        },
+        {
+          "profession": "COMPUTER ENGINEER",
+          "level": "HIGH",
+          "share": 0.48738379814077026,
+          "count": 734,
+          "total": 1506
+        },
+        {
+          "profession": "SYSTEM SPECIALIST",
+          "level": "HIGH",
+          "share": 0.48417721518987344,
+          "count": 153,
+          "total": 316
+        },
+        {
+          "profession": "DRAFTSMAN",
+          "level": "HIGH",
+          "share": 0.4763231197771588,
+          "count": 684,
+          "total": 1436
+        },
+        {
+          "profession": "SAFETY & HEALTH TECH",
+          "level": "HIGH",
+          "share": 0.47530864197530864,
+          "count": 770,
+          "total": 1620
+        },
+        {
+          "profession": "PROGRAMMER",
+          "level": "HIGH",
+          "share": 0.47358490566037736,
+          "count": 251,
+          "total": 530
+        },
+        {
+          "profession": "COMPUTER TECHNIC ",
+          "level": "HIGH",
+          "share": 0.4731182795698925,
+          "count": 264,
+          "total": 558
+        },
+        {
+          "profession": "PIPE FITTER",
+          "level": "HIGH",
+          "share": 0.464326160815402,
+          "count": 2460,
+          "total": 5298
+        },
+        {
+          "profession": "SALES EXECUTIVE",
+          "level": "HIGH",
+          "share": 0.4641730509238396,
+          "count": 2060,
+          "total": 4438
+        },
+        {
+          "profession": "TECHNICIAN GEN ",
+          "level": "HIGH",
+          "share": 0.46283499072981626,
+          "count": 5492,
+          "total": 11866
+        },
+        {
+          "profession": "MINING TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.46153846153846156,
+          "count": 612,
+          "total": 1326
+        },
+        {
+          "profession": "ELECT  ENGINEER",
+          "level": "HIGH",
+          "share": 0.4610872997969772,
+          "count": 2044,
+          "total": 4433
+        },
+        {
+          "profession": "BUSIN. EXECUTIVE",
+          "level": "HIGH",
+          "share": 0.459927797833935,
+          "count": 637,
+          "total": 1385
+        },
+        {
+          "profession": "ELECTRONICS TECH ",
+          "level": "HIGH",
+          "share": 0.45768880800727935,
+          "count": 503,
+          "total": 1099
+        },
+        {
+          "profession": "GENERAL COOK",
+          "level": "HIGH",
+          "share": 0.4544456641053787,
+          "count": 414,
+          "total": 911
+        },
+        {
+          "profession": "AIR-CONDITION  TECH ",
+          "level": "HIGH",
+          "share": 0.45343065693430656,
+          "count": 1553,
+          "total": 3425
+        },
+        {
+          "profession": "Jewelry Seller\n",
+          "level": "HIGH",
+          "share": 0.4484848484848485,
+          "count": 148,
+          "total": 330
+        },
+        {
+          "profession": "Computer Software Technician",
+          "level": "HIGH",
+          "share": 0.44285714285714284,
+          "count": 155,
+          "total": 350
+        },
+        {
+          "profession": "Technician",
+          "level": "HIGH",
+          "share": 0.44074785811514133,
+          "count": 22018,
+          "total": 49956
+        },
+        {
+          "profession": "AIR-COOLER TECHN ",
+          "level": "HIGH",
+          "share": 0.4380952380952381,
+          "count": 184,
+          "total": 420
+        },
+        {
+          "profession": "ENGINEER (ELECTRI.)",
+          "level": "HIGH",
+          "share": 0.436399217221135,
+          "count": 223,
+          "total": 511
+        },
+        {
+          "profession": "JUICE MAKER",
+          "level": "HIGH",
+          "share": 0.4292682926829268,
+          "count": 616,
+          "total": 1435
+        },
+        {
+          "profession": "GEN  SYS ANALYST",
+          "level": "HIGH",
+          "share": 0.41853512705530643,
+          "count": 280,
+          "total": 669
+        },
+        {
+          "profession": "INSTAL  TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.41798298906439857,
+          "count": 2408,
+          "total": 5761
+        },
+        {
+          "profession": "ELECTRICAL TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.41625788367203925,
+          "count": 4752,
+          "total": 11416
+        },
+        {
+          "profession": "ASSISTANT TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.41068447412353926,
+          "count": 246,
+          "total": 599
+        },
+        {
+          "profession": "COMP  PROGRAMMER",
+          "level": "HIGH",
+          "share": 0.4073941134242642,
+          "count": 1135,
+          "total": 2786
+        },
+        {
+          "profession": "LAB TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.4068825910931174,
+          "count": 201,
+          "total": 494
+        },
+        {
+          "profession": "FIREMAN",
+          "level": "HIGH",
+          "share": 0.4060860440713536,
+          "count": 387,
+          "total": 953
+        },
+        {
+          "profession": "MANAGER",
+          "level": "HIGH",
+          "share": 0.4019947961838682,
+          "count": 8343,
+          "total": 20754
+        },
+        {
+          "profession": "NURSE",
+          "level": "WATCH",
+          "share": 0.3974156811213316,
+          "count": 9073,
+          "total": 22830
+        },
+        {
+          "profession": "SAFETY SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.3973684210526316,
+          "count": 302,
+          "total": 760
+        },
+        {
+          "profession": "INFO SYS TECH",
+          "level": "WATCH",
+          "share": 0.39666666666666667,
+          "count": 119,
+          "total": 300
+        },
+        {
+          "profession": "CMD",
+          "level": "WATCH",
+          "share": 0.39501779359430605,
+          "count": 111,
+          "total": 281
+        },
+        {
+          "profession": "Accountant executive",
+          "level": "WATCH",
+          "share": 0.3926605504587156,
+          "count": 214,
+          "total": 545
+        },
+        {
+          "profession": "MECHANIC",
+          "level": "WATCH",
+          "share": 0.391602809706258,
+          "count": 2453,
+          "total": 6264
+        },
+        {
+          "profession": "ELECTRICAL TECHNICIAN.",
+          "level": "WATCH",
+          "share": 0.3908836809288325,
+          "count": 3636,
+          "total": 9302
+        },
+        {
+          "profession": "MACHINE OPERATOR",
+          "level": "WATCH",
+          "share": 0.38901797725327136,
+          "count": 3181,
+          "total": 8177
+        },
+        {
+          "profession": "GARDENER",
+          "level": "WATCH",
+          "share": 0.3888888888888889,
+          "count": 203,
+          "total": 522
+        },
+        {
+          "profession": "MAINT  TECHNICIAN",
+          "level": "WATCH",
+          "share": 0.3879935535858179,
+          "count": 963,
+          "total": 2482
+        },
+        {
+          "profession": "ENGINEER (CHEMIC )",
+          "level": "WATCH",
+          "share": 0.3879781420765027,
+          "count": 142,
+          "total": 366
+        },
+        {
+          "profession": "GENERAL SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.3818140369874334,
+          "count": 13399,
+          "total": 35093
+        },
+        {
+          "profession": "ACCOUNTANT (SENIOR)",
+          "level": "WATCH",
+          "share": 0.38156028368794326,
+          "count": 269,
+          "total": 705
+        },
+        {
+          "profession": "SANDWICH MAKER",
+          "level": "WATCH",
+          "share": 0.37733142037302725,
+          "count": 263,
+          "total": 697
+        },
+        {
+          "profession": "STORE KEEPER",
+          "level": "WATCH",
+          "share": 0.37547051442910917,
+          "count": 1197,
+          "total": 3188
+        },
+        {
+          "profession": "Technician-mechanic operating machines",
+          "level": "WATCH",
+          "share": 0.3745819397993311,
+          "count": 112,
+          "total": 299
+        },
+        {
+          "profession": "CME",
+          "level": "WATCH",
+          "share": 0.3745583038869258,
+          "count": 106,
+          "total": 283
+        },
+        {
+          "profession": "WASH  MACHINE TECH ",
+          "level": "WATCH",
+          "share": 0.3741496598639456,
+          "count": 110,
+          "total": 294
+        },
+        {
+          "profession": "ENGINEER",
+          "level": "WATCH",
+          "share": 0.3711080586080586,
+          "count": 8105,
+          "total": 21840
+        },
+        {
+          "profession": "controller",
+          "level": "WATCH",
+          "share": 0.3706863125242342,
+          "count": 956,
+          "total": 2579
+        },
+        {
+          "profession": "GROCER",
+          "level": "WATCH",
+          "share": 0.3691588785046729,
+          "count": 79,
+          "total": 214
+        },
+        {
+          "profession": "SITE SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.36898315282791816,
+          "count": 2453,
+          "total": 6648
+        },
+        {
+          "profession": "CLERICAL (GEN )",
+          "level": "WATCH",
+          "share": 0.3682008368200837,
+          "count": 88,
+          "total": 239
+        },
+        {
+          "profession": "H R manager",
+          "level": "WATCH",
+          "share": 0.36796536796536794,
+          "count": 85,
+          "total": 231
+        },
+        {
+          "profession": "Expert information systems",
+          "level": "WATCH",
+          "share": 0.3669950738916256,
+          "count": 149,
+          "total": 406
+        },
+        {
+          "profession": "A/C MECHANIC",
+          "level": "WATCH",
+          "share": 0.3665158371040724,
+          "count": 162,
+          "total": 442
+        },
+        {
+          "profession": "BLACKSMITH",
+          "level": "WATCH",
+          "share": 0.3664591116645911,
+          "count": 4414,
+          "total": 12045
+        },
+        {
+          "profession": "COOKER.",
+          "level": "WATCH",
+          "share": 0.3617153511497825,
+          "count": 582,
+          "total": 1609
+        },
+        {
+          "profession": "teller",
+          "level": "WATCH",
+          "share": 0.36097560975609755,
+          "count": 74,
+          "total": 205
+        },
+        {
+          "profession": "BUSIN. EXECUTIVE.",
+          "level": "WATCH",
+          "share": 0.3576434461751814,
+          "count": 14442,
+          "total": 40381
+        },
+        {
+          "profession": "General electronic techncian",
+          "level": "WATCH",
+          "share": 0.356,
+          "count": 89,
+          "total": 250
+        },
+        {
+          "profession": "TELEC  OPERATOR",
+          "level": "WATCH",
+          "share": 0.35585585585585583,
+          "count": 158,
+          "total": 444
+        },
+        {
+          "profession": "Customer Service.",
+          "level": "WATCH",
+          "share": 0.3552881570614313,
+          "count": 561,
+          "total": 1579
+        },
+        {
+          "profession": "Administrstive",
+          "level": "WATCH",
+          "share": 0.35330396475770925,
+          "count": 1203,
+          "total": 3405
+        },
+        {
+          "profession": "DESIGNER",
+          "level": "WATCH",
+          "share": 0.35195530726256985,
+          "count": 189,
+          "total": 537
+        },
+        {
+          "profession": "PHARMACIST",
+          "level": "WATCH",
+          "share": 0.3519140362659503,
+          "count": 1048,
+          "total": 2978
+        },
+        {
+          "profession": "Data Entry",
+          "level": "WATCH",
+          "share": 0.35076252723311546,
+          "count": 161,
+          "total": 459
+        },
+        {
+          "profession": "PLUMBER",
+          "level": "WATCH",
+          "share": 0.3502615974886641,
+          "count": 5021,
+          "total": 14335
+        },
+        {
+          "profession": "SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.34799554565701557,
+          "count": 1875,
+          "total": 5388
+        },
+        {
+          "profession": "Mechanic Assistant",
+          "level": "WATCH",
+          "share": 0.3453815261044177,
+          "count": 86,
+          "total": 249
+        },
+        {
+          "profession": "CARPENTER.",
+          "level": "WATCH",
+          "share": 0.3450574833324584,
+          "count": 6573,
+          "total": 19049
+        },
+        {
+          "profession": "electrical technician general",
+          "level": "WATCH",
+          "share": 0.3434704830053667,
+          "count": 192,
+          "total": 559
+        },
+        {
+          "profession": "WELDER",
+          "level": "WATCH",
+          "share": 0.3422077922077922,
+          "count": 527,
+          "total": 1540
+        },
+        {
+          "profession": "HANNA BEAUTICIAN",
+          "level": "WATCH",
+          "share": 0.3402439024390244,
+          "count": 279,
+          "total": 820
+        },
+        {
+          "profession": "VOCATION  TRAINER",
+          "level": "WATCH",
+          "share": 0.3395061728395062,
+          "count": 110,
+          "total": 324
+        },
+        {
+          "profession": "TYPIST",
+          "level": "WATCH",
+          "share": 0.3380084151472651,
+          "count": 241,
+          "total": 713
+        },
+        {
+          "profession": "GEN  CHEMIST",
+          "level": "WATCH",
+          "share": 0.33640552995391704,
+          "count": 73,
+          "total": 217
+        },
+        {
+          "profession": "officer",
+          "level": "WATCH",
+          "share": 0.3363464368299348,
+          "count": 1600,
+          "total": 4757
+        },
+        {
+          "profession": "RESERVATION OFFIC",
+          "level": "WATCH",
+          "share": 0.3356562137049942,
+          "count": 289,
+          "total": 861
+        },
+        {
+          "profession": "CHAWARMA MAKER.",
+          "level": "WATCH",
+          "share": 0.33480176211453744,
+          "count": 76,
+          "total": 227
+        },
+        {
+          "profession": "ENGINEER (MINING)",
+          "level": "WATCH",
+          "share": 0.3333333333333333,
+          "count": 110,
+          "total": 330
+        },
+        {
+          "profession": "CHEMIST",
+          "level": "WATCH",
+          "share": 0.3326923076923077,
+          "count": 173,
+          "total": 520
+        },
+        {
+          "profession": "SITE ENGINEER",
+          "level": "WATCH",
+          "share": 0.33256880733944955,
+          "count": 145,
+          "total": 436
+        },
+        {
+          "profession": "buying officer",
+          "level": "WATCH",
+          "share": 0.3325526932084309,
+          "count": 142,
+          "total": 427
+        },
+        {
+          "profession": "Mechanical engineer",
+          "level": "WATCH",
+          "share": 0.33232399697199094,
+          "count": 439,
+          "total": 1321
+        },
+        {
+          "profession": "Accountant of wages and salaries",
+          "level": "WATCH",
+          "share": 0.3295238095238095,
+          "count": 173,
+          "total": 525
+        },
+        {
+          "profession": "General manager of comp/estab/organiza",
+          "level": "WATCH",
+          "share": 0.32919254658385094,
+          "count": 265,
+          "total": 805
+        },
+        {
+          "profession": "ANALYST",
+          "level": "WATCH",
+          "share": 0.3290758827948911,
+          "count": 438,
+          "total": 1331
+        },
+        {
+          "profession": "Care Assistant",
+          "level": "WATCH",
+          "share": 0.32803180914512925,
+          "count": 165,
+          "total": 503
+        },
+        {
+          "profession": "FURNIT  WOODWORKER",
+          "level": "WATCH",
+          "share": 0.3271812080536913,
+          "count": 195,
+          "total": 596
+        },
+        {
+          "profession": "ELECTRICAL WELDER",
+          "level": "WATCH",
+          "share": 0.3245227606461087,
+          "count": 221,
+          "total": 681
+        },
+        {
+          "profession": "LAB TECHNICIANS",
+          "level": "WATCH",
+          "share": 0.3242009132420091,
+          "count": 142,
+          "total": 438
+        },
+        {
+          "profession": "ELECTRICIAN",
+          "level": "WATCH",
+          "share": 0.32392273402674593,
+          "count": 1308,
+          "total": 4038
+        },
+        {
+          "profession": "ACCOUNTANT",
+          "level": "WATCH",
+          "share": 0.32383372247401915,
+          "count": 14147,
+          "total": 43686
+        },
+        {
+          "profession": "SALES SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.3229357798165138,
+          "count": 1760,
+          "total": 5450
+        },
+        {
+          "profession": "Technician of elect. extensions",
+          "level": "WATCH",
+          "share": 0.3227848101265823,
+          "count": 153,
+          "total": 474
+        },
+        {
+          "profession": "Aircraft Mechnical",
+          "level": "WATCH",
+          "share": 0.3217866909753874,
+          "count": 353,
+          "total": 1097
+        },
+        {
+          "profession": "COOKER",
+          "level": "WATCH",
+          "share": 0.3200920054705956,
+          "count": 5149,
+          "total": 16086
+        },
+        {
+          "profession": "ASSISTANT",
+          "level": "WATCH",
+          "share": 0.3197095435684647,
+          "count": 1541,
+          "total": 4820
+        },
+        {
+          "profession": "CABLING TECH ",
+          "level": "WATCH",
+          "share": 0.3170731707317073,
+          "count": 1248,
+          "total": 3936
+        },
+        {
+          "profession": "DVT",
+          "level": "WATCH",
+          "share": 0.31684538222068487,
+          "count": 916,
+          "total": 2891
+        },
+        {
+          "profession": "BUTCHER.",
+          "level": "WATCH",
+          "share": 0.31679389312977096,
+          "count": 249,
+          "total": 786
+        },
+        {
+          "profession": "DECORATION TECH ",
+          "level": "WATCH",
+          "share": 0.3157894736842105,
+          "count": 576,
+          "total": 1824
+        },
+        {
+          "profession": "HEAVY VEHICLE DRIVER",
+          "level": "WATCH",
+          "share": 0.3152542372881356,
+          "count": 6138,
+          "total": 19470
+        },
+        {
+          "profession": "BQH",
+          "level": "WATCH",
+          "share": 0.3117408906882591,
+          "count": 77,
+          "total": 247
+        },
+        {
+          "profession": "ENGINEER (TELECOM)",
+          "level": "WATCH",
+          "share": 0.3114119922630561,
+          "count": 161,
+          "total": 517
+        },
+        {
+          "profession": "FISH SALESMAN",
+          "level": "WATCH",
+          "share": 0.30952380952380953,
+          "count": 65,
+          "total": 210
+        },
+        {
+          "profession": "Business and marketing supervisor       ",
+          "level": "WATCH",
+          "share": 0.3090909090909091,
+          "count": 68,
+          "total": 220
+        },
+        {
+          "profession": "MESSENGER",
+          "level": "WATCH",
+          "share": 0.3088512241054614,
+          "count": 328,
+          "total": 1062
+        },
+        {
+          "profession": "DESIGN TECHNICIAN",
+          "level": "WATCH",
+          "share": 0.30656934306569344,
+          "count": 84,
+          "total": 274
+        },
+        {
+          "profession": "COORDINATOR",
+          "level": "WATCH",
+          "share": 0.3052516411378556,
+          "count": 837,
+          "total": 2742
+        },
+        {
+          "profession": "Project engineer-site engineer",
+          "level": "WATCH",
+          "share": 0.30472103004291845,
+          "count": 71,
+          "total": 233
+        },
+        {
+          "profession": "CORRESPONDENT",
+          "level": "WATCH",
+          "share": 0.3037974683544304,
+          "count": 168,
+          "total": 553
+        },
+        {
+          "profession": "SUPERVISOR.",
+          "level": "WATCH",
+          "share": 0.3025003172991496,
+          "count": 23834,
+          "total": 78790
+        },
+        {
+          "profession": "MASON",
+          "level": "WATCH",
+          "share": 0.3007447528774543,
+          "count": 6663,
+          "total": 22155
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 2,
+        "3": 19,
+        "4": 1490
+      },
+      "total_professions": 1511
+    },
+    {
+      "code": "BGD",
+      "name": "BGD",
+      "is_qvc": true,
+      "stock": 330602,
+      "original_cap": 487741,
+      "effective_cap": 487741,
+      "is_outflow_based": false,
+      "utilization": 67.78228609036353,
+      "headroom": 168296,
+      "growth_rate": 0.92,
+      "left_2024": 66236,
+      "left_2025": 63038,
+      "joined_2024": 66697,
+      "joined_2025": 2086,
+      "monthly_outflow": 5620,
+      "qvc_daily_capacity": 515,
+      "qvc_monthly_capacity": 11330,
+      "dominance_alerts": [
+        {
+          "profession": "ASST EXECUTIVE MAN",
+          "level": "CRITICAL",
+          "share": 0.910377358490566,
+          "count": 3474,
+          "total": 3816
+        },
+        {
+          "profession": "ASST. GENERAL DIR",
+          "level": "CRITICAL",
+          "share": 0.9011976047904192,
+          "count": 301,
+          "total": 334
+        },
+        {
+          "profession": "SAFETY SECURITY MNGR",
+          "level": "CRITICAL",
+          "share": 0.8732782369146006,
+          "count": 1268,
+          "total": 1452
+        },
+        {
+          "profession": "ELECTRIC DRAFTSMAN",
+          "level": "CRITICAL",
+          "share": 0.8594104308390023,
+          "count": 379,
+          "total": 441
+        },
+        {
+          "profession": "STRUCT DRAFTSMAN",
+          "level": "CRITICAL",
+          "share": 0.8531187122736419,
+          "count": 424,
+          "total": 497
+        },
+        {
+          "profession": "STORES MANAGER",
+          "level": "CRITICAL",
+          "share": 0.7897853441894893,
+          "count": 1067,
+          "total": 1351
+        },
+        {
+          "profession": "CIVIL DRAFTSMAN",
+          "level": "CRITICAL",
+          "share": 0.780952380952381,
+          "count": 410,
+          "total": 525
+        },
+        {
+          "profession": "ADMIN  MANAGER",
+          "level": "CRITICAL",
+          "share": 0.6941255342327998,
+          "count": 8283,
+          "total": 11933
+        },
+        {
+          "profession": "ENGINEER (ELECTRI )",
+          "level": "CRITICAL",
+          "share": 0.6868965517241379,
+          "count": 498,
+          "total": 725
+        },
+        {
+          "profession": "ENGINEER (INSTAL )",
+          "level": "CRITICAL",
+          "share": 0.667621776504298,
+          "count": 233,
+          "total": 349
+        },
+        {
+          "profession": "COMPANY MANAGER",
+          "level": "CRITICAL",
+          "share": 0.6655683690280065,
+          "count": 404,
+          "total": 607
+        },
+        {
+          "profession": "ADMINIS  CONSULT ",
+          "level": "CRITICAL",
+          "share": 0.6641156462585034,
+          "count": 1562,
+          "total": 2352
+        },
+        {
+          "profession": "General civil engineer",
+          "level": "CRITICAL",
+          "share": 0.6568047337278107,
+          "count": 1332,
+          "total": 2028
+        },
+        {
+          "profession": "ACCOUNTANT (GEN )",
+          "level": "CRITICAL",
+          "share": 0.6471274197310114,
+          "count": 8324,
+          "total": 12863
+        },
+        {
+          "profession": "CREDIT MANAGER",
+          "level": "CRITICAL",
+          "share": 0.6213991769547325,
+          "count": 151,
+          "total": 243
+        },
+        {
+          "profession": "ASST ENGINEER",
+          "level": "CRITICAL",
+          "share": 0.6177347242921013,
+          "count": 829,
+          "total": 1342
+        },
+        {
+          "profession": "ARCHI  DRAFTSMAN",
+          "level": "CRITICAL",
+          "share": 0.6009615384615384,
+          "count": 125,
+          "total": 208
+        },
+        {
+          "profession": "Land SURVEYOR",
+          "level": "CRITICAL",
+          "share": 0.5964285714285714,
+          "count": 167,
+          "total": 280
+        },
+        {
+          "profession": "ENGINEER (GENERAL)",
+          "level": "CRITICAL",
+          "share": 0.582195521572911,
+          "count": 1066,
+          "total": 1831
+        },
+        {
+          "profession": "ENGINEER (CONSTR )",
+          "level": "CRITICAL",
+          "share": 0.573015873015873,
+          "count": 361,
+          "total": 630
+        },
+        {
+          "profession": "ACCOUNTS MANAGER",
+          "level": "CRITICAL",
+          "share": 0.5665529010238908,
+          "count": 1162,
+          "total": 2051
+        },
+        {
+          "profession": "FIN  CONTROLLER",
+          "level": "CRITICAL",
+          "share": 0.5514809590973202,
+          "count": 391,
+          "total": 709
+        },
+        {
+          "profession": "EQUIPMENT'S ENGINEER",
+          "level": "CRITICAL",
+          "share": 0.5384615384615384,
+          "count": 133,
+          "total": 247
+        },
+        {
+          "profession": "SHEPHERD",
+          "level": "CRITICAL",
+          "share": 0.538316751815004,
+          "count": 2002,
+          "total": 3719
+        },
+        {
+          "profession": "Maint. Engineer",
+          "level": "CRITICAL",
+          "share": 0.521594684385382,
+          "count": 157,
+          "total": 301
+        },
+        {
+          "profession": "FARMER.",
+          "level": "CRITICAL",
+          "share": 0.5081648522550545,
+          "count": 2614,
+          "total": 5144
+        },
+        {
+          "profession": "MARKET MANAGER",
+          "level": "HIGH",
+          "share": 0.4965312190287413,
+          "count": 2505,
+          "total": 5045
+        },
+        {
+          "profession": "ENGINEERING CONS ",
+          "level": "HIGH",
+          "share": 0.4926829268292683,
+          "count": 101,
+          "total": 205
+        },
+        {
+          "profession": "EXECUTIVE MANAGER",
+          "level": "HIGH",
+          "share": 0.4890721649484536,
+          "count": 1186,
+          "total": 2425
+        },
+        {
+          "profession": "PLASTER TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.478396668401874,
+          "count": 919,
+          "total": 1921
+        },
+        {
+          "profession": "GENERAL ADVISOR",
+          "level": "HIGH",
+          "share": 0.4720767888307155,
+          "count": 541,
+          "total": 1146
+        },
+        {
+          "profession": "GEN  STATISTICIAN",
+          "level": "HIGH",
+          "share": 0.467966573816156,
+          "count": 168,
+          "total": 359
+        },
+        {
+          "profession": "ASSISTANT MANAGER",
+          "level": "HIGH",
+          "share": 0.45872450631272255,
+          "count": 1417,
+          "total": 3089
+        },
+        {
+          "profession": "DEVELOPMENT MANAGER",
+          "level": "HIGH",
+          "share": 0.4552380952380952,
+          "count": 239,
+          "total": 525
+        },
+        {
+          "profession": "ADMIN  DIRECTOR",
+          "level": "HIGH",
+          "share": 0.4537192059315953,
+          "count": 5691,
+          "total": 12543
+        },
+        {
+          "profession": "INSTAL  ELECTRICIAN",
+          "level": "HIGH",
+          "share": 0.4515463917525773,
+          "count": 219,
+          "total": 485
+        },
+        {
+          "profession": "FARMER",
+          "level": "HIGH",
+          "share": 0.4491721216788602,
+          "count": 2333,
+          "total": 5194
+        },
+        {
+          "profession": "PROJECT COORDINATOR",
+          "level": "HIGH",
+          "share": 0.44803695150115475,
+          "count": 582,
+          "total": 1299
+        },
+        {
+          "profession": "Technician of elect. extensions",
+          "level": "HIGH",
+          "share": 0.4430379746835443,
+          "count": 210,
+          "total": 474
+        },
+        {
+          "profession": "ELECTRICIAN (GEN )",
+          "level": "HIGH",
+          "share": 0.4340869565217391,
+          "count": 2496,
+          "total": 5750
+        },
+        {
+          "profession": "TILE MAKER",
+          "level": "HIGH",
+          "share": 0.43056768558951963,
+          "count": 493,
+          "total": 1145
+        },
+        {
+          "profession": "Mechanical engineer",
+          "level": "HIGH",
+          "share": 0.41635124905374715,
+          "count": 550,
+          "total": 1321
+        },
+        {
+          "profession": "CERAMIC WORKER",
+          "level": "HIGH",
+          "share": 0.41608996539792387,
+          "count": 481,
+          "total": 1156
+        },
+        {
+          "profession": "PATCH WORKER",
+          "level": "HIGH",
+          "share": 0.41277641277641275,
+          "count": 168,
+          "total": 407
+        },
+        {
+          "profession": "FINACIAL ANALYZER",
+          "level": "HIGH",
+          "share": 0.4103139013452915,
+          "count": 183,
+          "total": 446
+        },
+        {
+          "profession": "DOJ",
+          "level": "HIGH",
+          "share": 0.40869565217391307,
+          "count": 94,
+          "total": 230
+        },
+        {
+          "profession": "SALES MANAGER",
+          "level": "HIGH",
+          "share": 0.40850732719491634,
+          "count": 3150,
+          "total": 7711
+        },
+        {
+          "profession": "EMBROIDERER",
+          "level": "HIGH",
+          "share": 0.4084084084084084,
+          "count": 272,
+          "total": 666
+        },
+        {
+          "profession": "TILE MAKER.",
+          "level": "HIGH",
+          "share": 0.4022508038585209,
+          "count": 2502,
+          "total": 6220
+        },
+        {
+          "profession": "MAINT  MANAGER",
+          "level": "HIGH",
+          "share": 0.40058479532163743,
+          "count": 137,
+          "total": 342
+        },
+        {
+          "profession": "INDUST  MANAGER",
+          "level": "WATCH",
+          "share": 0.3924914675767918,
+          "count": 115,
+          "total": 293
+        },
+        {
+          "profession": "TAILORING MASTER",
+          "level": "WATCH",
+          "share": 0.3876651982378855,
+          "count": 352,
+          "total": 908
+        },
+        {
+          "profession": "PURCHASE MANAGER",
+          "level": "WATCH",
+          "share": 0.38593155893536124,
+          "count": 609,
+          "total": 1578
+        },
+        {
+          "profession": "MARBLE TECHNICIAN",
+          "level": "WATCH",
+          "share": 0.3798994974874372,
+          "count": 378,
+          "total": 995
+        },
+        {
+          "profession": "GEN  DESIGNER",
+          "level": "WATCH",
+          "share": 0.3792010145846544,
+          "count": 598,
+          "total": 1577
+        },
+        {
+          "profession": "ENGINEER (DESIG )",
+          "level": "WATCH",
+          "share": 0.37214137214137216,
+          "count": 179,
+          "total": 481
+        },
+        {
+          "profession": "BRICK MASON",
+          "level": "WATCH",
+          "share": 0.36764395697110314,
+          "count": 3486,
+          "total": 9482
+        },
+        {
+          "profession": "FINANCIAL CONSUL ",
+          "level": "WATCH",
+          "share": 0.3664383561643836,
+          "count": 107,
+          "total": 292
+        },
+        {
+          "profession": "CABLING TECH ",
+          "level": "WATCH",
+          "share": 0.35848577235772355,
+          "count": 1411,
+          "total": 3936
+        },
+        {
+          "profession": "PLASTER WORKER",
+          "level": "WATCH",
+          "share": 0.35486288026374946,
+          "count": 2368,
+          "total": 6673
+        },
+        {
+          "profession": "PROGRAM DESIGNER",
+          "level": "WATCH",
+          "share": 0.35476718403547675,
+          "count": 160,
+          "total": 451
+        },
+        {
+          "profession": "COMMERC  MANAGER",
+          "level": "WATCH",
+          "share": 0.35429447852760737,
+          "count": 231,
+          "total": 652
+        },
+        {
+          "profession": "CARPENTER",
+          "level": "WATCH",
+          "share": 0.35203964925657644,
+          "count": 4617,
+          "total": 13115
+        },
+        {
+          "profession": "INVESTMENT DIR ",
+          "level": "WATCH",
+          "share": 0.351931330472103,
+          "count": 82,
+          "total": 233
+        },
+        {
+          "profession": "ASSISTANT MASON",
+          "level": "WATCH",
+          "share": 0.35,
+          "count": 98,
+          "total": 280
+        },
+        {
+          "profession": "DECOR ENGINEER",
+          "level": "WATCH",
+          "share": 0.3484688489968321,
+          "count": 330,
+          "total": 947
+        },
+        {
+          "profession": "REINFORC  FITTER",
+          "level": "WATCH",
+          "share": 0.3469881949349208,
+          "count": 3439,
+          "total": 9911
+        },
+        {
+          "profession": "MEN'S BARBER",
+          "level": "WATCH",
+          "share": 0.34352311807413066,
+          "count": 1798,
+          "total": 5234
+        },
+        {
+          "profession": "MASON",
+          "level": "WATCH",
+          "share": 0.34181900248250957,
+          "count": 7573,
+          "total": 22155
+        },
+        {
+          "profession": "Excutive Head",
+          "level": "WATCH",
+          "share": 0.3383084577114428,
+          "count": 136,
+          "total": 402
+        },
+        {
+          "profession": "IMAM IN MOSQUE",
+          "level": "WATCH",
+          "share": 0.3374333743337433,
+          "count": 823,
+          "total": 2439
+        },
+        {
+          "profession": "ELECTRICIAN",
+          "level": "WATCH",
+          "share": 0.33110450718177314,
+          "count": 1337,
+          "total": 4038
+        },
+        {
+          "profession": "INTERVIEW DESIG ",
+          "level": "WATCH",
+          "share": 0.3308641975308642,
+          "count": 402,
+          "total": 1215
+        },
+        {
+          "profession": "GENERAL COORDINATOR",
+          "level": "WATCH",
+          "share": 0.3242506811989101,
+          "count": 952,
+          "total": 2936
+        },
+        {
+          "profession": "PAINTER",
+          "level": "WATCH",
+          "share": 0.32176433719837044,
+          "count": 4107,
+          "total": 12764
+        },
+        {
+          "profession": "electrical technician general",
+          "level": "WATCH",
+          "share": 0.3184257602862254,
+          "count": 178,
+          "total": 559
+        },
+        {
+          "profession": "PROJECTS MANAGER",
+          "level": "WATCH",
+          "share": 0.31789976133651554,
+          "count": 666,
+          "total": 2095
+        },
+        {
+          "profession": "WOMEN'S TAILOR",
+          "level": "WATCH",
+          "share": 0.3031218529707956,
+          "count": 301,
+          "total": 993
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 17,
+        "4": 1051
+      },
+      "total_professions": 1071
+    },
+    {
+      "code": "NPL",
+      "name": "NEPAL",
+      "is_qvc": true,
+      "stock": 317954,
+      "original_cap": 437178,
+      "effective_cap": 437178,
+      "is_outflow_based": false,
+      "utilization": 72.72872834406124,
+      "headroom": 129954,
+      "growth_rate": -9.17,
+      "left_2024": 87984,
+      "left_2025": 62985,
+      "joined_2024": 32360,
+      "joined_2025": 1586,
+      "monthly_outflow": 6563,
+      "qvc_daily_capacity": 325,
+      "qvc_monthly_capacity": 7150,
+      "dominance_alerts": [
+        {
+          "profession": "GENTS' TAILOR",
+          "level": "CRITICAL",
+          "share": 0.5478841870824054,
+          "count": 492,
+          "total": 898
+        },
+        {
+          "profession": "BUILDING WORKER",
+          "level": "HIGH",
+          "share": 0.49751122981668083,
+          "count": 4098,
+          "total": 8237
+        },
+        {
+          "profession": "LABOURER",
+          "level": "HIGH",
+          "share": 0.4925568762752402,
+          "count": 109356,
+          "total": 222017
+        },
+        {
+          "profession": "PLUMBER ASSISTANT",
+          "level": "HIGH",
+          "share": 0.4697674418604651,
+          "count": 101,
+          "total": 215
+        },
+        {
+          "profession": "FJI",
+          "level": "HIGH",
+          "share": 0.4689413823272091,
+          "count": 536,
+          "total": 1143
+        },
+        {
+          "profession": "GEN  CLEAN  WORKER",
+          "level": "HIGH",
+          "share": 0.45422935098074957,
+          "count": 32397,
+          "total": 71323
+        },
+        {
+          "profession": "SEWING WORKER",
+          "level": "HIGH",
+          "share": 0.4474153297682709,
+          "count": 251,
+          "total": 561
+        },
+        {
+          "profession": "TAILOR",
+          "level": "HIGH",
+          "share": 0.44522554188635033,
+          "count": 3040,
+          "total": 6828
+        },
+        {
+          "profession": "GEN  PRODUCT  WORKER",
+          "level": "HIGH",
+          "share": 0.42990654205607476,
+          "count": 368,
+          "total": 856
+        },
+        {
+          "profession": "DOUGH KNEADER",
+          "level": "WATCH",
+          "share": 0.3942652329749104,
+          "count": 110,
+          "total": 279
+        },
+        {
+          "profession": "UPHOLSTERER",
+          "level": "WATCH",
+          "share": 0.3872340425531915,
+          "count": 182,
+          "total": 470
+        },
+        {
+          "profession": "cargo service agrnt",
+          "level": "WATCH",
+          "share": 0.38392857142857145,
+          "count": 86,
+          "total": 224
+        },
+        {
+          "profession": "Plasterer",
+          "level": "WATCH",
+          "share": 0.3835616438356164,
+          "count": 504,
+          "total": 1314
+        },
+        {
+          "profession": "BELL MAN",
+          "level": "WATCH",
+          "share": 0.3801546391752577,
+          "count": 590,
+          "total": 1552
+        },
+        {
+          "profession": "DRY CLEAN WORKER",
+          "level": "WATCH",
+          "share": 0.3781818181818182,
+          "count": 728,
+          "total": 1925
+        },
+        {
+          "profession": "GROCER",
+          "level": "WATCH",
+          "share": 0.37383177570093457,
+          "count": 80,
+          "total": 214
+        },
+        {
+          "profession": "LOAD & UNLOAD WORKER",
+          "level": "WATCH",
+          "share": 0.37279596977329976,
+          "count": 148,
+          "total": 397
+        },
+        {
+          "profession": "FJN",
+          "level": "WATCH",
+          "share": 0.3621301775147929,
+          "count": 306,
+          "total": 845
+        },
+        {
+          "profession": "PORTER",
+          "level": "WATCH",
+          "share": 0.3388773388773389,
+          "count": 163,
+          "total": 481
+        },
+        {
+          "profession": "WASH  MACHINE TECH ",
+          "level": "WATCH",
+          "share": 0.336734693877551,
+          "count": 99,
+          "total": 294
+        },
+        {
+          "profession": "PACKING WORKER",
+          "level": "WATCH",
+          "share": 0.3313632781717888,
+          "count": 841,
+          "total": 2538
+        },
+        {
+          "profession": "WASHING WORKER",
+          "level": "WATCH",
+          "share": 0.325177304964539,
+          "count": 917,
+          "total": 2820
+        },
+        {
+          "profession": "FMY",
+          "level": "WATCH",
+          "share": 0.3246268656716418,
+          "count": 87,
+          "total": 268
+        },
+        {
+          "profession": "MESSENGER",
+          "level": "WATCH",
+          "share": 0.3239171374764595,
+          "count": 344,
+          "total": 1062
+        },
+        {
+          "profession": "PLASTER WORKER",
+          "level": "WATCH",
+          "share": 0.3232429192267346,
+          "count": 2157,
+          "total": 6673
+        },
+        {
+          "profession": "PATCH WORKER",
+          "level": "WATCH",
+          "share": 0.3194103194103194,
+          "count": 130,
+          "total": 407
+        },
+        {
+          "profession": "PRESSER",
+          "level": "WATCH",
+          "share": 0.31868131868131866,
+          "count": 116,
+          "total": 364
+        },
+        {
+          "profession": "EMBROIDERER",
+          "level": "WATCH",
+          "share": 0.3183183183183183,
+          "count": 212,
+          "total": 666
+        },
+        {
+          "profession": "SANDWICH MAKER",
+          "level": "WATCH",
+          "share": 0.31420373027259685,
+          "count": 219,
+          "total": 697
+        },
+        {
+          "profession": "Waiter",
+          "level": "WATCH",
+          "share": 0.3126780626780627,
+          "count": 439,
+          "total": 1404
+        },
+        {
+          "profession": "CONSTRUCT  TECH ",
+          "level": "WATCH",
+          "share": 0.3038397328881469,
+          "count": 182,
+          "total": 599
+        }
+      ],
+      "tiers": {
+        "1": 1,
+        "2": 2,
+        "3": 12,
+        "4": 937
+      },
+      "total_professions": 952
+    },
+    {
+      "code": "PAK",
+      "name": "PAKISTAN",
+      "is_qvc": true,
+      "stock": 158196,
+      "original_cap": 242955,
+      "effective_cap": 242955,
+      "is_outflow_based": false,
+      "utilization": 65.11329258504661,
+      "headroom": 90097,
+      "growth_rate": 0.74,
+      "left_2024": 52014,
+      "left_2025": 35175,
+      "joined_2024": 27492,
+      "joined_2025": 1116,
+      "monthly_outflow": 3790,
+      "qvc_daily_capacity": 370,
+      "qvc_monthly_capacity": 8140,
+      "dominance_alerts": [
+        {
+          "profession": "POLICE ARMY STAFF",
+          "level": "CRITICAL",
+          "share": 0.5507265012215508,
+          "count": 4283,
+          "total": 7777
+        }
+      ],
+      "tiers": {
+        "1": 1,
+        "2": 3,
+        "3": 8,
+        "4": 1002
+      },
+      "total_professions": 1014
+    },
+    {
+      "code": "PHL",
+      "name": "PHILIPPINES",
+      "is_qvc": true,
+      "stock": 120269,
+      "original_cap": 155806,
+      "effective_cap": 155806,
+      "is_outflow_based": false,
+      "utilization": 77.19150738739201,
+      "headroom": 39596,
+      "growth_rate": -13.34,
+      "left_2024": 31611,
+      "left_2025": 25256,
+      "joined_2024": 10401,
+      "joined_2025": 180,
+      "monthly_outflow": 2472,
+      "qvc_daily_capacity": 280,
+      "qvc_monthly_capacity": 6160,
+      "dominance_alerts": [
+        {
+          "profession": "Care Giver",
+          "level": "CRITICAL",
+          "share": 0.885861561119293,
+          "count": 1203,
+          "total": 1358
+        },
+        {
+          "profession": "BABY SITTER",
+          "level": "CRITICAL",
+          "share": 0.7833935018050542,
+          "count": 217,
+          "total": 277
+        },
+        {
+          "profession": "DENTAL ASSISTANT",
+          "level": "CRITICAL",
+          "share": 0.7592592592592593,
+          "count": 205,
+          "total": 270
+        },
+        {
+          "profession": "MANICURIST",
+          "level": "CRITICAL",
+          "share": 0.6421207658321061,
+          "count": 436,
+          "total": 679
+        },
+        {
+          "profession": "BABYSITTER",
+          "level": "CRITICAL",
+          "share": 0.5755208333333334,
+          "count": 221,
+          "total": 384
+        },
+        {
+          "profession": "Assistant teacher",
+          "level": "CRITICAL",
+          "share": 0.5011574074074074,
+          "count": 433,
+          "total": 864
+        },
+        {
+          "profession": "FLOWER MAKER",
+          "level": "HIGH",
+          "share": 0.4960127591706539,
+          "count": 311,
+          "total": 627
+        },
+        {
+          "profession": "ASSITANCE PROFESSOR",
+          "level": "HIGH",
+          "share": 0.49056603773584906,
+          "count": 182,
+          "total": 371
+        },
+        {
+          "profession": "DHF",
+          "level": "HIGH",
+          "share": 0.4631268436578171,
+          "count": 314,
+          "total": 678
+        },
+        {
+          "profession": "DOA",
+          "level": "HIGH",
+          "share": 0.45251396648044695,
+          "count": 324,
+          "total": 716
+        },
+        {
+          "profession": "BEAUTICIAN",
+          "level": "HIGH",
+          "share": 0.4511627906976744,
+          "count": 679,
+          "total": 1505
+        },
+        {
+          "profession": "Radiology Technician",
+          "level": "HIGH",
+          "share": 0.44981412639405205,
+          "count": 121,
+          "total": 269
+        },
+        {
+          "profession": "Assistant Nurse",
+          "level": "HIGH",
+          "share": 0.44061302681992337,
+          "count": 115,
+          "total": 261
+        },
+        {
+          "profession": "HAIR BEAUTICIAN",
+          "level": "HIGH",
+          "share": 0.4180460889321649,
+          "count": 1288,
+          "total": 3081
+        },
+        {
+          "profession": "WOMEN HAIRDRESSER",
+          "level": "HIGH",
+          "share": 0.4033333333333333,
+          "count": 242,
+          "total": 600
+        },
+        {
+          "profession": "SECRETARY",
+          "level": "WATCH",
+          "share": 0.3986220472440945,
+          "count": 3645,
+          "total": 9144
+        },
+        {
+          "profession": "FJH",
+          "level": "WATCH",
+          "share": 0.395,
+          "count": 79,
+          "total": 200
+        },
+        {
+          "profession": "SERVANT",
+          "level": "WATCH",
+          "share": 0.3809948032665182,
+          "count": 2566,
+          "total": 6735
+        },
+        {
+          "profession": "MAKEUP TECH ",
+          "level": "WATCH",
+          "share": 0.3763440860215054,
+          "count": 140,
+          "total": 372
+        },
+        {
+          "profession": "LAB TECHNICIANS",
+          "level": "WATCH",
+          "share": 0.3721461187214612,
+          "count": 163,
+          "total": 438
+        },
+        {
+          "profession": "Care Assistant",
+          "level": "WATCH",
+          "share": 0.3697813121272366,
+          "count": 186,
+          "total": 503
+        },
+        {
+          "profession": "Cosmetologist",
+          "level": "WATCH",
+          "share": 0.3471008737092931,
+          "count": 437,
+          "total": 1259
+        },
+        {
+          "profession": "NURSE",
+          "level": "WATCH",
+          "share": 0.33653088042049933,
+          "count": 7683,
+          "total": 22830
+        },
+        {
+          "profession": "COMMUNICATION SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.3168724279835391,
+          "count": 77,
+          "total": 243
+        },
+        {
+          "profession": "CONFECTIONER",
+          "level": "WATCH",
+          "share": 0.30448717948717946,
+          "count": 95,
+          "total": 312
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 19,
+        "4": 1022
+      },
+      "total_professions": 1044
+    },
+    {
+      "code": "LKA",
+      "name": "SRILANKA",
+      "is_qvc": true,
+      "stock": 93238,
+      "original_cap": 136111,
+      "effective_cap": 136111,
+      "is_outflow_based": false,
+      "utilization": 68.5014436746479,
+      "headroom": 46019,
+      "growth_rate": -17.39,
+      "left_2024": 35068,
+      "left_2025": 28551,
+      "joined_2024": 10362,
+      "joined_2025": 345,
+      "monthly_outflow": 2766,
+      "qvc_daily_capacity": 150,
+      "qvc_monthly_capacity": 3300,
+      "dominance_alerts": [
+        {
+          "profession": "QUANT  CALCUL  TECH ",
+          "level": "WATCH",
+          "share": 0.34497816593886466,
+          "count": 237,
+          "total": 687
+        }
+      ],
+      "tiers": {
+        "1": 1,
+        "2": 2,
+        "3": 11,
+        "4": 858
+      },
+      "total_professions": 872
+    }
+  ],
+  "non_qvc": [
+    {
+      "code": "EGY",
+      "name": "EGYPT",
+      "is_qvc": false,
+      "stock": 71536,
+      "original_cap": 81668,
+      "effective_cap": 71536,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -10.79,
+      "left_2024": 9903,
+      "left_2025": 8699,
+      "joined_2024": 209,
+      "joined_2025": 3,
+      "monthly_outflow": 808,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [
+        {
+          "profession": "LEGAL PROFESSIONAL",
+          "level": "CRITICAL",
+          "share": 0.5180102915951973,
+          "count": 302,
+          "total": 583
+        },
+        {
+          "profession": "LAWYER",
+          "level": "HIGH",
+          "share": 0.46838709677419355,
+          "count": 363,
+          "total": 775
+        },
+        {
+          "profession": "SOCIAL SPECIALIST",
+          "level": "HIGH",
+          "share": 0.4174757281553398,
+          "count": 86,
+          "total": 206
+        },
+        {
+          "profession": "AGRICULTURAL ENGIN",
+          "level": "WATCH",
+          "share": 0.31232876712328766,
+          "count": 114,
+          "total": 365
+        },
+        {
+          "profession": "AWP",
+          "level": "WATCH",
+          "share": 0.3116279069767442,
+          "count": 67,
+          "total": 215
+        },
+        {
+          "profession": "LEGAL CONSULTANT",
+          "level": "WATCH",
+          "share": 0.3003194888178914,
+          "count": 94,
+          "total": 313
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 15,
+        "4": 888
+      },
+      "total_professions": 906
+    },
+    {
+      "code": "SYR",
+      "name": "SYRIA",
+      "is_qvc": false,
+      "stock": 23211,
+      "original_cap": 27038,
+      "effective_cap": 23211,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -12.37,
+      "left_2024": 3612,
+      "left_2025": 3405,
+      "joined_2024": 483,
+      "joined_2025": 7,
+      "monthly_outflow": 305,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 19,
+        "4": 596
+      },
+      "total_professions": 618
+    },
+    {
+      "code": "YEM",
+      "name": "REPUBLIC OF YEMEN",
+      "is_qvc": false,
+      "stock": 12499,
+      "original_cap": 14949,
+      "effective_cap": 12499,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -1.26,
+      "left_2024": 827,
+      "left_2025": 802,
+      "joined_2024": 844,
+      "joined_2025": 48,
+      "monthly_outflow": 70,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 1,
+        "2": 1,
+        "3": 8,
+        "4": 363
+      },
+      "total_professions": 373
+    },
+    {
+      "code": "IRN",
+      "name": "IRAN",
+      "is_qvc": false,
+      "stock": 6439,
+      "original_cap": 7768,
+      "effective_cap": 6439,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -6.79,
+      "left_2024": 647,
+      "left_2025": 732,
+      "joined_2024": 535,
+      "joined_2025": 16,
+      "monthly_outflow": 59,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 0,
+        "2": 4,
+        "3": 16,
+        "4": 336
+      },
+      "total_professions": 356
+    },
+    {
+      "code": "AFG",
+      "name": "AFG",
+      "is_qvc": false,
+      "stock": 2297,
+      "original_cap": 3016,
+      "effective_cap": 2297,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -9.47,
+      "left_2024": 371,
+      "left_2025": 492,
+      "joined_2024": 548,
+      "joined_2025": 2,
+      "monthly_outflow": 37,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 1,
+        "2": 2,
+        "3": 15,
+        "4": 160
+      },
+      "total_professions": 178
+    },
+    {
+      "code": "IRQ",
+      "name": "IRAQ",
+      "is_qvc": false,
+      "stock": 1581,
+      "original_cap": 1959,
+      "effective_cap": 1581,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -6.38,
+      "left_2024": 193,
+      "left_2025": 189,
+      "joined_2024": 105,
+      "joined_2025": 1,
+      "monthly_outflow": 16,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 0,
+        "2": 2,
+        "3": 21,
+        "4": 215
+      },
+      "total_professions": 238
+    }
+  ]
+}

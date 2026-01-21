@@ -87,9 +87,9 @@ These 5 countries do **NOT** require QVC processing and use **outflow-based allo
 
 | Country | Stock | Cap | Utilization | Headroom | Growth | Type |
 |---------|------:|----:|------------:|---------:|-------:|------|
-| Afghanistan | 2,297 | 3,016 | 76.2% | 796 | -9.5% | Standard |
+| Afghanistan | 2,297 | 3,016 | 76.2% | 796 | -9.5% | **Standard** |
 
-> **Note:** Afghanistan uses standard cap recommendations despite negative growth.
+> **Note:** Afghanistan uses standard cap recommendations (NOT outflow-based) despite negative growth. It is the only non-QVC country with standard cap treatment.
 
 ### Non-QVC Flow Analysis (2024-2025)
 
@@ -229,7 +229,7 @@ These 5 countries do **NOT** require QVC processing and use **outflow-based allo
 
 | Country | Current Cap | Recommended | Change | Reason |
 |---------|------------:|------------:|-------:|--------|
-| Afghanistan | 3,016 | 2,720 | -296 | Decline > 5% adjustment |
+| Afghanistan | 3,016 | 3,151 | +135 | Decline > 5% adjustment |
 
 > **Note:** Afghanistan uses standard cap recommendations, not outflow-based allocation.
 
