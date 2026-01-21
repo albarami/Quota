@@ -64,12 +64,9 @@ NATIONALITY_CODES = {
 }
 NUMERIC_TO_ISO = {v: k for k, v in NATIONALITY_CODES.items()}
 
-# Growth rates from actual data
-GROWTH_RATES = {
-    'BGD': +0.92, 'PAK': +0.74, 'YEM': -1.26, 'IRQ': -6.38,
-    'IRN': -6.79, 'NPL': -9.17, 'AFG': -9.47, 'EGY': -10.79,
-    'IND': -11.95, 'SYR': -12.37, 'PHL': -13.34, 'LKA': -17.39,
-}
+# Growth rates will be calculated dynamically from actual flow data:
+# Stock_2024 = Current_Stock + Left_2025 - Joined_2025 (reconstruct end-of-2024)
+# Growth = (Current_Stock - Stock_2024) / Stock_2024 * 100
 
 # QVC Daily Capacity - loaded from qvc_capacity.json
 def load_qvc_capacity():
@@ -157,7 +154,7 @@ def process_worker_data():
             'name': nationalities.get(num_code, iso_code),
             'numeric_code': num_code,
             'is_qvc': iso_code in QVC_COUNTRIES,
-            'growth_rate': GROWTH_RATES.get(iso_code, 0),
+            'growth_rate': 0,  # Will be calculated from flow data
             'original_cap': caps.get(num_code, {}).get('cap_limit', 0),
             'previous_cap': caps.get(num_code, {}).get('previous_cap', 0),
             'in_country': 0,
@@ -238,6 +235,28 @@ def process_worker_data():
     
     print(f"  Total rows: {row_count:,}")
     print(f"  Short-term excluded: {short_term_excluded:,}")
+    print()
+    
+    # Calculate growth rate from actual flow data
+    # Formula: Growth = (Stock_2025 - Stock_2024) / Stock_2024 * 100
+    # Where Stock_2024 = Current_Stock + Left_2025 - Joined_2025
+    print("Calculating growth rates from flow data...")
+    for iso_code, d in data.items():
+        current_stock = d['in_country']
+        left_2025 = d['left_2025']
+        joined_2025 = d['joined_2025']
+        
+        # Reconstruct end-of-2024 stock
+        stock_2024 = current_stock + left_2025 - joined_2025
+        
+        # Calculate growth rate
+        if stock_2024 > 0:
+            growth_rate = ((current_stock - stock_2024) / stock_2024) * 100
+        else:
+            growth_rate = 0
+        
+        d['growth_rate'] = growth_rate
+        d['stock_2024'] = stock_2024  # Store for reference
     print()
     
     # Calculate derived metrics
