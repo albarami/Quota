@@ -51,7 +51,8 @@ MIN_EMPLOYMENT_DAYS = 365
 
 # Country classifications
 QVC_COUNTRIES = {'BGD', 'IND', 'NPL', 'PAK', 'PHL', 'LKA'}
-NON_QVC_COUNTRIES = {'EGY', 'YEM', 'SYR', 'IRQ', 'IRN', 'AFG'}
+# Note: Afghanistan (AFG) is NOT outflow-based - uses normal cap recommendations
+NON_QVC_COUNTRIES = {'EGY', 'YEM', 'SYR', 'IRQ', 'IRN'}
 
 # Nationality code mapping
 NATIONALITY_CODES = {

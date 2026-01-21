@@ -661,17 +661,18 @@ def get_qvc_summary() -> dict:
 # =============================================================================
 
 # Non-QVC countries that use outflow-based monthly capacity
-NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN', 'AFG']
+# Note: Afghanistan (AFG) is NOT in this list - uses normal cap recommendations
+NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN']
 
 # Monthly outflow data calculated from 2024-2025 worker movement
 # Left_2025 / 11 months = monthly average outflow
+# Note: Afghanistan is NOT included - uses normal cap recommendations
 MONTHLY_OUTFLOW_DATA = {
     'EGY': {'left_2025': 8699, 'monthly_avg': 791, 'country': 'Egypt'},
     'YEM': {'left_2025': 802, 'monthly_avg': 73, 'country': 'Yemen'},
     'SYR': {'left_2025': 3405, 'monthly_avg': 310, 'country': 'Syria'},
     'IRQ': {'left_2025': 189, 'monthly_avg': 17, 'country': 'Iraq'},
     'IRN': {'left_2025': 732, 'monthly_avg': 67, 'country': 'Iran'},
-    'AFG': {'left_2025': 492, 'monthly_avg': 45, 'country': 'Afghanistan'},
 }
 
 

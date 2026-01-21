@@ -52,6 +52,7 @@ OUTFLOW_CONFIDENCE_FACTOR = 0.75
 MIN_EMPLOYMENT_DAYS = 365  # Exclude workers with < 1 year employment
 
 # Non-QVC countries - use outflow-based allocation when growth is negative
+# Note: Afghanistan (AFG) is NOT in this list - uses normal cap recommendations
 NON_QVC_COUNTRIES = {'EGY', 'YEM', 'SYR', 'IRQ', 'IRN'}
 
 # Growth rates from actual 2024-2025 worker movement data

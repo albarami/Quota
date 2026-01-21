@@ -14,7 +14,7 @@
 | **Total Effective Cap** | 2,253,923 |
 | **Overall Utilization** | 72.2% |
 | **QVC Countries** | 6 |
-| **Non-QVC Countries** | 6 |
+| **Non-QVC Outflow-Based Countries** | 5 |
 | **Growing Countries** | 2 (Bangladesh, Pakistan) |
 | **Declining Countries** | 10 |
 | **Short-term Workers Excluded** | 398,678 |
@@ -67,12 +67,12 @@ These countries require **Qatar Visa Center (QVC)** processing in their home cou
 
 ## Section 2: Non-QVC Countries (Outflow-Based Allocation)
 
-These countries do **NOT** require QVC processing. All have **negative growth** and use **outflow-based allocation**:
+These 5 countries do **NOT** require QVC processing and use **outflow-based allocation**:
 - **Cap = Current Stock** (frozen)
 - **Monthly capacity = Previous month's outflow** (replacement only)
 - **No growth allowed**
 
-### Stock & Capacity Overview
+### Stock & Capacity Overview (5 Outflow-Based Countries)
 
 | Country | Stock | Cap | Utilization | Monthly Outflow | Growth | Type |
 |---------|------:|----:|------------:|----------------:|-------:|------|
@@ -80,9 +80,16 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | Syria | 23,211 | 23,211 | 100% | 305 | -12.4% | OUTFLOW |
 | Yemen | 12,499 | 12,499 | 100% | 70 | -1.3% | OUTFLOW |
 | Iran | 6,439 | 6,439 | 100% | 59 | -6.8% | OUTFLOW |
-| Afghanistan | 2,297 | 2,297 | 100% | 37 | -9.5% | OUTFLOW |
 | Iraq | 1,581 | 1,581 | 100% | 16 | -6.4% | OUTFLOW |
-| **TOTAL NON-QVC** | **117,563** | **117,563** | **100%** | **1,295** | | |
+| **TOTAL OUTFLOW** | **115,266** | **115,266** | **100%** | **1,258** | | |
+
+### Afghanistan (Standard Cap - NOT Outflow-Based)
+
+| Country | Stock | Cap | Utilization | Headroom | Growth | Type |
+|---------|------:|----:|------------:|---------:|-------:|------|
+| Afghanistan | 2,297 | 3,016 | 76.2% | 796 | -9.5% | Standard |
+
+> **Note:** Afghanistan uses standard cap recommendations despite negative growth.
 
 ### Non-QVC Flow Analysis (2024-2025)
 
@@ -92,10 +99,9 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | Syria | 3,612 | 3,405 | 483 | 7 | -6,527 |
 | Yemen | 827 | 802 | 844 | 48 | -737 |
 | Iran | 647 | 732 | 535 | 16 | -828 |
-| Afghanistan | 371 | 492 | 548 | 2 | -313 |
 | Iraq | 193 | 189 | 105 | 1 | -276 |
 
-> **Note:** All non-QVC countries show significant net outflow (more leaving than joining), confirming the outflow-based allocation model is appropriate.
+> **Note:** These 5 non-QVC countries show significant net outflow (more leaving than joining), confirming the outflow-based allocation model is appropriate.
 
 ---
 
@@ -207,7 +213,7 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | Philippines | 155,806 | 163,596 | +7,790 | High alerts (9) - Conservative |
 | Sri Lanka | 136,111 | 142,235 | +6,124 | Decline > 5% adjustment |
 
-### Non-QVC Countries
+### Non-QVC Countries (Outflow-Based - 5 countries)
 
 | Country | Original Cap | Effective Cap | Status |
 |---------|-------------:|--------------:|--------|
@@ -215,10 +221,17 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | Syria | 27,038 | 23,211 | **FROZEN** at stock |
 | Yemen | 14,949 | 12,499 | **FROZEN** at stock |
 | Iran | 7,768 | 6,439 | **FROZEN** at stock |
-| Afghanistan | 3,016 | 2,297 | **FROZEN** at stock |
 | Iraq | 1,959 | 1,581 | **FROZEN** at stock |
 
 > **Policy:** Non-QVC countries with negative growth have their cap frozen at current stock level. Monthly allocation is based solely on outflow (replacement model).
+
+### Afghanistan (Standard Cap - NOT Outflow-Based)
+
+| Country | Current Cap | Recommended | Change | Reason |
+|---------|------------:|------------:|-------:|--------|
+| Afghanistan | 3,016 | 2,720 | -296 | Decline > 5% adjustment |
+
+> **Note:** Afghanistan uses standard cap recommendations, not outflow-based allocation.
 
 ---
 
