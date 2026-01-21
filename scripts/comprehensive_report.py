@@ -484,6 +484,7 @@ def print_report(results):
     
     for r in results['qvc'] + results['non_qvc']:
         stock = r['stock']
+        avg_outflow = (r['left_2024'] + r['left_2025']) / 2
         avg_joiners = (r['joined_2024'] + r['joined_2025']) / 2
         alerts = len(r['dominance_alerts'])
         
@@ -493,20 +494,21 @@ def print_report(results):
             headroom = 0
             reason = "OUTFLOW-BASED (Cap = Stock)"
         elif r['growth_rate'] > 0:
-            # Positive growth: Stock + Avg Joiners + 15% buffer
-            rec_cap = int(stock + avg_joiners + (stock * 0.15))
+            # Positive growth: Stock + Outflow (replacement) + Net Growth + 10% buffer
+            net_growth = max(0, avg_joiners - avg_outflow)
+            rec_cap = int(stock + avg_outflow + net_growth + (stock * 0.10))
             headroom = rec_cap - stock
-            reason = f"Growth +{r['growth_rate']:.1f}% (15% buffer)"
+            reason = f"Growth +{r['growth_rate']:.1f}% (Outflow+10%)"
         elif alerts >= 10:
-            # High dominance risk: Conservative 5% buffer
-            rec_cap = int(stock + (stock * 0.05))
+            # High dominance risk: Stock + Outflow (replacement) + conservative 3% buffer
+            rec_cap = int(stock + avg_outflow + (stock * 0.03))
             headroom = rec_cap - stock
-            reason = f"High alerts ({alerts}) (5% buffer)"
+            reason = f"High alerts ({alerts}) (Outflow+3%)"
         else:
-            # Negative growth QVC: Minimal 5% buffer
-            rec_cap = int(stock + (stock * 0.05))
+            # Negative growth QVC: Stock + Outflow (replacement) + 5% buffer
+            rec_cap = int(stock + avg_outflow + (stock * 0.05))
             headroom = rec_cap - stock
-            reason = f"Decline {r['growth_rate']:.1f}% (5% buffer)"
+            reason = f"Decline {r['growth_rate']:.1f}% (Outflow+5%)"
         
         print(f"{r['name'][:15]:<15} {stock:>12,} {rec_cap:>12,} {headroom:>+10,} {reason:<30}")
     

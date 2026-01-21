@@ -256,28 +256,40 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
         }
     
     # === Data-Driven Cap Recommendation (NO pre-existing caps used) ===
-    # Formula: Based on Stock + Projected Demand + Buffer
+    # Formula: Based on Stock + Outflow (replacement) + Growth + Buffer
     
-    # Get joiners data for demand projection (from data if available)
+    # Get flow data for demand projection (from data if available)
     joined_2024 = data.get("joined_2024", int(stock * 0.10))  # Default: 10% of stock
     joined_2025 = data.get("joined_2025", int(stock * 0.02))  # Default: 2% of stock
+    left_2024 = data.get("left_2024", int(stock * 0.20))      # Default: 20% of stock
+    left_2025 = data.get("left_2025", int(stock * 0.15))      # Default: 15% of stock
+    
     avg_annual_joiners = (joined_2024 + joined_2025) / 2
+    avg_annual_outflow = (left_2024 + left_2025) / 2
     
     if growth_rate > 0:
-        # POSITIVE GROWTH: Stock + Avg Joiners + 15% buffer
-        conservative = int(stock + avg_annual_joiners + (stock * 0.10))  # 10% buffer
-        moderate = int(stock + avg_annual_joiners + (stock * 0.15))      # 15% buffer
-        flexible = int(stock + avg_annual_joiners + (stock * 0.20))      # 20% buffer
+        # POSITIVE GROWTH: Stock + Outflow (replacement) + Net Growth + buffer
+        net_growth = max(0, avg_annual_joiners - avg_annual_outflow)
+        conservative = int(stock + avg_annual_outflow + net_growth + (stock * 0.05))  # 5% buffer
+        moderate = int(stock + avg_annual_outflow + net_growth + (stock * 0.10))      # 10% buffer
+        flexible = int(stock + avg_annual_outflow + net_growth + (stock * 0.15))      # 15% buffer
     else:
-        # NEGATIVE GROWTH: Stock + minimal buffer
-        conservative = int(stock + (stock * 0.03))  # 3% buffer
-        moderate = int(stock + (stock * 0.05))      # 5% buffer
-        flexible = int(stock + (stock * 0.08))      # 8% buffer
+        # NEGATIVE GROWTH: Stock + Outflow (replacement capacity) + buffer
+        conservative = int(stock + avg_annual_outflow + (stock * 0.03))  # 3% buffer
+        moderate = int(stock + avg_annual_outflow + (stock * 0.05))      # 5% buffer
+        flexible = int(stock + avg_annual_outflow + (stock * 0.08))      # 8% buffer
+    
+    # For high dominance: more conservative buffer but still include outflow
+    if alerts >= 10 or has_critical:
+        # High alerts: Stock + Outflow + 3% buffer (conservative)
+        conservative = int(stock + avg_annual_outflow + (stock * 0.02))
+        moderate = int(stock + avg_annual_outflow + (stock * 0.03))
+        flexible = int(stock + avg_annual_outflow + (stock * 0.05))
     
     # Selection Logic based on risk
     if alerts >= 10 or has_critical:
         level = "conservative"
-        recommended = conservative
+        recommended = moderate  # Use moderate for high alerts (outflow + 3%)
     elif alerts > 3:
         level = "moderate"
         recommended = moderate

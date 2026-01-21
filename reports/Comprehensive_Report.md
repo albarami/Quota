@@ -202,47 +202,47 @@ These 5 countries do **NOT** require QVC processing and use **outflow-based allo
 
 ## Section 4: Cap Recommendations (Data-Driven)
 
-**Formula:** Based on Stock + Projected Demand + Buffer (NO pre-existing caps)
+**Formula:** Based on Stock + Outflow (replacement) + Buffer (NO pre-existing caps)
 
 ### QVC Countries
 
-| Country | Stock | Recommended Cap | Headroom | Reason |
-|---------|------:|----------------:|---------:|--------|
-| India | 488,672 | 513,105 | +24,433 | High alerts (136) - 5% buffer |
-| Bangladesh | 330,602 | 347,132 | +16,530 | High alerts (78) - 5% buffer |
-| Nepal | 317,954 | 333,851 | +15,897 | High alerts (31) - 5% buffer |
-| Pakistan | 158,196 | 166,105 | +7,909 | Decline -20.8% - 5% buffer |
-| Philippines | 120,269 | 126,282 | +6,013 | High alerts (25) - 5% buffer |
-| Sri Lanka | 93,238 | 97,899 | +4,661 | Decline -22.2% - 5% buffer |
+| Country | Stock | Avg Outflow | Recommended Cap | Headroom | Reason |
+|---------|------:|------------:|----------------:|---------:|--------|
+| India | 488,672 | 133,581 | 636,913 | +148,241 | High alerts (136) - Outflow + 3% |
+| Bangladesh | 330,602 | 64,637 | 405,157 | +74,555 | High alerts (78) - Outflow + 3% |
+| Nepal | 317,954 | 75,485 | 402,977 | +85,023 | High alerts (31) - Outflow + 3% |
+| Pakistan | 158,196 | 43,595 | 209,700 | +51,504 | Decline -20.8% - Outflow + 5% |
+| Philippines | 120,269 | 28,434 | 152,310 | +32,041 | High alerts (25) - Outflow + 3% |
+| Sri Lanka | 93,238 | 31,810 | 129,709 | +36,471 | Decline -22.2% - Outflow + 5% |
 
 ### Non-QVC Countries (Outflow-Based - 5 countries)
 
-| Country | Stock | Recommended Cap | Headroom | Status |
-|---------|------:|----------------:|---------:|--------|
-| Egypt | 71,536 | 71,536 | 0 | **FROZEN** at stock |
-| Syria | 23,211 | 23,211 | 0 | **FROZEN** at stock |
-| Yemen | 12,499 | 12,499 | 0 | **FROZEN** at stock |
-| Iran | 6,439 | 6,439 | 0 | **FROZEN** at stock |
-| Iraq | 1,581 | 1,581 | 0 | **FROZEN** at stock |
+| Country | Stock | Monthly Outflow | Recommended Cap | Status |
+|---------|------:|----------------:|----------------:|--------|
+| Egypt | 71,536 | 808 | 71,536 | **FROZEN** at stock |
+| Syria | 23,211 | 305 | 23,211 | **FROZEN** at stock |
+| Yemen | 12,499 | 70 | 12,499 | **FROZEN** at stock |
+| Iran | 6,439 | 59 | 6,439 | **FROZEN** at stock |
+| Iraq | 1,581 | 16 | 1,581 | **FROZEN** at stock |
 
-> **Policy:** Non-QVC countries with negative growth have cap frozen at stock. Monthly allocation = outflow only.
+> **Policy:** Non-QVC countries with negative growth have cap frozen at stock. Monthly allocation = outflow only (replacement model).
 
 ### Afghanistan (Standard Cap - NOT Outflow-Based)
 
-| Country | Stock | Recommended Cap | Headroom | Reason |
-|---------|------:|----------------:|---------:|--------|
-| Afghanistan | 2,297 | 2,411 | +114 | Decline -11.7% - 5% buffer |
+| Country | Stock | Avg Outflow | Recommended Cap | Headroom | Reason |
+|---------|------:|------------:|----------------:|---------:|--------|
+| Afghanistan | 2,297 | 432 | 2,843 | +546 | Decline -11.7% - Outflow + 5% |
 
 > **Note:** Afghanistan uses standard cap recommendations, not outflow-based allocation.
 
 ### Cap Formula Summary
 
-| Condition | Formula | Buffer |
-|-----------|---------|--------|
-| **Positive Growth** | Stock + Avg_Joiners + (Stock × 0.15) | 15% |
-| **Negative Growth + High Alerts** | Stock + (Stock × 0.05) | 5% |
-| **Negative Growth (QVC)** | Stock + (Stock × 0.05) | 5% |
-| **Non-QVC Outflow-Based** | Stock (frozen) | 0% |
+| Condition | Formula | Components |
+|-----------|---------|------------|
+| **Positive Growth** | Stock + Outflow + Net_Growth + (Stock × 0.10) | Replacement + Growth + 10% buffer |
+| **Negative Growth (QVC)** | Stock + Outflow + (Stock × 0.05) | Replacement + 5% buffer |
+| **High Dominance (10+ alerts)** | Stock + Outflow + (Stock × 0.03) | Replacement + conservative 3% buffer |
+| **Non-QVC Outflow-Based** | Stock (frozen) | Cap = Stock, monthly allocation = outflow |
 
 ---
 

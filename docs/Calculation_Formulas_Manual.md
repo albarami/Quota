@@ -145,46 +145,84 @@ The **Recommended Cap** is the suggested maximum number of workers for each nati
 ### Formula for Countries with POSITIVE GROWTH:
 
 ```
-Recommended_Cap = Current_Stock + Projected_Demand + Operational_Buffer
+Recommended_Cap = Current_Stock + Replacement_Capacity + Growth_Capacity + Operational_Buffer
 ```
 
 **Where:**
 ```
-Projected_Demand = (Joined_2024 + Joined_2025) / 2
-Operational_Buffer = Current_Stock × 0.15 (15% headroom)
+Replacement_Capacity = Avg_Annual_Outflow (to replace workers who leave)
+Growth_Capacity = Net_Growth_Demand (additional workers above replacement)
+Operational_Buffer = Current_Stock × 0.10 (10% headroom for flexibility)
 ```
 
-**Full Formula:**
+**Simplified Formula:**
 ```
-Recommended_Cap = Stock + Avg_Annual_Joiners + (Stock × 0.15)
+Avg_Annual_Outflow = (Left_2024 + Left_2025) / 2
+Avg_Annual_Joiners = (Joined_2024 + Joined_2025) / 2
+Net_Growth = Avg_Annual_Joiners - Avg_Annual_Outflow (if positive)
+
+Recommended_Cap = Stock + Avg_Annual_Outflow + Net_Growth + (Stock × 0.10)
 ```
+
+**Or equivalently:**
+```
+Recommended_Cap = Stock + Avg_Annual_Joiners + (Stock × 0.10)
+```
+(Since Outflow + Net_Growth = Joiners when net growth is positive)
 
 **Example (if Bangladesh had positive growth):**
 ```
 Stock = 330,602
+Left_2024 = 66,236
+Left_2025 = 63,038
+Avg_Annual_Outflow = (66,236 + 63,038) / 2 = 64,637
+
 Joined_2024 = 66,697
 Joined_2025 = 2,086
 Avg_Annual_Joiners = (66,697 + 2,086) / 2 = 34,392
-Operational_Buffer = 330,602 × 0.15 = 49,590
 
-Recommended_Cap = 330,602 + 34,392 + 49,590 = 414,584
+Net_Growth = 34,392 - 64,637 = -30,245 (actually negative, so no growth capacity)
+
+For a TRUE positive growth scenario:
+If Joiners were 70,000 and Outflow were 50,000:
+Replacement_Capacity = 50,000
+Net_Growth = 70,000 - 50,000 = 20,000
+Operational_Buffer = 330,602 × 0.10 = 33,060
+
+Recommended_Cap = 330,602 + 50,000 + 20,000 + 33,060 = 433,662
 ```
+
+**Key Insight:** The cap must be high enough to:
+1. Keep current workers (Stock)
+2. Bring in replacements for those who leave (Outflow)
+3. Add new workers for growth (Net_Growth)
+4. Have buffer for operational flexibility
 
 ---
 
 ### Formula for Countries with NEGATIVE GROWTH (QVC Countries):
 
 ```
-Recommended_Cap = Current_Stock + (Current_Stock × 0.05)
+Recommended_Cap = Current_Stock + Avg_Annual_Outflow + (Current_Stock × 0.05)
 ```
 
-**Rationale:** Minimal 5% buffer for operational flexibility, but no significant growth expected.
+**Rationale:** 
+- Even with negative growth, workers still leave and may need replacement
+- Outflow capacity ensures ability to maintain workforce if needed
+- 5% buffer for operational flexibility
 
 **Example (India - negative growth):**
 ```
 Stock = 488,672
-Recommended_Cap = 488,672 + (488,672 × 0.05) = 513,106
+Left_2024 = 157,395
+Left_2025 = 109,767
+Avg_Annual_Outflow = (157,395 + 109,767) / 2 = 133,581
+Operational_Buffer = 488,672 × 0.05 = 24,434
+
+Recommended_Cap = 488,672 + 133,581 + 24,434 = 646,687
 ```
+
+**Note:** This cap allows replacement of workers who leave, but since growth is negative, actual workforce will likely decline naturally.
 
 ---
 
@@ -220,21 +258,24 @@ Monthly_Allocation = (9,903 + 8,699) / 23 = 808 workers/month
 If a country has **10 or more dominance alerts**:
 
 ```
-Recommended_Cap = Current_Stock + (Current_Stock × 0.05)
+Recommended_Cap = Current_Stock + Avg_Annual_Outflow + (Current_Stock × 0.03)
 ```
 
-**Rationale:** Conservative 5% buffer to limit concentration risk growth.
+**Rationale:** 
+- Still allows replacement of workers who leave (outflow capacity)
+- Conservative 3% buffer limits growth to reduce concentration risk
+- Diversification should be encouraged before cap increases
 
 ---
 
 ### Summary Table:
 
-| Condition | Formula | Buffer |
-|-----------|---------|--------|
-| **Positive Growth** | Stock + Avg_Joiners + (Stock × 0.15) | 15% |
-| **Negative Growth (QVC)** | Stock + (Stock × 0.05) | 5% |
-| **Negative Growth (Non-QVC)** | Stock (frozen) | 0% |
-| **High Dominance (10+ alerts)** | Stock + (Stock × 0.05) | 5% |
+| Condition | Formula | Components |
+|-----------|---------|------------|
+| **Positive Growth** | Stock + Outflow + Net_Growth + (Stock × 0.10) | Replacement + Growth + 10% buffer |
+| **Negative Growth (QVC)** | Stock + Outflow + (Stock × 0.05) | Replacement capacity + 5% buffer |
+| **Negative Growth (Non-QVC)** | Stock (frozen) | Cap = Stock, monthly allocation = outflow |
+| **High Dominance (10+ alerts)** | Stock + Outflow + (Stock × 0.03) | Replacement + conservative 3% buffer |
 
 ---
 
