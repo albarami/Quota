@@ -1,0 +1,2704 @@
+{
+  "generated_at": "2026-01-21T05:09:53.526677",
+  "nationalities": {
+    "EGY": {
+      "numeric_code": "818",
+      "name": "EGYPT",
+      "in_country": 71574,
+      "out_country": 38449,
+      "committed": 0,
+      "pending": 0,
+      "cap": 81668,
+      "previous_cap": 74244,
+      "stock": 71574,
+      "headroom": 10094,
+      "utilization": 0.876402017926238,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 3,
+          "worker_count": 12906,
+          "share": 0.1803,
+          "top_professions": [
+            {
+              "code": "573",
+              "name": "ACCOUNTANT",
+              "count": 5187,
+              "share": 0.0725
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 3994,
+              "share": 0.0558
+            },
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 3725,
+              "share": 0.052
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 15,
+          "worker_count": 27737,
+          "share": 0.3875,
+          "top_professions": [
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 3326,
+              "share": 0.0465
+            },
+            {
+              "code": "523",
+              "name": "TEACHER",
+              "count": 2911,
+              "share": 0.0407
+            },
+            {
+              "code": "888",
+              "name": "GENERAL SUPERVISOR",
+              "count": 2789,
+              "share": 0.039
+            },
+            {
+              "code": "628",
+              "name": "BUSIN. EXECUTIVE.",
+              "count": 2709,
+              "share": 0.0378
+            },
+            {
+              "code": "539",
+              "name": "ENGINEER",
+              "count": 2552,
+              "share": 0.0357
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 890,
+          "worker_count": 30931,
+          "share": 0.4322,
+          "top_professions": [
+            {
+              "code": "556",
+              "name": "NURSE",
+              "count": 715,
+              "share": 0.01
+            },
+            {
+              "code": "640",
+              "name": "ELECT  ENGINEER",
+              "count": 661,
+              "share": 0.0092
+            },
+            {
+              "code": "555",
+              "name": "PHARMACIST",
+              "count": 625,
+              "share": 0.0087
+            },
+            {
+              "code": "637",
+              "name": "ENGINEER (ARCHI )",
+              "count": 591,
+              "share": 0.0083
+            },
+            {
+              "code": "538",
+              "name": "DOCTOR",
+              "count": 575,
+              "share": 0.008
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 5187
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 3994
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 3725
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 3326
+        },
+        {
+          "code": "523",
+          "name": "TEACHER",
+          "count": 2911
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 2789
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 2709
+        },
+        {
+          "code": "539",
+          "name": "ENGINEER",
+          "count": 2552
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 2320
+        },
+        {
+          "code": "636",
+          "name": "CIVIL ENGINEER",
+          "count": 1628
+        },
+        {
+          "code": "526",
+          "name": "ADMINISTRATIVE",
+          "count": 1619
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 1517
+        },
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 1464
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 1221
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 1196
+        },
+        {
+          "code": "858",
+          "name": "CARPENTER",
+          "count": 878
+        },
+        {
+          "code": "648",
+          "name": "ADMIN  DIRECTOR",
+          "count": 872
+        },
+        {
+          "code": "750",
+          "name": "PURCHASE REP ",
+          "count": 735
+        },
+        {
+          "code": "556",
+          "name": "NURSE",
+          "count": 715
+        },
+        {
+          "code": "640",
+          "name": "ELECT  ENGINEER",
+          "count": 661
+        }
+      ]
+    },
+    "IND": {
+      "numeric_code": "356",
+      "name": "INDIA",
+      "in_country": 529575,
+      "out_country": 516566,
+      "committed": 0,
+      "pending": 0,
+      "cap": 676569,
+      "previous_cap": 615063,
+      "stock": 529575,
+      "headroom": 146994,
+      "utilization": 0.7827361289092465,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 2,
+          "worker_count": 93230,
+          "share": 0.176,
+          "top_professions": [
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 61277,
+              "share": 0.1157
+            },
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 31953,
+              "share": 0.0603
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 20,
+          "worker_count": 214492,
+          "share": 0.405,
+          "top_professions": [
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 24890,
+              "share": 0.047
+            },
+            {
+              "code": "524",
+              "name": "Technician",
+              "count": 23211,
+              "share": 0.0438
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 18940,
+              "share": 0.0358
+            },
+            {
+              "code": "628",
+              "name": "BUSIN. EXECUTIVE.",
+              "count": 15552,
+              "share": 0.0294
+            },
+            {
+              "code": "573",
+              "name": "ACCOUNTANT",
+              "count": 14499,
+              "share": 0.0274
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 1734,
+          "worker_count": 221853,
+          "share": 0.4189,
+          "top_professions": [
+            {
+              "code": "734",
+              "name": "Mechanical Technician",
+              "count": 4668,
+              "share": 0.0088
+            },
+            {
+              "code": "616",
+              "name": "PETROCHEMICALS",
+              "count": 4474,
+              "share": 0.0084
+            },
+            {
+              "code": "560",
+              "name": "BLACKSMITH",
+              "count": 4418,
+              "share": 0.0083
+            },
+            {
+              "code": "545",
+              "name": "SEAMEN",
+              "count": 4266,
+              "share": 0.0081
+            },
+            {
+              "code": "919",
+              "name": "CASHIER",
+              "count": 4190,
+              "share": 0.0079
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 61277
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 31953
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 24890
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 23211
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 18940
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 15552
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 14499
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 13685
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 12637
+        },
+        {
+          "code": "556",
+          "name": "NURSE",
+          "count": 9628
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 8600
+        },
+        {
+          "code": "574",
+          "name": "SALESMAN",
+          "count": 8246
+        },
+        {
+          "code": "539",
+          "name": "ENGINEER",
+          "count": 8199
+        },
+        {
+          "code": "722",
+          "name": "TECHNICIAN GEN ",
+          "count": 7183
+        },
+        {
+          "code": "585",
+          "name": "MASON",
+          "count": 6947
+        },
+        {
+          "code": "562",
+          "name": "CARPENTER.",
+          "count": 6646
+        },
+        {
+          "code": "595",
+          "name": "PLUMBER",
+          "count": 6377
+        },
+        {
+          "code": "847",
+          "name": "HEAVY VEHICLE DRIVER",
+          "count": 6198
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 6011
+        },
+        {
+          "code": "601",
+          "name": "COOKER",
+          "count": 5905
+        }
+      ]
+    },
+    "PAK": {
+      "numeric_code": "586",
+      "name": "PAKISTAN",
+      "in_country": 196277,
+      "out_country": 150382,
+      "committed": 0,
+      "pending": 0,
+      "cap": 242955,
+      "previous_cap": 220869,
+      "stock": 196277,
+      "headroom": 46678,
+      "utilization": 0.8078738861105966,
+      "tier_summary": {
+        "1": {
+          "profession_count": 1,
+          "worker_count": 64632,
+          "share": 0.3293,
+          "top_professions": [
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 64632,
+              "share": 0.3293
+            }
+          ]
+        },
+        "2": {
+          "profession_count": 3,
+          "worker_count": 32340,
+          "share": 0.1648,
+          "top_professions": [
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 11098,
+              "share": 0.0565
+            },
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 11079,
+              "share": 0.0564
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 10163,
+              "share": 0.0518
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 9,
+          "worker_count": 35867,
+          "share": 0.1827,
+          "top_professions": [
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 6860,
+              "share": 0.035
+            },
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 5764,
+              "share": 0.0294
+            },
+            {
+              "code": "534",
+              "name": "POLICE ARMY STAFF",
+              "count": 4478,
+              "share": 0.0228
+            },
+            {
+              "code": "783",
+              "name": "GUARD",
+              "count": 4433,
+              "share": 0.0226
+            },
+            {
+              "code": "847",
+              "name": "HEAVY VEHICLE DRIVER",
+              "count": 3773,
+              "share": 0.0192
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 1290,
+          "worker_count": 63438,
+          "share": 0.3232,
+          "top_professions": [
+            {
+              "code": "536",
+              "name": "MANAGER",
+              "count": 1709,
+              "share": 0.0087
+            },
+            {
+              "code": "CMF",
+              "name": "Code_CMF",
+              "count": 1633,
+              "share": 0.0083
+            },
+            {
+              "code": "573",
+              "name": "ACCOUNTANT",
+              "count": 1606,
+              "share": 0.0082
+            },
+            {
+              "code": "CMG",
+              "name": "Code_CMG",
+              "count": 1534,
+              "share": 0.0078
+            },
+            {
+              "code": "595",
+              "name": "PLUMBER",
+              "count": 1511,
+              "share": 0.0077
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [
+        {
+          "profession_code": "558",
+          "profession_name": "DRIVER",
+          "share": 0.3293,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        }
+      ],
+      "top_professions": [
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 64632
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 11098
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 11079
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 10163
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 6860
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 5764
+        },
+        {
+          "code": "534",
+          "name": "POLICE ARMY STAFF",
+          "count": 4478
+        },
+        {
+          "code": "783",
+          "name": "GUARD",
+          "count": 4433
+        },
+        {
+          "code": "847",
+          "name": "HEAVY VEHICLE DRIVER",
+          "count": 3773
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 3003
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 2803
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 2787
+        },
+        {
+          "code": "585",
+          "name": "MASON",
+          "count": 1966
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 1709
+        },
+        {
+          "code": "CMF",
+          "name": "CMF",
+          "count": 1633
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 1606
+        },
+        {
+          "code": "CMG",
+          "name": "CMG",
+          "count": 1534
+        },
+        {
+          "code": "595",
+          "name": "PLUMBER",
+          "count": 1511
+        },
+        {
+          "code": "722",
+          "name": "TECHNICIAN GEN ",
+          "count": 1336
+        },
+        {
+          "code": "777",
+          "name": "GEN  CLEAN  WORKER",
+          "count": 1274
+        }
+      ]
+    },
+    "NPL": {
+      "numeric_code": "524",
+      "name": "NEPAL",
+      "in_country": 346515,
+      "out_country": 291320,
+      "committed": 0,
+      "pending": 0,
+      "cap": 437178,
+      "previous_cap": 397435,
+      "stock": 346515,
+      "headroom": 90663,
+      "utilization": 0.7926176523063833,
+      "tier_summary": {
+        "1": {
+          "profession_count": 1,
+          "worker_count": 116070,
+          "share": 0.335,
+          "top_professions": [
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 116070,
+              "share": 0.335
+            }
+          ]
+        },
+        "2": {
+          "profession_count": 2,
+          "worker_count": 63299,
+          "share": 0.1827,
+          "top_professions": [
+            {
+              "code": "777",
+              "name": "GEN  CLEAN  WORKER",
+              "count": 34617,
+              "share": 0.0999
+            },
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 28682,
+              "share": 0.0828
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 12,
+          "worker_count": 70785,
+          "share": 0.2043,
+          "top_professions": [
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 9369,
+              "share": 0.027
+            },
+            {
+              "code": "783",
+              "name": "GUARD",
+              "count": 7633,
+              "share": 0.022
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 7153,
+              "share": 0.0206
+            },
+            {
+              "code": "574",
+              "name": "SALESMAN",
+              "count": 6901,
+              "share": 0.0199
+            },
+            {
+              "code": "770",
+              "name": "WAITER",
+              "count": 6227,
+              "share": 0.018
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 1062,
+          "worker_count": 96361,
+          "share": 0.2781,
+          "top_professions": [
+            {
+              "code": "567",
+              "name": "TAILOR",
+              "count": 3109,
+              "share": 0.009
+            },
+            {
+              "code": "858",
+              "name": "CARPENTER",
+              "count": 2930,
+              "share": 0.0085
+            },
+            {
+              "code": "601",
+              "name": "COOKER",
+              "count": 2898,
+              "share": 0.0084
+            },
+            {
+              "code": "595",
+              "name": "PLUMBER",
+              "count": 2877,
+              "share": 0.0083
+            },
+            {
+              "code": "919",
+              "name": "CASHIER",
+              "count": 2866,
+              "share": 0.0083
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [
+        {
+          "profession_code": "540",
+          "profession_name": "LABOURER",
+          "share": 0.335,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        }
+      ],
+      "top_professions": [
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 116070
+        },
+        {
+          "code": "777",
+          "name": "GEN  CLEAN  WORKER",
+          "count": 34617
+        },
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 28682
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 9369
+        },
+        {
+          "code": "783",
+          "name": "GUARD",
+          "count": 7633
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 7153
+        },
+        {
+          "code": "574",
+          "name": "SALESMAN",
+          "count": 6901
+        },
+        {
+          "code": "770",
+          "name": "WAITER",
+          "count": 6227
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 6146
+        },
+        {
+          "code": "585",
+          "name": "MASON",
+          "count": 5522
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 5520
+        },
+        {
+          "code": "906",
+          "name": "BUILDING WORKER",
+          "count": 5120
+        },
+        {
+          "code": "562",
+          "name": "CARPENTER.",
+          "count": 4016
+        },
+        {
+          "code": "564",
+          "name": "PAINTER",
+          "count": 3597
+        },
+        {
+          "code": "847",
+          "name": "HEAVY VEHICLE DRIVER",
+          "count": 3581
+        },
+        {
+          "code": "567",
+          "name": "TAILOR",
+          "count": 3109
+        },
+        {
+          "code": "858",
+          "name": "CARPENTER",
+          "count": 2930
+        },
+        {
+          "code": "601",
+          "name": "COOKER",
+          "count": 2898
+        },
+        {
+          "code": "595",
+          "name": "PLUMBER",
+          "count": 2877
+        },
+        {
+          "code": "919",
+          "name": "CASHIER",
+          "count": 2866
+        }
+      ]
+    },
+    "BGD": {
+      "numeric_code": "050",
+      "name": "BGD",
+      "in_country": 400273,
+      "out_country": 228317,
+      "committed": 0,
+      "pending": 0,
+      "cap": 487741,
+      "previous_cap": 443401,
+      "stock": 400273,
+      "headroom": 87468,
+      "utilization": 0.8206671163588872,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 3,
+          "worker_count": 114369,
+          "share": 0.2857,
+          "top_professions": [
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 50847,
+              "share": 0.127
+            },
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 39625,
+              "share": 0.099
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 23897,
+              "share": 0.0597
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 14,
+          "worker_count": 114586,
+          "share": 0.2863,
+          "top_professions": [
+            {
+              "code": "573",
+              "name": "ACCOUNTANT",
+              "count": 15386,
+              "share": 0.0384
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 12511,
+              "share": 0.0313
+            },
+            {
+              "code": "721",
+              "name": "ACCOUNTANT (GEN )",
+              "count": 11833,
+              "share": 0.0296
+            },
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 11750,
+              "share": 0.0294
+            },
+            {
+              "code": "939",
+              "name": "ADMIN  MANAGER",
+              "count": 9906,
+              "share": 0.0247
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 1337,
+          "worker_count": 171318,
+          "share": 0.428,
+          "top_professions": [
+            {
+              "code": "977",
+              "name": "ASST EXECUTIVE MAN",
+              "count": 3943,
+              "share": 0.0099
+            },
+            {
+              "code": "664",
+              "name": "SALES MANAGER",
+              "count": 3900,
+              "share": 0.0097
+            },
+            {
+              "code": "574",
+              "name": "SALESMAN",
+              "count": 3723,
+              "share": 0.0093
+            },
+            {
+              "code": "867",
+              "name": "BRICK MASON",
+              "count": 3719,
+              "share": 0.0093
+            },
+            {
+              "code": "888",
+              "name": "GENERAL SUPERVISOR",
+              "count": 3630,
+              "share": 0.0091
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 50847
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 39625
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 23897
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 15386
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 12511
+        },
+        {
+          "code": "721",
+          "name": "ACCOUNTANT (GEN )",
+          "count": 11833
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 11750
+        },
+        {
+          "code": "939",
+          "name": "ADMIN  MANAGER",
+          "count": 9906
+        },
+        {
+          "code": "777",
+          "name": "GEN  CLEAN  WORKER",
+          "count": 8586
+        },
+        {
+          "code": "585",
+          "name": "MASON",
+          "count": 8536
+        },
+        {
+          "code": "648",
+          "name": "ADMIN  DIRECTOR",
+          "count": 6515
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 5840
+        },
+        {
+          "code": "562",
+          "name": "CARPENTER.",
+          "count": 5416
+        },
+        {
+          "code": "858",
+          "name": "CARPENTER",
+          "count": 4991
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 4694
+        },
+        {
+          "code": "564",
+          "name": "PAINTER",
+          "count": 4387
+        },
+        {
+          "code": "595",
+          "name": "PLUMBER",
+          "count": 4235
+        },
+        {
+          "code": "977",
+          "name": "ASST EXECUTIVE MAN",
+          "count": 3943
+        },
+        {
+          "code": "664",
+          "name": "SALES MANAGER",
+          "count": 3900
+        },
+        {
+          "code": "574",
+          "name": "SALESMAN",
+          "count": 3723
+        }
+      ]
+    },
+    "PHL": {
+      "numeric_code": "608",
+      "name": "PHILIPPINES",
+      "in_country": 126653,
+      "out_country": 110537,
+      "committed": 0,
+      "pending": 0,
+      "cap": 155806,
+      "previous_cap": 141642,
+      "stock": 126653,
+      "headroom": 29153,
+      "utilization": 0.812889105682708,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 3,
+          "worker_count": 21188,
+          "share": 0.1673,
+          "top_professions": [
+            {
+              "code": "556",
+              "name": "NURSE",
+              "count": 8162,
+              "share": 0.0644
+            },
+            {
+              "code": "770",
+              "name": "WAITER",
+              "count": 6605,
+              "share": 0.0522
+            },
+            {
+              "code": "574",
+              "name": "SALESMAN",
+              "count": 6421,
+              "share": 0.0507
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 19,
+          "worker_count": 55407,
+          "share": 0.4375,
+          "top_professions": [
+            {
+              "code": "524",
+              "name": "Technician",
+              "count": 5713,
+              "share": 0.0451
+            },
+            {
+              "code": "777",
+              "name": "GEN  CLEAN  WORKER",
+              "count": 5416,
+              "share": 0.0428
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 5135,
+              "share": 0.0405
+            },
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 4458,
+              "share": 0.0352
+            },
+            {
+              "code": "919",
+              "name": "CASHIER",
+              "count": 4214,
+              "share": 0.0333
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 1080,
+          "worker_count": 50058,
+          "share": 0.3952,
+          "top_professions": [
+            {
+              "code": "539",
+              "name": "ENGINEER",
+              "count": 1097,
+              "share": 0.0087
+            },
+            {
+              "code": "573",
+              "name": "ACCOUNTANT",
+              "count": 1071,
+              "share": 0.0085
+            },
+            {
+              "code": "531",
+              "name": "CLERICAL",
+              "count": 971,
+              "share": 0.0077
+            },
+            {
+              "code": "722",
+              "name": "TECHNICIAN GEN ",
+              "count": 951,
+              "share": 0.0075
+            },
+            {
+              "code": "730",
+              "name": "ELECTRICAL TECHNICIAN",
+              "count": 899,
+              "share": 0.0071
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "556",
+          "name": "NURSE",
+          "count": 8162
+        },
+        {
+          "code": "770",
+          "name": "WAITER",
+          "count": 6605
+        },
+        {
+          "code": "574",
+          "name": "SALESMAN",
+          "count": 6421
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 5713
+        },
+        {
+          "code": "777",
+          "name": "GEN  CLEAN  WORKER",
+          "count": 5416
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 5135
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 4458
+        },
+        {
+          "code": "919",
+          "name": "CASHIER",
+          "count": 4214
+        },
+        {
+          "code": "569",
+          "name": "SECRETARY",
+          "count": 3731
+        },
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 2642
+        },
+        {
+          "code": "551",
+          "name": "SERVANT",
+          "count": 2611
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 2577
+        },
+        {
+          "code": "774",
+          "name": "AIR STEWARD",
+          "count": 2562
+        },
+        {
+          "code": "526",
+          "name": "ADMINISTRATIVE",
+          "count": 2369
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 2138
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 2049
+        },
+        {
+          "code": "773",
+          "name": "GROUND STEWARD",
+          "count": 1942
+        },
+        {
+          "code": "918",
+          "name": "RECEPTIONIST",
+          "count": 1843
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 1693
+        },
+        {
+          "code": "601",
+          "name": "COOKER",
+          "count": 1576
+        }
+      ]
+    },
+    "IRN": {
+      "numeric_code": "364",
+      "name": "IRAN",
+      "in_country": 6683,
+      "out_country": 2859,
+      "committed": 0,
+      "pending": 0,
+      "cap": 7768,
+      "previous_cap": 7062,
+      "stock": 6683,
+      "headroom": 1085,
+      "utilization": 0.8603244078269825,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 4,
+          "worker_count": 2211,
+          "share": 0.3308,
+          "top_professions": [
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 827,
+              "share": 0.1237
+            },
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 617,
+              "share": 0.0923
+            },
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 416,
+              "share": 0.0622
+            },
+            {
+              "code": "628",
+              "name": "BUSIN. EXECUTIVE.",
+              "count": 351,
+              "share": 0.0525
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 17,
+          "worker_count": 2268,
+          "share": 0.3394,
+          "top_professions": [
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 277,
+              "share": 0.0414
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 255,
+              "share": 0.0382
+            },
+            {
+              "code": "532",
+              "name": "PRIVATE STAFF",
+              "count": 241,
+              "share": 0.0361
+            },
+            {
+              "code": "536",
+              "name": "MANAGER",
+              "count": 199,
+              "share": 0.0298
+            },
+            {
+              "code": "533",
+              "name": "GOVT  STAFF",
+              "count": 150,
+              "share": 0.0224
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 358,
+          "worker_count": 2204,
+          "share": 0.3298,
+          "top_professions": [
+            {
+              "code": "774",
+              "name": "AIR STEWARD",
+              "count": 66,
+              "share": 0.0099
+            },
+            {
+              "code": "458",
+              "name": "officer",
+              "count": 63,
+              "share": 0.0094
+            },
+            {
+              "code": "711",
+              "name": "CORRESPONDENT",
+              "count": 59,
+              "share": 0.0088
+            },
+            {
+              "code": "526",
+              "name": "ADMINISTRATIVE",
+              "count": 52,
+              "share": 0.0078
+            },
+            {
+              "code": "664",
+              "name": "SALES MANAGER",
+              "count": 49,
+              "share": 0.0073
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 827
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 617
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 416
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 351
+        },
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 277
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 255
+        },
+        {
+          "code": "532",
+          "name": "PRIVATE STAFF",
+          "count": 241
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 199
+        },
+        {
+          "code": "533",
+          "name": "GOVT  STAFF",
+          "count": 150
+        },
+        {
+          "code": "534",
+          "name": "POLICE ARMY STAFF",
+          "count": 147
+        },
+        {
+          "code": "750",
+          "name": "PURCHASE REP ",
+          "count": 117
+        },
+        {
+          "code": "522",
+          "name": "OTHERS",
+          "count": 112
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 110
+        },
+        {
+          "code": "574",
+          "name": "SALESMAN",
+          "count": 103
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 91
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 85
+        },
+        {
+          "code": "492",
+          "name": "admin supervisor",
+          "count": 81
+        },
+        {
+          "code": "544",
+          "name": "STUDENT",
+          "count": 79
+        },
+        {
+          "code": "648",
+          "name": "ADMIN  DIRECTOR",
+          "count": 76
+        },
+        {
+          "code": "647",
+          "name": "GENERAL DIRECTOR",
+          "count": 76
+        }
+      ]
+    },
+    "IRQ": {
+      "numeric_code": "368",
+      "name": "IRAQ",
+      "in_country": 1658,
+      "out_country": 736,
+      "committed": 0,
+      "pending": 0,
+      "cap": 1959,
+      "previous_cap": 1781,
+      "stock": 1658,
+      "headroom": 301,
+      "utilization": 0.846350178662583,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 2,
+          "worker_count": 339,
+          "share": 0.2045,
+          "top_professions": [
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 195,
+              "share": 0.1176
+            },
+            {
+              "code": "538",
+              "name": "DOCTOR",
+              "count": 144,
+              "share": 0.0869
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 19,
+          "worker_count": 574,
+          "share": 0.3462,
+          "top_professions": [
+            {
+              "code": "539",
+              "name": "ENGINEER",
+              "count": 74,
+              "share": 0.0446
+            },
+            {
+              "code": "536",
+              "name": "MANAGER",
+              "count": 51,
+              "share": 0.0308
+            },
+            {
+              "code": "888",
+              "name": "GENERAL SUPERVISOR",
+              "count": 41,
+              "share": 0.0247
+            },
+            {
+              "code": "522",
+              "name": "OTHERS",
+              "count": 40,
+              "share": 0.0241
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 30,
+              "share": 0.0181
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 236,
+          "worker_count": 745,
+          "share": 0.4493,
+          "top_professions": [
+            {
+              "code": "416",
+              "name": "RESEARCHER",
+              "count": 16,
+              "share": 0.0097
+            },
+            {
+              "code": "555",
+              "name": "PHARMACIST",
+              "count": 16,
+              "share": 0.0097
+            },
+            {
+              "code": "534",
+              "name": "POLICE ARMY STAFF",
+              "count": 15,
+              "share": 0.009
+            },
+            {
+              "code": "403",
+              "name": "PLAYER",
+              "count": 15,
+              "share": 0.009
+            },
+            {
+              "code": "647",
+              "name": "GENERAL DIRECTOR",
+              "count": 15,
+              "share": 0.009
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 195
+        },
+        {
+          "code": "538",
+          "name": "DOCTOR",
+          "count": 144
+        },
+        {
+          "code": "539",
+          "name": "ENGINEER",
+          "count": 74
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 51
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 41
+        },
+        {
+          "code": "522",
+          "name": "OTHERS",
+          "count": 40
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 30
+        },
+        {
+          "code": "563",
+          "name": "Trainer/Instructor",
+          "count": 30
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 29
+        },
+        {
+          "code": "523",
+          "name": "TEACHER",
+          "count": 29
+        },
+        {
+          "code": "533",
+          "name": "GOVT  STAFF",
+          "count": 29
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 28
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 26
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 25
+        },
+        {
+          "code": "544",
+          "name": "STUDENT",
+          "count": 23
+        },
+        {
+          "code": "648",
+          "name": "ADMIN  DIRECTOR",
+          "count": 22
+        },
+        {
+          "code": "717",
+          "name": "TRAINER",
+          "count": 21
+        },
+        {
+          "code": "422",
+          "name": "SPECIALIST",
+          "count": 20
+        },
+        {
+          "code": "950",
+          "name": "EXPERT",
+          "count": 19
+        },
+        {
+          "code": "492",
+          "name": "admin supervisor",
+          "count": 19
+        }
+      ]
+    },
+    "YEM": {
+      "numeric_code": "886",
+      "name": "REPUBLIC OF YEMEN",
+      "in_country": 13105,
+      "out_country": 3368,
+      "committed": 0,
+      "pending": 0,
+      "cap": 14949,
+      "previous_cap": 13590,
+      "stock": 13105,
+      "headroom": 1844,
+      "utilization": 0.8766472673757442,
+      "tier_summary": {
+        "1": {
+          "profession_count": 1,
+          "worker_count": 6741,
+          "share": 0.5144,
+          "top_professions": [
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 6741,
+              "share": 0.5144
+            }
+          ]
+        },
+        "2": {
+          "profession_count": 1,
+          "worker_count": 695,
+          "share": 0.053,
+          "top_professions": [
+            {
+              "code": "533",
+              "name": "GOVT  STAFF",
+              "count": 695,
+              "share": 0.053
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 7,
+          "worker_count": 2054,
+          "share": 0.1567,
+          "top_professions": [
+            {
+              "code": "534",
+              "name": "POLICE ARMY STAFF",
+              "count": 564,
+              "share": 0.043
+            },
+            {
+              "code": "628",
+              "name": "BUSIN. EXECUTIVE.",
+              "count": 473,
+              "share": 0.0361
+            },
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 272,
+              "share": 0.0208
+            },
+            {
+              "code": "704",
+              "name": "IMAM IN MOSQUE",
+              "count": 225,
+              "share": 0.0172
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 225,
+              "share": 0.0172
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 401,
+          "worker_count": 3615,
+          "share": 0.2758,
+          "top_professions": [
+            {
+              "code": "524",
+              "name": "Technician",
+              "count": 131,
+              "share": 0.01
+            },
+            {
+              "code": "538",
+              "name": "DOCTOR",
+              "count": 111,
+              "share": 0.0085
+            },
+            {
+              "code": "601",
+              "name": "COOKER",
+              "count": 111,
+              "share": 0.0085
+            },
+            {
+              "code": "492",
+              "name": "admin supervisor",
+              "count": 110,
+              "share": 0.0084
+            },
+            {
+              "code": "544",
+              "name": "STUDENT",
+              "count": 106,
+              "share": 0.0081
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [
+        {
+          "profession_code": "645",
+          "profession_name": "EMPLOYEE",
+          "share": 0.5144,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        }
+      ],
+      "top_professions": [
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 6741
+        },
+        {
+          "code": "533",
+          "name": "GOVT  STAFF",
+          "count": 695
+        },
+        {
+          "code": "534",
+          "name": "POLICE ARMY STAFF",
+          "count": 564
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 473
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 272
+        },
+        {
+          "code": "704",
+          "name": "IMAM IN MOSQUE",
+          "count": 225
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 225
+        },
+        {
+          "code": "750",
+          "name": "PURCHASE REP ",
+          "count": 157
+        },
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 138
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 131
+        },
+        {
+          "code": "538",
+          "name": "DOCTOR",
+          "count": 111
+        },
+        {
+          "code": "601",
+          "name": "COOKER",
+          "count": 111
+        },
+        {
+          "code": "492",
+          "name": "admin supervisor",
+          "count": 110
+        },
+        {
+          "code": "544",
+          "name": "STUDENT",
+          "count": 106
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 105
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 105
+        },
+        {
+          "code": "532",
+          "name": "PRIVATE STAFF",
+          "count": 95
+        },
+        {
+          "code": "531",
+          "name": "CLERICAL",
+          "count": 93
+        },
+        {
+          "code": "522",
+          "name": "OTHERS",
+          "count": 91
+        },
+        {
+          "code": "754",
+          "name": "Jewelry Seller\n",
+          "count": 90
+        }
+      ]
+    },
+    "SYR": {
+      "numeric_code": "760",
+      "name": "SYRIA",
+      "in_country": 23324,
+      "out_country": 12864,
+      "committed": 0,
+      "pending": 0,
+      "cap": 27038,
+      "previous_cap": 24580,
+      "stock": 23324,
+      "headroom": 3714,
+      "utilization": 0.8626377690657593,
+      "tier_summary": {
+        "1": {
+          "profession_count": 0,
+          "worker_count": 0,
+          "share": 0.0,
+          "top_professions": []
+        },
+        "2": {
+          "profession_count": 3,
+          "worker_count": 5845,
+          "share": 0.2506,
+          "top_professions": [
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 2592,
+              "share": 0.1111
+            },
+            {
+              "code": "628",
+              "name": "BUSIN. EXECUTIVE.",
+              "count": 1963,
+              "share": 0.0842
+            },
+            {
+              "code": "888",
+              "name": "GENERAL SUPERVISOR",
+              "count": 1290,
+              "share": 0.0553
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 19,
+          "worker_count": 10146,
+          "share": 0.435,
+          "top_professions": [
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 1158,
+              "share": 0.0496
+            },
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 1071,
+              "share": 0.0459
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 955,
+              "share": 0.0409
+            },
+            {
+              "code": "750",
+              "name": "PURCHASE REP ",
+              "count": 871,
+              "share": 0.0373
+            },
+            {
+              "code": "538",
+              "name": "DOCTOR",
+              "count": 757,
+              "share": 0.0325
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 597,
+          "worker_count": 7333,
+          "share": 0.3144,
+          "top_professions": [
+            {
+              "code": "DVT",
+              "name": "Code_DVT",
+              "count": 191,
+              "share": 0.0082
+            },
+            {
+              "code": "664",
+              "name": "SALES MANAGER",
+              "count": 161,
+              "share": 0.0069
+            },
+            {
+              "code": "574",
+              "name": "SALESMAN",
+              "count": 151,
+              "share": 0.0065
+            },
+            {
+              "code": "647",
+              "name": "GENERAL DIRECTOR",
+              "count": 149,
+              "share": 0.0064
+            },
+            {
+              "code": "522",
+              "name": "OTHERS",
+              "count": 149,
+              "share": 0.0064
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 2592
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 1963
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 1290
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 1158
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 1071
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 955
+        },
+        {
+          "code": "750",
+          "name": "PURCHASE REP ",
+          "count": 871
+        },
+        {
+          "code": "538",
+          "name": "DOCTOR",
+          "count": 757
+        },
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 683
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 576
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 485
+        },
+        {
+          "code": "539",
+          "name": "ENGINEER",
+          "count": 439
+        },
+        {
+          "code": "523",
+          "name": "TEACHER",
+          "count": 412
+        },
+        {
+          "code": "648",
+          "name": "ADMIN  DIRECTOR",
+          "count": 372
+        },
+        {
+          "code": "847",
+          "name": "HEAVY VEHICLE DRIVER",
+          "count": 370
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 332
+        },
+        {
+          "code": "526",
+          "name": "ADMINISTRATIVE",
+          "count": 309
+        },
+        {
+          "code": "CMF",
+          "name": "CMF",
+          "count": 284
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 280
+        },
+        {
+          "code": "492",
+          "name": "admin supervisor",
+          "count": 277
+        }
+      ]
+    },
+    "AFG": {
+      "numeric_code": "004",
+      "name": "AFG",
+      "in_country": 2532,
+      "out_country": 1264,
+      "committed": 0,
+      "pending": 0,
+      "cap": 3016,
+      "previous_cap": 2742,
+      "stock": 2532,
+      "headroom": 484,
+      "utilization": 0.8395225464190982,
+      "tier_summary": {
+        "1": {
+          "profession_count": 1,
+          "worker_count": 548,
+          "share": 0.2164,
+          "top_professions": [
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 548,
+              "share": 0.2164
+            }
+          ]
+        },
+        "2": {
+          "profession_count": 2,
+          "worker_count": 371,
+          "share": 0.1465,
+          "top_professions": [
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 225,
+              "share": 0.0889
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 146,
+              "share": 0.0577
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 15,
+          "worker_count": 893,
+          "share": 0.3527,
+          "top_professions": [
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 100,
+              "share": 0.0395
+            },
+            {
+              "code": "573",
+              "name": "ACCOUNTANT",
+              "count": 99,
+              "share": 0.0391
+            },
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 86,
+              "share": 0.034
+            },
+            {
+              "code": "939",
+              "name": "ADMIN  MANAGER",
+              "count": 78,
+              "share": 0.0308
+            },
+            {
+              "code": "902",
+              "name": "REPRESENTATIVE",
+              "count": 75,
+              "share": 0.0296
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 188,
+          "worker_count": 720,
+          "share": 0.2844,
+          "top_professions": [
+            {
+              "code": "539",
+              "name": "ENGINEER",
+              "count": 24,
+              "share": 0.0095
+            },
+            {
+              "code": "585",
+              "name": "MASON",
+              "count": 21,
+              "share": 0.0083
+            },
+            {
+              "code": "647",
+              "name": "GENERAL DIRECTOR",
+              "count": 21,
+              "share": 0.0083
+            },
+            {
+              "code": "601",
+              "name": "COOKER",
+              "count": 21,
+              "share": 0.0083
+            },
+            {
+              "code": "414",
+              "name": "DECOR ENGINEER",
+              "count": 19,
+              "share": 0.0075
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 548
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 225
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 146
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 100
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 99
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 86
+        },
+        {
+          "code": "939",
+          "name": "ADMIN  MANAGER",
+          "count": 78
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 75
+        },
+        {
+          "code": "721",
+          "name": "ACCOUNTANT (GEN )",
+          "count": 73
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 70
+        },
+        {
+          "code": "CMG",
+          "name": "CMG",
+          "count": 55
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 50
+        },
+        {
+          "code": "847",
+          "name": "HEAVY VEHICLE DRIVER",
+          "count": 49
+        },
+        {
+          "code": "648",
+          "name": "ADMIN  DIRECTOR",
+          "count": 43
+        },
+        {
+          "code": "536",
+          "name": "MANAGER",
+          "count": 33
+        },
+        {
+          "code": "CMF",
+          "name": "CMF",
+          "count": 28
+        },
+        {
+          "code": "870",
+          "name": "MARKET MANAGER",
+          "count": 28
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 26
+        },
+        {
+          "code": "539",
+          "name": "ENGINEER",
+          "count": 24
+        },
+        {
+          "code": "585",
+          "name": "MASON",
+          "count": 21
+        }
+      ]
+    },
+    "LKA": {
+      "numeric_code": "144",
+      "name": "SRILANKA",
+      "in_country": 101272,
+      "out_country": 110469,
+      "committed": 0,
+      "pending": 0,
+      "cap": 136111,
+      "previous_cap": 123738,
+      "stock": 101272,
+      "headroom": 34839,
+      "utilization": 0.7440397910528906,
+      "tier_summary": {
+        "1": {
+          "profession_count": 1,
+          "worker_count": 18678,
+          "share": 0.1844,
+          "top_professions": [
+            {
+              "code": "558",
+              "name": "DRIVER",
+              "count": 18678,
+              "share": 0.1844
+            }
+          ]
+        },
+        "2": {
+          "profession_count": 2,
+          "worker_count": 19773,
+          "share": 0.1952,
+          "top_professions": [
+            {
+              "code": "540",
+              "name": "LABOURER",
+              "count": 13189,
+              "share": 0.1302
+            },
+            {
+              "code": "777",
+              "name": "GEN  CLEAN  WORKER",
+              "count": 6584,
+              "share": 0.065
+            }
+          ]
+        },
+        "3": {
+          "profession_count": 11,
+          "worker_count": 24845,
+          "share": 0.2453,
+          "top_professions": [
+            {
+              "code": "429",
+              "name": "SUPERVISOR.",
+              "count": 4220,
+              "share": 0.0417
+            },
+            {
+              "code": "889",
+              "name": "FOREMAN",
+              "count": 3335,
+              "share": 0.0329
+            },
+            {
+              "code": "628",
+              "name": "BUSIN. EXECUTIVE.",
+              "count": 2557,
+              "share": 0.0252
+            },
+            {
+              "code": "524",
+              "name": "Technician",
+              "count": 2442,
+              "share": 0.0241
+            },
+            {
+              "code": "574",
+              "name": "SALESMAN",
+              "count": 2390,
+              "share": 0.0236
+            }
+          ]
+        },
+        "4": {
+          "profession_count": 995,
+          "worker_count": 37976,
+          "share": 0.375,
+          "top_professions": [
+            {
+              "code": "919",
+              "name": "CASHIER",
+              "count": 970,
+              "share": 0.0096
+            },
+            {
+              "code": "492",
+              "name": "admin supervisor",
+              "count": 804,
+              "share": 0.0079
+            },
+            {
+              "code": "783",
+              "name": "GUARD",
+              "count": 791,
+              "share": 0.0078
+            },
+            {
+              "code": "591",
+              "name": "HOTEL SERVICES",
+              "count": 778,
+              "share": 0.0077
+            },
+            {
+              "code": "645",
+              "name": "EMPLOYEE",
+              "count": 736,
+              "share": 0.0073
+            }
+          ]
+        }
+      },
+      "dominance_alerts": [],
+      "top_professions": [
+        {
+          "code": "558",
+          "name": "DRIVER",
+          "count": 18678
+        },
+        {
+          "code": "540",
+          "name": "LABOURER",
+          "count": 13189
+        },
+        {
+          "code": "777",
+          "name": "GEN  CLEAN  WORKER",
+          "count": 6584
+        },
+        {
+          "code": "429",
+          "name": "SUPERVISOR.",
+          "count": 4220
+        },
+        {
+          "code": "889",
+          "name": "FOREMAN",
+          "count": 3335
+        },
+        {
+          "code": "628",
+          "name": "BUSIN. EXECUTIVE.",
+          "count": 2557
+        },
+        {
+          "code": "524",
+          "name": "Technician",
+          "count": 2442
+        },
+        {
+          "code": "574",
+          "name": "SALESMAN",
+          "count": 2390
+        },
+        {
+          "code": "902",
+          "name": "REPRESENTATIVE",
+          "count": 2313
+        },
+        {
+          "code": "770",
+          "name": "WAITER",
+          "count": 1884
+        },
+        {
+          "code": "847",
+          "name": "HEAVY VEHICLE DRIVER",
+          "count": 1564
+        },
+        {
+          "code": "888",
+          "name": "GENERAL SUPERVISOR",
+          "count": 1432
+        },
+        {
+          "code": "601",
+          "name": "COOKER",
+          "count": 1417
+        },
+        {
+          "code": "573",
+          "name": "ACCOUNTANT",
+          "count": 1291
+        },
+        {
+          "code": "919",
+          "name": "CASHIER",
+          "count": 970
+        },
+        {
+          "code": "492",
+          "name": "admin supervisor",
+          "count": 804
+        },
+        {
+          "code": "783",
+          "name": "GUARD",
+          "count": 791
+        },
+        {
+          "code": "591",
+          "name": "HOTEL SERVICES",
+          "count": 778
+        },
+        {
+          "code": "645",
+          "name": "EMPLOYEE",
+          "count": 736
+        },
+        {
+          "code": "564",
+          "name": "PAINTER",
+          "count": 694
+        }
+      ]
+    }
+  }
+}

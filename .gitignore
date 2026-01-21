@@ -167,6 +167,7 @@ data/*.sqlite
 
 # Real ministry data (NEVER commit - sensitive data)
 real_data/
+!real_data/summary_by_nationality.json
 data/real/
 
 # Data files (keep structure, ignore generated data)
