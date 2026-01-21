@@ -86,18 +86,18 @@ with st.sidebar:
     try:
         from app.utils.real_data_loader import check_real_data_available
         if check_real_data_available():
-            # Real totals from data
+            # Real totals from summary_by_nationality.json
             st.metric("Restricted Nations", "12", help="Nationalities under quota management")
-            st.metric("Total Workers", "336,380", help="Combined QVC + Additional countries workforce")
-            st.metric("Active Alerts", "3", help="Dominance concentration alerts")
+            st.metric("Total Workers", "1,819,441", help="Total workforce across all 12 nationalities")
+            st.metric("Active Alerts", "3", help="Yemen CRITICAL, Nepal WATCH, Pakistan WATCH")
         else:
             st.metric("Restricted Nations", "12", help="Nationalities under quota management")
-            st.metric("Total Workers", "336,380", help="Current workforce in restricted categories")
-            st.metric("Queue Pending", "342", help="Requests awaiting capacity")
+            st.metric("Total Workers", "1,819,441", help="Total workforce in restricted categories")
+            st.metric("Active Alerts", "3", help="Dominance concentration alerts")
     except Exception:
         st.metric("Restricted Nations", "12", help="Nationalities under quota management")
-        st.metric("Total Workers", "336,380", help="Current workforce in restricted categories")
-        st.metric("Queue Pending", "342", help="Requests awaiting capacity")
+        st.metric("Total Workers", "1,819,441", help="Total workforce in restricted categories")
+        st.metric("Active Alerts", "3", help="Dominance concentration alerts")
 
 
 # Main content - Landing page
