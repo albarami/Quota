@@ -18,7 +18,7 @@
 | **Growing Countries** | 2 (Bangladesh, Pakistan) |
 | **Declining Countries** | 10 |
 | **Short-term Workers Excluded** | 398,678 |
-| **Total Dominance Alerts** | 73 |
+| **Total Dominance Alerts** | 278 |
 
 ---
 
@@ -103,7 +103,20 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 **Minimum Profession Size:** 200 workers  
 **Thresholds:** WATCH >= 30%, HIGH >= 40%, CRITICAL >= 50%
 
-### India (30 alerts)
+### Summary by Nationality
+
+| Nationality | Total Alerts | CRITICAL | HIGH | WATCH |
+|-------------|-------------:|---------:|-----:|------:|
+| India | 136 | 20 | 31 | 85 |
+| Bangladesh | 78 | 26 | 24 | 28 |
+| Nepal | 31 | 1 | 8 | 22 |
+| Philippines | 25 | 6 | 9 | 10 |
+| Egypt | 6 | 1 | 2 | 3 |
+| Pakistan | 1 | 1 | 0 | 0 |
+| Sri Lanka | 1 | 0 | 0 | 1 |
+| **TOTAL** | **278** | **55** | **74** | **149** |
+
+### India (136 alerts - Top 10)
 
 | Level | Profession | Share | Workers |
 |-------|------------|------:|--------:|
@@ -118,7 +131,7 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | HIGH | TECHNICIAN GEN | 46.3% | 5,492/11,866 |
 | HIGH | ELECT ENGINEER | 46.1% | 2,044/4,433 |
 
-### Bangladesh (23 alerts)
+### Bangladesh (78 alerts - Top 10)
 
 | Level | Profession | Share | Workers |
 |-------|------------|------:|--------:|
@@ -133,7 +146,7 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | HIGH | ASSISTANT MANAGER | 45.9% | 1,417/3,089 |
 | HIGH | ADMIN DIRECTOR | 45.4% | 5,691/12,543 |
 
-### Nepal (8 alerts)
+### Nepal (31 alerts - Top 10)
 
 | Level | Profession | Share | Workers |
 |-------|------------|------:|--------:|
@@ -146,7 +159,7 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | WATCH | WASHING WORKER | 32.5% | 917/2,820 |
 | WATCH | PLASTER WORKER | 32.3% | 2,157/6,673 |
 
-### Philippines (9 alerts)
+### Philippines (25 alerts - Top 10)
 
 | Level | Profession | Share | Workers |
 |-------|------------|------:|--------:|
@@ -160,12 +173,16 @@ These countries do **NOT** require QVC processing. All have **negative growth** 
 | WATCH | Cosmetologist | 34.7% | 437/1,259 |
 | WATCH | NURSE | 33.7% | 7,683/22,830 |
 
-### Egypt (2 alerts)
+### Egypt (6 alerts)
 
 | Level | Profession | Share | Workers |
 |-------|------------|------:|--------:|
 | CRITICAL | LEGAL PROFESSIONAL | 51.8% | 302/583 |
 | HIGH | LAWYER | 46.8% | 363/775 |
+| HIGH | SOCIAL SPECIALIST | 41.7% | 86/206 |
+| WATCH | AGRICULTURAL ENGIN | 31.2% | 114/365 |
+| WATCH | AWP | 31.2% | 67/215 |
+| WATCH | LEGAL CONSULTANT | 30.0% | 94/313 |
 
 ### Pakistan (1 alert)
 

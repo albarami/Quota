@@ -259,11 +259,12 @@ def process_worker_data():
         months = 23  # 12 months 2024 + 11 months 2025
         monthly_outflow = int(total_left / months) if months > 0 else 0
         
-        # Dominance alerts
+        # Dominance alerts - CHECK ALL PROFESSIONS (not just top 50)
         dominance_alerts = []
         total_this_nat = sum(d['profession_counts'].values())
         
-        for prof_code, count in sorted(d['profession_counts'].items(), key=lambda x: -x[1])[:50]:
+        # Iterate through ALL professions this nationality works in
+        for prof_code, count in d['profession_counts'].items():
             total_in_prof = total_by_profession.get(prof_code, 0)
             if total_in_prof >= MIN_PROFESSION_SIZE:
                 dominance_share = count / total_in_prof
@@ -278,6 +279,9 @@ def process_worker_data():
                         'count': count,
                         'total': total_in_prof,
                     })
+        
+        # Sort by share descending
+        dominance_alerts.sort(key=lambda x: -x['share'])
         
         # Tier distribution
         tiers = {1: 0, 2: 0, 3: 0, 4: 0}
