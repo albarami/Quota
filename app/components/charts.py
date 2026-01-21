@@ -400,3 +400,233 @@ def create_cap_recommendation_chart(
     )
     
     return fig
+
+
+# =============================================================================
+# V4 CHARTS - Cap Constraint, QVC Utilization
+# =============================================================================
+
+def create_cap_constraint_chart(
+    stock: int,
+    desired_cap: int,
+    max_achievable: int,
+    recommended_cap: int
+) -> go.Figure:
+    """
+    Create a horizontal stacked bar chart showing cap constraint.
+    
+    Shows:
+    - Current Stock (blue)
+    - Net QVC Capacity / Growth room (green)
+    - Constraint gap (red) if applicable
+    
+    Args:
+        stock: Current worker stock
+        desired_cap: Calculated desired cap before constraint
+        max_achievable: Stock + Net QVC capacity
+        recommended_cap: Final recommended cap
+    """
+    is_constrained = desired_cap > max_achievable
+    net_capacity = max_achievable - stock
+    gap = desired_cap - max_achievable if is_constrained else 0
+    
+    # Build the stacked bar
+    fig = go.Figure()
+    
+    # Stock (always present)
+    fig.add_trace(go.Bar(
+        y=["Cap Analysis"],
+        x=[stock],
+        name="Current Stock",
+        orientation="h",
+        marker_color=COLORS["info"],
+        text=[f"Stock: {stock:,}"],
+        textposition="inside",
+        textfont={"color": "white", "size": 12},
+    ))
+    
+    # Net QVC Capacity (growth room)
+    fig.add_trace(go.Bar(
+        y=["Cap Analysis"],
+        x=[net_capacity],
+        name="Net QVC Capacity",
+        orientation="h",
+        marker_color=COLORS["success"],
+        text=[f"Net QVC: {net_capacity:,}"],
+        textposition="inside",
+        textfont={"color": "white", "size": 12},
+    ))
+    
+    # Gap (if constrained)
+    if is_constrained and gap > 0:
+        fig.add_trace(go.Bar(
+            y=["Cap Analysis"],
+            x=[gap],
+            name="Constrained Gap",
+            orientation="h",
+            marker_color=COLORS["error"],
+            text=[f"Gap: {gap:,}"],
+            textposition="inside",
+            textfont={"color": "white", "size": 12},
+            opacity=0.7,
+        ))
+    
+    # Add vertical lines for key values
+    fig.add_vline(
+        x=recommended_cap,
+        line_dash="dash",
+        line_color=COLORS["secondary"],
+        annotation_text=f"Recommended: {recommended_cap:,}",
+        annotation_position="top",
+    )
+    
+    if is_constrained:
+        fig.add_vline(
+            x=desired_cap,
+            line_dash="dot",
+            line_color=COLORS["error"],
+            annotation_text=f"Desired: {desired_cap:,}",
+            annotation_position="bottom",
+        )
+    
+    fig.update_layout(
+        title={
+            "text": "Cap Constraint Analysis",
+            "font": {"size": 16, "color": COLORS["primary"]},
+        },
+        barmode="stack",
+        xaxis_title="Workers",
+        yaxis_title="",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font={"family": "Source Sans Pro"},
+        height=200,
+        margin=dict(l=20, r=20, t=60, b=40),
+        legend={"orientation": "h", "yanchor": "bottom", "y": -0.4},
+    )
+    
+    return fig
+
+
+def create_qvc_utilization_gauge(
+    outflow: int,
+    qvc_annual: int
+) -> go.Figure:
+    """
+    Create a gauge showing QVC capacity utilization.
+    
+    Utilization = Outflow / QVC Annual Capacity
+    This shows how much of QVC is used just for replacement.
+    
+    Args:
+        outflow: Average annual outflow (replacement need)
+        qvc_annual: QVC annual processing capacity
+    """
+    utilization = (outflow / qvc_annual * 100) if qvc_annual > 0 else 0
+    net_capacity_pct = 100 - utilization
+    
+    # Determine color and status
+    if utilization >= 95:
+        color = COLORS["error"]
+        status = "CRITICAL"
+    elif utilization >= 80:
+        color = COLORS["warning"]
+        status = "WARNING"
+    else:
+        color = COLORS["success"]
+        status = "HEALTHY"
+    
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=utilization,
+        domain={"x": [0, 1], "y": [0, 1]},
+        title={
+            "text": f"QVC Replacement Usage<br><span style='font-size:0.8em;color:{color}'>{status}</span>",
+            "font": {"size": 14, "color": COLORS["text"]},
+        },
+        number={
+            "suffix": "%",
+            "font": {"size": 28, "color": color},
+        },
+        gauge={
+            "axis": {"range": [0, 100], "tickwidth": 1},
+            "bar": {"color": color},
+            "bgcolor": "white",
+            "borderwidth": 2,
+            "bordercolor": COLORS["text_light"],
+            "steps": [
+                {"range": [0, 80], "color": "#E8F5E9"},
+                {"range": [80, 95], "color": "#FFF8E1"},
+                {"range": [95, 100], "color": "#FFEBEE"},
+            ],
+            "threshold": {
+                "line": {"color": COLORS["error"], "width": 3},
+                "thickness": 0.75,
+                "value": 95,
+            },
+        },
+    ))
+    
+    # Add annotation for net capacity
+    fig.add_annotation(
+        x=0.5,
+        y=-0.15,
+        text=f"Net Capacity: {net_capacity_pct:.1f}% available for growth",
+        showarrow=False,
+        font={"size": 11, "color": COLORS["text_light"]},
+        xref="paper",
+        yref="paper",
+    )
+    
+    fig.update_layout(
+        paper_bgcolor="rgba(0,0,0,0)",
+        font={"family": "Source Sans Pro"},
+        height=220,
+        margin=dict(l=20, r=20, t=60, b=40),
+    )
+    
+    return fig
+
+
+def create_v4_cap_breakdown_chart(
+    stock: int,
+    demand_value: int,
+    buffer_value: int,
+    demand_basis: str
+) -> go.Figure:
+    """
+    Create a waterfall chart showing v4 cap calculation breakdown.
+    
+    Args:
+        stock: Current stock
+        demand_value: Joiners or Outflow value
+        buffer_value: Buffer amount
+        demand_basis: "Joiners" or "Outflow"
+    """
+    fig = go.Figure(go.Waterfall(
+        name="Cap Breakdown",
+        orientation="v",
+        measure=["absolute", "relative", "relative", "total"],
+        x=["Stock", demand_basis, "Buffer", "Desired Cap"],
+        y=[stock, demand_value, buffer_value, 0],
+        textposition="outside",
+        text=[f"{stock:,}", f"+{demand_value:,}", f"+{buffer_value:,}", f"{stock + demand_value + buffer_value:,}"],
+        connector={"line": {"color": COLORS["text_light"]}},
+        increasing={"marker": {"color": COLORS["success"]}},
+        decreasing={"marker": {"color": COLORS["error"]}},
+        totals={"marker": {"color": COLORS["primary"]}},
+    ))
+    
+    fig.update_layout(
+        title={
+            "text": "v4 Cap Calculation Breakdown",
+            "font": {"size": 16, "color": COLORS["primary"]},
+        },
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font={"family": "Source Sans Pro"},
+        height=300,
+        showlegend=False,
+    )
+    
+    return fig

@@ -155,11 +155,11 @@ with col2:
         border-top: 4px solid #D4AF37;
         height: 200px;
     ">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤖</div>
-        <h3 style="color: #7B1E3D; margin: 0 0 0.5rem 0;">AI Recommendations</h3>
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📐</div>
+        <h3 style="color: #7B1E3D; margin: 0 0 0.5rem 0;">v4 Cap Engine</h3>
         <p style="color: #5C5C7A; font-size: 0.9rem; margin: 0;">
-            Azure OpenAI-powered cap recommendations with rationale,
-            decision explanations, and market insights.
+            Demand-driven cap recommendations using Joiners/Outflow,
+            with QVC capacity as hard constraint for 6 countries.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -185,7 +185,7 @@ with col3:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Key formula highlight
+# Key formula highlight - v4 Methodology
 st.markdown("""
 <div style="
     background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
@@ -194,7 +194,7 @@ st.markdown("""
     padding: 1.5rem;
     margin: 2rem 0;
 ">
-    <h4 style="color: #7B1E3D; margin: 0 0 1rem 0;">📐 The Golden Formula</h4>
+    <h4 style="color: #7B1E3D; margin: 0 0 1rem 0;">📐 The v4 Cap Formula</h4>
     <div style="
         background: #1A1A2E;
         color: #D4AF37;
@@ -203,10 +203,33 @@ st.markdown("""
         font-family: 'Courier New', monospace;
         font-size: 0.95rem;
     ">
-        effective_headroom = cap - stock - committed - (pending × 0.8) + (outflow × 0.75)
+        Recommended_Cap = min(Stock + Demand + Buffer, Stock + Net_QVC)
+    </div>
+    <div style="
+        background: #2A2A3E;
+        color: #C0C0C0;
+        padding: 0.75rem 1rem;
+        border-radius: 0 0 8px 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+    ">
+        where Demand = Joiners (positive growth) or Outflow (negative growth)
+    </div>
+    <div style="margin-top: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <div style="background: #E8F5E9; padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.8rem;">
+            <strong style="color: #2E7D32;">QVC Countries:</strong> Subject to QVC capacity constraint
+        </div>
+        <div style="background: #FFF8E1; padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.8rem;">
+            <strong style="color: #E65100;">Outflow-Based:</strong> Cap frozen at stock
+        </div>
+        <div style="background: #E3F2FD; padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.8rem;">
+            <strong style="color: #1565C0;">Standard:</strong> Demand-driven without constraint
+        </div>
     </div>
     <p style="color: #5C5C7A; font-size: 0.85rem; margin: 1rem 0 0 0;">
-        Real-time capacity calculation considering pipeline commitments and conservative outflow projections.
+        <strong>v4 Methodology:</strong> Demand-driven caps with QVC capacity as hard constraint.
+        See <em>Quota_Allocation_Methodology_v4.md</em> for complete documentation.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -215,7 +238,11 @@ st.markdown("""
 st.markdown("""
 <div style="margin: 2rem 0;">
     <h3 style="color: #7B1E3D;">Dynamic Tier System</h3>
-    <div style="width: 60px; height: 4px; background: #D4AF37; border-radius: 2px; margin: 0.5rem 0 1.5rem 0;"></div>
+    <div style="width: 60px; height: 4px; background: #D4AF37; border-radius: 2px; margin: 0.5rem 0 1rem 0;"></div>
+    <p style="color: #5C5C7A; font-size: 0.9rem; margin-bottom: 1rem;">
+        Tiers determine allocation priority <strong>within</strong> the recommended cap. 
+        Based on profession share within each nationality.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -261,7 +288,7 @@ for i, (num, name, color, threshold, desc) in enumerate(tiers):
 # Footer
 st.markdown("""
 <div class="footer">
-    <p>© 2026 Qatar Ministry of Labour • Nationality Quota Allocation System v2.0</p>
-    <p style="font-size: 0.75rem;">Powered by FastAPI • Streamlit • Azure OpenAI</p>
+    <p>© 2026 Qatar Ministry of Labour • Nationality Quota Allocation System v4.0</p>
+    <p style="font-size: 0.75rem;">Powered by FastAPI • Streamlit • Quota Engine v4</p>
 </div>
 """, unsafe_allow_html=True)

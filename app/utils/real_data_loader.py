@@ -1,151 +1,103 @@
-#!/usr/bin/env python
 """
 Real Data Loader for Streamlit Dashboard.
 
-Loads actual ministry data from CSV files in real_data/ folder.
-Uses pre-computed summary for fast loading.
+This module provides the interface between the Streamlit UI and the quota_engine.
+All calculations are delegated to the quota_engine - NO fallbacks or demo data.
+
+This is a production-grade data loader.
 """
 
-import csv
-import json
 import sys
 from pathlib import Path
 from datetime import datetime
-from collections import defaultdict
 from typing import Optional
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-# Path to real data
-REAL_DATA_DIR = project_root / 'real_data'
-SUMMARY_FILE = REAL_DATA_DIR / 'summary_by_nationality.json'
-QVC_CAPACITY_FILE = REAL_DATA_DIR / 'qvc_capacity.json'
+# Import the quota engine - single source of truth
+from src.engines.quota_engine import (
+    get_all_metrics,
+    get_all_nationalities,
+    is_qvc_country,
+    is_outflow_based,
+    get_qvc_capacity_details,
+    QVC_COUNTRIES,
+    OUTFLOW_BASED,
+    STANDARD_NON_QVC,
+    DATA_DIR,
+)
 
-# Cache for summary data
-_summary_cache = None
-_qvc_cache = None
 
-# Nationality code mapping (ISO 3-letter to numeric)
-NATIONALITY_CODES = {
-    'EGY': '818',   # Egypt
-    'IND': '356',   # India
-    'PAK': '586',   # Pakistan
-    'NPL': '524',   # Nepal
-    'BGD': '050',   # Bangladesh
-    'PHL': '608',   # Philippines
-    'IRN': '364',   # Iran
-    'IRQ': '368',   # Iraq
-    'YEM': '886',   # Yemen
-    'SYR': '760',   # Syria
-    'AFG': '004',   # Afghanistan
-    'LKA': '144',   # Sri Lanka
+# Nationality name mapping
+NATIONALITY_NAMES = {
+    'EGY': 'Egypt',
+    'IND': 'India',
+    'PAK': 'Pakistan',
+    'NPL': 'Nepal',
+    'BGD': 'Bangladesh',
+    'PHL': 'Philippines',
+    'LKA': 'Sri Lanka',
+    'IRN': 'Iran',
+    'IRQ': 'Iraq',
+    'YEM': 'Yemen',
+    'SYR': 'Syria',
+    'AFG': 'Afghanistan',
 }
 
-# Reverse mapping
-NUMERIC_TO_ISO = {v: k for k, v in NATIONALITY_CODES.items()}
 
-# Permit duration filter - exclude short-term permits
-MIN_EMPLOYMENT_DAYS = 365  # Exclude workers with < 1 year employment
-
-
-def _load_summary() -> Optional[dict]:
-    """Load pre-computed summary data (fast)."""
-    global _summary_cache
+def check_real_data_available() -> bool:
+    """
+    Check if real data files are available.
     
-    if _summary_cache is not None:
-        return _summary_cache
-    
-    if not SUMMARY_FILE.exists():
-        return None
-    
-    try:
-        with open(SUMMARY_FILE, encoding='utf-8') as f:
-            _summary_cache = json.load(f)
-        return _summary_cache
-    except Exception:
-        return None
-
-
-def _load_csv(filename: str) -> list:
-    """Load a CSV file from real_data directory."""
-    filepath = REAL_DATA_DIR / filename
-    if not filepath.exists():
-        return []
-    
-    with open(filepath, encoding='utf-8') as f:
-        return list(csv.DictReader(f))
-
-
-def _load_nationalities() -> dict:
-    """Load nationality reference data."""
-    rows = _load_csv('01_nationalities.csv')
-    return {row['code']: row for row in rows}
-
-
-def _load_professions() -> dict:
-    """Load profession reference data."""
-    rows = _load_csv('02_professions.csv')
-    return {row['code']: row.get('name_en', row.get('name', f'Profession_{row["code"]}')) for row in rows}
-
-
-def _load_caps() -> dict:
-    """Load nationality caps."""
-    rows = _load_csv('05_nationality_caps.csv')
-    caps = {}
-    for row in rows:
-        nat_code = row.get('nationality_code', '')
-        if nat_code:
-            caps[nat_code] = {
-                'current_cap': int(row.get('cap_limit', 0) or row.get('current_cap', 0) or 0),
-                'previous_cap': int(row.get('previous_cap', 0) or 0),
-                'base_cap': int(row.get('base_cap', 0) or 0),
-            }
-    return caps
-
-
-def _load_worker_stock() -> list:
-    """Load worker stock data (slow - use summary instead)."""
-    return _load_csv('07_worker_stock.csv')
+    Returns True if the essential data files exist.
+    """
+    required_files = [
+        '07_worker_stock.csv',
+        '01_nationalities.csv',
+    ]
+    return all((DATA_DIR / f).exists() for f in required_files)
 
 
 def get_real_dashboard_data(nationality_code: str) -> Optional[dict]:
     """
-    Get dashboard data from real ministry data files.
-    Uses pre-computed summary for fast loading.
+    Get dashboard data for a nationality using the quota engine.
+    
+    This is the main function called by the Streamlit dashboard.
+    Returns a complete dictionary with all v4 metrics.
     
     Args:
-        nationality_code: ISO 3-letter code (e.g., 'EGY')
+        nationality_code: ISO 3-letter code (e.g., 'IND')
         
     Returns:
-        Dashboard data dictionary with real numbers
+        Dictionary with all dashboard metrics, or None if data unavailable
     """
-    # Try fast path: use pre-computed summary
-    summary = _load_summary()
-    if summary and nationality_code in summary.get('nationalities', {}):
-        return _build_dashboard_from_summary(nationality_code, summary['nationalities'][nationality_code])
+    if not check_real_data_available():
+        raise FileNotFoundError("Real data files not found in real_data/ folder")
     
-    # Fallback: compute from raw data (slow)
-    return _compute_dashboard_from_raw(nationality_code)
-
-
-def _build_dashboard_from_summary(nationality_code: str, data: dict) -> dict:
-    """Build dashboard response from pre-computed summary (fast)."""
-    stock = data['stock']
-    cap = data['cap']
-    headroom = data['headroom']
-    utilization = data['utilization']
+    # Get all metrics from quota engine
+    metrics = get_all_metrics(nationality_code)
     
-    # Build tier statuses from summary
+    # Build tier statuses for dashboard display
     tier_statuses = []
+    utilization = metrics['utilization_pct'] / 100  # Convert to decimal
+    headroom = metrics['headroom']
+    
     for tier_level in [1, 2, 3, 4]:
-        tier_data = data['tier_summary'].get(str(tier_level), {})
+        tier_data = metrics['tier_summary'].get(str(tier_level), {})
         tier_share = tier_data.get('share', 0)
-        tier_cap = int(headroom * (0.40 if tier_level == 1 else 0.30 if tier_level == 2 else 0.20 if tier_level == 3 else 0.10))
         
-        # Determine status based on utilization
-        if utilization >= 0.95:
+        # Calculate tier capacity based on headroom allocation
+        # Tier 1 gets 40%, Tier 2 gets 30%, Tier 3 gets 20%, Tier 4 gets 10%
+        allocation_pct = {1: 0.40, 2: 0.30, 3: 0.20, 4: 0.10}
+        tier_cap = int(headroom * allocation_pct[tier_level])
+        
+        # Determine status based on utilization and tier level
+        if metrics['country_type'] == 'OUTFLOW_BASED':
+            # Outflow-based countries have 100% utilization
+            status = "CLOSED"
+        elif utilization >= 0.95:
             status = "CLOSED"
         elif utilization >= 0.90:
             status = "LIMITED" if tier_level <= 2 else "CLOSED"
@@ -160,21 +112,25 @@ def _build_dashboard_from_summary(nationality_code: str, data: dict) -> dict:
             'status': status,
             'capacity': tier_cap,
             'share_pct': tier_share,
+            'profession_count': tier_data.get('profession_count', 0),
+            'worker_count': tier_data.get('worker_count', 0),
         })
     
-    # Build alerts from summary
+    # Build dominance alerts
     alerts = []
-    for alert in data.get('dominance_alerts', []):
+    for alert in metrics.get('dominance_alerts', []):
         alerts.append({
-            'profession_id': alert['profession_code'],
-            'profession_name': alert['profession_name'],
-            'share_pct': alert['share'],
-            'velocity': 0.02,
-            'alert_level': alert['alert_level'],
-            'is_blocking': alert.get('is_blocking', False)
+            'profession_id': alert.get('profession_code', ''),
+            'profession_name': alert.get('profession_name', ''),
+            'share_pct': alert.get('share_pct', 0),
+            'nationality_workers': alert.get('nationality_workers', 0),
+            'total_in_profession': alert.get('total_in_profession', 0),
+            'velocity': 0.02,  # Estimated
+            'alert_level': alert.get('alert_level', 'OK'),
+            'is_blocking': alert.get('is_blocking', False),
         })
     
-    # Queue counts (estimate based on headroom)
+    # Queue counts (estimated based on headroom)
     queue_counts = {
         1: max(0, int(headroom * 0.05)),
         2: max(0, int(headroom * 0.08)),
@@ -182,384 +138,71 @@ def _build_dashboard_from_summary(nationality_code: str, data: dict) -> dict:
         4: max(0, int(headroom * 0.01)),
     }
     
-    # Projected outflow (estimate ~1.5% monthly for 3 months)
-    projected_outflow = int(stock * 0.015 * 3)
-    
-    # Growth rates calculated from actual 2024-2025 worker movement data
-    # Formula: (Joined_2025 - Left_2025) / Stock_End_2024 × 100
-    GROWTH_RATES = {
-        'BGD': +0.92,   # Bangladesh: GROWING +3,649 workers
-        'PAK': +0.74,   # Pakistan: GROWING +1,443 workers
-        'YEM': -1.26,   # Yemen: -167 workers
-        'IRQ': -6.38,   # Iraq: -113 workers
-        'IRN': -6.79,   # Iran: -487 workers
-        'NPL': -9.17,   # Nepal: -34,980 workers
-        'AFG': -9.47,   # Afghanistan: -265 workers
-        'EGY': -10.79,  # Egypt: -8,661 workers
-        'IND': -11.95,  # India: -71,868 workers
-        'SYR': -12.37,  # Syria: -3,291 workers
-        'PHL': -13.34,  # Philippines: -19,490 workers
-        'LKA': -17.39,  # Sri Lanka: -21,317 workers
-    }
-    growth_rate = GROWTH_RATES.get(nationality_code, 0)
+    # Projected outflow (estimated ~1.5% monthly for 3 months)
+    projected_outflow = int(metrics['current_stock'] * 0.015 * 3)
     
     return {
-        'nationality_id': int(data['numeric_code']) if data['numeric_code'].isdigit() else 1,
+        # Identity
+        'nationality_id': hash(nationality_code) % 10000,
         'nationality_code': nationality_code,
-        'nationality_name': data['name'],
-        'cap': cap,
-        'previous_cap': data.get('previous_cap', 0),
-        'stock': stock,
-        'in_country': data.get('in_country', stock),
-        'out_country': data.get('out_country', 0),
-        'committed': data.get('committed', 0),
-        'pending': data.get('pending', 0),
-        'headroom': headroom,
-        'utilization_pct': utilization,
+        'nationality_name': metrics.get('nationality_name', NATIONALITY_NAMES.get(nationality_code, nationality_code)),
+        'country_type': metrics['country_type'],
+        
+        # Stock & Cap (v4)
+        'cap': metrics['recommended_cap'],
+        'stock': metrics['current_stock'],
+        'headroom': metrics['headroom'],
+        'utilization_pct': metrics['utilization_pct'] / 100,  # As decimal for compatibility
+        
+        # v4 Metrics
+        'recommended_cap': metrics['recommended_cap'],
+        'desired_cap': metrics['desired_cap'],
+        'max_achievable_cap': metrics.get('max_achievable_cap'),
+        'is_qvc_constrained': metrics.get('is_qvc_constrained', False),
+        
+        # Flow Data
+        'avg_annual_joiners': metrics['avg_annual_joiners'],
+        'avg_annual_outflow': metrics['avg_annual_outflow'],
+        'joined_2024': metrics['joined_2024'],
+        'joined_2025': metrics['joined_2025'],
+        'left_2024': metrics['left_2024'],
+        'left_2025': metrics['left_2025'],
+        
+        # Growth
+        'growth_direction': metrics['growth_direction'],
+        'growth_rate': metrics['growth_rate'],
+        'net_growth': metrics['net_growth'],
+        
+        # Demand
+        'demand_basis': metrics['demand_basis'],
+        'demand_value': metrics['demand_value'],
+        'buffer_pct': metrics['buffer_pct'],
+        'buffer_value': metrics['buffer_value'],
+        
+        # QVC
+        'qvc_annual_capacity': metrics.get('qvc_annual_capacity'),
+        'net_qvc_capacity': metrics.get('net_qvc_capacity'),
+        'qvc_utilization_pct': metrics.get('qvc_utilization_pct'),
+        
+        # Monthly allocation (outflow-based)
+        'monthly_allocation': metrics.get('monthly_allocation'),
+        
+        # Tiers and Alerts
         'tier_statuses': tier_statuses,
-        'dominance_alerts': alerts[:5],
+        'tier_summary': metrics['tier_summary'],
+        'dominance_alerts': alerts,
+        'alert_count': metrics['alert_count'],
+        'has_critical': metrics['has_critical'],
+        
+        # Queue
         'queue_counts': queue_counts,
         'projected_outflow': projected_outflow,
-        'growth_rate': growth_rate,
+        
+        # Metadata
         'last_updated': datetime.now().isoformat(),
-        'data_source': 'summary',
+        'data_source': 'quota_engine_v4',
+        'formula_version': '4.0',
     }
-
-
-def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
-    """
-    Compute dashboard from raw CSV files (slow fallback).
-    
-    Uses two-pass algorithm for correct dominance calculation:
-    Pass 1: Count total workers per profession across ALL nationalities
-    Pass 2: Count workers for specific nationality and calculate dominance
-    
-    Formulas from System_Documentation.md:
-    - Tier Classification (Section 4): profession_share = workers_in_prof / total_workers_of_nationality
-    - Dominance Alert (Section 6): dominance_share = nationality_workers / total_workers_in_profession
-    - Headroom (Section 5): cap - stock - committed - (pending × 0.8) + (outflow × 0.75)
-    """
-    # Configuration from documentation Section 12
-    TIER_1_THRESHOLD = 0.15
-    TIER_2_THRESHOLD = 0.05
-    TIER_3_THRESHOLD = 0.01
-    DOMINANCE_WATCH = 0.30
-    DOMINANCE_HIGH = 0.40
-    DOMINANCE_CRITICAL = 0.50
-    MIN_PROFESSION_SIZE = 200
-    PENDING_APPROVAL_RATE = 0.8
-    OUTFLOW_CONFIDENCE_FACTOR = 0.75
-    
-    # Convert to numeric code
-    numeric_code = NATIONALITY_CODES.get(nationality_code)
-    if not numeric_code:
-        return None
-    
-    # Check if real data exists
-    if not REAL_DATA_DIR.exists():
-        return None
-    
-    try:
-        # Load reference data
-        nationalities = _load_nationalities()
-        professions = _load_professions()
-        caps = _load_caps()
-        
-        # Get nationality info
-        nat_info = nationalities.get(numeric_code, {})
-        nat_name = nat_info.get('name', nationality_code)
-        
-        # Get cap info
-        cap_info = caps.get(numeric_code, {})
-        current_cap = cap_info.get('current_cap', 0)
-        previous_cap = cap_info.get('previous_cap', 0)
-        
-        # Load worker stock data
-        workers = _load_worker_stock()
-        
-        # Helper function to check if worker is long-term (>= 1 year)
-        today = datetime.now()
-        
-        def is_long_term(w: dict) -> bool:
-            """Check if worker has employment duration >= 1 year."""
-            emp_start_str = w.get('employment_start', '')
-            emp_end_str = w.get('employment_end', '')
-            state = w.get('state', '').upper()
-            
-            if not emp_start_str:
-                return True  # Include if no start date (can't exclude)
-            
-            try:
-                emp_start = datetime.strptime(emp_start_str[:10], '%Y-%m-%d')
-                
-                # For OUT_COUNTRY, use employment_end
-                if emp_end_str and state == 'OUT_COUNTRY':
-                    emp_end = datetime.strptime(emp_end_str[:10], '%Y-%m-%d')
-                else:
-                    emp_end = today
-                
-                duration_days = (emp_end - emp_start).days
-                return duration_days >= MIN_EMPLOYMENT_DAYS
-            except (ValueError, TypeError):
-                return True  # Include if parse error
-        
-        # ================================================================
-        # PASS 1: Count ALL workers by profession (for dominance calculation)
-        # This is required per Section 6 formula
-        # FILTER: Exclude short-term permits (< 1 year)
-        # ================================================================
-        total_workers_by_profession = defaultdict(int)
-        
-        for w in workers:
-            state = w.get('state', '').upper()
-            if state in ('ACTIVE', 'IN_COUNTRY', ''):
-                if not is_long_term(w):
-                    continue  # Skip short-term workers
-                prof_code = w.get('profession_code', 'Unknown')
-                total_workers_by_profession[prof_code] += 1
-        
-        # ================================================================
-        # PASS 2: Count workers for THIS nationality
-        # FILTER: Exclude short-term permits (< 1 year)
-        # ================================================================
-        in_country = 0
-        out_country = 0
-        committed = 0
-        pending = 0
-        profession_counts = defaultdict(int)  # This nationality's workers per profession
-        
-        for w in workers:
-            w_nat = w.get('nationality_code', '') or w.get('nationality', '')
-            if w_nat != numeric_code:
-                continue
-            
-            # Skip short-term workers
-            if not is_long_term(w):
-                continue
-            
-            state = w.get('state', '').upper()
-            if state in ('ACTIVE', 'IN_COUNTRY', ''):
-                in_country += 1
-                prof_code = w.get('profession_code', 'Unknown')
-                profession_counts[prof_code] += 1
-            elif state == 'OUT_COUNTRY':
-                out_country += 1
-            elif state == 'COMMITTED':
-                committed += 1
-            elif state == 'PENDING':
-                pending += 1
-        
-        # Calculate current stock (in-country workers)
-        stock = in_country
-        
-        # ================================================================
-        # HEADROOM CALCULATION (Section 5, Section 11.B)
-        # ================================================================
-        projected_outflow = int(stock * 0.015 * 3)  # ~1.5% monthly for 3 months
-        
-        if current_cap > 0:
-            headroom = (current_cap 
-                       - stock 
-                       - committed 
-                       - int(pending * PENDING_APPROVAL_RATE) 
-                       + int(projected_outflow * OUTFLOW_CONFIDENCE_FACTOR))
-            headroom = max(0, headroom)
-        else:
-            headroom = 0
-        utilization = stock / current_cap if current_cap > 0 else 0
-        
-        # ================================================================
-        # TIER CLASSIFICATION (Section 4, Section 11.A)
-        # Formula: tier_share = workers_in_profession / total_workers_of_nationality
-        # ================================================================
-        total_workers_this_nationality = sum(profession_counts.values())
-        
-        tier_summary = {
-            1: {'count': 0, 'workers': 0, 'profs': []},
-            2: {'count': 0, 'workers': 0, 'profs': []},
-            3: {'count': 0, 'workers': 0, 'profs': []},
-            4: {'count': 0, 'workers': 0, 'profs': []},
-        }
-        
-        for prof_code, count in sorted(profession_counts.items(), key=lambda x: -x[1]):
-            tier_share = count / total_workers_this_nationality if total_workers_this_nationality > 0 else 0
-            
-            # Determine tier (Section 4 thresholds)
-            if tier_share >= TIER_1_THRESHOLD:
-                tier = 1
-            elif tier_share >= TIER_2_THRESHOLD:
-                tier = 2
-            elif tier_share >= TIER_3_THRESHOLD:
-                tier = 3
-            else:
-                tier = 4
-            
-            tier_summary[tier]['count'] += 1
-            tier_summary[tier]['workers'] += count
-            
-            if len(tier_summary[tier]['profs']) < 5:
-                tier_summary[tier]['profs'].append({
-                    'code': prof_code,
-                    'name': professions.get(prof_code, f'Code_{prof_code}'),
-                    'count': count,
-                    'share': tier_share
-                })
-        
-        # ================================================================
-        # DOMINANCE ALERTS (Section 6, Section 11.D)
-        # Formula: dominance_share = nationality_workers / total_workers_in_profession
-        # This is DIFFERENT from tier share!
-        # ================================================================
-        dominance_alerts = []
-        
-        for prof_code, nat_workers in profession_counts.items():
-            total_in_profession = total_workers_by_profession.get(prof_code, 0)
-            
-            # Skip small professions (Section 6: MIN_PROFESSION_SIZE = 200)
-            if total_in_profession < MIN_PROFESSION_SIZE:
-                continue
-            
-            # Calculate dominance per documentation formula
-            dominance_share = nat_workers / total_in_profession if total_in_profession > 0 else 0
-            
-            # Check against thresholds (Section 6)
-            if dominance_share >= DOMINANCE_WATCH:
-                if dominance_share >= DOMINANCE_CRITICAL:
-                    level = "CRITICAL"
-                    is_blocking = True
-                elif dominance_share >= DOMINANCE_HIGH:
-                    level = "HIGH"
-                    is_blocking = False
-                else:
-                    level = "WATCH"
-                    is_blocking = False
-                
-                dominance_alerts.append({
-                    'profession_id': prof_code,
-                    'profession_name': professions.get(prof_code, f'Code_{prof_code}'),
-                    'share_pct': dominance_share,
-                    'nationality_workers': nat_workers,
-                    'total_in_profession': total_in_profession,
-                    'velocity': 0.02,  # Estimate
-                    'alert_level': level,
-                    'is_blocking': is_blocking
-                })
-        
-        # Sort alerts by share descending
-        dominance_alerts.sort(key=lambda x: -x['share_pct'])
-        
-        # Build tier statuses
-        tier_statuses = []
-        for tier_level in [1, 2, 3, 4]:
-            ts = tier_summary[tier_level]
-            tier_share = ts['workers'] / total_workers_this_nationality if total_workers_this_nationality > 0 else 0
-            tier_cap = int(headroom * (0.40 if tier_level == 1 else 0.30 if tier_level == 2 else 0.20 if tier_level == 3 else 0.10))
-            
-            # Determine status based on utilization
-            if utilization >= 0.95:
-                status = "CLOSED"
-            elif utilization >= 0.90:
-                status = "LIMITED" if tier_level <= 2 else "CLOSED"
-            elif utilization >= 0.80:
-                status = "RATIONED" if tier_level == 1 else "LIMITED" if tier_level == 2 else "CLOSED"
-            else:
-                status = "OPEN" if tier_level <= 2 else "RATIONED" if tier_level == 3 else "LIMITED"
-            
-            tier_statuses.append({
-                'tier_level': tier_level,
-                'tier_name': ['Primary', 'Secondary', 'Minor', 'Unusual'][tier_level - 1],
-                'status': status,
-                'capacity': tier_cap,
-                'share_pct': tier_share,
-            })
-        
-        # Queue counts (estimate)
-        queue_counts = {
-            1: max(0, int(headroom * 0.05)),
-            2: max(0, int(headroom * 0.08)),
-            3: max(0, int(headroom * 0.02)),
-            4: max(0, int(headroom * 0.01)),
-        }
-        
-        return {
-            'nationality_id': int(numeric_code) if numeric_code.isdigit() else 1,
-            'nationality_code': nationality_code,
-            'nationality_name': nat_name,
-            'cap': current_cap,
-            'previous_cap': previous_cap,
-            'stock': stock,
-            'in_country': in_country,
-            'out_country': out_country,
-            'committed': committed,
-            'pending': pending,
-            'headroom': headroom,
-            'utilization_pct': utilization,
-            'tier_statuses': tier_statuses,
-            'dominance_alerts': dominance_alerts[:5],
-            'queue_counts': queue_counts,
-            'projected_outflow': projected_outflow,
-            'last_updated': datetime.now().isoformat(),
-            'data_source': 'real_data',
-        }
-        
-    except Exception as e:
-        print(f"Error loading real data: {e}")
-        return None
-
-
-def check_real_data_available() -> bool:
-    """Check if real data files are available (summary OR raw data)."""
-    # First check for pre-computed summary (preferred for Streamlit Cloud)
-    if SUMMARY_FILE.exists():
-        return True
-    # Fall back to checking raw CSV files
-    required_files = ['07_worker_stock.csv', '01_nationalities.csv']
-    return all((REAL_DATA_DIR / f).exists() for f in required_files)
-
-
-def get_all_real_nationalities() -> list:
-    """Get list of nationalities with real data."""
-    if not check_real_data_available():
-        return []
-    
-    workers = _load_worker_stock()
-    nat_codes = set()
-    
-    for w in workers:
-        nat_code = w.get('nationality_code', '') or w.get('nationality', '')
-        if nat_code:
-            nat_codes.add(nat_code)
-    
-    # Map to ISO codes
-    result = []
-    for numeric in nat_codes:
-        iso = NUMERIC_TO_ISO.get(numeric)
-        if iso:
-            result.append(iso)
-    
-    return sorted(result)
-
-
-# =============================================================================
-# QVC (Qatar Visa Center) Capacity Functions
-# =============================================================================
-
-def _load_qvc_capacity() -> Optional[dict]:
-    """Load QVC capacity data from JSON file."""
-    global _qvc_cache
-    
-    if _qvc_cache is not None:
-        return _qvc_cache
-    
-    if not QVC_CAPACITY_FILE.exists():
-        return None
-    
-    try:
-        with open(QVC_CAPACITY_FILE, encoding='utf-8') as f:
-            _qvc_cache = json.load(f)
-        return _qvc_cache
-    except Exception:
-        return None
 
 
 def get_qvc_capacity(nationality_code: str) -> Optional[dict]:
@@ -571,24 +214,23 @@ def get_qvc_capacity(nationality_code: str) -> Optional[dict]:
         
     Returns:
         QVC capacity dict with daily_capacity, centers, etc.
-        Returns None for non-QVC countries (EGY, YEM, SYR, IRQ, AFG, IRN)
+        Returns None for non-QVC countries.
     """
-    qvc_data = _load_qvc_capacity()
-    if not qvc_data:
+    if not is_qvc_country(nationality_code):
         return None
     
-    centers = qvc_data.get('centers', {})
-    if nationality_code not in centers:
-        return None  # Not a QVC country
+    details = get_qvc_capacity_details(nationality_code)
+    if not details:
+        return None
     
-    center_data = centers[nationality_code]
     return {
         'nationality_code': nationality_code,
-        'country': center_data['country'],
-        'daily_capacity': center_data['total_daily_capacity'],
-        'monthly_capacity': center_data['total_daily_capacity'] * 22,  # 22 working days
-        'centers': center_data['centers'],
-        'center_count': len(center_data['centers']),
+        'country': details['country'],
+        'daily_capacity': details['daily_capacity'],
+        'monthly_capacity': details['monthly_capacity'],
+        'annual_capacity': details['annual_capacity'],
+        'centers': details['centers'],
+        'center_count': len(details['centers']),
     }
 
 
@@ -599,54 +241,33 @@ def get_all_qvc_capacity() -> dict:
     Returns:
         Dict with nationality_code as key, capacity data as value
     """
-    qvc_data = _load_qvc_capacity()
-    if not qvc_data:
-        return {}
-    
     result = {}
-    for code in qvc_data.get('centers', {}).keys():
+    for code in QVC_COUNTRIES:
         result[code] = get_qvc_capacity(code)
-    
     return result
-
-
-def is_qvc_country(nationality_code: str) -> bool:
-    """Check if a nationality has QVC processing."""
-    qvc_data = _load_qvc_capacity()
-    if not qvc_data:
-        return False
-    return nationality_code in qvc_data.get('centers', {})
 
 
 def get_qvc_summary() -> dict:
     """
     Get summary of all QVC capacity.
-    
-    Returns:
-        Dict with total_daily_capacity, country breakdown, etc.
     """
-    qvc_data = _load_qvc_capacity()
-    if not qvc_data:
-        return {
-            'total_daily_capacity': 0,
-            'total_monthly_capacity': 0,
-            'countries': []
-        }
-    
     countries = []
-    for code, data in qvc_data.get('centers', {}).items():
-        countries.append({
-            'code': code,
-            'country': data['country'],
-            'daily_capacity': data['total_daily_capacity'],
-            'monthly_capacity': data['total_daily_capacity'] * 22,
-            'center_count': len(data['centers']),
-        })
+    total_daily = 0
+    
+    for code in QVC_COUNTRIES:
+        data = get_qvc_capacity(code)
+        if data:
+            countries.append({
+                'code': code,
+                'country': data['country'],
+                'daily_capacity': data['daily_capacity'],
+                'monthly_capacity': data['monthly_capacity'],
+                'center_count': data['center_count'],
+            })
+            total_daily += data['daily_capacity']
     
     # Sort by daily capacity descending
     countries.sort(key=lambda x: -x['daily_capacity'])
-    
-    total_daily = sum(c['daily_capacity'] for c in countries)
     
     return {
         'total_daily_capacity': total_daily,
@@ -656,29 +277,9 @@ def get_qvc_summary() -> dict:
     }
 
 
-# =============================================================================
-# Non-QVC Countries: Outflow-Based Allocation
-# =============================================================================
-
-# Non-QVC countries that use outflow-based monthly capacity
-# Note: Afghanistan (AFG) is NOT in this list - uses normal cap recommendations
-NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN']
-
-# Monthly outflow data calculated from 2024-2025 worker movement
-# Left_2025 / 11 months = monthly average outflow
-# Note: Afghanistan is NOT included - uses normal cap recommendations
-MONTHLY_OUTFLOW_DATA = {
-    'EGY': {'left_2025': 8699, 'monthly_avg': 791, 'country': 'Egypt'},
-    'YEM': {'left_2025': 802, 'monthly_avg': 73, 'country': 'Yemen'},
-    'SYR': {'left_2025': 3405, 'monthly_avg': 310, 'country': 'Syria'},
-    'IRQ': {'left_2025': 189, 'monthly_avg': 17, 'country': 'Iraq'},
-    'IRN': {'left_2025': 732, 'monthly_avg': 67, 'country': 'Iran'},
-}
-
-
 def is_non_qvc_country(nationality_code: str) -> bool:
     """Check if a nationality uses outflow-based allocation (non-QVC)."""
-    return nationality_code in NON_QVC_COUNTRIES
+    return is_outflow_based(nationality_code)
 
 
 def get_outflow_capacity(nationality_code: str) -> Optional[dict]:
@@ -692,44 +293,38 @@ def get_outflow_capacity(nationality_code: str) -> Optional[dict]:
         nationality_code: ISO 3-letter code (e.g., 'EGY')
         
     Returns:
-        Outflow capacity dict or None if not a non-QVC country
+        Outflow capacity dict or None if not an outflow-based country
     """
-    if nationality_code not in NON_QVC_COUNTRIES:
+    if not is_outflow_based(nationality_code):
         return None
     
-    outflow_data = MONTHLY_OUTFLOW_DATA.get(nationality_code)
-    if not outflow_data:
-        return None
+    # Get metrics from quota engine
+    metrics = get_all_metrics(nationality_code)
     
-    # Get current stock and growth rate for additional context
-    dashboard_data = get_real_dashboard_data(nationality_code)
-    stock = dashboard_data.get('stock', 0) if dashboard_data else 0
-    growth_rate = dashboard_data.get('growth_rate', 0) if dashboard_data else 0
+    monthly_capacity = metrics.get('monthly_allocation', 0)
+    if monthly_capacity is None:
+        monthly_capacity = metrics['avg_annual_outflow'] // 12
     
-    monthly_capacity = outflow_data['monthly_avg']
-    annual_capacity = outflow_data['left_2025']
+    annual_outflow = metrics['avg_annual_outflow']
     
     return {
         'nationality_code': nationality_code,
-        'country': outflow_data['country'],
+        'country': metrics.get('nationality_name', NATIONALITY_NAMES.get(nationality_code, nationality_code)),
         'capacity_type': 'outflow_based',
         'monthly_capacity': monthly_capacity,
-        'annual_outflow': annual_capacity,
-        'current_stock': stock,
-        'growth_rate': growth_rate,
-        'description': f"Based on {annual_capacity:,} workers who left in 2025 ({monthly_capacity:,}/month avg)",
+        'annual_outflow': annual_outflow,
+        'current_stock': metrics['current_stock'],
+        'growth_rate': metrics['growth_rate'],
+        'description': f"Based on ~{annual_outflow:,} workers leaving annually ({monthly_capacity:,}/month avg)",
     }
 
 
 def get_all_non_qvc_capacity() -> dict:
     """
     Get outflow-based capacity for all non-QVC countries.
-    
-    Returns:
-        Dict with nationality_code as key, capacity data as value
     """
     result = {}
-    for code in NON_QVC_COUNTRIES:
+    for code in OUTFLOW_BASED:
         result[code] = get_outflow_capacity(code)
     return result
 
@@ -737,12 +332,12 @@ def get_all_non_qvc_capacity() -> dict:
 def get_non_qvc_summary() -> dict:
     """
     Get summary of all non-QVC country capacities.
-    
-    Returns:
-        Dict with total monthly capacity, country breakdown, etc.
     """
     countries = []
-    for code in NON_QVC_COUNTRIES:
+    total_monthly = 0
+    total_annual = 0
+    
+    for code in OUTFLOW_BASED:
         data = get_outflow_capacity(code)
         if data:
             countries.append({
@@ -752,12 +347,11 @@ def get_non_qvc_summary() -> dict:
                 'annual_outflow': data['annual_outflow'],
                 'growth_rate': data['growth_rate'],
             })
+            total_monthly += data['monthly_capacity']
+            total_annual += data['annual_outflow']
     
     # Sort by monthly capacity descending
     countries.sort(key=lambda x: -x['monthly_capacity'])
-    
-    total_monthly = sum(c['monthly_capacity'] for c in countries)
-    total_annual = sum(c['annual_outflow'] for c in countries)
     
     return {
         'total_monthly_capacity': total_monthly,
@@ -767,3 +361,8 @@ def get_non_qvc_summary() -> dict:
         'capacity_type': 'outflow_based',
         'description': 'Monthly capacity based on previous month outflow (replacement model)',
     }
+
+
+def get_all_real_nationalities() -> list[str]:
+    """Get list of all restricted nationality codes."""
+    return get_all_nationalities()
