@@ -437,12 +437,67 @@ try:
             center_text = " • ".join([f"{c['city']} ({c['capacity']}/day)" for c in qvc_data['centers']])
             st.markdown(f"<div style='color: #5C5C7A; font-size: 0.9rem;'>{center_text}</div>", unsafe_allow_html=True)
     else:
-        # Non-QVC country
-        st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
-        st.info(f"ℹ️ {NATIONALITIES.get(selected_code, selected_code)} does not have QVC processing. Visa processing follows alternative procedures.")
+        # Non-QVC country - show outflow-based capacity
+        from app.utils.real_data_loader import is_non_qvc_country, get_outflow_capacity
+        
+        if is_non_qvc_country(selected_code):
+            st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
+            st.markdown("### 📤 Monthly Allocation Capacity")
+            render_gold_accent()
+            
+            outflow_data = get_outflow_capacity(selected_code)
+            if outflow_data:
+                st.markdown("""
+                <div style="background: #FFF8E1; border-left: 4px solid #FFA000; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+                    <strong>Outflow-Based Model:</strong> Monthly capacity = workers who left previous month (replacement slots)
+                </div>
+                """, unsafe_allow_html=True)
+                
+                outflow_cols = st.columns(4)
+                
+                with outflow_cols[0]:
+                    render_metric_card(
+                        label="Monthly Capacity",
+                        value=outflow_data['monthly_capacity'],
+                        delta="replacement slots",
+                        icon="📅"
+                    )
+                
+                with outflow_cols[1]:
+                    render_metric_card(
+                        label="Annual Outflow",
+                        value=f"{outflow_data['annual_outflow']:,}",
+                        delta="workers left 2025",
+                        icon="📤"
+                    )
+                
+                with outflow_cols[2]:
+                    render_metric_card(
+                        label="Growth Rate",
+                        value=f"{outflow_data['growth_rate']:+.1f}%",
+                        delta="YoY change",
+                        icon="📉"
+                    )
+                
+                with outflow_cols[3]:
+                    # Days to fill headroom at current outflow rate
+                    if outflow_data['monthly_capacity'] > 0:
+                        months_to_fill = data['headroom'] / outflow_data['monthly_capacity']
+                        render_metric_card(
+                            label="Months to Fill Headroom",
+                            value=f"{months_to_fill:.1f}",
+                            delta="at current outflow",
+                            icon="⏱️"
+                        )
+                
+                st.markdown(f"<div style='color: #5C5C7A; font-size: 0.9rem;'>{outflow_data['description']}</div>", unsafe_allow_html=True)
+        else:
+            # Afghanistan or other - no special processing info
+            st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
+            st.info(f"ℹ️ {NATIONALITIES.get(selected_code, selected_code)} follows standard visa processing procedures.")
         
 except Exception as e:
-    pass  # QVC data not available
+    pass  # Capacity data not available
 
 # Headroom gauge
 st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)

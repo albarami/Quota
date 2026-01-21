@@ -534,6 +534,96 @@ qvc_monthly_capacity = qvc_daily_capacity * WORKING_DAYS_PER_MONTH
 
 ---
 
+## 10.B Non-QVC Countries: Outflow-Based Allocation
+
+### What are Non-QVC Countries?
+
+Five nationalities do **NOT** have QVC centers and follow a different visa processing procedure:
+- **Egypt (EGY)**
+- **Yemen (YEM)**
+- **Syria (SYR)**
+- **Iraq (IRQ)**
+- **Iran (IRN)**
+
+### The Outflow-Based Allocation Model
+
+For non-QVC countries with **negative growth** (more workers leaving than arriving), the monthly allocation capacity is determined by the **previous month's outflow**. This creates a **replacement model** - new workers can only be brought in to replace those who left.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   OUTFLOW-BASED MONTHLY CAPACITY                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Step 1: Count workers who LEFT in previous month (final exits only)        │
+│          ↓                                                                  │
+│  Step 2: That count becomes THIS month's available capacity                 │
+│          ↓                                                                  │
+│  Step 3: Approve new requests up to that capacity                          │
+│          ↓                                                                  │
+│  Step 4: Repeat monthly - rolling allocation based on actual outflow       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Monthly Capacity Formula
+
+```python
+# For non-QVC countries with negative growth
+monthly_capacity = COUNT(workers with final_exit_date in previous_month)
+
+# Example: Egypt in February 2026
+# January 2026 exits: 723 workers left (final exit)
+# February 2026 capacity: 723 new approvals allowed
+```
+
+### Why Outflow-Based Allocation?
+
+1. **Natural Replacement** - Maintains stable workforce levels without growth
+2. **Cap Protection** - Prevents exceeding the annual nationality cap
+3. **Predictable Flow** - Monthly capacity is based on actual data, not estimates
+4. **Shrinking Management** - For declining nationalities, ensures controlled reduction
+
+### Non-QVC Countries Data (Current)
+
+| Country | Stock | Cap | Utilization | Growth Rate | Est. Monthly Outflow |
+|---------|------:|----:|------------:|------------:|---------------------:|
+| Egypt | 71,574 | 81,668 | 87.6% | -10.79% | ~725 |
+| Syria | 23,324 | 27,038 | 86.3% | -12.37% | ~284 |
+| Yemen | 13,105 | 14,949 | 87.7% | -1.26% | ~14 |
+| Iraq | 1,658 | 1,959 | 84.6% | -6.38% | ~9 |
+| Iran | 6,683 | 7,768 | 86.0% | -6.79% | ~41 |
+
+*Est. Monthly Outflow = (Stock × |Growth Rate|) / 12*
+
+### Calculation Details
+
+```python
+# Monthly outflow estimation from annual growth rate
+annual_outflow = current_stock * abs(growth_rate) / 100
+monthly_outflow = annual_outflow / 12
+
+# Example: Egypt
+# Stock: 71,574
+# Growth: -10.79%
+# Annual outflow: 71,574 × 10.79% = 7,723 workers/year
+# Monthly outflow: 7,723 / 12 = 644 workers/month (approx)
+
+# Actual from data: Left_2025 = 8,703 total
+# Monthly average: 8,703 / 12 = 725 workers/month
+```
+
+### Key Difference: QVC vs Non-QVC
+
+| Aspect | QVC Countries | Non-QVC Countries |
+|--------|---------------|-------------------|
+| **Capacity Source** | QVC center daily limit | Previous month's outflow |
+| **Capacity Type** | Fixed daily maximum | Variable monthly based on exits |
+| **Growth Trend** | Can be positive or negative | Typically negative (shrinking) |
+| **Bottleneck** | QVC processing speed | Replacement slots available |
+| **Planning** | Predictable (fixed capacity) | Variable (depends on outflow) |
+
+---
+
 ## 11. Formulas & Calculations
 
 ### Complete Formula Reference

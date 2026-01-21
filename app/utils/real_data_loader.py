@@ -539,3 +539,114 @@ def get_qvc_summary() -> dict:
         'country_count': len(countries),
         'countries': countries,
     }
+
+
+# =============================================================================
+# Non-QVC Countries: Outflow-Based Allocation
+# =============================================================================
+
+# Non-QVC countries that use outflow-based monthly capacity
+NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN']
+
+# Monthly outflow data calculated from 2024-2025 worker movement
+# Left_2025 / 12 months = monthly average outflow
+MONTHLY_OUTFLOW_DATA = {
+    'EGY': {'left_2025': 8703, 'monthly_avg': 725, 'country': 'Egypt'},
+    'YEM': {'left_2025': 848, 'monthly_avg': 71, 'country': 'Yemen'},
+    'SYR': {'left_2025': 3415, 'monthly_avg': 285, 'country': 'Syria'},
+    'IRQ': {'left_2025': 194, 'monthly_avg': 16, 'country': 'Iraq'},
+    'IRN': {'left_2025': 750, 'monthly_avg': 63, 'country': 'Iran'},
+}
+
+
+def is_non_qvc_country(nationality_code: str) -> bool:
+    """Check if a nationality uses outflow-based allocation (non-QVC)."""
+    return nationality_code in NON_QVC_COUNTRIES
+
+
+def get_outflow_capacity(nationality_code: str) -> Optional[dict]:
+    """
+    Get outflow-based monthly capacity for non-QVC countries.
+    
+    For countries without QVC centers, monthly capacity = previous month's outflow.
+    This creates a replacement model where new workers replace those who left.
+    
+    Args:
+        nationality_code: ISO 3-letter code (e.g., 'EGY')
+        
+    Returns:
+        Outflow capacity dict or None if not a non-QVC country
+    """
+    if nationality_code not in NON_QVC_COUNTRIES:
+        return None
+    
+    outflow_data = MONTHLY_OUTFLOW_DATA.get(nationality_code)
+    if not outflow_data:
+        return None
+    
+    # Get current stock and growth rate for additional context
+    dashboard_data = get_real_dashboard_data(nationality_code)
+    stock = dashboard_data.get('stock', 0) if dashboard_data else 0
+    growth_rate = dashboard_data.get('growth_rate', 0) if dashboard_data else 0
+    
+    monthly_capacity = outflow_data['monthly_avg']
+    annual_capacity = outflow_data['left_2025']
+    
+    return {
+        'nationality_code': nationality_code,
+        'country': outflow_data['country'],
+        'capacity_type': 'outflow_based',
+        'monthly_capacity': monthly_capacity,
+        'annual_outflow': annual_capacity,
+        'current_stock': stock,
+        'growth_rate': growth_rate,
+        'description': f"Based on {annual_capacity:,} workers who left in 2025 ({monthly_capacity:,}/month avg)",
+    }
+
+
+def get_all_non_qvc_capacity() -> dict:
+    """
+    Get outflow-based capacity for all non-QVC countries.
+    
+    Returns:
+        Dict with nationality_code as key, capacity data as value
+    """
+    result = {}
+    for code in NON_QVC_COUNTRIES:
+        result[code] = get_outflow_capacity(code)
+    return result
+
+
+def get_non_qvc_summary() -> dict:
+    """
+    Get summary of all non-QVC country capacities.
+    
+    Returns:
+        Dict with total monthly capacity, country breakdown, etc.
+    """
+    countries = []
+    for code in NON_QVC_COUNTRIES:
+        data = get_outflow_capacity(code)
+        if data:
+            countries.append({
+                'code': code,
+                'country': data['country'],
+                'monthly_capacity': data['monthly_capacity'],
+                'annual_outflow': data['annual_outflow'],
+                'growth_rate': data['growth_rate'],
+            })
+    
+    # Sort by monthly capacity descending
+    countries.sort(key=lambda x: -x['monthly_capacity'])
+    
+    total_monthly = sum(c['monthly_capacity'] for c in countries)
+    total_annual = sum(c['annual_outflow'] for c in countries)
+    
+    return {
+        'total_monthly_capacity': total_monthly,
+        'total_annual_outflow': total_annual,
+        'country_count': len(countries),
+        'countries': countries,
+        'capacity_type': 'outflow_based',
+        'description': 'Monthly capacity based on previous month outflow (replacement model)',
+    }
