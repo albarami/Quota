@@ -386,6 +386,64 @@ with col2:
         with queue_cols[i]:
             st.metric(f"Tier {tier}", count)
 
+# QVC Processing Capacity (only for QVC countries)
+try:
+    from app.utils.real_data_loader import get_qvc_capacity, is_qvc_country
+    
+    if is_qvc_country(selected_code):
+        st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
+        st.markdown("### 🏢 QVC Processing Capacity")
+        render_gold_accent()
+        
+        qvc_data = get_qvc_capacity(selected_code)
+        if qvc_data:
+            qvc_cols = st.columns(4)
+            
+            with qvc_cols[0]:
+                render_metric_card(
+                    label="Daily Capacity",
+                    value=qvc_data['daily_capacity'],
+                    icon="📅"
+                )
+            
+            with qvc_cols[1]:
+                render_metric_card(
+                    label="Monthly Capacity",
+                    value=f"{qvc_data['monthly_capacity']:,}",
+                    delta="22 working days",
+                    icon="📆"
+                )
+            
+            with qvc_cols[2]:
+                render_metric_card(
+                    label="QVC Centers",
+                    value=qvc_data['center_count'],
+                    icon="🏛️"
+                )
+            
+            with qvc_cols[3]:
+                # Estimate days to process current headroom
+                if qvc_data['daily_capacity'] > 0:
+                    days_to_fill = data['headroom'] / qvc_data['daily_capacity']
+                    render_metric_card(
+                        label="Days to Fill Headroom",
+                        value=f"{days_to_fill:.0f}",
+                        delta="at full capacity",
+                        icon="⏱️"
+                    )
+            
+            # Show QVC center locations
+            st.markdown("**QVC Center Locations:**")
+            center_text = " • ".join([f"{c['city']} ({c['capacity']}/day)" for c in qvc_data['centers']])
+            st.markdown(f"<div style='color: #5C5C7A; font-size: 0.9rem;'>{center_text}</div>", unsafe_allow_html=True)
+    else:
+        # Non-QVC country
+        st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
+        st.info(f"ℹ️ {NATIONALITIES.get(selected_code, selected_code)} does not have QVC processing. Visa processing follows alternative procedures.")
+        
+except Exception as e:
+    pass  # QVC data not available
+
 # Headroom gauge
 st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
 st.markdown("### Capacity Overview")
