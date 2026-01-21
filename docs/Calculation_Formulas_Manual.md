@@ -50,8 +50,8 @@ This means Yemen's workforce declined by 5.5% from 2024 to 2025.
 
 ### Why is it important?
 - Shows how many workers are actually in the country right now
-- Used to calculate utilization (how full is the quota)
-- For outflow-based countries, this becomes the effective cap
+- Used as the BASE for calculating recommended caps
+- For outflow-based countries, this becomes the cap itself
 
 ### Formula
 ```
@@ -72,7 +72,7 @@ Current_Stock = Count of workers WHERE:
 ## 3. Utilization Rate
 
 ### What is it?
-**Utilization** shows what percentage of the allowed quota (cap) is currently being used. It answers: "How full is the quota?"
+**Utilization** shows what percentage of the recommended cap is currently being used. It answers: "How full is the quota?"
 
 ### Why is it important?
 - Shows if there's room for more workers or if the quota is nearly full
@@ -81,29 +81,22 @@ Current_Stock = Count of workers WHERE:
 
 ### Formula
 ```
-Utilization = (Current_Stock / Cap) × 100
+Utilization = (Current_Stock / Recommended_Cap) × 100
 ```
-
-### What data do you need?
-| Data | Source |
-|------|--------|
-| **Current_Stock** | Count of IN_COUNTRY workers (long-term only) from `07_worker_stock.csv` |
-| **Cap** | The `cap_limit` field from `05_nationality_caps.csv` |
 
 ### Special Rule for Outflow-Based Countries
 For Egypt, Syria, Yemen, Iran, and Iraq:
 ```
-Cap = Current_Stock (frozen at stock level)
+Recommended_Cap = Current_Stock (frozen at stock level)
 Utilization = 100% (always full, no growth allowed)
 ```
 
 ### Example
 ```
 India Stock = 488,672
-India Cap = 676,569
-Utilization = 488,672 / 676,569 × 100 = 72.2%
+India Recommended Cap = 590,000
+Utilization = 488,672 / 590,000 × 100 = 82.8%
 ```
-This means India is using 72.2% of its allowed quota.
 
 ---
 
@@ -117,21 +110,10 @@ This means India is using 72.2% of its allowed quota.
 - Helps plan recruitment and visa processing
 - A headroom of 0 means no new workers can be added
 
-### Formula (Full)
+### Formula
 ```
-Headroom = Cap - Stock - Committed - (Pending × 0.8) + (Projected_Outflow × 0.75)
+Headroom = Recommended_Cap - Current_Stock
 ```
-
-Where:
-- **Committed** = Workers approved but not yet arrived
-- **Pending** = Workers awaiting approval (multiplied by 0.8 because not all will be approved)
-- **Projected_Outflow** = Expected workers to leave soon (adds back capacity)
-
-### Simplified Formula (when Committed/Pending not available)
-```
-Headroom = Cap - Stock + (Stock × 0.015 × 3 × 0.75)
-```
-This assumes 1.5% monthly outflow over 3 months.
 
 ### Special Rule for Outflow-Based Countries
 ```
@@ -141,14 +123,122 @@ These countries can only replace workers who leave, not add new ones.
 
 ### Example
 ```
-India Cap = 676,569
+India Recommended Cap = 590,000
 India Stock = 488,672
-Simplified Headroom = 676,569 - 488,672 + (488,672 × 0.0337) = 204,389
+Headroom = 590,000 - 488,672 = 101,328
 ```
 
 ---
 
-## 5. Dominance Share (Profession Concentration)
+## 5. Recommended Cap Calculation (NEW - Data-Driven)
+
+### What is it?
+The **Recommended Cap** is the suggested maximum number of workers for each nationality. This is calculated from actual data - there are NO pre-existing caps.
+
+### Why is it important?
+- Sets the limit for how many workers of each nationality can be employed
+- Balances demand with workforce management goals
+- Controls growth for nationalities with concentration risk
+
+---
+
+### Formula for Countries with POSITIVE GROWTH:
+
+```
+Recommended_Cap = Current_Stock + Projected_Demand + Operational_Buffer
+```
+
+**Where:**
+```
+Projected_Demand = (Joined_2024 + Joined_2025) / 2
+Operational_Buffer = Current_Stock × 0.15 (15% headroom)
+```
+
+**Full Formula:**
+```
+Recommended_Cap = Stock + Avg_Annual_Joiners + (Stock × 0.15)
+```
+
+**Example (if Bangladesh had positive growth):**
+```
+Stock = 330,602
+Joined_2024 = 66,697
+Joined_2025 = 2,086
+Avg_Annual_Joiners = (66,697 + 2,086) / 2 = 34,392
+Operational_Buffer = 330,602 × 0.15 = 49,590
+
+Recommended_Cap = 330,602 + 34,392 + 49,590 = 414,584
+```
+
+---
+
+### Formula for Countries with NEGATIVE GROWTH (QVC Countries):
+
+```
+Recommended_Cap = Current_Stock + (Current_Stock × 0.05)
+```
+
+**Rationale:** Minimal 5% buffer for operational flexibility, but no significant growth expected.
+
+**Example (India - negative growth):**
+```
+Stock = 488,672
+Recommended_Cap = 488,672 + (488,672 × 0.05) = 513,106
+```
+
+---
+
+### Formula for Countries with NEGATIVE GROWTH (Non-QVC, Outflow-Based):
+
+For Egypt, Syria, Yemen, Iran, Iraq:
+
+```
+Recommended_Cap = Current_Stock (FROZEN)
+Monthly_Allocation = Average_Monthly_Outflow
+```
+
+**Where:**
+```
+Average_Monthly_Outflow = (Left_2024 + Left_2025) / 23
+```
+
+**Rationale:** No growth allowed. Only replacement of workers who leave.
+
+**Example (Egypt):**
+```
+Stock = 71,536
+Recommended_Cap = 71,536 (frozen at stock)
+Left_2024 = 9,903
+Left_2025 = 8,699
+Monthly_Allocation = (9,903 + 8,699) / 23 = 808 workers/month
+```
+
+---
+
+### Formula for HIGH DOMINANCE RISK Countries:
+
+If a country has **10 or more dominance alerts**:
+
+```
+Recommended_Cap = Current_Stock + (Current_Stock × 0.05)
+```
+
+**Rationale:** Conservative 5% buffer to limit concentration risk growth.
+
+---
+
+### Summary Table:
+
+| Condition | Formula | Buffer |
+|-----------|---------|--------|
+| **Positive Growth** | Stock + Avg_Joiners + (Stock × 0.15) | 15% |
+| **Negative Growth (QVC)** | Stock + (Stock × 0.05) | 5% |
+| **Negative Growth (Non-QVC)** | Stock (frozen) | 0% |
+| **High Dominance (10+ alerts)** | Stock + (Stock × 0.05) | 5% |
+
+---
+
+## 6. Dominance Share (Profession Concentration)
 
 ### What is it?
 **Dominance Share** measures what percentage of a specific profession is occupied by one nationality. It answers: "How much does this nationality dominate this job?"
@@ -190,7 +280,7 @@ This means 71.6% of all Diggers are Indian → **CRITICAL** alert.
 
 ---
 
-## 6. Monthly Outflow
+## 7. Monthly Outflow
 
 ### What is it?
 **Monthly Outflow** is the average number of workers leaving each month. It helps predict future capacity that will become available.
@@ -221,14 +311,14 @@ Monthly Outflow = (9,903 + 8,699) / 23 = 808 workers per month
 
 ---
 
-## 7. QVC Processing Capacity
+## 8. QVC Processing Capacity
 
 ### What is it?
 **QVC Capacity** is the maximum number of workers that can be processed through the Qatar Visa Center in each country per day.
 
 ### Why is it important?
 - Determines how quickly new workers can be brought in
-- Creates a bottleneck even if quota headroom is available
+- Creates a bottleneck even if cap headroom is available
 - Must be considered when planning recruitment
 
 ### Formulas
@@ -240,42 +330,11 @@ Annual_Capacity = Daily_Capacity × 264 (working days per year)
 ### Data Source
 Daily capacity values are stored in `qvc_capacity.json`.
 
-### Example
+### Cap Constraint
 ```
-India Daily Capacity = 805
-India Monthly Capacity = 805 × 22 = 17,710
-India Annual Capacity = 805 × 264 = 212,520
+Maximum_Practical_Cap = Current_Stock + Annual_QVC_Capacity
 ```
-
----
-
-## 8. Cap Recommendation Engine
-
-### What is it?
-The **Cap Recommendation Engine** suggests what the new cap should be based on current conditions.
-
-### How does it decide?
-
-**Step 1: Is it a Non-QVC country with negative growth?**
-- If YES and country is Egypt, Syria, Yemen, Iran, or Iraq:
-  - **Recommended Cap = Current Stock** (FROZEN)
-  - These countries use outflow-based allocation only
-- If YES but country is Afghanistan:
-  - Use standard recommendation (Afghanistan is special exception)
-
-**Step 2: For QVC countries and Afghanistan:**
-| Condition | Recommendation |
-|-----------|----------------|
-| Has 10+ dominance alerts | Conservative: Current Cap × 1.05 (+5%) |
-| Has positive growth | Moderate: Current Cap × 1.10 (+10%) |
-| Has decline > 5% | Decline adjustment: Current Cap × 1.045 (+4.5%) |
-| Otherwise | Standard: Current Cap × 1.08 (+8%) |
-
-### Why these rules?
-- **Conservative (+5%)** for high alerts: Limit growth to reduce dominance risk
-- **Moderate (+10%)** for growing countries: Allow healthy expansion
-- **Decline adjustment (+4.5%)** for shrinking countries: Slight increase to stabilize
-- **Frozen (Stock)** for non-QVC: No growth, replacement only
+Even with headroom, you cannot bring in more workers than QVC can process.
 
 ---
 
@@ -284,7 +343,6 @@ The **Cap Recommendation Engine** suggests what the new cap should be based on c
 | File | What it contains |
 |------|------------------|
 | `07_worker_stock.csv` | All worker records with employment dates, status, nationality, profession |
-| `05_nationality_caps.csv` | Current cap limits for each nationality |
 | `01_nationalities.csv` | Nationality codes and names lookup |
 | `02_professions.csv` | Profession codes and names lookup |
 | `qvc_capacity.json` | Daily QVC processing capacity per country |
@@ -314,33 +372,49 @@ The **Cap Recommendation Engine** suggests what the new cap should be based on c
 
 ### For Each Nationality:
 
-**Step 1: Extract worker data**
-1. Open `07_worker_stock.csv`
-2. Filter by `nationality_code` for your target nationality
-3. Calculate employment duration for each worker
-4. Remove workers with duration < 365 days (short-term)
+**Step 1: Extract worker data from `07_worker_stock.csv`**
+1. Filter by `nationality_code` for your target nationality
+2. Calculate employment duration for each worker
+3. Remove workers with duration < 365 days (short-term)
 
 **Step 2: Count totals**
 - **Current Stock** = Count where `status = 'IN_COUNTRY'`
 - **Total_2024** = Count workers active during 2024
 - **Total_2025** = Count workers active during 2025
+- **Joined_2024** = Count where `employment_start` is in 2024
+- **Joined_2025** = Count where `employment_start` is in 2025
 - **Left_2024** = Count where `employment_end` is in 2024
 - **Left_2025** = Count where `employment_end` is in 2025
 
-**Step 3: Get cap from caps file**
-1. Open `05_nationality_caps.csv`
-2. Find row matching your nationality code
-3. Get `cap_limit` value
-
-**Step 4: Calculate metrics**
+**Step 3: Calculate Growth**
 ```
 Growth = (Total_2025 - Total_2024) / Total_2024 × 100
-Utilization = Current_Stock / Cap × 100
-Headroom = Cap - Current_Stock (simplified)
+```
+
+**Step 4: Calculate Recommended Cap**
+```
+IF Growth > 0:
+    Avg_Joiners = (Joined_2024 + Joined_2025) / 2
+    Recommended_Cap = Stock + Avg_Joiners + (Stock × 0.15)
+
+ELIF country is Non-QVC (EGY, SYR, YEM, IRN, IRQ):
+    Recommended_Cap = Stock (frozen)
+
+ELIF dominance_alerts >= 10:
+    Recommended_Cap = Stock + (Stock × 0.05)
+
+ELSE:
+    Recommended_Cap = Stock + (Stock × 0.05)
+```
+
+**Step 5: Calculate other metrics**
+```
+Utilization = Stock / Recommended_Cap × 100
+Headroom = Recommended_Cap - Stock
 Monthly_Outflow = (Left_2024 + Left_2025) / 23
 ```
 
-**Step 5: Calculate dominance (for each profession)**
+**Step 6: Calculate Dominance (for each profession)**
 1. Count workers of this nationality in each profession
 2. Count total workers (all nationalities) in each profession
 3. For professions with >= 200 total workers:
@@ -355,6 +429,7 @@ Monthly_Outflow = (Left_2024 + Left_2025) / 23
 
 After calculating, verify:
 - [ ] Growth rates: Negative means declining, positive means growing
+- [ ] Recommended Cap: Based on stock + projected demand (not existing cap)
 - [ ] Utilization: Should be 0-100% for standard countries, exactly 100% for outflow countries
 - [ ] Headroom: Should be 0 for outflow countries, positive for others
 - [ ] Dominance: Only calculated for professions with >= 200 workers
@@ -362,4 +437,4 @@ After calculating, verify:
 
 ---
 
-*Document created: January 21, 2026*
+*Document updated: January 21, 2026*

@@ -473,38 +473,42 @@ def print_report(results):
     
     # ========== CAP RECOMMENDATIONS ==========
     print("=" * 80)
-    print("SECTION 5: CAP RECOMMENDATIONS")
+    print("SECTION 5: CAP RECOMMENDATIONS (Data-Driven)")
     print("=" * 80)
     print()
+    print("Formula: Based on Stock + Projected Demand + Buffer (NO pre-existing caps)")
+    print()
     
-    print(f"{'Country':<15} {'Current Cap':>12} {'Recommended':>12} {'Change':>10} {'Reason':<25}")
-    print("-" * 80)
+    print(f"{'Country':<15} {'Stock':>12} {'Recommended':>12} {'Headroom':>10} {'Reason':<30}")
+    print("-" * 85)
     
     for r in results['qvc'] + results['non_qvc']:
-        if r['is_outflow_based']:
-            rec_cap = r['stock']
-            change = rec_cap - r['original_cap']
-            reason = "OUTFLOW-BASED (frozen)"
-        elif r['growth_rate'] > 5:
-            rec_cap = int(r['effective_cap'] * 1.10 * 1.05)  # Flexible + growth
-            change = rec_cap - r['effective_cap']
-            reason = "Growth > 5%"
-        elif r['growth_rate'] < -5:
-            rec_cap = int(r['effective_cap'] * 1.10 * 0.95)  # Moderate - decline
-            change = rec_cap - r['effective_cap']
-            reason = "Decline > 5%"
-        else:
-            rec_cap = int(r['effective_cap'] * 1.10)  # Moderate
-            change = rec_cap - r['effective_cap']
-            reason = "Standard moderate"
-        
+        stock = r['stock']
+        avg_joiners = (r['joined_2024'] + r['joined_2025']) / 2
         alerts = len(r['dominance_alerts'])
-        if alerts > 3:
-            rec_cap = int(r['effective_cap'] * 1.05)  # Conservative
-            change = rec_cap - r['effective_cap']
-            reason = f"High alerts ({alerts})"
         
-        print(f"{r['name'][:15]:<15} {r['effective_cap']:>12,} {rec_cap:>12,} {change:>+10,} {reason:<25}")
+        if r['is_outflow_based']:
+            # Non-QVC negative growth: Cap = Stock (frozen)
+            rec_cap = stock
+            headroom = 0
+            reason = "OUTFLOW-BASED (Cap = Stock)"
+        elif r['growth_rate'] > 0:
+            # Positive growth: Stock + Avg Joiners + 15% buffer
+            rec_cap = int(stock + avg_joiners + (stock * 0.15))
+            headroom = rec_cap - stock
+            reason = f"Growth +{r['growth_rate']:.1f}% (15% buffer)"
+        elif alerts >= 10:
+            # High dominance risk: Conservative 5% buffer
+            rec_cap = int(stock + (stock * 0.05))
+            headroom = rec_cap - stock
+            reason = f"High alerts ({alerts}) (5% buffer)"
+        else:
+            # Negative growth QVC: Minimal 5% buffer
+            rec_cap = int(stock + (stock * 0.05))
+            headroom = rec_cap - stock
+            reason = f"Decline {r['growth_rate']:.1f}% (5% buffer)"
+        
+        print(f"{r['name'][:15]:<15} {stock:>12,} {rec_cap:>12,} {headroom:>+10,} {reason:<30}")
     
     print("\n" + "=" * 80)
     print("END OF REPORT")

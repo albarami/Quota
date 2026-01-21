@@ -198,21 +198,23 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
     utilization = data.get("utilization_pct", stock / cap if cap > 0 else 0)
     utilization_pct = utilization * 100  # Convert to percentage for comparison
     
-    # Growth rates calculated from actual 2024-2025 worker movement data
-    GROWTH_RATES = {
-        'BGD': +0.92,   # Bangladesh: GROWING
-        'PAK': +0.74,   # Pakistan: GROWING
-        'YEM': -1.26,   # Yemen: declining
-        'IRQ': -6.38,   # Iraq: declining
-        'IRN': -6.79,   # Iran: declining
-        'NPL': -9.17,   # Nepal: declining
-        'AFG': -9.47,   # Afghanistan: declining
-        'EGY': -10.79,  # Egypt: declining
-        'IND': -11.95,  # India: declining
-        'SYR': -12.37,  # Syria: declining
-        'PHL': -13.34,  # Philippines: declining
-        'LKA': -17.39,  # Sri Lanka: declining
-    }
+    # Growth rates loaded from growth_by_year.json (calculated from actual data)
+    # Formula: Growth = (Total_2025 - Total_2024) / Total_2024 × 100
+    import json
+    from pathlib import Path
+    growth_file = Path(__file__).parent.parent.parent / "real_data" / "growth_by_year.json"
+    GROWTH_RATES = {}
+    if growth_file.exists():
+        with open(growth_file) as f:
+            growth_data = json.load(f)
+            GROWTH_RATES = {k: v['growth'] for k, v in growth_data.items()}
+    else:
+        # Fallback values if file not found
+        GROWTH_RATES = {
+            'IND': -20.7, 'BGD': -14.0, 'NPL': -18.5, 'PAK': -20.8,
+            'PHL': -17.8, 'LKA': -22.2, 'EGY': -11.0, 'YEM': -5.5,
+            'SYR': -11.9, 'AFG': -11.7, 'IRN': -8.1, 'IRQ': -9.8
+        }
     growth_rate = GROWTH_RATES.get(nationality_code, 0)
     
     # Non-QVC countries with negative growth
@@ -253,30 +255,38 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
             "is_outflow_based": True,
         }
     
-    # === Standard cap recommendation for QVC countries or positive growth ===
-    conservative = int(cap * 1.05)
-    moderate = int(cap * 1.10)
-    flexible = int(cap * 1.20)
+    # === Data-Driven Cap Recommendation (NO pre-existing caps used) ===
+    # Formula: Based on Stock + Projected Demand + Buffer
     
-    # Selection Logic
-    if alerts > 3 or has_critical:
+    # Get joiners data for demand projection (from data if available)
+    joined_2024 = data.get("joined_2024", int(stock * 0.10))  # Default: 10% of stock
+    joined_2025 = data.get("joined_2025", int(stock * 0.02))  # Default: 2% of stock
+    avg_annual_joiners = (joined_2024 + joined_2025) / 2
+    
+    if growth_rate > 0:
+        # POSITIVE GROWTH: Stock + Avg Joiners + 15% buffer
+        conservative = int(stock + avg_annual_joiners + (stock * 0.10))  # 10% buffer
+        moderate = int(stock + avg_annual_joiners + (stock * 0.15))      # 15% buffer
+        flexible = int(stock + avg_annual_joiners + (stock * 0.20))      # 20% buffer
+    else:
+        # NEGATIVE GROWTH: Stock + minimal buffer
+        conservative = int(stock + (stock * 0.03))  # 3% buffer
+        moderate = int(stock + (stock * 0.05))      # 5% buffer
+        flexible = int(stock + (stock * 0.08))      # 8% buffer
+    
+    # Selection Logic based on risk
+    if alerts >= 10 or has_critical:
         level = "conservative"
         recommended = conservative
-    elif utilization_pct > 90 or alerts > 1:
+    elif alerts > 3:
         level = "moderate"
         recommended = moderate
-    elif utilization_pct < 80 and alerts == 0:
+    elif growth_rate > 0:
         level = "flexible"
         recommended = flexible
     else:
         level = "moderate"
         recommended = moderate
-    
-    # Growth Adjustment
-    if growth_rate > 5:
-        recommended = int(recommended * 1.05)
-    elif growth_rate < -5:
-        recommended = int(recommended * 0.95)
     
     country_name = NATIONALITIES.get(nationality_code, nationality_code)
     
