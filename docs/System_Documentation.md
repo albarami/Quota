@@ -475,7 +475,7 @@ IF growth_rate < -5%:
 | 5 | Nepal | 1 | Kathmandu (325) | **325** |
 | 6 | Philippines | 1 | Manila (280) | **280** |
 
-**Note:** Only QVC countries are listed. Non-QVC countries (Egypt, Yemen, Syria, Iraq, Iran) use outflow-based allocation. Afghanistan follows standard procedures.
+**Note:** Only QVC countries are listed. Non-QVC countries (Egypt, Yemen, Syria, Iraq, Iran) use outflow-based allocation **when growth is negative**. Afghanistan follows standard procedures.
 
 ### QVC Utilization Formula
 
@@ -534,11 +534,11 @@ qvc_monthly_capacity = qvc_daily_capacity * WORKING_DAYS_PER_MONTH
 
 ---
 
-## 10.B Non-QVC Countries: Outflow-Based Allocation
+## 10.B Non-QVC Countries: Outflow-Based Allocation (Negative Growth Only)
 
 ### What are Non-QVC Countries?
 
-Five nationalities do **NOT** have QVC centers and follow a different visa processing procedure:
+Five nationalities do **NOT** have QVC centers and follow a different visa processing procedure **when growth is negative**:
 - **Egypt (EGY)**
 - **Yemen (YEM)**
 - **Syria (SYR)**
@@ -547,7 +547,11 @@ Five nationalities do **NOT** have QVC centers and follow a different visa proce
 
 ### The Outflow-Based Allocation Model
 
-For non-QVC countries with **negative growth** (more workers leaving than arriving), the monthly allocation capacity is determined by the **previous month's outflow**. This creates a **replacement model** - new workers can only be brought in to replace those who left.
+**CONDITION: This model applies ONLY when growth is negative** (more workers leaving than arriving).
+
+For non-QVC countries with **negative growth**, the monthly allocation capacity is determined by the **previous month's outflow**. This creates a **replacement model** - new workers can only be brought in to replace those who left.
+
+If growth becomes positive, a different allocation approach would apply.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
