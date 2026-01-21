@@ -209,21 +209,21 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
     utilization = data.get("utilization_pct", stock / cap if cap > 0 else 0)
     utilization_pct = utilization * 100  # Convert to percentage for comparison
     
-    # Growth rates from ministry data (Section 10.G formula)
-    # growth_rate = (net_change / current_stock) × 100
+    # Growth rates calculated from actual 2024-2025 worker movement data
+    # Formula: (Joined_2025 - Left_2025) / Stock_End_2024 × 100
     GROWTH_RATES = {
-        'EGY': -4.55,   # Egypt: -4.55%
-        'YEM': -1.62,   # Yemen: -1.62%
-        'SYR': -5.65,   # Syria: -5.65% (triggers reduction)
-        'IRQ': -2.90,   # Iraq: -2.90%
-        'AFG': +1.03,   # Afghanistan: +1.03%
-        'IRN': 0.0,     # Iran: restricted
-        'BGD': -2.0,    # Bangladesh: estimate
-        'PAK': -1.0,    # Pakistan: estimate
-        'IND': -1.5,    # India: estimate
-        'NPL': -2.0,    # Nepal: estimate
-        'PHL': -1.0,    # Philippines: estimate
-        'LKA': -1.5,    # Sri Lanka: estimate
+        'BGD': +0.92,   # Bangladesh: GROWING +3,649 workers
+        'PAK': +0.74,   # Pakistan: GROWING +1,443 workers
+        'YEM': -1.26,   # Yemen: -167 workers
+        'IRQ': -6.38,   # Iraq: -113 workers (triggers 5% reduction)
+        'IRN': -6.79,   # Iran: -487 workers (triggers 5% reduction)
+        'NPL': -9.17,   # Nepal: -34,980 workers (triggers 5% reduction)
+        'AFG': -9.47,   # Afghanistan: -265 workers (triggers 5% reduction)
+        'EGY': -10.79,  # Egypt: -8,661 workers (triggers 5% reduction)
+        'IND': -11.95,  # India: -71,868 workers (triggers 5% reduction)
+        'SYR': -12.37,  # Syria: -3,291 workers (triggers 5% reduction)
+        'PHL': -13.34,  # Philippines: -19,490 workers (triggers 5% reduction)
+        'LKA': -17.39,  # Sri Lanka: -21,317 workers (triggers 5% reduction)
     }
     growth_rate = GROWTH_RATES.get(nationality_code, 0)
     

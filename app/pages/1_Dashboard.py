@@ -208,20 +208,21 @@ def _generate_demo_data(nationality_code: str) -> dict:
         4: int(5 * queue_multiplier + (seed % 10)),
     }
     
-    # Growth rates from ministry data (Section 10.G formula)
+    # Growth rates calculated from actual 2024-2025 worker movement data
+    # Formula: (Joined_2025 - Left_2025) / Stock_End_2024 × 100
     GROWTH_RATES = {
-        'EGY': -4.55,   # Egypt: -4.55%
-        'YEM': -1.62,   # Yemen: -1.62%
-        'SYR': -5.65,   # Syria: -5.65%
-        'IRQ': -2.90,   # Iraq: -2.90%
-        'AFG': +1.03,   # Afghanistan: +1.03%
-        'IRN': 0.0,     # Iran: restricted
-        'BGD': -2.0,    # Bangladesh
-        'PAK': -1.0,    # Pakistan
-        'IND': -1.5,    # India
-        'NPL': -2.0,    # Nepal
-        'PHL': -1.0,    # Philippines
-        'LKA': -1.5,    # Sri Lanka
+        'BGD': +0.92,   # Bangladesh: GROWING +3,649 workers
+        'PAK': +0.74,   # Pakistan: GROWING +1,443 workers
+        'YEM': -1.26,   # Yemen: -167 workers
+        'IRQ': -6.38,   # Iraq: -113 workers
+        'IRN': -6.79,   # Iran: -487 workers
+        'NPL': -9.17,   # Nepal: -34,980 workers
+        'AFG': -9.47,   # Afghanistan: -265 workers
+        'EGY': -10.79,  # Egypt: -8,661 workers
+        'IND': -11.95,  # India: -71,868 workers
+        'SYR': -12.37,  # Syria: -3,291 workers
+        'PHL': -13.34,  # Philippines: -19,490 workers
+        'LKA': -17.39,  # Sri Lanka: -21,317 workers
     }
     growth_rate = GROWTH_RATES.get(nationality_code, 0)
     
