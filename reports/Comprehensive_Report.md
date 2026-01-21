@@ -30,12 +30,12 @@ These countries require **Qatar Visa Center (QVC)** processing in their home cou
 
 | Country | Stock | Cap | Utilization | Headroom | Growth | QVC/Day |
 |---------|------:|----:|------------:|---------:|-------:|--------:|
-| India | 488,672 | 676,569 | 72.2% | 204,389 | -18.2% | 805 |
-| Bangladesh | 330,602 | 487,741 | 67.8% | 168,296 | -15.6% | 515 |
-| Nepal | 317,954 | 437,178 | 72.7% | 129,954 | -16.2% | 325 |
-| Pakistan | 158,196 | 242,955 | 65.1% | 90,097 | -17.7% | 370 |
-| Philippines | 120,269 | 155,806 | 77.2% | 39,596 | -17.3% | 280 |
-| Sri Lanka | 93,238 | 136,111 | 68.5% | 46,019 | -23.2% | 150 |
+| India | 488,672 | 676,569 | 72.2% | 204,389 | -20.7% | 805 |
+| Bangladesh | 330,602 | 487,741 | 67.8% | 168,296 | -14.0% | 515 |
+| Nepal | 317,954 | 437,178 | 72.7% | 129,954 | -18.5% | 325 |
+| Pakistan | 158,196 | 242,955 | 65.1% | 90,097 | -20.8% | 370 |
+| Philippines | 120,269 | 155,806 | 77.2% | 39,596 | -17.8% | 280 |
+| Sri Lanka | 93,238 | 136,111 | 68.5% | 46,019 | -22.2% | 150 |
 | **TOTAL QVC** | **1,508,931** | **2,136,360** | **70.6%** | **678,351** | | **2,445** |
 
 ### QVC Flow Analysis (2024-2025)
@@ -76,18 +76,18 @@ These 5 countries do **NOT** require QVC processing and use **outflow-based allo
 
 | Country | Stock | Cap | Utilization | Monthly Outflow | Growth | Type |
 |---------|------:|----:|------------:|----------------:|-------:|------|
-| Egypt | 71,536 | 71,536 | 100% | 808 | -10.8% | OUTFLOW |
-| Syria | 23,211 | 23,211 | 100% | 305 | -12.8% | OUTFLOW |
-| Yemen | 12,499 | 12,499 | 100% | 70 | -5.7% | OUTFLOW |
-| Iran | 6,439 | 6,439 | 100% | 59 | -10.0% | OUTFLOW |
-| Iraq | 1,581 | 1,581 | 100% | 16 | -10.6% | OUTFLOW |
+| Egypt | 71,536 | 71,536 | 100% | 808 | -11.0% | OUTFLOW |
+| Syria | 23,211 | 23,211 | 100% | 305 | -11.9% | OUTFLOW |
+| Yemen | 12,499 | 12,499 | 100% | 70 | -5.5% | OUTFLOW |
+| Iran | 6,439 | 6,439 | 100% | 59 | -8.1% | OUTFLOW |
+| Iraq | 1,581 | 1,581 | 100% | 16 | -9.8% | OUTFLOW |
 | **TOTAL OUTFLOW** | **115,266** | **115,266** | **100%** | **1,258** | | |
 
 ### Afghanistan (Standard Cap - NOT Outflow-Based)
 
 | Country | Stock | Cap | Utilization | Headroom | Growth | Type |
 |---------|------:|----:|------------:|---------:|-------:|------|
-| Afghanistan | 2,297 | 3,016 | 76.2% | 796 | -17.6% | **Standard** |
+| Afghanistan | 2,297 | 3,016 | 76.2% | 796 | -11.7% | **Standard** |
 
 > **Note:** Afghanistan uses standard cap recommendations (NOT outflow-based) despite negative growth. It is the only non-QVC country with standard cap treatment.
 
@@ -239,14 +239,14 @@ These 5 countries do **NOT** require QVC processing and use **outflow-based allo
 
 ### Growth Analysis
 
-**Formula:** `Growth = (Stock_2025 - Stock_2024) / Stock_2024 × 100`  
-**Stock_2024** = Current_Stock + Left_2025 - Joined_2025
+**Formula:** `Growth = (Total_2025 - Total_2024) / Total_2024 × 100`  
+**Total** = Workers active during each year (long-term only, >= 1 year employment)
 
 | Status | Countries | Notes |
 |--------|-----------|-------|
-| **Moderate Decline (5-12%)** | Yemen (-5.7%), Egypt (-10.8%), Iran (-10.0%), Iraq (-10.6%) | Manageable |
-| **Significant Decline (12-18%)** | Syria (-12.8%), Bangladesh (-15.6%), Nepal (-16.2%), Philippines (-17.3%), Pakistan (-17.7%), Afghanistan (-17.6%), India (-18.2%) | Concerning |
-| **Severe Decline (>20%)** | Sri Lanka (-23.2%) | Requires urgent attention |
+| **Moderate Decline (5-12%)** | Yemen (-5.5%), Iran (-8.1%), Iraq (-9.8%), Egypt (-11.0%), Afghanistan (-11.7%), Syria (-11.9%) | Manageable |
+| **Significant Decline (12-20%)** | Bangladesh (-14.0%), Philippines (-17.8%), Nepal (-18.5%) | Concerning |
+| **Severe Decline (>20%)** | India (-20.7%), Pakistan (-20.8%), Sri Lanka (-22.2%) | Requires urgent attention |
 
 ### Risk Areas
 

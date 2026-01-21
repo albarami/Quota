@@ -64,9 +64,20 @@ NATIONALITY_CODES = {
 }
 NUMERIC_TO_ISO = {v: k for k, v in NATIONALITY_CODES.items()}
 
-# Growth rates will be calculated dynamically from actual flow data:
-# Stock_2024 = Current_Stock + Left_2025 - Joined_2025 (reconstruct end-of-2024)
-# Growth = (Current_Stock - Stock_2024) / Stock_2024 * 100
+# Growth rates are loaded from growth_by_year.json
+# Calculated as: (Total_2025 - Total_2024) / Total_2024 * 100
+# Where totals are workers active during each year (long-term only, >= 1 year employment)
+def load_growth_rates():
+    """Load pre-calculated growth rates from JSON file."""
+    growth_file = REAL_DATA_DIR / 'growth_by_year.json'
+    if growth_file.exists():
+        import json
+        with open(growth_file, 'r') as f:
+            data = json.load(f)
+        return {k: v['growth'] for k, v in data.items()}
+    return {}
+
+GROWTH_RATES = load_growth_rates()
 
 # QVC Daily Capacity - loaded from qvc_capacity.json
 def load_qvc_capacity():
@@ -154,7 +165,7 @@ def process_worker_data():
             'name': nationalities.get(num_code, iso_code),
             'numeric_code': num_code,
             'is_qvc': iso_code in QVC_COUNTRIES,
-            'growth_rate': 0,  # Will be calculated from flow data
+            'growth_rate': GROWTH_RATES.get(iso_code, 0),  # From growth_by_year.json
             'original_cap': caps.get(num_code, {}).get('cap_limit', 0),
             'previous_cap': caps.get(num_code, {}).get('previous_cap', 0),
             'in_country': 0,
@@ -235,28 +246,6 @@ def process_worker_data():
     
     print(f"  Total rows: {row_count:,}")
     print(f"  Short-term excluded: {short_term_excluded:,}")
-    print()
-    
-    # Calculate growth rate from actual flow data
-    # Formula: Growth = (Stock_2025 - Stock_2024) / Stock_2024 * 100
-    # Where Stock_2024 = Current_Stock + Left_2025 - Joined_2025
-    print("Calculating growth rates from flow data...")
-    for iso_code, d in data.items():
-        current_stock = d['in_country']
-        left_2025 = d['left_2025']
-        joined_2025 = d['joined_2025']
-        
-        # Reconstruct end-of-2024 stock
-        stock_2024 = current_stock + left_2025 - joined_2025
-        
-        # Calculate growth rate
-        if stock_2024 > 0:
-            growth_rate = ((current_stock - stock_2024) / stock_2024) * 100
-        else:
-            growth_rate = 0
-        
-        d['growth_rate'] = growth_rate
-        d['stock_2024'] = stock_2024  # Store for reference
     print()
     
     # Calculate derived metrics
