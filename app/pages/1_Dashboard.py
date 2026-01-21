@@ -58,6 +58,7 @@ NATIONALITIES = {
     "NPL": "Nepal",
     "BGD": "Bangladesh",
     "PHL": "Philippines",
+    "LKA": "Sri Lanka",
     "IRN": "Iran",
     "IRQ": "Iraq",
     "YEM": "Yemen",
@@ -75,9 +76,19 @@ selected_code = st.selectbox(
 
 def fetch_dashboard_data(nationality_code: str):
     """
-    Fetch dashboard data - tries API first, then direct DB, then demo data.
+    Fetch dashboard data - tries real data first, then API, then demo data.
     """
-    # Try API first (for local development with FastAPI running)
+    # Try real data from CSV files first (priority)
+    try:
+        from app.utils.real_data_loader import get_real_dashboard_data, check_real_data_available
+        if check_real_data_available():
+            data = get_real_dashboard_data(nationality_code)
+            if data and data.get("stock", 0) > 0:
+                return data
+    except Exception as e:
+        print(f"Real data load error: {e}")
+    
+    # Try API second (for local development with FastAPI running)
     try:
         response = requests.get(
             f"{API_BASE}/api/v1/dashboard/{nationality_code}",
@@ -108,19 +119,22 @@ def _generate_demo_data(nationality_code: str) -> dict:
     # Use nationality code to generate consistent but varying numbers
     seed = int(hashlib.md5(nationality_code.encode()).hexdigest()[:8], 16)
     
-    # Realistic data ranges per nationality (based on typical Qatar workforce)
+    # Realistic data ranges per nationality (based on real ministry data)
     demo_profiles = {
-        "EGY": {"cap": 45000, "stock": 38500, "tier1_status": "RATIONED"},
-        "IND": {"cap": 85000, "stock": 78200, "tier1_status": "LIMITED"},
-        "PAK": {"cap": 35000, "stock": 29800, "tier1_status": "OPEN"},
-        "NPL": {"cap": 55000, "stock": 48900, "tier1_status": "RATIONED"},
-        "BGD": {"cap": 62000, "stock": 54300, "tier1_status": "RATIONED"},
-        "PHL": {"cap": 28000, "stock": 21500, "tier1_status": "OPEN"},
-        "IRN": {"cap": 8000, "stock": 5200, "tier1_status": "OPEN"},
-        "IRQ": {"cap": 12000, "stock": 9800, "tier1_status": "RATIONED"},
-        "YEM": {"cap": 6000, "stock": 4100, "tier1_status": "OPEN"},
-        "SYR": {"cap": 9500, "stock": 7200, "tier1_status": "OPEN"},
-        "AFG": {"cap": 7500, "stock": 5800, "tier1_status": "RATIONED"},
+        # Additional countries (Worker Stock data)
+        "EGY": {"cap": 81668, "stock": 71574, "tier1_status": "OPEN"},       # Real: 87.6% util
+        "YEM": {"cap": 14949, "stock": 13105, "tier1_status": "CRITICAL"},   # Real: 87.7% util, EMPLOYEE 51.4%
+        "SYR": {"cap": 27038, "stock": 23324, "tier1_status": "OPEN"},       # Real: 86.3% util
+        "IRQ": {"cap": 1959, "stock": 1658, "tier1_status": "OPEN"},         # Real: 84.6% util
+        "AFG": {"cap": 3016, "stock": 2532, "tier1_status": "WATCH"},        # Real: 84.0% util, DRIVER 21.6%
+        "IRN": {"cap": 7062, "stock": 6683, "tier1_status": "OPEN"},         # Real: Restricted
+        # QVC countries (VP data - these are allocations not stock)
+        "BGD": {"cap": 69928, "stock": 58544, "tier1_status": "OPEN"},       # Real: 83.7% util
+        "PAK": {"cap": 97870, "stock": 61154, "tier1_status": "WATCH"},      # Real: 62.5% util, DRIVER 30.7%
+        "NPL": {"cap": 122988, "stock": 40955, "tier1_status": "RATIONED"},  # Real: 33.3% util
+        "IND": {"cap": 135369, "stock": 43847, "tier1_status": "OPEN"},      # Real: 32.4% util
+        "LKA": {"cap": 45541, "stock": 12609, "tier1_status": "OPEN"},       # Real: 27.7% util
+        "PHL": {"cap": 41540, "stock": 7078, "tier1_status": "OPEN"},        # Real: 17.0% util
     }
     
     profile = demo_profiles.get(nationality_code, {

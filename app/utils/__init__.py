@@ -1,15 +1,8 @@
 """
 Utility modules for Streamlit app.
+
+Note: Imports are done lazily to avoid dependency issues.
+Use explicit imports: from app.utils.real_data_loader import ...
 """
 
-from app.utils.db_queries import (
-    get_dashboard_data,
-    get_all_nationalities,
-    get_cap_data,
-)
-
-__all__ = [
-    "get_dashboard_data",
-    "get_all_nationalities",
-    "get_cap_data",
-]
+__all__ = []
