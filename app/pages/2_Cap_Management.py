@@ -648,10 +648,12 @@ else:
             default_value = st.session_state.get(cap_key, recommendation["recommended_cap"])
 
     with form_cols[0]:
+        # Dynamic max_value based on current cap (allow up to 2x current cap)
+        max_cap = max(1000000, recommendation["current_cap"] * 2)
         new_cap = st.number_input(
             "New Cap Limit",
             min_value=1000,
-            max_value=500000,
+            max_value=max_cap,
             value=default_value,
             step=500,
             help="Enter the new annual cap limit for this nationality",
