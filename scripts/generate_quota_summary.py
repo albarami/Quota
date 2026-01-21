@@ -5,6 +5,9 @@ Generate Quota Summary - Pre-compute all v4 metrics.
 This script generates a comprehensive JSON summary of all quota metrics
 using the quota_engine v4 methodology.
 
+IMPORTANT: This script performs FULL CSV processing to calculate exact
+values for all v4 formulas. Run this before deploying to Streamlit Cloud.
+
 Usage:
     python scripts/generate_quota_summary.py
 
@@ -21,12 +24,21 @@ from datetime import datetime
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
+# IMPORTANT: Disable pre-computed mode for full calculation
+import src.engines.quota_engine as quota_engine
+quota_engine.USE_PRECOMPUTED = False
+
 from src.engines.quota_engine import (
     get_all_metrics,
     get_all_nationalities,
     is_qvc_country,
     is_outflow_based,
     get_qvc_capacity_details,
+    calculate_stock,
+    calculate_joiners,
+    calculate_outflow,
+    calculate_growth_rate,
+    calculate_recommended_cap,
     QVC_COUNTRIES,
     OUTFLOW_BASED,
     STANDARD_NON_QVC,
@@ -38,13 +50,30 @@ from src.engines.quota_engine import (
 
 def generate_summary() -> dict:
     """
-    Generate comprehensive summary for all nationalities.
+    Generate comprehensive summary for all nationalities using full CSV processing.
+    
+    This implements ALL v4 formulas:
+    - Stock calculation
+    - Joiners calculation (avg of 2024, 2025)
+    - Outflow calculation (avg of 2024, 2025)
+    - Growth direction (Joiners > Outflow = POSITIVE)
+    - Growth rate (YoY percentage)
+    - Demand basis (Joiners for positive, Outflow for negative)
+    - Buffer (10% positive QVC, 5% negative QVC/standard, 0% frozen)
+    - Desired cap = Stock + Demand + Buffer
+    - QVC constraint: Net_QVC = QVC_Annual - Outflow
+    - Max achievable = Stock + Net_QVC
+    - Recommended cap = min(Desired, Max_Achievable)
+    - Utilization = Stock / Cap × 100
+    - Headroom = Cap - Stock
+    - Tier classification
+    - Dominance alerts
     
     Returns:
         Dictionary with all quota metrics
     """
     print("=" * 70)
-    print("QUOTA SUMMARY GENERATOR v4")
+    print("QUOTA SUMMARY GENERATOR v4 - FULL CSV PROCESSING")
     print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
     
@@ -54,7 +83,8 @@ def generate_summary() -> dict:
     # Get all nationality codes
     all_codes = get_all_nationalities()
     
-    print(f"\nProcessing {len(all_codes)} nationalities...")
+    print(f"\nProcessing {len(all_codes)} nationalities with full CSV calculation...")
+    print("This may take several minutes for large datasets.\n")
     
     # Process each nationality
     nationalities = {}
@@ -66,8 +96,9 @@ def generate_summary() -> dict:
     outflow_cap = 0
     
     for code in all_codes:
-        print(f"  Processing {code}...", end=" ")
+        print(f"  Processing {code}...", end=" ", flush=True)
         try:
+            # Use full CSV calculation (not pre-computed)
             metrics = get_all_metrics(code)
             nationalities[code] = metrics
             
@@ -82,9 +113,13 @@ def generate_summary() -> dict:
                 outflow_stock += metrics['current_stock']
                 outflow_cap += metrics['recommended_cap']
             
-            print(f"Stock: {metrics['current_stock']:,}, Cap: {metrics['recommended_cap']:,}")
+            constrained = " (QVC-CONSTRAINED)" if metrics.get('is_qvc_constrained') else ""
+            frozen = " (FROZEN)" if metrics.get('country_type') == 'OUTFLOW_BASED' else ""
+            print(f"Stock: {metrics['current_stock']:,}, Cap: {metrics['recommended_cap']:,}{constrained}{frozen}")
         except Exception as e:
             print(f"ERROR: {e}")
+            import traceback
+            traceback.print_exc()
             nationalities[code] = {'error': str(e)}
     
     # Build QVC summary

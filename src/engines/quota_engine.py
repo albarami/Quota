@@ -748,8 +748,9 @@ def get_all_metrics_from_precomputed(iso_code: str) -> dict:
     """
     Get metrics using pre-computed summary data for fast performance.
     
-    This uses the summary_by_nationality.json file for instant loading.
-    The v4 cap calculation is applied to the pre-computed data.
+    This uses the quota_summary.json or summary_by_nationality.json file.
+    If v4 metrics are present (avg_annual_joiners, avg_annual_outflow), uses them directly.
+    Otherwise falls back to estimation.
     """
     summary = _load_precomputed_summary()
     growth_data = _load_growth_by_year()
@@ -761,26 +762,26 @@ def get_all_metrics_from_precomputed(iso_code: str) -> dict:
     country_type = _get_country_type(iso_code)
     
     # Extract base metrics
-    stock = nat_data.get('in_country', nat_data.get('stock', 0))
+    stock = nat_data.get('current_stock', nat_data.get('in_country', nat_data.get('stock', 0)))
     growth_rate = nat_data.get('growth_rate', 0)
     
-    # Get or estimate joiners/outflow
-    # For simplicity, use projected_outflow as monthly and extrapolate
-    projected_monthly = nat_data.get('projected_outflow', 0)
-    avg_outflow = projected_monthly * 12  # Annualize
-    
-    # Get year-over-year data if available
-    year_data = growth_data.get(iso_code, {})
-    total_2024 = year_data.get('total_2024', 0)
-    total_2025 = year_data.get('total_2025', 0)
-    
-    # Estimate joiners based on growth pattern
-    # If growth is negative, outflow > joiners
-    # Joiners ≈ Outflow + Net Change
-    net_change = total_2025 - total_2024 if total_2024 else 0
-    # For negative growth, joiners < outflow
-    # Assuming joiners ≈ outflow * (1 + growth_rate/100)
-    avg_joiners = max(0, int(avg_outflow * (1 + growth_rate / 100)))
+    # Check if v4 metrics are already computed in summary
+    if 'avg_annual_joiners' in nat_data and 'avg_annual_outflow' in nat_data:
+        # Use exact v4 values from summary
+        avg_joiners = nat_data['avg_annual_joiners']
+        avg_outflow = nat_data['avg_annual_outflow']
+    else:
+        # Fall back to estimation from projected_outflow
+        projected_monthly = nat_data.get('projected_outflow', 0)
+        avg_outflow = projected_monthly * 12  # Annualize
+        
+        # Get year-over-year data if available
+        year_data = growth_data.get(iso_code, {})
+        total_2024 = year_data.get('total_2024', 0)
+        total_2025 = year_data.get('total_2025', 0)
+        
+        # Estimate joiners based on growth pattern
+        avg_joiners = max(0, int(avg_outflow * (1 + growth_rate / 100)))
     
     # Determine growth direction
     is_positive_growth = avg_joiners > avg_outflow
@@ -867,6 +868,20 @@ def get_all_metrics_from_precomputed(iso_code: str) -> dict:
             'is_blocking': alert.get('is_blocking', False),
         })
     
+    # Get yearly data if available in summary
+    joined_2024 = nat_data.get('joined_2024', 0)
+    joined_2025 = nat_data.get('joined_2025', 0)
+    left_2024 = nat_data.get('left_2024', 0)
+    left_2025 = nat_data.get('left_2025', 0)
+    
+    # Fall back to estimation if not in summary
+    if not joined_2024 and not joined_2025:
+        joined_2024 = avg_joiners
+        joined_2025 = avg_joiners
+    if not left_2024 and not left_2025:
+        left_2024 = avg_outflow
+        left_2025 = avg_outflow
+    
     return {
         'nationality_code': iso_code,
         'nationality_name': nat_data.get('name', iso_code),
@@ -875,10 +890,10 @@ def get_all_metrics_from_precomputed(iso_code: str) -> dict:
         'stock': stock,
         'avg_annual_joiners': avg_joiners,
         'avg_annual_outflow': avg_outflow,
-        'joined_2024': total_2024 // 2 if total_2024 else 0,
-        'joined_2025': total_2025 // 2 if total_2025 else 0,
-        'left_2024': avg_outflow // 2,
-        'left_2025': avg_outflow // 2,
+        'joined_2024': joined_2024,
+        'joined_2025': joined_2025,
+        'left_2024': left_2024,
+        'left_2025': left_2025,
         'growth_direction': growth_direction,
         'growth_rate': round(growth_rate, 2),
         'net_growth': net_growth,
