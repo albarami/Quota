@@ -46,6 +46,9 @@ NATIONALITY_CODES = {
 # Reverse mapping
 NUMERIC_TO_ISO = {v: k for k, v in NATIONALITY_CODES.items()}
 
+# Permit duration filter - exclude short-term permits
+MIN_EMPLOYMENT_DAYS = 365  # Exclude workers with < 1 year employment
+
 
 def _load_summary() -> Optional[dict]:
     """Load pre-computed summary data (fast)."""
@@ -274,20 +277,50 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
         # Load worker stock data
         workers = _load_worker_stock()
         
+        # Helper function to check if worker is long-term (>= 1 year)
+        today = datetime.now()
+        
+        def is_long_term(w: dict) -> bool:
+            """Check if worker has employment duration >= 1 year."""
+            emp_start_str = w.get('employment_start', '')
+            emp_end_str = w.get('employment_end', '')
+            state = w.get('state', '').upper()
+            
+            if not emp_start_str:
+                return True  # Include if no start date (can't exclude)
+            
+            try:
+                emp_start = datetime.strptime(emp_start_str[:10], '%Y-%m-%d')
+                
+                # For OUT_COUNTRY, use employment_end
+                if emp_end_str and state == 'OUT_COUNTRY':
+                    emp_end = datetime.strptime(emp_end_str[:10], '%Y-%m-%d')
+                else:
+                    emp_end = today
+                
+                duration_days = (emp_end - emp_start).days
+                return duration_days >= MIN_EMPLOYMENT_DAYS
+            except (ValueError, TypeError):
+                return True  # Include if parse error
+        
         # ================================================================
         # PASS 1: Count ALL workers by profession (for dominance calculation)
         # This is required per Section 6 formula
+        # FILTER: Exclude short-term permits (< 1 year)
         # ================================================================
         total_workers_by_profession = defaultdict(int)
         
         for w in workers:
             state = w.get('state', '').upper()
             if state in ('ACTIVE', 'IN_COUNTRY', ''):
+                if not is_long_term(w):
+                    continue  # Skip short-term workers
                 prof_code = w.get('profession_code', 'Unknown')
                 total_workers_by_profession[prof_code] += 1
         
         # ================================================================
         # PASS 2: Count workers for THIS nationality
+        # FILTER: Exclude short-term permits (< 1 year)
         # ================================================================
         in_country = 0
         out_country = 0
@@ -298,6 +331,10 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
         for w in workers:
             w_nat = w.get('nationality_code', '') or w.get('nationality', '')
             if w_nat != numeric_code:
+                continue
+            
+            # Skip short-term workers
+            if not is_long_term(w):
                 continue
             
             state = w.get('state', '').upper()

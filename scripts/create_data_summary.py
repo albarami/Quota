@@ -48,6 +48,28 @@ MIN_PROFESSION_SIZE = 200
 PENDING_APPROVAL_RATE = 0.8
 OUTFLOW_CONFIDENCE_FACTOR = 0.75
 
+# Permit duration filter - exclude short-term permits
+MIN_EMPLOYMENT_DAYS = 365  # Exclude workers with < 1 year employment
+
+# Non-QVC countries - use outflow-based allocation when growth is negative
+NON_QVC_COUNTRIES = {'EGY', 'YEM', 'SYR', 'IRQ', 'IRN'}
+
+# Growth rates from actual 2024-2025 worker movement data
+GROWTH_RATES = {
+    'BGD': +0.92,   # Bangladesh: GROWING
+    'PAK': +0.74,   # Pakistan: GROWING
+    'YEM': -1.26,   # Yemen: declining
+    'IRQ': -6.38,   # Iraq: declining
+    'IRN': -6.79,   # Iran: declining
+    'NPL': -9.17,   # Nepal: declining
+    'AFG': -9.47,   # Afghanistan: declining
+    'EGY': -10.79,  # Egypt: declining
+    'IND': -11.95,  # India: declining
+    'SYR': -12.37,  # Syria: declining
+    'PHL': -13.34,  # Philippines: declining
+    'LKA': -17.39,  # Sri Lanka: declining
+}
+
 # Nationality code mapping (ISO 3-letter to numeric)
 NATIONALITY_CODES = {
     'EGY': '818',   # Egypt
@@ -141,6 +163,8 @@ def create_summary():
     worker_file = REAL_DATA_DIR / '07_worker_stock.csv'
     row_count = 0
     matched_count = 0
+    short_term_excluded = 0
+    today = datetime.now()
     
     with open(worker_file, encoding='utf-8') as f:
         reader = csv.DictReader(f)
@@ -153,6 +177,32 @@ def create_summary():
             iso_code = NUMERIC_TO_ISO.get(nat_code)
             state = row.get('state', '').upper()
             prof_code = row.get('profession_code', 'Unknown')
+            
+            # === FILTER: Exclude short-term permits (< 1 year) ===
+            employment_start_str = row.get('employment_start', '')
+            employment_end_str = row.get('employment_end', '')
+            
+            # Calculate employment duration
+            try:
+                if employment_start_str:
+                    emp_start = datetime.strptime(employment_start_str[:10], '%Y-%m-%d')
+                    
+                    # For workers who left, use employment_end
+                    # For current workers, use today's date
+                    if employment_end_str and state == 'OUT_COUNTRY':
+                        emp_end = datetime.strptime(employment_end_str[:10], '%Y-%m-%d')
+                    else:
+                        emp_end = today
+                    
+                    duration_days = (emp_end - emp_start).days
+                    
+                    # Skip short-term workers (< 1 year)
+                    if duration_days < MIN_EMPLOYMENT_DAYS:
+                        short_term_excluded += 1
+                        continue
+            except (ValueError, TypeError):
+                # If we can't parse dates, include the worker (don't exclude)
+                pass
             
             # Count ALL workers by profession (for dominance calculation)
             # Only count active/in-country workers
@@ -176,7 +226,8 @@ def create_summary():
                 summary[iso_code]['pending'] += 1
     
     print(f"    Total rows: {row_count:,}")
-    print(f"    Matched rows (12 nationalities): {matched_count:,}")
+    print(f"    Short-term excluded (< 1 year): {short_term_excluded:,}")
+    print(f"    Matched rows (12 nationalities, long-term only): {matched_count:,}")
     print(f"    Total professions tracked: {len(total_workers_by_profession):,}")
     
     # PASS 2: Calculate derived values with CORRECT formulas
@@ -184,17 +235,41 @@ def create_summary():
     
     for iso_code, data in summary.items():
         stock = data['in_country']
-        cap = data['cap']
+        original_cap = data['cap']  # Keep original for reference
         committed = data['committed']
         pending = data['pending']
+        growth_rate = GROWTH_RATES.get(iso_code, 0)
+        
+        # ================================================================
+        # CAP RULE: Non-QVC countries with negative growth
+        # Section 9: Cap = Current Stock (frozen, outflow-based allocation)
+        # ================================================================
+        is_outflow_based = iso_code in NON_QVC_COUNTRIES and growth_rate < 0
+        
+        if is_outflow_based:
+            # Cap frozen at current stock level
+            cap = stock
+            data['is_outflow_based'] = True
+            data['original_cap'] = original_cap
+        else:
+            cap = original_cap
+            data['is_outflow_based'] = False
+        
+        data['cap'] = cap
+        data['growth_rate'] = growth_rate
         
         # ================================================================
         # HEADROOM CALCULATION (Section 5, Section 11.B)
         # Formula: cap - stock - committed - (pending × 0.8) + (outflow × 0.75)
+        # For outflow-based: headroom = 0 (no growth allowed)
         # ================================================================
         projected_outflow = int(stock * 0.015 * 3)  # ~1.5% monthly for 3 months
         
-        if cap > 0:
+        if is_outflow_based:
+            # For outflow-based allocation, no traditional headroom
+            headroom = 0
+            utilization = 1.0  # 100% by definition (cap = stock)
+        elif cap > 0:
             headroom = (cap 
                        - stock 
                        - committed 
@@ -336,15 +411,16 @@ def create_summary():
     # Print summary
     print("\n" + "=" * 70)
     print("SUMMARY - Exact Documentation Formulas Applied")
-    print("=" * 70)
-    print(f"{'Code':<5} {'Stock':>10} {'Cap':>10} {'Util':>8} {'Headroom':>10} {'Alerts':>7}")
-    print("-" * 70)
+    print("=" * 80)
+    print(f"{'Code':<5} {'Stock':>10} {'Cap':>10} {'Util':>8} {'Headroom':>10} {'Alerts':>7} {'Type':<12}")
+    print("-" * 80)
     for iso_code in sorted(summary.keys()):
         data = summary[iso_code]
         alerts = len(data['dominance_alerts'])
         alert_str = f"{alerts}" if alerts == 0 else f"{alerts} (!)"
+        cap_type = "OUTFLOW" if data.get('is_outflow_based') else "Standard"
         print(f"{iso_code:<5} {data['stock']:>10,} {data['cap']:>10,} "
-              f"{data['utilization']:>7.1%} {data['headroom']:>10,} {alert_str:>7}")
+              f"{data['utilization']:>7.1%} {data['headroom']:>10,} {alert_str:>7} {cap_type:<12}")
     
     # Print dominance alerts detail
     print("\n" + "=" * 70)

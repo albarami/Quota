@@ -411,7 +411,12 @@ Timestamp breaks ties
 - These use **outflow-based allocation** (Section 10.B)
 - Monthly capacity = previous month's outflow
 - Pure replacement model - no growth allowed
-- Example: Egypt stock = 71,574 → Cap = 71,574
+- Utilization = 100%, Headroom = 0
+- Example: Egypt stock = 71,536 → Cap = 71,536
+
+**Data Filtering:**
+- All calculations exclude **short-term workers** (employment < 1 year)
+- Only long-term permits are counted in stock, caps, and all metrics
 
 ### Recommendation Models
 
