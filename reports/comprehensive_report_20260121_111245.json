@@ -1,0 +1,847 @@
+{
+  "qvc": [
+    {
+      "code": "IND",
+      "name": "INDIA",
+      "is_qvc": true,
+      "stock": 488672,
+      "original_cap": 676569,
+      "effective_cap": 676569,
+      "is_outflow_based": false,
+      "utilization": 72.2279619669243,
+      "headroom": 204389,
+      "growth_rate": -11.95,
+      "left_2024": 157395,
+      "left_2025": 109767,
+      "joined_2024": 56799,
+      "joined_2025": 1373,
+      "monthly_outflow": 11615,
+      "qvc_daily_capacity": 800,
+      "qvc_monthly_capacity": 17600,
+      "dominance_alerts": [
+        {
+          "profession": "SUPERVISOR.",
+          "level": "WATCH",
+          "share": 0.3025003172991496,
+          "count": 23834,
+          "total": 78790
+        },
+        {
+          "profession": "Technician",
+          "level": "HIGH",
+          "share": 0.44074785811514133,
+          "count": 22018,
+          "total": 49956
+        },
+        {
+          "profession": "BUSIN. EXECUTIVE.",
+          "level": "WATCH",
+          "share": 0.3576434461751814,
+          "count": 14442,
+          "total": 40381
+        },
+        {
+          "profession": "ACCOUNTANT",
+          "level": "WATCH",
+          "share": 0.32383372247401915,
+          "count": 14147,
+          "total": 43686
+        },
+        {
+          "profession": "GENERAL SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.3818140369874334,
+          "count": 13399,
+          "total": 35093
+        },
+        {
+          "profession": "NURSE",
+          "level": "WATCH",
+          "share": 0.3974156811213316,
+          "count": 9073,
+          "total": 22830
+        },
+        {
+          "profession": "MANAGER",
+          "level": "HIGH",
+          "share": 0.4019947961838682,
+          "count": 8343,
+          "total": 20754
+        },
+        {
+          "profession": "ENGINEER",
+          "level": "WATCH",
+          "share": 0.3711080586080586,
+          "count": 8105,
+          "total": 21840
+        },
+        {
+          "profession": "MASON",
+          "level": "WATCH",
+          "share": 0.3007447528774543,
+          "count": 6663,
+          "total": 22155
+        },
+        {
+          "profession": "CARPENTER.",
+          "level": "WATCH",
+          "share": 0.3450574833324584,
+          "count": 6573,
+          "total": 19049
+        },
+        {
+          "profession": "HEAVY VEHICLE DRIVER",
+          "level": "WATCH",
+          "share": 0.3152542372881356,
+          "count": 6138,
+          "total": 19470
+        },
+        {
+          "profession": "TECHNICIAN GEN ",
+          "level": "HIGH",
+          "share": 0.46283499072981626,
+          "count": 5492,
+          "total": 11866
+        },
+        {
+          "profession": "COOKER",
+          "level": "WATCH",
+          "share": 0.3200920054705956,
+          "count": 5149,
+          "total": 16086
+        },
+        {
+          "profession": "PLUMBER",
+          "level": "WATCH",
+          "share": 0.3502615974886641,
+          "count": 5021,
+          "total": 14335
+        },
+        {
+          "profession": "ELECTRICAL TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.41625788367203925,
+          "count": 4752,
+          "total": 11416
+        },
+        {
+          "profession": "BLACKSMITH",
+          "level": "WATCH",
+          "share": 0.3664591116645911,
+          "count": 4414,
+          "total": 12045
+        },
+        {
+          "profession": "PETROCHEMICALS",
+          "level": "CRITICAL",
+          "share": 0.5552341597796143,
+          "count": 4031,
+          "total": 7260
+        },
+        {
+          "profession": "Mechanical Technician",
+          "level": "CRITICAL",
+          "share": 0.5845985287212396,
+          "count": 3735,
+          "total": 6389
+        },
+        {
+          "profession": "ELECTRICAL TECHNICIAN.",
+          "level": "WATCH",
+          "share": 0.3908836809288325,
+          "count": 3636,
+          "total": 9302
+        },
+        {
+          "profession": "SEAMEN",
+          "level": "CRITICAL",
+          "share": 0.6572108345534406,
+          "count": 3591,
+          "total": 5464
+        },
+        {
+          "profession": "MACHINE OPERATOR",
+          "level": "WATCH",
+          "share": 0.38901797725327136,
+          "count": 3181,
+          "total": 8177
+        },
+        {
+          "profession": "PIPE FITTER",
+          "level": "HIGH",
+          "share": 0.464326160815402,
+          "count": 2460,
+          "total": 5298
+        },
+        {
+          "profession": "WELD  TECHNICIAN",
+          "level": "CRITICAL",
+          "share": 0.5287158528715853,
+          "count": 2458,
+          "total": 4649
+        },
+        {
+          "profession": "MECHANIC",
+          "level": "WATCH",
+          "share": 0.391602809706258,
+          "count": 2453,
+          "total": 6264
+        },
+        {
+          "profession": "SITE SUPERVISOR",
+          "level": "WATCH",
+          "share": 0.36898315282791816,
+          "count": 2453,
+          "total": 6648
+        },
+        {
+          "profession": "INSTAL  TECHNICIAN",
+          "level": "HIGH",
+          "share": 0.41798298906439857,
+          "count": 2408,
+          "total": 5761
+        },
+        {
+          "profession": "SALES EXECUTIVE",
+          "level": "HIGH",
+          "share": 0.4641730509238396,
+          "count": 2060,
+          "total": 4438
+        },
+        {
+          "profession": "ELECT  ENGINEER",
+          "level": "HIGH",
+          "share": 0.4610872997969772,
+          "count": 2044,
+          "total": 4433
+        },
+        {
+          "profession": "DIGGER",
+          "level": "CRITICAL",
+          "share": 0.7155866900175132,
+          "count": 2043,
+          "total": 2855
+        },
+        {
+          "profession": "MECHAN  ENGINEER",
+          "level": "CRITICAL",
+          "share": 0.5330812854442344,
+          "count": 1974,
+          "total": 3703
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 2,
+        "3": 19,
+        "4": 1490
+      },
+      "total_professions": 1511
+    },
+    {
+      "code": "BGD",
+      "name": "BGD",
+      "is_qvc": true,
+      "stock": 330602,
+      "original_cap": 487741,
+      "effective_cap": 487741,
+      "is_outflow_based": false,
+      "utilization": 67.78228609036353,
+      "headroom": 168296,
+      "growth_rate": 0.92,
+      "left_2024": 66236,
+      "left_2025": 63038,
+      "joined_2024": 66697,
+      "joined_2025": 2086,
+      "monthly_outflow": 5620,
+      "qvc_daily_capacity": 600,
+      "qvc_monthly_capacity": 13200,
+      "dominance_alerts": [
+        {
+          "profession": "ACCOUNTANT (GEN )",
+          "level": "CRITICAL",
+          "share": 0.6471274197310114,
+          "count": 8324,
+          "total": 12863
+        },
+        {
+          "profession": "ADMIN  MANAGER",
+          "level": "CRITICAL",
+          "share": 0.6941255342327998,
+          "count": 8283,
+          "total": 11933
+        },
+        {
+          "profession": "MASON",
+          "level": "WATCH",
+          "share": 0.34181900248250957,
+          "count": 7573,
+          "total": 22155
+        },
+        {
+          "profession": "ADMIN  DIRECTOR",
+          "level": "HIGH",
+          "share": 0.4537192059315953,
+          "count": 5691,
+          "total": 12543
+        },
+        {
+          "profession": "CARPENTER",
+          "level": "WATCH",
+          "share": 0.35203964925657644,
+          "count": 4617,
+          "total": 13115
+        },
+        {
+          "profession": "PAINTER",
+          "level": "WATCH",
+          "share": 0.32176433719837044,
+          "count": 4107,
+          "total": 12764
+        },
+        {
+          "profession": "BRICK MASON",
+          "level": "WATCH",
+          "share": 0.36764395697110314,
+          "count": 3486,
+          "total": 9482
+        },
+        {
+          "profession": "ASST EXECUTIVE MAN",
+          "level": "CRITICAL",
+          "share": 0.910377358490566,
+          "count": 3474,
+          "total": 3816
+        },
+        {
+          "profession": "REINFORC  FITTER",
+          "level": "WATCH",
+          "share": 0.3469881949349208,
+          "count": 3439,
+          "total": 9911
+        },
+        {
+          "profession": "SALES MANAGER",
+          "level": "HIGH",
+          "share": 0.40850732719491634,
+          "count": 3150,
+          "total": 7711
+        },
+        {
+          "profession": "FARMER.",
+          "level": "CRITICAL",
+          "share": 0.5081648522550545,
+          "count": 2614,
+          "total": 5144
+        },
+        {
+          "profession": "MARKET MANAGER",
+          "level": "HIGH",
+          "share": 0.4965312190287413,
+          "count": 2505,
+          "total": 5045
+        },
+        {
+          "profession": "TILE MAKER.",
+          "level": "HIGH",
+          "share": 0.4022508038585209,
+          "count": 2502,
+          "total": 6220
+        },
+        {
+          "profession": "ELECTRICIAN (GEN )",
+          "level": "HIGH",
+          "share": 0.4340869565217391,
+          "count": 2496,
+          "total": 5750
+        },
+        {
+          "profession": "PLASTER WORKER",
+          "level": "WATCH",
+          "share": 0.35486288026374946,
+          "count": 2368,
+          "total": 6673
+        },
+        {
+          "profession": "FARMER",
+          "level": "HIGH",
+          "share": 0.4491721216788602,
+          "count": 2333,
+          "total": 5194
+        },
+        {
+          "profession": "SHEPHERD",
+          "level": "CRITICAL",
+          "share": 0.538316751815004,
+          "count": 2002,
+          "total": 3719
+        },
+        {
+          "profession": "MEN'S BARBER",
+          "level": "WATCH",
+          "share": 0.34352311807413066,
+          "count": 1798,
+          "total": 5234
+        },
+        {
+          "profession": "ADMINIS  CONSULT ",
+          "level": "CRITICAL",
+          "share": 0.6641156462585034,
+          "count": 1562,
+          "total": 2352
+        },
+        {
+          "profession": "ASSISTANT MANAGER",
+          "level": "HIGH",
+          "share": 0.45872450631272255,
+          "count": 1417,
+          "total": 3089
+        },
+        {
+          "profession": "CABLING TECH ",
+          "level": "WATCH",
+          "share": 0.35848577235772355,
+          "count": 1411,
+          "total": 3936
+        },
+        {
+          "profession": "ELECTRICIAN",
+          "level": "WATCH",
+          "share": 0.33110450718177314,
+          "count": 1337,
+          "total": 4038
+        },
+        {
+          "profession": "General civil engineer",
+          "level": "CRITICAL",
+          "share": 0.6568047337278107,
+          "count": 1332,
+          "total": 2028
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 17,
+        "4": 1051
+      },
+      "total_professions": 1071
+    },
+    {
+      "code": "NPL",
+      "name": "NEPAL",
+      "is_qvc": true,
+      "stock": 317954,
+      "original_cap": 437178,
+      "effective_cap": 437178,
+      "is_outflow_based": false,
+      "utilization": 72.72872834406124,
+      "headroom": 129954,
+      "growth_rate": -9.17,
+      "left_2024": 87984,
+      "left_2025": 62985,
+      "joined_2024": 32360,
+      "joined_2025": 1586,
+      "monthly_outflow": 6563,
+      "qvc_daily_capacity": 400,
+      "qvc_monthly_capacity": 8800,
+      "dominance_alerts": [
+        {
+          "profession": "LABOURER",
+          "level": "HIGH",
+          "share": 0.4925568762752402,
+          "count": 109356,
+          "total": 222017
+        },
+        {
+          "profession": "GEN  CLEAN  WORKER",
+          "level": "HIGH",
+          "share": 0.45422935098074957,
+          "count": 32397,
+          "total": 71323
+        },
+        {
+          "profession": "BUILDING WORKER",
+          "level": "HIGH",
+          "share": 0.49751122981668083,
+          "count": 4098,
+          "total": 8237
+        },
+        {
+          "profession": "TAILOR",
+          "level": "HIGH",
+          "share": 0.44522554188635033,
+          "count": 3040,
+          "total": 6828
+        },
+        {
+          "profession": "PLASTER WORKER",
+          "level": "WATCH",
+          "share": 0.3232429192267346,
+          "count": 2157,
+          "total": 6673
+        },
+        {
+          "profession": "WASHING WORKER",
+          "level": "WATCH",
+          "share": 0.325177304964539,
+          "count": 917,
+          "total": 2820
+        },
+        {
+          "profession": "PACKING WORKER",
+          "level": "WATCH",
+          "share": 0.3313632781717888,
+          "count": 841,
+          "total": 2538
+        },
+        {
+          "profession": "DRY CLEAN WORKER",
+          "level": "WATCH",
+          "share": 0.3781818181818182,
+          "count": 728,
+          "total": 1925
+        }
+      ],
+      "tiers": {
+        "1": 1,
+        "2": 2,
+        "3": 12,
+        "4": 937
+      },
+      "total_professions": 952
+    },
+    {
+      "code": "PAK",
+      "name": "PAKISTAN",
+      "is_qvc": true,
+      "stock": 158196,
+      "original_cap": 242955,
+      "effective_cap": 242955,
+      "is_outflow_based": false,
+      "utilization": 65.11329258504661,
+      "headroom": 90097,
+      "growth_rate": 0.74,
+      "left_2024": 52014,
+      "left_2025": 35175,
+      "joined_2024": 27492,
+      "joined_2025": 1116,
+      "monthly_outflow": 3790,
+      "qvc_daily_capacity": 500,
+      "qvc_monthly_capacity": 11000,
+      "dominance_alerts": [
+        {
+          "profession": "POLICE ARMY STAFF",
+          "level": "CRITICAL",
+          "share": 0.5507265012215508,
+          "count": 4283,
+          "total": 7777
+        }
+      ],
+      "tiers": {
+        "1": 1,
+        "2": 3,
+        "3": 8,
+        "4": 1002
+      },
+      "total_professions": 1014
+    },
+    {
+      "code": "PHL",
+      "name": "PHILIPPINES",
+      "is_qvc": true,
+      "stock": 120269,
+      "original_cap": 155806,
+      "effective_cap": 155806,
+      "is_outflow_based": false,
+      "utilization": 77.19150738739201,
+      "headroom": 39596,
+      "growth_rate": -13.34,
+      "left_2024": 31611,
+      "left_2025": 25256,
+      "joined_2024": 10401,
+      "joined_2025": 180,
+      "monthly_outflow": 2472,
+      "qvc_daily_capacity": 350,
+      "qvc_monthly_capacity": 7700,
+      "dominance_alerts": [
+        {
+          "profession": "NURSE",
+          "level": "WATCH",
+          "share": 0.33653088042049933,
+          "count": 7683,
+          "total": 22830
+        },
+        {
+          "profession": "SECRETARY",
+          "level": "WATCH",
+          "share": 0.3986220472440945,
+          "count": 3645,
+          "total": 9144
+        },
+        {
+          "profession": "SERVANT",
+          "level": "WATCH",
+          "share": 0.3809948032665182,
+          "count": 2566,
+          "total": 6735
+        },
+        {
+          "profession": "HAIR BEAUTICIAN",
+          "level": "HIGH",
+          "share": 0.4180460889321649,
+          "count": 1288,
+          "total": 3081
+        },
+        {
+          "profession": "Care Giver",
+          "level": "CRITICAL",
+          "share": 0.885861561119293,
+          "count": 1203,
+          "total": 1358
+        },
+        {
+          "profession": "BEAUTICIAN",
+          "level": "HIGH",
+          "share": 0.4511627906976744,
+          "count": 679,
+          "total": 1505
+        },
+        {
+          "profession": "Cosmetologist",
+          "level": "WATCH",
+          "share": 0.3471008737092931,
+          "count": 437,
+          "total": 1259
+        },
+        {
+          "profession": "MANICURIST",
+          "level": "CRITICAL",
+          "share": 0.6421207658321061,
+          "count": 436,
+          "total": 679
+        },
+        {
+          "profession": "Assistant teacher",
+          "level": "CRITICAL",
+          "share": 0.5011574074074074,
+          "count": 433,
+          "total": 864
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 19,
+        "4": 1022
+      },
+      "total_professions": 1044
+    },
+    {
+      "code": "LKA",
+      "name": "SRILANKA",
+      "is_qvc": true,
+      "stock": 93238,
+      "original_cap": 136111,
+      "effective_cap": 136111,
+      "is_outflow_based": false,
+      "utilization": 68.5014436746479,
+      "headroom": 46019,
+      "growth_rate": -17.39,
+      "left_2024": 35068,
+      "left_2025": 28551,
+      "joined_2024": 10362,
+      "joined_2025": 345,
+      "monthly_outflow": 2766,
+      "qvc_daily_capacity": 300,
+      "qvc_monthly_capacity": 6600,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 1,
+        "2": 2,
+        "3": 11,
+        "4": 858
+      },
+      "total_professions": 872
+    }
+  ],
+  "non_qvc": [
+    {
+      "code": "EGY",
+      "name": "EGYPT",
+      "is_qvc": false,
+      "stock": 71536,
+      "original_cap": 81668,
+      "effective_cap": 71536,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -10.79,
+      "left_2024": 9903,
+      "left_2025": 8699,
+      "joined_2024": 209,
+      "joined_2025": 3,
+      "monthly_outflow": 808,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [
+        {
+          "profession": "LAWYER",
+          "level": "HIGH",
+          "share": 0.46838709677419355,
+          "count": 363,
+          "total": 775
+        },
+        {
+          "profession": "LEGAL PROFESSIONAL",
+          "level": "CRITICAL",
+          "share": 0.5180102915951973,
+          "count": 302,
+          "total": 583
+        }
+      ],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 15,
+        "4": 888
+      },
+      "total_professions": 906
+    },
+    {
+      "code": "SYR",
+      "name": "SYRIA",
+      "is_qvc": false,
+      "stock": 23211,
+      "original_cap": 27038,
+      "effective_cap": 23211,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -12.37,
+      "left_2024": 3612,
+      "left_2025": 3405,
+      "joined_2024": 483,
+      "joined_2025": 7,
+      "monthly_outflow": 305,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 0,
+        "2": 3,
+        "3": 19,
+        "4": 596
+      },
+      "total_professions": 618
+    },
+    {
+      "code": "YEM",
+      "name": "REPUBLIC OF YEMEN",
+      "is_qvc": false,
+      "stock": 12499,
+      "original_cap": 14949,
+      "effective_cap": 12499,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -1.26,
+      "left_2024": 827,
+      "left_2025": 802,
+      "joined_2024": 844,
+      "joined_2025": 48,
+      "monthly_outflow": 70,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 1,
+        "2": 1,
+        "3": 8,
+        "4": 363
+      },
+      "total_professions": 373
+    },
+    {
+      "code": "IRN",
+      "name": "IRAN",
+      "is_qvc": false,
+      "stock": 6439,
+      "original_cap": 7768,
+      "effective_cap": 6439,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -6.79,
+      "left_2024": 647,
+      "left_2025": 732,
+      "joined_2024": 535,
+      "joined_2025": 16,
+      "monthly_outflow": 59,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 0,
+        "2": 4,
+        "3": 16,
+        "4": 336
+      },
+      "total_professions": 356
+    },
+    {
+      "code": "AFG",
+      "name": "AFG",
+      "is_qvc": false,
+      "stock": 2297,
+      "original_cap": 3016,
+      "effective_cap": 2297,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -9.47,
+      "left_2024": 371,
+      "left_2025": 492,
+      "joined_2024": 548,
+      "joined_2025": 2,
+      "monthly_outflow": 37,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 1,
+        "2": 2,
+        "3": 15,
+        "4": 160
+      },
+      "total_professions": 178
+    },
+    {
+      "code": "IRQ",
+      "name": "IRAQ",
+      "is_qvc": false,
+      "stock": 1581,
+      "original_cap": 1959,
+      "effective_cap": 1581,
+      "is_outflow_based": true,
+      "utilization": 100.0,
+      "headroom": 0,
+      "growth_rate": -6.38,
+      "left_2024": 193,
+      "left_2025": 189,
+      "joined_2024": 105,
+      "joined_2025": 1,
+      "monthly_outflow": 16,
+      "qvc_daily_capacity": 0,
+      "qvc_monthly_capacity": 0,
+      "dominance_alerts": [],
+      "tiers": {
+        "1": 0,
+        "2": 2,
+        "3": 21,
+        "4": 215
+      },
+      "total_professions": 238
+    }
+  ]
+}
