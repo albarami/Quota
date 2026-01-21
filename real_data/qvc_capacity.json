@@ -1,0 +1,58 @@
+{
+  "description": "QVC (Qatar Visa Center) Daily Processing Capacity",
+  "last_updated": "2026-01-21",
+  "note": "After ministry approval, workers go to QVC for visa processing. This capacity limits daily throughput.",
+  "centers": {
+    "LKA": {
+      "country": "Sri Lanka",
+      "total_daily_capacity": 150,
+      "centers": [
+        {"city": "Colombo", "capacity": 150}
+      ]
+    },
+    "BGD": {
+      "country": "Bangladesh",
+      "total_daily_capacity": 515,
+      "centers": [
+        {"city": "Dhaka", "capacity": 425},
+        {"city": "Sylhet", "capacity": 90}
+      ]
+    },
+    "PAK": {
+      "country": "Pakistan",
+      "total_daily_capacity": 370,
+      "centers": [
+        {"city": "Islamabad", "capacity": 300},
+        {"city": "Karachi", "capacity": 70}
+      ]
+    },
+    "IND": {
+      "country": "India",
+      "total_daily_capacity": 805,
+      "centers": [
+        {"city": "Delhi", "capacity": 120},
+        {"city": "Mumbai", "capacity": 120},
+        {"city": "Chennai", "capacity": 150},
+        {"city": "Kolkata", "capacity": 65},
+        {"city": "Hyderabad", "capacity": 100},
+        {"city": "Lucknow", "capacity": 100},
+        {"city": "Kochi", "capacity": 150}
+      ]
+    },
+    "NPL": {
+      "country": "Nepal",
+      "total_daily_capacity": 325,
+      "centers": [
+        {"city": "Kathmandu", "capacity": 325}
+      ]
+    },
+    "PHL": {
+      "country": "Philippines",
+      "total_daily_capacity": 280,
+      "centers": [
+        {"city": "Manila", "capacity": 280}
+      ]
+    }
+  },
+  "total_daily_capacity": 2445
+}

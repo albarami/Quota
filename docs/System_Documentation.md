@@ -18,8 +18,9 @@
 7. [Request Processing Flow](#7-request-processing-flow)
 8. [Auto-Queue System](#8-auto-queue-system)
 9. [Cap Recommendation Engine](#9-cap-recommendation-engine)
-10. [Formulas & Calculations](#10-formulas--calculations)
-11. [Parameter Registry](#11-parameter-registry)
+10. [QVC Processing Capacity](#10-qvc-processing-capacity)
+11. [Formulas & Calculations](#11-formulas--calculations)
+12. [Parameter Registry](#12-parameter-registry)
 
 ---
 
@@ -437,7 +438,103 @@ IF growth_rate < -5%:
 
 ---
 
-## 10. Formulas & Calculations
+## 10. QVC Processing Capacity
+
+### What is QVC?
+
+**QVC (Qatar Visa Center)** is the final processing step after ministry approval. Workers must visit a QVC office in their home country to complete visa processing before traveling to Qatar.
+
+**IMPORTANT:** QVC capacity is **per country** - each country's QVC center(s) can only process workers from that specific nationality.
+
+### Processing Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        VISA APPROVAL TO ENTRY FLOW                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Step 1: Ministry Approval                                                  │
+│          ↓                                                                  │
+│  Step 2: Approved request added to QVC Processing Queue                     │
+│          ↓                                                                  │
+│  Step 3: QVC processes up to DAILY_CAPACITY per day                        │
+│          ↓                                                                  │
+│  Step 4: Worker completes QVC → Visa issued → Travel to Qatar              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### QVC Centers and Capacity (Per Country)
+
+| # | Country | Centers | Locations | Daily Capacity |
+|---|---------|--------:|-----------|---------------:|
+| 1 | Sri Lanka | 1 | Colombo (150) | **150** |
+| 2 | Bangladesh | 2 | Dhaka (425), Sylhet (90) | **515** |
+| 3 | Pakistan | 2 | Islamabad (300), Karachi (70) | **370** |
+| 4 | India | 7 | Delhi (120), Mumbai (120), Chennai (150), Kolkata (65), Hyderabad (100), Lucknow (100), Kochi (150) | **805** |
+| 5 | Nepal | 1 | Kathmandu (325) | **325** |
+| 6 | Philippines | 1 | Manila (280) | **280** |
+
+**Note:** Only QVC countries are listed. Non-QVC countries (Egypt, Yemen, Syria, Iraq, Afghanistan, Iran) do not have QVC centers - their visa processing follows different procedures.
+
+### QVC Utilization Formula
+
+```python
+# Daily QVC utilization for a nationality
+qvc_pending = COUNT(approved_requests with status = PENDING_QVC)
+qvc_daily_capacity = QVC_CAPACITY[nationality_code]
+
+# Days to clear current backlog
+qvc_backlog_days = qvc_pending / qvc_daily_capacity
+
+# QVC utilization percentage
+qvc_utilization = min(100, (daily_approved_requests / qvc_daily_capacity) * 100)
+```
+
+### Why QVC Capacity Matters
+
+1. **Bottleneck Identification** - Even if ministry approves many requests, QVC capacity limits actual throughput
+2. **Processing Time Estimation** - Helps estimate how long until approved workers can enter Qatar
+3. **Approval Pacing** - Avoid overwhelming QVC by pacing approvals appropriately
+4. **Resource Planning** - Identify when QVC capacity expansion may be needed
+
+### QVC Backlog Alert Thresholds
+
+| Backlog Days | Alert Level | Action |
+|--------------|-------------|--------|
+| < 7 days | **OK** | Normal processing |
+| 7-14 days | **WATCH** | Monitor, consider pacing approvals |
+| 14-30 days | **HIGH** | Slow down new approvals for this nationality |
+| > 30 days | **CRITICAL** | Pause new approvals until backlog clears |
+
+### QVC Monthly Capacity Calculation
+
+```python
+# Working days per month (assuming 22 working days)
+WORKING_DAYS_PER_MONTH = 22
+
+# Monthly capacity per country
+qvc_monthly_capacity = qvc_daily_capacity * WORKING_DAYS_PER_MONTH
+
+# Example: Bangladesh
+# Daily: 515 × 22 = 11,330 workers/month maximum throughput
+```
+
+### QVC Countries Summary
+
+| Country | Daily | Monthly (22 days) | Share of Total |
+|---------|------:|------------------:|---------------:|
+| India | 805 | 17,710 | 32.9% |
+| Bangladesh | 515 | 11,330 | 21.1% |
+| Pakistan | 370 | 8,140 | 15.1% |
+| Nepal | 325 | 7,150 | 13.3% |
+| Philippines | 280 | 6,160 | 11.4% |
+| Sri Lanka | 150 | 3,300 | 6.1% |
+| **TOTAL** | **2,445** | **53,790** | 100% |
+
+---
+
+## 11. Formulas & Calculations
 
 ### Complete Formula Reference
 
@@ -519,7 +616,7 @@ projected_stock = current_stock + projected_annual_growth
 
 ---
 
-## 11. Parameter Registry
+## 12. Parameter Registry
 
 ### Configurable Thresholds
 

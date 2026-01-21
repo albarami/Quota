@@ -21,9 +21,11 @@ sys.path.insert(0, str(project_root))
 # Path to real data
 REAL_DATA_DIR = project_root / 'real_data'
 SUMMARY_FILE = REAL_DATA_DIR / 'summary_by_nationality.json'
+QVC_CAPACITY_FILE = REAL_DATA_DIR / 'qvc_capacity.json'
 
 # Cache for summary data
 _summary_cache = None
+_qvc_cache = None
 
 # Nationality code mapping (ISO 3-letter to numeric)
 NATIONALITY_CODES = {
@@ -421,3 +423,119 @@ def get_all_real_nationalities() -> list:
             result.append(iso)
     
     return sorted(result)
+
+
+# =============================================================================
+# QVC (Qatar Visa Center) Capacity Functions
+# =============================================================================
+
+def _load_qvc_capacity() -> Optional[dict]:
+    """Load QVC capacity data from JSON file."""
+    global _qvc_cache
+    
+    if _qvc_cache is not None:
+        return _qvc_cache
+    
+    if not QVC_CAPACITY_FILE.exists():
+        return None
+    
+    try:
+        with open(QVC_CAPACITY_FILE, encoding='utf-8') as f:
+            _qvc_cache = json.load(f)
+        return _qvc_cache
+    except Exception:
+        return None
+
+
+def get_qvc_capacity(nationality_code: str) -> Optional[dict]:
+    """
+    Get QVC capacity data for a specific nationality.
+    
+    Args:
+        nationality_code: ISO 3-letter code (e.g., 'BGD')
+        
+    Returns:
+        QVC capacity dict with daily_capacity, centers, etc.
+        Returns None for non-QVC countries (EGY, YEM, SYR, IRQ, AFG, IRN)
+    """
+    qvc_data = _load_qvc_capacity()
+    if not qvc_data:
+        return None
+    
+    centers = qvc_data.get('centers', {})
+    if nationality_code not in centers:
+        return None  # Not a QVC country
+    
+    center_data = centers[nationality_code]
+    return {
+        'nationality_code': nationality_code,
+        'country': center_data['country'],
+        'daily_capacity': center_data['total_daily_capacity'],
+        'monthly_capacity': center_data['total_daily_capacity'] * 22,  # 22 working days
+        'centers': center_data['centers'],
+        'center_count': len(center_data['centers']),
+    }
+
+
+def get_all_qvc_capacity() -> dict:
+    """
+    Get QVC capacity for all QVC countries.
+    
+    Returns:
+        Dict with nationality_code as key, capacity data as value
+    """
+    qvc_data = _load_qvc_capacity()
+    if not qvc_data:
+        return {}
+    
+    result = {}
+    for code in qvc_data.get('centers', {}).keys():
+        result[code] = get_qvc_capacity(code)
+    
+    return result
+
+
+def is_qvc_country(nationality_code: str) -> bool:
+    """Check if a nationality has QVC processing."""
+    qvc_data = _load_qvc_capacity()
+    if not qvc_data:
+        return False
+    return nationality_code in qvc_data.get('centers', {})
+
+
+def get_qvc_summary() -> dict:
+    """
+    Get summary of all QVC capacity.
+    
+    Returns:
+        Dict with total_daily_capacity, country breakdown, etc.
+    """
+    qvc_data = _load_qvc_capacity()
+    if not qvc_data:
+        return {
+            'total_daily_capacity': 0,
+            'total_monthly_capacity': 0,
+            'countries': []
+        }
+    
+    countries = []
+    for code, data in qvc_data.get('centers', {}).items():
+        countries.append({
+            'code': code,
+            'country': data['country'],
+            'daily_capacity': data['total_daily_capacity'],
+            'monthly_capacity': data['total_daily_capacity'] * 22,
+            'center_count': len(data['centers']),
+        })
+    
+    # Sort by daily capacity descending
+    countries.sort(key=lambda x: -x['daily_capacity'])
+    
+    total_daily = sum(c['daily_capacity'] for c in countries)
+    
+    return {
+        'total_daily_capacity': total_daily,
+        'total_monthly_capacity': total_daily * 22,
+        'country_count': len(countries),
+        'countries': countries,
+    }
