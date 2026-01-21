@@ -475,7 +475,7 @@ IF growth_rate < -5%:
 | 5 | Nepal | 1 | Kathmandu (325) | **325** |
 | 6 | Philippines | 1 | Manila (280) | **280** |
 
-**Note:** Only QVC countries are listed. Non-QVC countries (Egypt, Yemen, Syria, Iraq, Afghanistan, Iran) do not have QVC centers - their visa processing follows different procedures.
+**Note:** Only QVC countries are listed. Non-QVC countries (Egypt, Yemen, Syria, Iraq, Iran) use outflow-based allocation. Afghanistan follows standard procedures.
 
 ### QVC Utilization Formula
 
