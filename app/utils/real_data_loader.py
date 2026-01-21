@@ -180,6 +180,23 @@ def _build_dashboard_from_summary(nationality_code: str, data: dict) -> dict:
     # Projected outflow (estimate ~1.5% monthly for 3 months)
     projected_outflow = int(stock * 0.015 * 3)
     
+    # Growth rates from ministry data (Section 10.G formula)
+    GROWTH_RATES = {
+        'EGY': -4.55,   # Egypt: -4.55%
+        'YEM': -1.62,   # Yemen: -1.62%
+        'SYR': -5.65,   # Syria: -5.65%
+        'IRQ': -2.90,   # Iraq: -2.90%
+        'AFG': +1.03,   # Afghanistan: +1.03%
+        'IRN': 0.0,     # Iran: restricted
+        'BGD': -2.0,    # Bangladesh
+        'PAK': -1.0,    # Pakistan
+        'IND': -1.5,    # India
+        'NPL': -2.0,    # Nepal
+        'PHL': -1.0,    # Philippines
+        'LKA': -1.5,    # Sri Lanka
+    }
+    growth_rate = GROWTH_RATES.get(nationality_code, 0)
+    
     return {
         'nationality_id': int(data['numeric_code']) if data['numeric_code'].isdigit() else 1,
         'nationality_code': nationality_code,
@@ -197,6 +214,7 @@ def _build_dashboard_from_summary(nationality_code: str, data: dict) -> dict:
         'dominance_alerts': alerts[:5],
         'queue_counts': queue_counts,
         'projected_outflow': projected_outflow,
+        'growth_rate': growth_rate,
         'last_updated': datetime.now().isoformat(),
         'data_source': 'summary',
     }
@@ -372,7 +390,11 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
 
 
 def check_real_data_available() -> bool:
-    """Check if real data files are available."""
+    """Check if real data files are available (summary OR raw data)."""
+    # First check for pre-computed summary (preferred for Streamlit Cloud)
+    if SUMMARY_FILE.exists():
+        return True
+    # Fall back to checking raw CSV files
     required_files = ['07_worker_stock.csv', '01_nationalities.csv']
     return all((REAL_DATA_DIR / f).exists() for f in required_files)
 

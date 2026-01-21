@@ -114,22 +114,22 @@ def fetch_cap_data(nationality_code: str, year: int):
 
 def _generate_cap_demo_data(nationality_code: str, year: int) -> dict:
     """Generate realistic cap data that varies by nationality."""
-    # Real data per nationality (from ministry data)
+    # Real data per nationality (from ministry worker_stock.csv) - EXACT VALUES
     demo_caps = {
-        # Additional countries (Worker Stock) - caps from real data
+        # All countries - EXACT caps from real ministry data
         "EGY": {"cap": 81668, "prev": 74244},
         "YEM": {"cap": 14949, "prev": 13590},
         "SYR": {"cap": 27038, "prev": 24580},
         "IRQ": {"cap": 1959, "prev": 1781},
         "AFG": {"cap": 3016, "prev": 2742},
-        "IRN": {"cap": 7062, "prev": 7062},  # Restricted
-        # QVC countries (VP allocations)
-        "BGD": {"cap": 69928, "prev": 63571},
-        "IND": {"cap": 135369, "prev": 123063},
-        "NPL": {"cap": 122988, "prev": 111807},
-        "PAK": {"cap": 97870, "prev": 88973},
-        "PHL": {"cap": 41540, "prev": 37764},
-        "LKA": {"cap": 45541, "prev": 41401},
+        "IRN": {"cap": 7768, "prev": 7062},
+        # QVC countries - EXACT caps from worker_stock
+        "BGD": {"cap": 487741, "prev": 443401},
+        "IND": {"cap": 676569, "prev": 615063},
+        "NPL": {"cap": 437178, "prev": 397435},
+        "PAK": {"cap": 242955, "prev": 220868},
+        "PHL": {"cap": 155806, "prev": 141642},
+        "LKA": {"cap": 136111, "prev": 123737},
     }
     
     data = demo_caps.get(nationality_code, {"cap": 15000, "prev": 14000})
@@ -342,22 +342,22 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
 
 def _generate_recommendation_demo(nationality_code: str) -> dict:
     """Generate realistic AI recommendation that varies by nationality."""
-    # Real data per nationality (from ministry data)
+    # Real data per nationality (from ministry worker_stock.csv) - EXACT VALUES
     demo_profiles = {
-        # Additional countries (Worker Stock data)
+        # All countries with EXACT stock/cap from real data
         "EGY": {"stock": 71574, "cap": 81668, "alerts": 0, "level": "moderate"},      # 87.6% util
         "YEM": {"stock": 13105, "cap": 14949, "alerts": 1, "level": "conservative"},  # CRITICAL: EMPLOYEE 51.4%
         "SYR": {"stock": 23324, "cap": 27038, "alerts": 0, "level": "moderate"},      # 86.3% util
         "IRQ": {"stock": 1658, "cap": 1959, "alerts": 0, "level": "moderate"},        # 84.6% util
-        "AFG": {"stock": 2532, "cap": 3016, "alerts": 1, "level": "moderate"},        # DRIVER 21.6%
-        "IRN": {"stock": 6683, "cap": 7062, "alerts": 0, "level": "conservative"},    # Restricted
-        # QVC countries (VP data)
-        "BGD": {"stock": 58544, "cap": 69928, "alerts": 0, "level": "flexible"},      # 83.7% util
-        "IND": {"stock": 43847, "cap": 135369, "alerts": 0, "level": "conservative"}, # 32.4% util
-        "NPL": {"stock": 40955, "cap": 122988, "alerts": 1, "level": "conservative"}, # LABOURER 18.7%
-        "PAK": {"stock": 61154, "cap": 97870, "alerts": 1, "level": "conservative"},  # WATCH: DRIVER 30.7%
-        "PHL": {"stock": 7078, "cap": 41540, "alerts": 0, "level": "conservative"},   # 17.0% util
-        "LKA": {"stock": 12609, "cap": 45541, "alerts": 0, "level": "conservative"},  # 27.7% util
+        "AFG": {"stock": 2532, "cap": 3016, "alerts": 0, "level": "moderate"},        # 84.0% util
+        "IRN": {"stock": 6683, "cap": 7768, "alerts": 0, "level": "moderate"},        # 86.0% util
+        # QVC countries - EXACT VALUES from worker_stock
+        "BGD": {"stock": 400273, "cap": 487741, "alerts": 0, "level": "moderate"},    # 82.1% util
+        "IND": {"stock": 529575, "cap": 676569, "alerts": 0, "level": "flexible"},    # 78.3% util -> FLEXIBLE (< 80%)
+        "NPL": {"stock": 346515, "cap": 437178, "alerts": 1, "level": "moderate"},    # 79.3% util
+        "PAK": {"stock": 196277, "cap": 242955, "alerts": 1, "level": "moderate"},    # 80.8% util
+        "PHL": {"stock": 126653, "cap": 155806, "alerts": 0, "level": "moderate"},    # 81.3% util
+        "LKA": {"stock": 101272, "cap": 136111, "alerts": 0, "level": "flexible"},    # 74.4% util -> FLEXIBLE (< 80%)
     }
     
     profile = demo_profiles.get(nationality_code, {"stock": 12450, "cap": 15000, "alerts": 2, "level": "moderate"})

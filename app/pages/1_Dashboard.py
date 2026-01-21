@@ -119,22 +119,22 @@ def _generate_demo_data(nationality_code: str) -> dict:
     # Use nationality code to generate consistent but varying numbers
     seed = int(hashlib.md5(nationality_code.encode()).hexdigest()[:8], 16)
     
-    # Realistic data ranges per nationality (based on real ministry data)
+    # Realistic data ranges per nationality (from worker_stock.csv real data)
     demo_profiles = {
-        # Additional countries (Worker Stock data)
-        "EGY": {"cap": 81668, "stock": 71574, "tier1_status": "OPEN"},       # Real: 87.6% util
-        "YEM": {"cap": 14949, "stock": 13105, "tier1_status": "CRITICAL"},   # Real: 87.7% util, EMPLOYEE 51.4%
-        "SYR": {"cap": 27038, "stock": 23324, "tier1_status": "OPEN"},       # Real: 86.3% util
-        "IRQ": {"cap": 1959, "stock": 1658, "tier1_status": "OPEN"},         # Real: 84.6% util
-        "AFG": {"cap": 3016, "stock": 2532, "tier1_status": "WATCH"},        # Real: 84.0% util, DRIVER 21.6%
-        "IRN": {"cap": 7062, "stock": 6683, "tier1_status": "OPEN"},         # Real: Restricted
-        # QVC countries (VP data - these are allocations not stock)
-        "BGD": {"cap": 69928, "stock": 58544, "tier1_status": "OPEN"},       # Real: 83.7% util
-        "PAK": {"cap": 97870, "stock": 61154, "tier1_status": "WATCH"},      # Real: 62.5% util, DRIVER 30.7%
-        "NPL": {"cap": 122988, "stock": 40955, "tier1_status": "RATIONED"},  # Real: 33.3% util
-        "IND": {"cap": 135369, "stock": 43847, "tier1_status": "OPEN"},      # Real: 32.4% util
-        "LKA": {"cap": 45541, "stock": 12609, "tier1_status": "OPEN"},       # Real: 27.7% util
-        "PHL": {"cap": 41540, "stock": 7078, "tier1_status": "OPEN"},        # Real: 17.0% util
+        # All data from real ministry worker_stock.csv - EXACT VALUES
+        "EGY": {"cap": 81668, "stock": 71574, "tier1_status": "OPEN"},       # 87.6% util
+        "YEM": {"cap": 14949, "stock": 13105, "tier1_status": "CRITICAL"},   # 87.7% util, EMPLOYEE 51.4%
+        "SYR": {"cap": 27038, "stock": 23324, "tier1_status": "OPEN"},       # 86.3% util
+        "IRQ": {"cap": 1959, "stock": 1658, "tier1_status": "OPEN"},         # 84.6% util
+        "AFG": {"cap": 3016, "stock": 2532, "tier1_status": "OPEN"},         # 84.0% util
+        "IRN": {"cap": 7768, "stock": 6683, "tier1_status": "OPEN"},         # 86.0% util
+        # QVC countries - EXACT VALUES from worker_stock.csv
+        "BGD": {"cap": 487741, "stock": 400273, "tier1_status": "OPEN"},     # 82.1% util
+        "PAK": {"cap": 242955, "stock": 196277, "tier1_status": "OPEN"},     # 80.8% util
+        "NPL": {"cap": 437178, "stock": 346515, "tier1_status": "RATIONED"}, # 79.3% util
+        "IND": {"cap": 676569, "stock": 529575, "tier1_status": "OPEN"},     # 78.3% util
+        "LKA": {"cap": 136111, "stock": 101272, "tier1_status": "OPEN"},     # 74.4% util
+        "PHL": {"cap": 155806, "stock": 126653, "tier1_status": "OPEN"},     # 81.3% util
     }
     
     profile = demo_profiles.get(nationality_code, {
@@ -208,6 +208,23 @@ def _generate_demo_data(nationality_code: str) -> dict:
         4: int(5 * queue_multiplier + (seed % 10)),
     }
     
+    # Growth rates from ministry data (Section 10.G formula)
+    GROWTH_RATES = {
+        'EGY': -4.55,   # Egypt: -4.55%
+        'YEM': -1.62,   # Yemen: -1.62%
+        'SYR': -5.65,   # Syria: -5.65%
+        'IRQ': -2.90,   # Iraq: -2.90%
+        'AFG': +1.03,   # Afghanistan: +1.03%
+        'IRN': 0.0,     # Iran: restricted
+        'BGD': -2.0,    # Bangladesh
+        'PAK': -1.0,    # Pakistan
+        'IND': -1.5,    # India
+        'NPL': -2.0,    # Nepal
+        'PHL': -1.0,    # Philippines
+        'LKA': -1.5,    # Sri Lanka
+    }
+    growth_rate = GROWTH_RATES.get(nationality_code, 0)
+    
     return {
         "nationality_id": list(NATIONALITIES.keys()).index(nationality_code) + 1 if nationality_code in NATIONALITIES else 1,
         "nationality_code": nationality_code,
@@ -220,6 +237,7 @@ def _generate_demo_data(nationality_code: str) -> dict:
         "dominance_alerts": alerts,
         "queue_counts": queue_counts,
         "projected_outflow": int(stock * 0.015),  # ~1.5% monthly outflow
+        "growth_rate": growth_rate,
         "last_updated": datetime.now().isoformat(),
     }
 
@@ -254,11 +272,14 @@ with kpi_cols[2]:
     )
 
 with kpi_cols[3]:
+    growth = data.get("growth_rate", 0)
+    growth_text = f"{growth:+.1f}%"
+    growth_status = "Growing" if growth > 0 else "Declining" if growth < 0 else "Stable"
     render_metric_card(
-        label="Projected Outflow",
-        value=data["projected_outflow"],
-        delta="Next 90 days",
-        icon="📤"
+        label="YoY Growth Rate",
+        value=growth_text,
+        delta=growth_status,
+        icon="📊"
     )
 
 st.markdown("<br>", unsafe_allow_html=True)
