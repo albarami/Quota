@@ -4,6 +4,12 @@ Create summary data files for faster Streamlit loading.
 
 This script pre-computes summaries from the large worker_stock.csv file
 to enable fast dashboard loading.
+
+IMPORTANT: Implements exact formulas from System_Documentation.md:
+- Tier Classification: Section 4, 11.A (profession share within nationality)
+- Dominance Alerts: Section 6, 11.D (nationality share within profession)
+- Headroom: Section 5, 11.B
+- Utilization: Section 5, 11.C
 """
 
 import csv
@@ -19,6 +25,28 @@ sys.path.insert(0, str(project_root))
 
 REAL_DATA_DIR = project_root / 'real_data'
 SUMMARY_FILE = REAL_DATA_DIR / 'summary_by_nationality.json'
+
+# ============================================================================
+# CONFIGURATION - From System_Documentation.md Section 12 Parameter Registry
+# ============================================================================
+
+# Tier Classification Thresholds (Section 4)
+TIER_1_THRESHOLD = 0.15  # >= 15% = Primary
+TIER_2_THRESHOLD = 0.05  # >= 5% = Secondary
+TIER_3_THRESHOLD = 0.01  # >= 1% = Minor
+# < 1% = Unusual (Tier 4)
+
+# Dominance Alert Thresholds (Section 6)
+DOMINANCE_WATCH = 0.30    # 30-39% = WATCH
+DOMINANCE_HIGH = 0.40     # 40-49% = HIGH
+DOMINANCE_CRITICAL = 0.50 # >= 50% = CRITICAL
+
+# Minimum profession size for dominance analysis (Section 6)
+MIN_PROFESSION_SIZE = 200
+
+# Headroom calculation factors (Section 5)
+PENDING_APPROVAL_RATE = 0.8
+OUTFLOW_CONFIDENCE_FACTOR = 0.75
 
 # Nationality code mapping (ISO 3-letter to numeric)
 NATIONALITY_CODES = {
@@ -75,13 +103,20 @@ def load_nationalities() -> dict:
 
 
 def create_summary():
-    """Create summary data from worker stock."""
+    """
+    Create summary data from worker stock.
+    
+    Two-pass algorithm:
+    1. First pass: Count workers by (nationality, profession) AND total by profession
+    2. Second pass: Calculate tier shares and dominance shares correctly
+    """
     print("Loading reference data...")
     caps = load_caps()
     professions = load_professions()
     nationalities = load_nationalities()
     
     print("Processing worker stock (this may take a few minutes)...")
+    print("  Pass 1: Counting workers by nationality and profession...")
     
     # Initialize counters for all tracked nationalities
     summary = {}
@@ -93,12 +128,16 @@ def create_summary():
             'out_country': 0,
             'committed': 0,
             'pending': 0,
-            'profession_counts': defaultdict(int),
+            'profession_counts': defaultdict(int),  # Workers by profession for this nationality
             'cap': caps.get(num_code, {}).get('current_cap', 0),
             'previous_cap': caps.get(num_code, {}).get('previous_cap', 0),
         }
     
-    # Process worker stock file
+    # CRITICAL: Track total workers per profession across ALL nationalities
+    # This is needed for correct Dominance calculation (Section 6)
+    total_workers_by_profession = defaultdict(int)
+    
+    # Process worker stock file - PASS 1
     worker_file = REAL_DATA_DIR / '07_worker_stock.csv'
     row_count = 0
     matched_count = 0
@@ -108,17 +147,23 @@ def create_summary():
         for row in reader:
             row_count += 1
             if row_count % 500000 == 0:
-                print(f"  Processed {row_count:,} rows...")
+                print(f"    Processed {row_count:,} rows...")
             
             nat_code = row.get('nationality_code', '') or row.get('nationality', '')
             iso_code = NUMERIC_TO_ISO.get(nat_code)
+            state = row.get('state', '').upper()
+            prof_code = row.get('profession_code', 'Unknown')
             
+            # Count ALL workers by profession (for dominance calculation)
+            # Only count active/in-country workers
+            if state in ('ACTIVE', 'IN_COUNTRY', ''):
+                total_workers_by_profession[prof_code] += 1
+            
+            # Track nationality-specific data only for our 12 nationalities
             if not iso_code:
                 continue
             
             matched_count += 1
-            state = row.get('state', '').upper()
-            prof_code = row.get('profession_code', 'Unknown')
             
             if state in ('ACTIVE', 'IN_COUNTRY', ''):
                 summary[iso_code]['in_country'] += 1
@@ -130,47 +175,66 @@ def create_summary():
             elif state == 'PENDING':
                 summary[iso_code]['pending'] += 1
     
-    print(f"  Total rows: {row_count:,}")
-    print(f"  Matched rows: {matched_count:,}")
+    print(f"    Total rows: {row_count:,}")
+    print(f"    Matched rows (12 nationalities): {matched_count:,}")
+    print(f"    Total professions tracked: {len(total_workers_by_profession):,}")
     
-    # Calculate derived values
-    print("Calculating derived metrics...")
+    # PASS 2: Calculate derived values with CORRECT formulas
+    print("  Pass 2: Calculating metrics with exact documentation formulas...")
+    
     for iso_code, data in summary.items():
         stock = data['in_country']
         cap = data['cap']
         committed = data['committed']
         pending = data['pending']
         
-        # Calculate headroom and utilization
+        # ================================================================
+        # HEADROOM CALCULATION (Section 5, Section 11.B)
+        # Formula: cap - stock - committed - (pending × 0.8) + (outflow × 0.75)
+        # ================================================================
+        projected_outflow = int(stock * 0.015 * 3)  # ~1.5% monthly for 3 months
+        
         if cap > 0:
-            headroom = max(0, cap - stock - committed - int(pending * 0.8))
+            headroom = (cap 
+                       - stock 
+                       - committed 
+                       - int(pending * PENDING_APPROVAL_RATE) 
+                       + int(projected_outflow * OUTFLOW_CONFIDENCE_FACTOR))
+            headroom = max(0, headroom)
             utilization = stock / cap
         else:
             headroom = 0
             utilization = 0
         
+        data['projected_outflow'] = projected_outflow
         data['stock'] = stock
         data['headroom'] = headroom
         data['utilization'] = utilization
         
-        # Calculate tier distribution and alerts
-        total_workers = sum(data['profession_counts'].values())
-        tier_summary = {1: {'count': 0, 'workers': 0, 'profs': []},
-                       2: {'count': 0, 'workers': 0, 'profs': []},
-                       3: {'count': 0, 'workers': 0, 'profs': []},
-                       4: {'count': 0, 'workers': 0, 'profs': []}}
+        # ================================================================
+        # TIER CLASSIFICATION (Section 4, Section 11.A)
+        # Formula: Share = Workers_in_Profession / Total_Workers_of_Nationality
+        # This is DIFFERENT from dominance - this measures profession demand
+        # ================================================================
+        total_workers_this_nationality = sum(data['profession_counts'].values())
         
-        alerts = []
+        tier_summary = {
+            1: {'count': 0, 'workers': 0, 'profs': []},
+            2: {'count': 0, 'workers': 0, 'profs': []},
+            3: {'count': 0, 'workers': 0, 'profs': []},
+            4: {'count': 0, 'workers': 0, 'profs': []},
+        }
         
         for prof_code, count in sorted(data['profession_counts'].items(), key=lambda x: -x[1]):
-            share = count / total_workers if total_workers > 0 else 0
+            # Tier share = profession's share within THIS nationality
+            tier_share = count / total_workers_this_nationality if total_workers_this_nationality > 0 else 0
             
-            # Determine tier
-            if share >= 0.15:
+            # Determine tier (Section 4 thresholds)
+            if tier_share >= TIER_1_THRESHOLD:
                 tier = 1
-            elif share >= 0.05:
+            elif tier_share >= TIER_2_THRESHOLD:
                 tier = 2
-            elif share >= 0.01:
+            elif tier_share >= TIER_3_THRESHOLD:
                 tier = 3
             else:
                 tier = 4
@@ -183,35 +247,66 @@ def create_summary():
                     'code': prof_code,
                     'name': professions.get(prof_code, f'Code_{prof_code}'),
                     'count': count,
-                    'share': round(share, 4)
-                })
-            
-            # Check for dominance alerts
-            if share >= 0.30:
-                level = "CRITICAL" if share >= 0.50 else "HIGH" if share >= 0.40 else "WATCH"
-                alerts.append({
-                    'profession_code': prof_code,
-                    'profession_name': professions.get(prof_code, f'Code_{prof_code}'),
-                    'share': round(share, 4),
-                    'alert_level': level,
-                    'is_blocking': share >= 0.50
+                    'share': round(tier_share, 4)
                 })
         
         # Store tier data
         data['tier_summary'] = {}
         for tier_level in [1, 2, 3, 4]:
             ts = tier_summary[tier_level]
-            tier_share = ts['workers'] / total_workers if total_workers > 0 else 0
+            tier_total_share = ts['workers'] / total_workers_this_nationality if total_workers_this_nationality > 0 else 0
             data['tier_summary'][tier_level] = {
                 'profession_count': ts['count'],
                 'worker_count': ts['workers'],
-                'share': round(tier_share, 4),
+                'share': round(tier_total_share, 4),
                 'top_professions': ts['profs'][:5]
             }
         
-        data['dominance_alerts'] = alerts
+        # ================================================================
+        # DOMINANCE ALERTS (Section 6, Section 11.D)
+        # Formula: Dominance_Share = Nationality_Workers_in_Profession / Total_Workers_in_Profession
+        # This is DIFFERENT from tier - this measures concentration risk
+        # ================================================================
+        dominance_alerts = []
         
-        # Remove the large profession_counts dict (keep top 20 only)
+        for prof_code, nat_workers_in_prof in data['profession_counts'].items():
+            total_in_profession = total_workers_by_profession.get(prof_code, 0)
+            
+            # Skip professions with fewer than MIN_PROFESSION_SIZE workers (Section 6)
+            if total_in_profession < MIN_PROFESSION_SIZE:
+                continue
+            
+            # Calculate dominance share per documentation
+            # Dominance = Nationality workers in profession / ALL workers in profession
+            dominance_share = nat_workers_in_prof / total_in_profession if total_in_profession > 0 else 0
+            
+            # Check against dominance thresholds (Section 6)
+            if dominance_share >= DOMINANCE_WATCH:
+                if dominance_share >= DOMINANCE_CRITICAL:
+                    level = "CRITICAL"
+                    is_blocking = True
+                elif dominance_share >= DOMINANCE_HIGH:
+                    level = "HIGH"
+                    is_blocking = False
+                else:
+                    level = "WATCH"
+                    is_blocking = False
+                
+                dominance_alerts.append({
+                    'profession_code': prof_code,
+                    'profession_name': professions.get(prof_code, f'Code_{prof_code}'),
+                    'share': round(dominance_share, 4),
+                    'nationality_workers': nat_workers_in_prof,
+                    'total_workers_in_profession': total_in_profession,
+                    'alert_level': level,
+                    'is_blocking': is_blocking
+                })
+        
+        # Sort alerts by share descending
+        dominance_alerts.sort(key=lambda x: -x['share'])
+        data['dominance_alerts'] = dominance_alerts
+        
+        # Keep top professions for reference
         top_profs = sorted(data['profession_counts'].items(), key=lambda x: -x[1])[:20]
         data['top_professions'] = [
             {'code': code, 'name': professions.get(code, code), 'count': count}
@@ -223,7 +318,14 @@ def create_summary():
     print(f"Saving summary to {SUMMARY_FILE}...")
     output = {
         'generated_at': datetime.now().isoformat(),
-        'nationalities': summary
+        'formula_version': '2.0',
+        'documentation_reference': 'System_Documentation.md',
+        'nationalities': summary,
+        'global_stats': {
+            'total_professions': len(total_workers_by_profession),
+            'professions_with_min_size': sum(1 for c in total_workers_by_profession.values() if c >= MIN_PROFESSION_SIZE),
+            'min_profession_size_threshold': MIN_PROFESSION_SIZE,
+        }
     }
     
     with open(SUMMARY_FILE, 'w', encoding='utf-8') as f:
@@ -232,14 +334,32 @@ def create_summary():
     print("Done!")
     
     # Print summary
-    print("\n" + "=" * 60)
-    print("SUMMARY")
-    print("=" * 60)
+    print("\n" + "=" * 70)
+    print("SUMMARY - Exact Documentation Formulas Applied")
+    print("=" * 70)
+    print(f"{'Code':<5} {'Stock':>10} {'Cap':>10} {'Util':>8} {'Headroom':>10} {'Alerts':>7}")
+    print("-" * 70)
     for iso_code in sorted(summary.keys()):
         data = summary[iso_code]
         alerts = len(data['dominance_alerts'])
-        print(f"{iso_code}: Stock={data['stock']:>8,} | Cap={data['cap']:>8,} | "
-              f"Util={data['utilization']:>6.1%} | Alerts={alerts}")
+        alert_str = f"{alerts}" if alerts == 0 else f"{alerts} (!)"
+        print(f"{iso_code:<5} {data['stock']:>10,} {data['cap']:>10,} "
+              f"{data['utilization']:>7.1%} {data['headroom']:>10,} {alert_str:>7}")
+    
+    # Print dominance alerts detail
+    print("\n" + "=" * 70)
+    print("DOMINANCE ALERTS (Section 6 Formula Applied)")
+    print("Formula: Dominance_Share = Nat_Workers / Total_Workers_in_Profession")
+    print(f"Min Profession Size: {MIN_PROFESSION_SIZE}")
+    print("=" * 70)
+    
+    for iso_code in sorted(summary.keys()):
+        alerts = summary[iso_code]['dominance_alerts']
+        if alerts:
+            print(f"\n{iso_code} ({summary[iso_code]['name']}):")
+            for a in alerts[:3]:  # Show top 3
+                print(f"  [{a['alert_level']}] {a['profession_name']}: "
+                      f"{a['share']:.1%} ({a['nationality_workers']:,}/{a['total_workers_in_profession']:,})")
 
 
 if __name__ == '__main__':

@@ -224,7 +224,29 @@ def _build_dashboard_from_summary(nationality_code: str, data: dict) -> dict:
 
 
 def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
-    """Compute dashboard from raw CSV files (slow fallback)."""
+    """
+    Compute dashboard from raw CSV files (slow fallback).
+    
+    Uses two-pass algorithm for correct dominance calculation:
+    Pass 1: Count total workers per profession across ALL nationalities
+    Pass 2: Count workers for specific nationality and calculate dominance
+    
+    Formulas from System_Documentation.md:
+    - Tier Classification (Section 4): profession_share = workers_in_prof / total_workers_of_nationality
+    - Dominance Alert (Section 6): dominance_share = nationality_workers / total_workers_in_profession
+    - Headroom (Section 5): cap - stock - committed - (pending × 0.8) + (outflow × 0.75)
+    """
+    # Configuration from documentation Section 12
+    TIER_1_THRESHOLD = 0.15
+    TIER_2_THRESHOLD = 0.05
+    TIER_3_THRESHOLD = 0.01
+    DOMINANCE_WATCH = 0.30
+    DOMINANCE_HIGH = 0.40
+    DOMINANCE_CRITICAL = 0.50
+    MIN_PROFESSION_SIZE = 200
+    PENDING_APPROVAL_RATE = 0.8
+    OUTFLOW_CONFIDENCE_FACTOR = 0.75
+    
     # Convert to numeric code
     numeric_code = NATIONALITY_CODES.get(nationality_code)
     if not numeric_code:
@@ -249,16 +271,29 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
         current_cap = cap_info.get('current_cap', 0)
         previous_cap = cap_info.get('previous_cap', 0)
         
-        # Load and filter worker stock
+        # Load worker stock data
         workers = _load_worker_stock()
         
-        # Filter by nationality and count by state
+        # ================================================================
+        # PASS 1: Count ALL workers by profession (for dominance calculation)
+        # This is required per Section 6 formula
+        # ================================================================
+        total_workers_by_profession = defaultdict(int)
+        
+        for w in workers:
+            state = w.get('state', '').upper()
+            if state in ('ACTIVE', 'IN_COUNTRY', ''):
+                prof_code = w.get('profession_code', 'Unknown')
+                total_workers_by_profession[prof_code] += 1
+        
+        # ================================================================
+        # PASS 2: Count workers for THIS nationality
+        # ================================================================
         in_country = 0
         out_country = 0
         committed = 0
         pending = 0
-        
-        profession_counts = defaultdict(int)
+        profession_counts = defaultdict(int)  # This nationality's workers per profession
         
         for w in workers:
             w_nat = w.get('nationality_code', '') or w.get('nationality', '')
@@ -268,7 +303,6 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
             state = w.get('state', '').upper()
             if state in ('ACTIVE', 'IN_COUNTRY', ''):
                 in_country += 1
-                # Count professions for tier analysis
                 prof_code = w.get('profession_code', 'Unknown')
                 profession_counts[prof_code] += 1
             elif state == 'OUT_COUNTRY':
@@ -281,28 +315,44 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
         # Calculate current stock (in-country workers)
         stock = in_country
         
-        # Calculate utilization
-        headroom = max(0, current_cap - stock - committed - int(pending * 0.8)) if current_cap > 0 else 0
+        # ================================================================
+        # HEADROOM CALCULATION (Section 5, Section 11.B)
+        # ================================================================
+        projected_outflow = int(stock * 0.015 * 3)  # ~1.5% monthly for 3 months
+        
+        if current_cap > 0:
+            headroom = (current_cap 
+                       - stock 
+                       - committed 
+                       - int(pending * PENDING_APPROVAL_RATE) 
+                       + int(projected_outflow * OUTFLOW_CONFIDENCE_FACTOR))
+            headroom = max(0, headroom)
+        else:
+            headroom = 0
         utilization = stock / current_cap if current_cap > 0 else 0
         
-        # Calculate tier distribution
-        total_workers = sum(profession_counts.values())
-        tier_summary = {1: {'count': 0, 'workers': 0, 'profs': []},
-                       2: {'count': 0, 'workers': 0, 'profs': []},
-                       3: {'count': 0, 'workers': 0, 'profs': []},
-                       4: {'count': 0, 'workers': 0, 'profs': []}}
+        # ================================================================
+        # TIER CLASSIFICATION (Section 4, Section 11.A)
+        # Formula: tier_share = workers_in_profession / total_workers_of_nationality
+        # ================================================================
+        total_workers_this_nationality = sum(profession_counts.values())
         
-        alerts = []
+        tier_summary = {
+            1: {'count': 0, 'workers': 0, 'profs': []},
+            2: {'count': 0, 'workers': 0, 'profs': []},
+            3: {'count': 0, 'workers': 0, 'profs': []},
+            4: {'count': 0, 'workers': 0, 'profs': []},
+        }
         
         for prof_code, count in sorted(profession_counts.items(), key=lambda x: -x[1]):
-            share = count / total_workers if total_workers > 0 else 0
+            tier_share = count / total_workers_this_nationality if total_workers_this_nationality > 0 else 0
             
-            # Determine tier
-            if share >= 0.15:
+            # Determine tier (Section 4 thresholds)
+            if tier_share >= TIER_1_THRESHOLD:
                 tier = 1
-            elif share >= 0.05:
+            elif tier_share >= TIER_2_THRESHOLD:
                 tier = 2
-            elif share >= 0.01:
+            elif tier_share >= TIER_3_THRESHOLD:
                 tier = 3
             else:
                 tier = 4
@@ -315,29 +365,60 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
                     'code': prof_code,
                     'name': professions.get(prof_code, f'Code_{prof_code}'),
                     'count': count,
-                    'share': share
+                    'share': tier_share
                 })
+        
+        # ================================================================
+        # DOMINANCE ALERTS (Section 6, Section 11.D)
+        # Formula: dominance_share = nationality_workers / total_workers_in_profession
+        # This is DIFFERENT from tier share!
+        # ================================================================
+        dominance_alerts = []
+        
+        for prof_code, nat_workers in profession_counts.items():
+            total_in_profession = total_workers_by_profession.get(prof_code, 0)
             
-            # Check for dominance alerts
-            if share >= 0.30:
-                level = "CRITICAL" if share >= 0.50 else "HIGH" if share >= 0.40 else "WATCH"
-                alerts.append({
+            # Skip small professions (Section 6: MIN_PROFESSION_SIZE = 200)
+            if total_in_profession < MIN_PROFESSION_SIZE:
+                continue
+            
+            # Calculate dominance per documentation formula
+            dominance_share = nat_workers / total_in_profession if total_in_profession > 0 else 0
+            
+            # Check against thresholds (Section 6)
+            if dominance_share >= DOMINANCE_WATCH:
+                if dominance_share >= DOMINANCE_CRITICAL:
+                    level = "CRITICAL"
+                    is_blocking = True
+                elif dominance_share >= DOMINANCE_HIGH:
+                    level = "HIGH"
+                    is_blocking = False
+                else:
+                    level = "WATCH"
+                    is_blocking = False
+                
+                dominance_alerts.append({
                     'profession_id': prof_code,
                     'profession_name': professions.get(prof_code, f'Code_{prof_code}'),
-                    'share_pct': share,
+                    'share_pct': dominance_share,
+                    'nationality_workers': nat_workers,
+                    'total_in_profession': total_in_profession,
                     'velocity': 0.02,  # Estimate
                     'alert_level': level,
-                    'is_blocking': share >= 0.50
+                    'is_blocking': is_blocking
                 })
+        
+        # Sort alerts by share descending
+        dominance_alerts.sort(key=lambda x: -x['share_pct'])
         
         # Build tier statuses
         tier_statuses = []
         for tier_level in [1, 2, 3, 4]:
             ts = tier_summary[tier_level]
-            tier_share = ts['workers'] / total_workers if total_workers > 0 else 0
+            tier_share = ts['workers'] / total_workers_this_nationality if total_workers_this_nationality > 0 else 0
             tier_cap = int(headroom * (0.40 if tier_level == 1 else 0.30 if tier_level == 2 else 0.20 if tier_level == 3 else 0.10))
             
-            # Determine status based on capacity
+            # Determine status based on utilization
             if utilization >= 0.95:
                 status = "CLOSED"
             elif utilization >= 0.90:
@@ -354,9 +435,6 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
                 'capacity': tier_cap,
                 'share_pct': tier_share,
             })
-        
-        # Projected outflow (estimate ~1.5% monthly)
-        projected_outflow = int(stock * 0.015 * 3)  # 3 months
         
         # Queue counts (estimate)
         queue_counts = {
@@ -380,7 +458,7 @@ def _compute_dashboard_from_raw(nationality_code: str) -> Optional[dict]:
             'headroom': headroom,
             'utilization_pct': utilization,
             'tier_statuses': tier_statuses,
-            'dominance_alerts': alerts[:5],  # Limit to 5 alerts
+            'dominance_alerts': dominance_alerts[:5],
             'queue_counts': queue_counts,
             'projected_outflow': projected_outflow,
             'last_updated': datetime.now().isoformat(),

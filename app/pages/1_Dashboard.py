@@ -120,10 +120,11 @@ def _generate_demo_data(nationality_code: str) -> dict:
     seed = int(hashlib.md5(nationality_code.encode()).hexdigest()[:8], 16)
     
     # Realistic data ranges per nationality (from worker_stock.csv real data)
+    # NOTE: tier1_status is based on UTILIZATION, not dominance alerts
     demo_profiles = {
         # All data from real ministry worker_stock.csv - EXACT VALUES
         "EGY": {"cap": 81668, "stock": 71574, "tier1_status": "OPEN"},       # 87.6% util
-        "YEM": {"cap": 14949, "stock": 13105, "tier1_status": "CRITICAL"},   # 87.7% util, EMPLOYEE 51.4%
+        "YEM": {"cap": 14949, "stock": 13105, "tier1_status": "OPEN"},       # 87.7% util, NO dominance alerts
         "SYR": {"cap": 27038, "stock": 23324, "tier1_status": "OPEN"},       # 86.3% util
         "IRQ": {"cap": 1959, "stock": 1658, "tier1_status": "OPEN"},         # 84.6% util
         "AFG": {"cap": 3016, "stock": 2532, "tier1_status": "OPEN"},         # 84.0% util
@@ -145,7 +146,18 @@ def _generate_demo_data(nationality_code: str) -> dict:
     
     cap = profile["cap"]
     stock = profile["stock"]
-    headroom = cap - stock
+    
+    # Effective Headroom Formula (Section 5, Section 11.B):
+    # headroom = cap - stock - committed - (pending × 0.8) + (outflow × 0.75)
+    # For demo data, we estimate committed=0, pending=0, outflow=1.5% of stock monthly
+    committed = 0  # Demo: no committed workers in pipeline
+    pending = 0    # Demo: no pending requests
+    projected_outflow = int(stock * 0.015)  # ~1.5% monthly outflow estimate
+    
+    # Full headroom calculation per documentation
+    headroom = cap - stock - committed - int(pending * 0.8) + int(projected_outflow * 0.75)
+    headroom = max(0, headroom)  # Cannot be negative
+    
     utilization = stock / cap if cap > 0 else 0
     
     # Vary tier capacities based on headroom
@@ -177,27 +189,67 @@ def _generate_demo_data(nationality_code: str) -> dict:
             {"tier_level": 4, "tier_name": "Unusual", "status": "LIMITED", "capacity": t4_cap, "share_pct": 0.01},
         ]
     
-    # Generate dominance alerts (vary by nationality)
-    alert_professions = [
-        ("Construction Supervisor", 0.52, 0.08, "CRITICAL"),
-        ("Site Engineer", 0.42, 0.04, "HIGH"),
-        ("General Labourer", 0.38, 0.03, "WATCH"),
-        ("Heavy Equipment Operator", 0.35, 0.02, "WATCH"),
-    ]
+    # ================================================================
+    # DOMINANCE ALERTS (Section 6, Section 11.D)
+    # Formula: Dominance_Share = Nationality_Workers_in_Profession / Total_Workers_in_Profession
+    # Thresholds: WATCH >= 30%, HIGH >= 40%, CRITICAL >= 50%
+    # Only applies to professions with >= 200 total workers (MIN_PROFESSION_SIZE)
+    # ================================================================
     
-    # Select alerts based on nationality seed
-    num_alerts = (seed % 3) + 1
+    # Demo dominance alerts based on CORRECT formula from real data
+    # Formula: Dominance = Nationality_Workers / Total_Workers_in_Profession
+    # NOT: Tier_Share = Profession_Workers / Total_Nationality_Workers
+    # Format: (profession_name, dominance_share, velocity, alert_level, nat_workers, total_workers)
+    demo_dominance_alerts = {
+        # NOTE: Yemen has NO dominance alerts - EMPLOYEE is 6,741/59,202 = 11.4% (below 30%)
+        # The 51.4% was the TIER share (wrong metric), not DOMINANCE share (correct)
+        "BGD": [
+            # Bangladesh: High dominance in specialized professions
+            ("STRUCT DRAFTSMAN", 0.937, 0.02, "CRITICAL", 1150, 1227),
+        ],
+        "IND": [
+            # India: High dominance in technical professions
+            ("METAL POUR TECH", 0.792, 0.02, "CRITICAL", 494, 624),
+        ],
+        "EGY": [
+            # Egypt: Legal profession dominance
+            ("LEGAL PROFESSIONAL", 0.508, 0.02, "CRITICAL", 302, 595),
+        ],
+        "NPL": [
+            # Nepal: Specialized professions
+            ("GENTS' TAILOR", 0.517, 0.02, "CRITICAL", 593, 1146),
+        ],
+        "PAK": [
+            # Pakistan: Security profession dominance
+            ("POLICE ARMY STAFF", 0.559, 0.02, "CRITICAL", 4478, 8018),
+        ],
+        "PHL": [
+            # Philippines: Healthcare dominance
+            ("Care Giver", 0.887, 0.02, "CRITICAL", 1369, 1544),
+        ],
+        "LKA": [
+            # Sri Lanka: Technical profession
+            ("QUANT CALCUL TECH", 0.347, 0.02, "WATCH", 242, 697),
+        ],
+    }
+    
+    # Get nationality-specific alerts or generate generic ones
     alerts = []
-    for i in range(num_alerts):
-        prof = alert_professions[(seed + i) % len(alert_professions)]
-        alerts.append({
-            "profession_id": i + 1,
-            "profession_name": prof[0],
-            "share_pct": prof[1] - (i * 0.05),
-            "velocity": prof[2],
-            "alert_level": prof[3] if i == 0 else "HIGH" if i == 1 else "WATCH",
-            "is_blocking": prof[3] == "CRITICAL" and i == 0,
-        })
+    if nationality_code in demo_dominance_alerts:
+        for prof_name, share, vel, level, nat_w, total_w in demo_dominance_alerts[nationality_code]:
+            alerts.append({
+                "profession_id": hash(prof_name) % 10000,
+                "profession_name": prof_name,
+                "share_pct": share,
+                "nationality_workers": nat_w,
+                "total_in_profession": total_w,
+                "velocity": vel,
+                "alert_level": level,
+                "is_blocking": level == "CRITICAL",
+            })
+    else:
+        # No dominance alerts for this nationality (most have none)
+        alerts = []
     
     # Queue counts vary by utilization
     queue_multiplier = 1 + (utilization * 2)

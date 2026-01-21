@@ -1,5 +1,7 @@
 {
-  "generated_at": "2026-01-21T05:09:53.526677",
+  "generated_at": "2026-01-21T10:41:29.048361",
+  "formula_version": "2.0",
+  "documentation_reference": "System_Documentation.md",
   "nationalities": {
     "EGY": {
       "numeric_code": "818",
@@ -10,8 +12,9 @@
       "pending": 0,
       "cap": 81668,
       "previous_cap": 74244,
+      "projected_outflow": 3220,
       "stock": 71574,
-      "headroom": 10094,
+      "headroom": 12509,
       "utilization": 0.876402017926238,
       "tier_summary": {
         "1": {
@@ -120,7 +123,35 @@
           ]
         }
       },
-      "dominance_alerts": [],
+      "dominance_alerts": [
+        {
+          "profession_code": "914",
+          "profession_name": "LEGAL PROFESSIONAL",
+          "share": 0.5076,
+          "nationality_workers": 302,
+          "total_workers_in_profession": 595,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "624",
+          "profession_name": "LAWYER",
+          "share": 0.4566,
+          "nationality_workers": 363,
+          "total_workers_in_profession": 795,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "954",
+          "profession_name": "SOCIAL SPECIALIST",
+          "share": 0.4057,
+          "nationality_workers": 86,
+          "total_workers_in_profession": 212,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        }
+      ],
       "top_professions": [
         {
           "code": "573",
@@ -233,8 +264,9 @@
       "pending": 0,
       "cap": 676569,
       "previous_cap": 615063,
+      "projected_outflow": 23830,
       "stock": 529575,
-      "headroom": 146994,
+      "headroom": 164866,
       "utilization": 0.7827361289092465,
       "tier_summary": {
         "1": {
@@ -337,7 +369,1268 @@
           ]
         }
       },
-      "dominance_alerts": [],
+      "dominance_alerts": [
+        {
+          "profession_code": "EFB",
+          "profession_name": "Code_EFB",
+          "share": 0.9583,
+          "nationality_workers": 345,
+          "total_workers_in_profession": 360,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "827",
+          "profession_name": "METAL POUR TECH ",
+          "share": 0.7917,
+          "nationality_workers": 494,
+          "total_workers_in_profession": 624,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "387",
+          "profession_name": "OPTICS TECHNICIAN",
+          "share": 0.758,
+          "nationality_workers": 166,
+          "total_workers_in_profession": 219,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "795",
+          "profession_name": "HORSE STABLEMAN",
+          "share": 0.7406,
+          "nationality_workers": 588,
+          "total_workers_in_profession": 794,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "866",
+          "profession_name": "DIGGER",
+          "share": 0.7336,
+          "nationality_workers": 2643,
+          "total_workers_in_profession": 3603,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "545",
+          "profession_name": "SEAMEN",
+          "share": 0.6771,
+          "nationality_workers": 4266,
+          "total_workers_in_profession": 6300,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "979",
+          "profession_name": "INSPECTOR",
+          "share": 0.6712,
+          "nationality_workers": 845,
+          "total_workers_in_profession": 1259,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "734",
+          "profession_name": "Mechanical Technician",
+          "share": 0.5865,
+          "nationality_workers": 4668,
+          "total_workers_in_profession": 7959,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "599",
+          "profession_name": "JEWELER",
+          "share": 0.5706,
+          "nationality_workers": 295,
+          "total_workers_in_profession": 517,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "269",
+          "profession_name": "Mechanical engineer general",
+          "share": 0.569,
+          "nationality_workers": 132,
+          "total_workers_in_profession": 232,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "874",
+          "profession_name": "WORK TECHNICIAN",
+          "share": 0.568,
+          "nationality_workers": 455,
+          "total_workers_in_profession": 801,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "842",
+          "profession_name": "PIPE WELDER",
+          "share": 0.5616,
+          "nationality_workers": 1508,
+          "total_workers_in_profession": 2685,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "683",
+          "profession_name": "ENGINEER (ELECTRO )",
+          "share": 0.5421,
+          "nationality_workers": 682,
+          "total_workers_in_profession": 1258,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "731",
+          "profession_name": "WELD  TECHNICIAN",
+          "share": 0.5409,
+          "nationality_workers": 2704,
+          "total_workers_in_profession": 4999,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "437",
+          "profession_name": "WELDER",
+          "share": 0.5318,
+          "nationality_workers": 1591,
+          "total_workers_in_profession": 2992,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "616",
+          "profession_name": "PETROCHEMICALS",
+          "share": 0.531,
+          "nationality_workers": 4474,
+          "total_workers_in_profession": 8426,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "641",
+          "profession_name": "MECHAN  ENGINEER",
+          "share": 0.531,
+          "nationality_workers": 1980,
+          "total_workers_in_profession": 3729,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "877",
+          "profession_name": "SITE TECHNICIAN",
+          "share": 0.5223,
+          "nationality_workers": 526,
+          "total_workers_in_profession": 1007,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "EFI",
+          "profession_name": "Code_EFI",
+          "share": 0.5156,
+          "nationality_workers": 132,
+          "total_workers_in_profession": 256,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "722",
+          "profession_name": "TECHNICIAN GEN ",
+          "share": 0.5098,
+          "nationality_workers": 7183,
+          "total_workers_in_profession": 14091,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "242",
+          "profession_name": "Mechanic tech.-general mechanical maint.",
+          "share": 0.5084,
+          "nationality_workers": 121,
+          "total_workers_in_profession": 238,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "890",
+          "profession_name": "PIPE FITTER",
+          "share": 0.5026,
+          "nationality_workers": 3066,
+          "total_workers_in_profession": 6100,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "736",
+          "profession_name": "SAFETY & HEALTH TECH",
+          "share": 0.498,
+          "nationality_workers": 874,
+          "total_workers_in_profession": 1755,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "281",
+          "profession_name": "Systems analyst",
+          "share": 0.4827,
+          "nationality_workers": 376,
+          "total_workers_in_profession": 779,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "712",
+          "profession_name": "DRAFTSMAN",
+          "share": 0.4799,
+          "nationality_workers": 703,
+          "total_workers_in_profession": 1465,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "997",
+          "profession_name": "SYSTEM SPECIALIST",
+          "share": 0.4793,
+          "nationality_workers": 162,
+          "total_workers_in_profession": 338,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "859",
+          "profession_name": "DECOR WOODWORKER",
+          "share": 0.4785,
+          "nationality_workers": 881,
+          "total_workers_in_profession": 1841,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "639",
+          "profession_name": "COMPUTER ENGINEER",
+          "share": 0.4735,
+          "nationality_workers": 759,
+          "total_workers_in_profession": 1603,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "611",
+          "profession_name": "COMPUTER TECHNIC ",
+          "share": 0.4713,
+          "nationality_workers": 279,
+          "total_workers_in_profession": 592,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "839",
+          "profession_name": "AIR-CONDITION  TECH ",
+          "share": 0.4642,
+          "nationality_workers": 1730,
+          "total_workers_in_profession": 3727,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "614",
+          "profession_name": "ELECTRONICS TECH ",
+          "share": 0.4592,
+          "nationality_workers": 523,
+          "total_workers_in_profession": 1139,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "735",
+          "profession_name": "MINING TECHNICIAN",
+          "share": 0.4566,
+          "nationality_workers": 631,
+          "total_workers_in_profession": 1382,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "640",
+          "profession_name": "ELECT  ENGINEER",
+          "share": 0.4536,
+          "nationality_workers": 2048,
+          "total_workers_in_profession": 4515,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "425",
+          "profession_name": "SALES EXECUTIVE",
+          "share": 0.4484,
+          "nationality_workers": 2434,
+          "total_workers_in_profession": 5428,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "434",
+          "profession_name": "PROGRAMMER",
+          "share": 0.4457,
+          "nationality_workers": 267,
+          "total_workers_in_profession": 599,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "524",
+          "profession_name": "Technician",
+          "share": 0.4437,
+          "nationality_workers": 23211,
+          "total_workers_in_profession": 52312,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "732",
+          "profession_name": "INSTAL  TECHNICIAN",
+          "share": 0.4428,
+          "nationality_workers": 2726,
+          "total_workers_in_profession": 6156,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "610",
+          "profession_name": "AIR-COOLER TECHN ",
+          "share": 0.4408,
+          "nationality_workers": 201,
+          "total_workers_in_profession": 456,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "755",
+          "profession_name": "WATCHES SALESMAN",
+          "share": 0.4398,
+          "nationality_workers": 146,
+          "total_workers_in_profession": 332,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "682",
+          "profession_name": "ENGINEER (ELECTRI.)",
+          "share": 0.4385,
+          "nationality_workers": 246,
+          "total_workers_in_profession": 561,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "615",
+          "profession_name": "Computer Software Technician",
+          "share": 0.437,
+          "nationality_workers": 163,
+          "total_workers_in_profession": 373,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "762",
+          "profession_name": "GENERAL COOK",
+          "share": 0.4322,
+          "nationality_workers": 488,
+          "total_workers_in_profession": 1129,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "730",
+          "profession_name": "ELECTRICAL TECHNICIAN",
+          "share": 0.4268,
+          "nationality_workers": 5521,
+          "total_workers_in_profession": 12936,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "754",
+          "profession_name": "Jewelry Seller\n",
+          "share": 0.4249,
+          "nationality_workers": 184,
+          "total_workers_in_profession": 433,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "879",
+          "profession_name": "JUICE MAKER",
+          "share": 0.4197,
+          "nationality_workers": 703,
+          "total_workers_in_profession": 1675,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "496",
+          "profession_name": "assistant store keeper",
+          "share": 0.4134,
+          "nationality_workers": 105,
+          "total_workers_in_profession": 254,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "215",
+          "profession_name": "Electrician - control",
+          "share": 0.4126,
+          "nationality_workers": 85,
+          "total_workers_in_profession": 206,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "430",
+          "profession_name": "ELECTRICAL TECHNICIAN.",
+          "share": 0.406,
+          "nationality_workers": 4168,
+          "total_workers_in_profession": 10267,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "677",
+          "profession_name": "GEN  SYS ANALYST",
+          "share": 0.4044,
+          "nationality_workers": 296,
+          "total_workers_in_profession": 732,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "316",
+          "profession_name": "Accountant executive",
+          "share": 0.4037,
+          "nationality_workers": 285,
+          "total_workers_in_profession": 706,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "779",
+          "profession_name": "FIREMAN",
+          "share": 0.4022,
+          "nationality_workers": 395,
+          "total_workers_in_profession": 982,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "317",
+          "profession_name": "Cost accountant",
+          "share": 0.4018,
+          "nationality_workers": 88,
+          "total_workers_in_profession": 219,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "527",
+          "profession_name": "LAB TECHNICIAN",
+          "share": 0.4016,
+          "nationality_workers": 202,
+          "total_workers_in_profession": 503,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "678",
+          "profession_name": "COMP  PROGRAMMER",
+          "share": 0.4006,
+          "nationality_workers": 1173,
+          "total_workers_in_profession": 2928,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "966",
+          "profession_name": "INFO SYS TECH",
+          "share": 0.3948,
+          "nationality_workers": 122,
+          "total_workers_in_profession": 309,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "556",
+          "profession_name": "NURSE",
+          "share": 0.3935,
+          "nationality_workers": 9628,
+          "total_workers_in_profession": 24470,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "388",
+          "profession_name": "ASSISTANT TECHNICIAN",
+          "share": 0.39,
+          "nationality_workers": 250,
+          "total_workers_in_profession": 641,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "643",
+          "profession_name": "MECHANIC",
+          "share": 0.3898,
+          "nationality_workers": 2494,
+          "total_workers_in_profession": 6398,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "767",
+          "profession_name": "SANDWICH MAKER",
+          "share": 0.3892,
+          "nationality_workers": 302,
+          "total_workers_in_profession": 776,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "644",
+          "profession_name": "BUSIN. EXECUTIVE",
+          "share": 0.3866,
+          "nationality_workers": 776,
+          "total_workers_in_profession": 2007,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "733",
+          "profession_name": "MAINT  TECHNICIAN",
+          "share": 0.3863,
+          "nationality_workers": 987,
+          "total_workers_in_profession": 2555,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "805",
+          "profession_name": "MACHINE OPERATOR",
+          "share": 0.3861,
+          "nationality_workers": 3288,
+          "total_workers_in_profession": 8515,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "916",
+          "profession_name": "ACCOUNTS WRITER",
+          "share": 0.386,
+          "nationality_workers": 83,
+          "total_workers_in_profession": 215,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "536",
+          "profession_name": "MANAGER",
+          "share": 0.383,
+          "nationality_workers": 8600,
+          "total_workers_in_profession": 22452,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "595",
+          "profession_name": "PLUMBER",
+          "share": 0.3817,
+          "nationality_workers": 6377,
+          "total_workers_in_profession": 16707,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "685",
+          "profession_name": "ENGINEER (CHEMIC )",
+          "share": 0.3787,
+          "nationality_workers": 142,
+          "total_workers_in_profession": 375,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "213",
+          "profession_name": "electrical technician general",
+          "share": 0.375,
+          "nationality_workers": 267,
+          "total_workers_in_profession": 712,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "194",
+          "profession_name": "Computer operator",
+          "share": 0.3722,
+          "nationality_workers": 150,
+          "total_workers_in_profession": 403,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "982",
+          "profession_name": "controller",
+          "share": 0.372,
+          "nationality_workers": 969,
+          "total_workers_in_profession": 2605,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "888",
+          "profession_name": "GENERAL SUPERVISOR",
+          "share": 0.3718,
+          "nationality_workers": 13685,
+          "total_workers_in_profession": 36805,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "539",
+          "profession_name": "ENGINEER",
+          "share": 0.369,
+          "nationality_workers": 8199,
+          "total_workers_in_profession": 22217,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "CME",
+          "profession_name": "Code_CME",
+          "share": 0.3681,
+          "nationality_workers": 233,
+          "total_workers_in_profession": 633,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "583",
+          "profession_name": "GROCER",
+          "share": 0.3658,
+          "nationality_workers": 94,
+          "total_workers_in_profession": 257,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "560",
+          "profession_name": "BLACKSMITH",
+          "share": 0.3647,
+          "nationality_workers": 4418,
+          "total_workers_in_profession": 12114,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "148",
+          "profession_name": "ACCOUNTANT (SENIOR)",
+          "share": 0.3641,
+          "nationality_workers": 343,
+          "total_workers_in_profession": 942,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "707",
+          "profession_name": "STORE KEEPER",
+          "share": 0.3623,
+          "nationality_workers": 1307,
+          "total_workers_in_profession": 3608,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "149",
+          "profession_name": "HR officer",
+          "share": 0.362,
+          "nationality_workers": 80,
+          "total_workers_in_profession": 221,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "296",
+          "profession_name": "Project engineer-site engineer",
+          "share": 0.3616,
+          "nationality_workers": 111,
+          "total_workers_in_profession": 307,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "792",
+          "profession_name": "GARDENER",
+          "share": 0.3614,
+          "nationality_workers": 210,
+          "total_workers_in_profession": 581,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "AFI",
+          "profession_name": "Code_AFI",
+          "share": 0.3604,
+          "nationality_workers": 80,
+          "total_workers_in_profession": 222,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "845",
+          "profession_name": "A/C MECHANIC",
+          "share": 0.3591,
+          "nationality_workers": 172,
+          "total_workers_in_profession": 479,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "072",
+          "profession_name": "H R manager",
+          "share": 0.3552,
+          "nationality_workers": 103,
+          "total_workers_in_profession": 290,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "555",
+          "profession_name": "PHARMACIST",
+          "share": 0.3538,
+          "nationality_workers": 1074,
+          "total_workers_in_profession": 3036,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "328",
+          "profession_name": "Administrstive",
+          "share": 0.3531,
+          "nationality_workers": 1203,
+          "total_workers_in_profession": 3407,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "436",
+          "profession_name": "COOKER.",
+          "share": 0.3531,
+          "nationality_workers": 756,
+          "total_workers_in_profession": 2141,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "609",
+          "profession_name": "TELEC  OPERATOR",
+          "share": 0.3527,
+          "nationality_workers": 158,
+          "total_workers_in_profession": 448,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "228",
+          "profession_name": "General electronic techncian",
+          "share": 0.3523,
+          "nationality_workers": 99,
+          "total_workers_in_profession": 281,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "078",
+          "profession_name": "Customer Service.",
+          "share": 0.3518,
+          "nationality_workers": 564,
+          "total_workers_in_profession": 1603,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "112",
+          "profession_name": "SAFETY SUPERVISOR",
+          "share": 0.3513,
+          "nationality_workers": 404,
+          "total_workers_in_profession": 1150,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "628",
+          "profession_name": "BUSIN. EXECUTIVE.",
+          "share": 0.3504,
+          "nationality_workers": 15552,
+          "total_workers_in_profession": 44378,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "CMD",
+          "profession_name": "Code_CMD",
+          "share": 0.3485,
+          "nationality_workers": 130,
+          "total_workers_in_profession": 373,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "431",
+          "profession_name": "DESIGNER",
+          "share": 0.3482,
+          "nationality_workers": 195,
+          "total_workers_in_profession": 560,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "193",
+          "profession_name": "Data Entry",
+          "share": 0.3477,
+          "nationality_workers": 185,
+          "total_workers_in_profession": 532,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "929",
+          "profession_name": "SITE SUPERVISOR",
+          "share": 0.3468,
+          "nationality_workers": 2948,
+          "total_workers_in_profession": 8501,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "318",
+          "profession_name": "Accountant of wages and salaries",
+          "share": 0.3459,
+          "nationality_workers": 202,
+          "total_workers_in_profession": 584,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "562",
+          "profession_name": "CARPENTER.",
+          "share": 0.3435,
+          "nationality_workers": 6646,
+          "total_workers_in_profession": 19348,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "740",
+          "profession_name": "VOCATION  TRAINER",
+          "share": 0.3435,
+          "nationality_workers": 124,
+          "total_workers_in_profession": 361,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "886",
+          "profession_name": "HANNA BEAUTICIAN",
+          "share": 0.3397,
+          "nationality_workers": 303,
+          "total_workers_in_profession": 892,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "412",
+          "profession_name": "RESERVATION OFFIC",
+          "share": 0.3352,
+          "nationality_workers": 307,
+          "total_workers_in_profession": 916,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "881",
+          "profession_name": "CHAWARMA MAKER.",
+          "share": 0.3344,
+          "nationality_workers": 100,
+          "total_workers_in_profession": 299,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "876",
+          "profession_name": "SITE ENGINEER",
+          "share": 0.3341,
+          "nationality_workers": 146,
+          "total_workers_in_profession": 437,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "458",
+          "profession_name": "officer",
+          "share": 0.3335,
+          "nationality_workers": 1604,
+          "total_workers_in_profession": 4809,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "857",
+          "profession_name": "FURNIT  WOODWORKER",
+          "share": 0.3323,
+          "nationality_workers": 216,
+          "total_workers_in_profession": 650,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "619",
+          "profession_name": "CHEMIST",
+          "share": 0.3315,
+          "nationality_workers": 176,
+          "total_workers_in_profession": 531,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "622",
+          "profession_name": "WELDER",
+          "share": 0.3311,
+          "nationality_workers": 551,
+          "total_workers_in_profession": 1664,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "601",
+          "profession_name": "COOKER",
+          "share": 0.3299,
+          "nationality_workers": 5905,
+          "total_workers_in_profession": 17902,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "882",
+          "profession_name": "WASH  MACHINE TECH ",
+          "share": 0.3299,
+          "nationality_workers": 129,
+          "total_workers_in_profession": 391,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "618",
+          "profession_name": "LAB TECHNICIANS",
+          "share": 0.3281,
+          "nationality_workers": 147,
+          "total_workers_in_profession": 448,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "441",
+          "profession_name": "Mechanic Assistant",
+          "share": 0.328,
+          "nationality_workers": 103,
+          "total_workers_in_profession": 314,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "076",
+          "profession_name": "teller",
+          "share": 0.3277,
+          "nationality_workers": 78,
+          "total_workers_in_profession": 238,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "672",
+          "profession_name": "GEN  CHEMIST",
+          "share": 0.3275,
+          "nationality_workers": 75,
+          "total_workers_in_profession": 229,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "706",
+          "profession_name": "CLERICAL (GEN )",
+          "share": 0.3265,
+          "nationality_workers": 95,
+          "total_workers_in_profession": 291,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "745",
+          "profession_name": "GENERAL TYPIST",
+          "share": 0.3241,
+          "nationality_workers": 82,
+          "total_workers_in_profession": 253,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "404",
+          "profession_name": "ANALYST",
+          "share": 0.324,
+          "nationality_workers": 440,
+          "total_workers_in_profession": 1358,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "069",
+          "profession_name": "Care Assistant",
+          "share": 0.3235,
+          "nationality_workers": 165,
+          "total_workers_in_profession": 510,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "952",
+          "profession_name": "Expert information systems",
+          "share": 0.3185,
+          "nationality_workers": 157,
+          "total_workers_in_profession": 493,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "865",
+          "profession_name": "CABLING TECH ",
+          "share": 0.3181,
+          "nationality_workers": 1269,
+          "total_workers_in_profession": 3989,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "221",
+          "profession_name": "Technician of elect. extensions",
+          "share": 0.3176,
+          "nationality_workers": 155,
+          "total_workers_in_profession": 488,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "330",
+          "profession_name": "General manager of comp/estab/organiza",
+          "share": 0.3149,
+          "nationality_workers": 291,
+          "total_workers_in_profession": 924,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "753",
+          "profession_name": "FISH SALESMAN",
+          "share": 0.3112,
+          "nationality_workers": 89,
+          "total_workers_in_profession": 286,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "852",
+          "profession_name": "ELECTRICIAN (GEN )",
+          "share": 0.3109,
+          "nationality_workers": 1919,
+          "total_workers_in_profession": 6172,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "978",
+          "profession_name": "buying officer",
+          "share": 0.3106,
+          "nationality_workers": 150,
+          "total_workers_in_profession": 483,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "872",
+          "profession_name": "DESIGN TECHNICIAN",
+          "share": 0.3102,
+          "nationality_workers": 94,
+          "total_workers_in_profession": 303,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "847",
+          "profession_name": "HEAVY VEHICLE DRIVER",
+          "share": 0.3101,
+          "nationality_workers": 6198,
+          "total_workers_in_profession": 19989,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "098",
+          "profession_name": "Business and marketing supervisor       ",
+          "share": 0.3077,
+          "nationality_workers": 112,
+          "total_workers_in_profession": 364,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "155",
+          "profession_name": "ASSISTANT",
+          "share": 0.3074,
+          "nationality_workers": 1601,
+          "total_workers_in_profession": 5208,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "DVT",
+          "profession_name": "Code_DVT",
+          "share": 0.3072,
+          "nationality_workers": 1074,
+          "total_workers_in_profession": 3496,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "812",
+          "profession_name": "WOMEN'S TAILOR",
+          "share": 0.307,
+          "nationality_workers": 362,
+          "total_workers_in_profession": 1179,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "573",
+          "profession_name": "ACCOUNTANT",
+          "share": 0.3067,
+          "nationality_workers": 14499,
+          "total_workers_in_profession": 47281,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "361",
+          "profession_name": "Technical Support Specialist",
+          "share": 0.3066,
+          "nationality_workers": 65,
+          "total_workers_in_profession": 212,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "240",
+          "profession_name": "Technician-mechanic operating machines",
+          "share": 0.3065,
+          "nationality_workers": 122,
+          "total_workers_in_profession": 398,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "684",
+          "profession_name": "ENGINEER (TELECOM)",
+          "share": 0.306,
+          "nationality_workers": 164,
+          "total_workers_in_profession": 536,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "447",
+          "profession_name": "Administrative Assistant",
+          "share": 0.3052,
+          "nationality_workers": 507,
+          "total_workers_in_profession": 1661,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "711",
+          "profession_name": "CORRESPONDENT",
+          "share": 0.3036,
+          "nationality_workers": 170,
+          "total_workers_in_profession": 560,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "869",
+          "profession_name": "REINFORC  FITTER",
+          "share": 0.3026,
+          "nationality_workers": 3248,
+          "total_workers_in_profession": 10735,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "432",
+          "profession_name": "COORDINATOR",
+          "share": 0.3025,
+          "nationality_workers": 864,
+          "total_workers_in_profession": 2856,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "602",
+          "profession_name": "TYPIST",
+          "share": 0.3025,
+          "nationality_workers": 278,
+          "total_workers_in_profession": 919,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "612",
+          "profession_name": "ELECTRICIAN",
+          "share": 0.3022,
+          "nationality_workers": 1370,
+          "total_workers_in_profession": 4534,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "DQG",
+          "profession_name": "Code_DQG",
+          "share": 0.3017,
+          "nationality_workers": 140,
+          "total_workers_in_profession": 464,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "091",
+          "profession_name": "Lab Technologist",
+          "share": 0.3,
+          "nationality_workers": 78,
+          "total_workers_in_profession": 260,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        }
+      ],
       "top_professions": [
         {
           "code": "558",
@@ -450,8 +1743,9 @@
       "pending": 0,
       "cap": 242955,
       "previous_cap": 220869,
+      "projected_outflow": 8832,
       "stock": 196277,
-      "headroom": 46678,
+      "headroom": 53302,
       "utilization": 0.8078738861105966,
       "tier_summary": {
         "1": {
@@ -569,11 +1863,31 @@
       },
       "dominance_alerts": [
         {
-          "profession_code": "558",
-          "profession_name": "DRIVER",
-          "share": 0.3293,
-          "alert_level": "WATCH",
-          "is_blocking": false
+          "profession_code": "FHT",
+          "profession_name": "Code_FHT",
+          "share": 0.7361,
+          "nationality_workers": 212,
+          "total_workers_in_profession": 288,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "FIA",
+          "profession_name": "Code_FIA",
+          "share": 0.5586,
+          "nationality_workers": 262,
+          "total_workers_in_profession": 469,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "534",
+          "profession_name": "POLICE ARMY STAFF",
+          "share": 0.5585,
+          "nationality_workers": 4478,
+          "total_workers_in_profession": 8018,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
         }
       ],
       "top_professions": [
@@ -688,8 +2002,9 @@
       "pending": 0,
       "cap": 437178,
       "previous_cap": 397435,
+      "projected_outflow": 15593,
       "stock": 346515,
-      "headroom": 90663,
+      "headroom": 102357,
       "utilization": 0.7926176523063833,
       "tier_summary": {
         "1": {
@@ -801,9 +2116,299 @@
       },
       "dominance_alerts": [
         {
+          "profession_code": "FMF",
+          "profession_name": "Code_FMF",
+          "share": 0.8544,
+          "nationality_workers": 176,
+          "total_workers_in_profession": 206,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "FJI",
+          "profession_name": "Code_FJI",
+          "share": 0.5243,
+          "nationality_workers": 1304,
+          "total_workers_in_profession": 2487,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "811",
+          "profession_name": "GENTS' TAILOR",
+          "share": 0.5175,
+          "nationality_workers": 593,
+          "total_workers_in_profession": 1146,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
           "profession_code": "540",
           "profession_name": "LABOURER",
-          "share": 0.335,
+          "share": 0.4885,
+          "nationality_workers": 116070,
+          "total_workers_in_profession": 237619,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "906",
+          "profession_name": "BUILDING WORKER",
+          "share": 0.4712,
+          "nationality_workers": 5120,
+          "total_workers_in_profession": 10866,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "FJN",
+          "profession_name": "Code_FJN",
+          "share": 0.4689,
+          "nationality_workers": 1319,
+          "total_workers_in_profession": 2813,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "788",
+          "profession_name": "LOAD & UNLOAD WORKER",
+          "share": 0.4574,
+          "nationality_workers": 247,
+          "total_workers_in_profession": 540,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "833",
+          "profession_name": "GEN  PRODUCT  WORKER",
+          "share": 0.4534,
+          "nationality_workers": 428,
+          "total_workers_in_profession": 944,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "835",
+          "profession_name": "PLUMBER ASSISTANT",
+          "share": 0.4444,
+          "nationality_workers": 144,
+          "total_workers_in_profession": 324,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "567",
+          "profession_name": "TAILOR",
+          "share": 0.443,
+          "nationality_workers": 3109,
+          "total_workers_in_profession": 7018,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "777",
+          "profession_name": "GEN  CLEAN  WORKER",
+          "share": 0.4402,
+          "nationality_workers": 34617,
+          "total_workers_in_profession": 78631,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "FMY",
+          "profession_name": "Code_FMY",
+          "share": 0.4371,
+          "nationality_workers": 500,
+          "total_workers_in_profession": 1144,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "806",
+          "profession_name": "SEWING WORKER",
+          "share": 0.4282,
+          "nationality_workers": 298,
+          "total_workers_in_profession": 696,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "761",
+          "profession_name": "DOUGH KNEADER",
+          "share": 0.4153,
+          "nationality_workers": 130,
+          "total_workers_in_profession": 313,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "921",
+          "profession_name": "BELL MAN",
+          "share": 0.4144,
+          "nationality_workers": 733,
+          "total_workers_in_profession": 1769,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "FJJ",
+          "profession_name": "Code_FJJ",
+          "share": 0.3953,
+          "nationality_workers": 153,
+          "total_workers_in_profession": 387,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "444",
+          "profession_name": "cargo service agrnt",
+          "share": 0.3772,
+          "nationality_workers": 86,
+          "total_workers_in_profession": 228,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "882",
+          "profession_name": "WASH  MACHINE TECH ",
+          "share": 0.376,
+          "nationality_workers": 147,
+          "total_workers_in_profession": 391,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "860",
+          "profession_name": "UPHOLSTERER",
+          "share": 0.3735,
+          "nationality_workers": 186,
+          "total_workers_in_profession": 498,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "583",
+          "profession_name": "GROCER",
+          "share": 0.3658,
+          "nationality_workers": 94,
+          "total_workers_in_profession": 257,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "790",
+          "profession_name": "PACKING WORKER",
+          "share": 0.361,
+          "nationality_workers": 1075,
+          "total_workers_in_profession": 2978,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "111",
+          "profession_name": "Plasterer",
+          "share": 0.351,
+          "nationality_workers": 575,
+          "total_workers_in_profession": 1638,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "789",
+          "profession_name": "PORTER",
+          "share": 0.3414,
+          "nationality_workers": 170,
+          "total_workers_in_profession": 498,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "776",
+          "profession_name": "DRY CLEAN WORKER",
+          "share": 0.3348,
+          "nationality_workers": 2078,
+          "total_workers_in_profession": 6207,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "815",
+          "profession_name": "EMBROIDERER",
+          "share": 0.3226,
+          "nationality_workers": 230,
+          "total_workers_in_profession": 713,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "786",
+          "profession_name": "MESSENGER",
+          "share": 0.3185,
+          "nationality_workers": 357,
+          "total_workers_in_profession": 1121,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "880",
+          "profession_name": "KABAB MAKER",
+          "share": 0.3137,
+          "nationality_workers": 64,
+          "total_workers_in_profession": 204,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "915",
+          "profession_name": "PATCH WORKER",
+          "share": 0.3135,
+          "nationality_workers": 132,
+          "total_workers_in_profession": 421,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "767",
+          "profession_name": "SANDWICH MAKER",
+          "share": 0.3119,
+          "nationality_workers": 242,
+          "total_workers_in_profession": 776,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "772",
+          "profession_name": "PRESSER",
+          "share": 0.3096,
+          "nationality_workers": 122,
+          "total_workers_in_profession": 394,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "904",
+          "profession_name": "PLASTER WORKER",
+          "share": 0.3087,
+          "nationality_workers": 2273,
+          "total_workers_in_profession": 7364,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "911",
+          "profession_name": "Waiter",
+          "share": 0.3009,
+          "nationality_workers": 501,
+          "total_workers_in_profession": 1665,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "875",
+          "profession_name": "CONSTRUCT  TECH ",
+          "share": 0.3002,
+          "nationality_workers": 184,
+          "total_workers_in_profession": 613,
           "alert_level": "WATCH",
           "is_blocking": false
         }
@@ -920,8 +2525,9 @@
       "pending": 0,
       "cap": 487741,
       "previous_cap": 443401,
+      "projected_outflow": 18012,
       "stock": 400273,
-      "headroom": 87468,
+      "headroom": 100977,
       "utilization": 0.8206671163588872,
       "tier_summary": {
         "1": {
@@ -1030,7 +2636,836 @@
           ]
         }
       },
-      "dominance_alerts": [],
+      "dominance_alerts": [
+        {
+          "profession_code": "727",
+          "profession_name": "STRUCT DRAFTSMAN",
+          "share": 0.9372,
+          "nationality_workers": 1150,
+          "total_workers_in_profession": 1227,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "729",
+          "profession_name": "ELECTRIC DRAFTSMAN",
+          "share": 0.9222,
+          "nationality_workers": 770,
+          "total_workers_in_profession": 835,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "977",
+          "profession_name": "ASST EXECUTIVE MAN",
+          "share": 0.9185,
+          "nationality_workers": 3943,
+          "total_workers_in_profession": 4293,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "401",
+          "profession_name": "ASST. GENERAL DIR",
+          "share": 0.9012,
+          "nationality_workers": 301,
+          "total_workers_in_profession": 334,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "402",
+          "profession_name": "CIVIL DRAFTSMAN",
+          "share": 0.8963,
+          "nationality_workers": 1115,
+          "total_workers_in_profession": 1244,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "106",
+          "profession_name": "SAFETY SECURITY MNGR",
+          "share": 0.8915,
+          "nationality_workers": 1570,
+          "total_workers_in_profession": 1761,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "668",
+          "profession_name": "STORES MANAGER",
+          "share": 0.8655,
+          "nationality_workers": 1937,
+          "total_workers_in_profession": 2238,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "653",
+          "profession_name": "ELECTRIC  MANAGER",
+          "share": 0.8565,
+          "nationality_workers": 179,
+          "total_workers_in_profession": 209,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "303",
+          "profession_name": "ENGINEER (ELECTRI )",
+          "share": 0.8223,
+          "nationality_workers": 1166,
+          "total_workers_in_profession": 1418,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "689",
+          "profession_name": "ENGINEER (INSTAL )",
+          "share": 0.7907,
+          "nationality_workers": 461,
+          "total_workers_in_profession": 583,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "292",
+          "profession_name": "General civil engineer",
+          "share": 0.7782,
+          "nationality_workers": 2565,
+          "total_workers_in_profession": 3296,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "681",
+          "profession_name": "ENGINEER (SURVEY)",
+          "share": 0.7781,
+          "nationality_workers": 235,
+          "total_workers_in_profession": 302,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "419",
+          "profession_name": "SECURITY ENGINEER",
+          "share": 0.751,
+          "nationality_workers": 184,
+          "total_workers_in_profession": 245,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "720",
+          "profession_name": "FIN  CONTROLLER",
+          "share": 0.7473,
+          "nationality_workers": 964,
+          "total_workers_in_profession": 1290,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "671",
+          "profession_name": "COMPANY MANAGER",
+          "share": 0.7294,
+          "nationality_workers": 674,
+          "total_workers_in_profession": 924,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "629",
+          "profession_name": "Land SURVEYOR",
+          "share": 0.7285,
+          "nationality_workers": 322,
+          "total_workers_in_profession": 442,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "726",
+          "profession_name": "ARCHI  DRAFTSMAN",
+          "share": 0.7228,
+          "nationality_workers": 219,
+          "total_workers_in_profession": 303,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "939",
+          "profession_name": "ADMIN  MANAGER",
+          "share": 0.7213,
+          "nationality_workers": 9906,
+          "total_workers_in_profession": 13733,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "410",
+          "profession_name": "EQUIPMENTS ENGIN",
+          "share": 0.711,
+          "nationality_workers": 246,
+          "total_workers_in_profession": 346,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "721",
+          "profession_name": "ACCOUNTANT (GEN )",
+          "share": 0.7098,
+          "nationality_workers": 11833,
+          "total_workers_in_profession": 16670,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "577",
+          "profession_name": "ADMINIS  CONSULT ",
+          "share": 0.681,
+          "nationality_workers": 1904,
+          "total_workers_in_profession": 2796,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "995",
+          "profession_name": "CREDIT MANAGER",
+          "share": 0.6701,
+          "nationality_workers": 197,
+          "total_workers_in_profession": 294,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "680",
+          "profession_name": "ENGINEER (CONSTR )",
+          "share": 0.665,
+          "nationality_workers": 546,
+          "total_workers_in_profession": 821,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "931",
+          "profession_name": "EQUIPMENT'S ENGINEER",
+          "share": 0.658,
+          "nationality_workers": 229,
+          "total_workers_in_profession": 348,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "385",
+          "profession_name": "PROJECT COORDINATOR",
+          "share": 0.6436,
+          "nationality_workers": 1392,
+          "total_workers_in_profession": 2163,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "421",
+          "profession_name": "ASST ENGINEER",
+          "share": 0.6319,
+          "nationality_workers": 963,
+          "total_workers_in_profession": 1524,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "BOV",
+          "profession_name": "Code_BOV",
+          "share": 0.6217,
+          "nationality_workers": 539,
+          "total_workers_in_profession": 867,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "268",
+          "profession_name": "Mechanical engineer",
+          "share": 0.6112,
+          "nationality_workers": 1311,
+          "total_workers_in_profession": 2145,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "692",
+          "profession_name": "ENGINEER (GENERAL)",
+          "share": 0.6045,
+          "nationality_workers": 1223,
+          "total_workers_in_profession": 2023,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "110",
+          "profession_name": "Maint. Engineer",
+          "share": 0.6043,
+          "nationality_workers": 226,
+          "total_workers_in_profession": 374,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "666",
+          "profession_name": "ACCOUNTS MANAGER",
+          "share": 0.6014,
+          "nationality_workers": 1388,
+          "total_workers_in_profession": 2308,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "105",
+          "profession_name": "FINACIAL ANALYZER",
+          "share": 0.594,
+          "nationality_workers": 395,
+          "total_workers_in_profession": 665,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "928",
+          "profession_name": "ASSISTANT MANAGER",
+          "share": 0.5362,
+          "nationality_workers": 2024,
+          "total_workers_in_profession": 3775,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "565",
+          "profession_name": "SHEPHERD",
+          "share": 0.5356,
+          "nationality_workers": 2228,
+          "total_workers_in_profession": 4160,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "632",
+          "profession_name": "ENGINEERING CONS ",
+          "share": 0.5325,
+          "nationality_workers": 123,
+          "total_workers_in_profession": 231,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "870",
+          "profession_name": "MARKET MANAGER",
+          "share": 0.5295,
+          "nationality_workers": 2948,
+          "total_workers_in_profession": 5567,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "983",
+          "profession_name": "EXECUTIVE MANAGER",
+          "share": 0.5275,
+          "nationality_workers": 1524,
+          "total_workers_in_profession": 2889,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "101",
+          "profession_name": "DEVELOPMENT MANAGER",
+          "share": 0.5165,
+          "nationality_workers": 344,
+          "total_workers_in_profession": 666,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "557",
+          "profession_name": "FARMER.",
+          "share": 0.5121,
+          "nationality_workers": 2748,
+          "total_workers_in_profession": 5366,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "652",
+          "profession_name": "INVESTMENT DIR ",
+          "share": 0.5106,
+          "nationality_workers": 169,
+          "total_workers_in_profession": 331,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "719",
+          "profession_name": "GENERAL ADVISOR",
+          "share": 0.5092,
+          "nationality_workers": 638,
+          "total_workers_in_profession": 1253,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "725",
+          "profession_name": "SURVEYOR",
+          "share": 0.5048,
+          "nationality_workers": 901,
+          "total_workers_in_profession": 1785,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "414",
+          "profession_name": "DECOR ENGINEER",
+          "share": 0.5015,
+          "nationality_workers": 654,
+          "total_workers_in_profession": 1304,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "980",
+          "profession_name": "FOOD INSPECTOR",
+          "share": 0.4977,
+          "nationality_workers": 108,
+          "total_workers_in_profession": 217,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "631",
+          "profession_name": "INTERVIEW DESIG ",
+          "share": 0.497,
+          "nationality_workers": 840,
+          "total_workers_in_profession": 1690,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "702",
+          "profession_name": "PROGRAM DESIGNER",
+          "share": 0.4967,
+          "nationality_workers": 298,
+          "total_workers_in_profession": 600,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "635",
+          "profession_name": "ENGINEER (DESIG )",
+          "share": 0.4901,
+          "nationality_workers": 296,
+          "total_workers_in_profession": 604,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "661",
+          "profession_name": "MAINT  MANAGER",
+          "share": 0.4879,
+          "nationality_workers": 202,
+          "total_workers_in_profession": 414,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "648",
+          "profession_name": "ADMIN  DIRECTOR",
+          "share": 0.4844,
+          "nationality_workers": 6515,
+          "total_workers_in_profession": 13451,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "676",
+          "profession_name": "GEN  STATISTICIAN",
+          "share": 0.483,
+          "nationality_workers": 185,
+          "total_workers_in_profession": 383,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "665",
+          "profession_name": "PURCHASE MANAGER",
+          "share": 0.4812,
+          "nationality_workers": 923,
+          "total_workers_in_profession": 1918,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "905",
+          "profession_name": "PLASTER TECHNICIAN",
+          "share": 0.4663,
+          "nationality_workers": 954,
+          "total_workers_in_profession": 2046,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "843",
+          "profession_name": "OXYGEN WELDER",
+          "share": 0.4559,
+          "nationality_workers": 93,
+          "total_workers_in_profession": 204,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "100",
+          "profession_name": "DATA ANALYZER.",
+          "share": 0.4542,
+          "nationality_workers": 129,
+          "total_workers_in_profession": 284,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "664",
+          "profession_name": "SALES MANAGER",
+          "share": 0.4519,
+          "nationality_workers": 3900,
+          "total_workers_in_profession": 8630,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "BQT",
+          "profession_name": "Code_BQT",
+          "share": 0.4519,
+          "nationality_workers": 141,
+          "total_workers_in_profession": 312,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "705",
+          "profession_name": "LEGAL CONSULT (GEN )",
+          "share": 0.4486,
+          "nationality_workers": 362,
+          "total_workers_in_profession": 807,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "221",
+          "profession_name": "Technician of elect. extensions",
+          "share": 0.4426,
+          "nationality_workers": 216,
+          "total_workers_in_profession": 488,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "793",
+          "profession_name": "FARMER",
+          "share": 0.439,
+          "nationality_workers": 2419,
+          "total_workers_in_profession": 5510,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "708",
+          "profession_name": "GEN  DESIGNER",
+          "share": 0.4323,
+          "nationality_workers": 753,
+          "total_workers_in_profession": 1742,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "679",
+          "profession_name": "ENGINEER (DESIGN)",
+          "share": 0.4319,
+          "nationality_workers": 412,
+          "total_workers_in_profession": 954,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "581",
+          "profession_name": "FINANCIAL CONSUL ",
+          "share": 0.4314,
+          "nationality_workers": 151,
+          "total_workers_in_profession": 350,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "828",
+          "profession_name": "TILE MAKER",
+          "share": 0.4275,
+          "nationality_workers": 522,
+          "total_workers_in_profession": 1221,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "851",
+          "profession_name": "INSTAL  ELECTRICIAN",
+          "share": 0.4248,
+          "nationality_workers": 223,
+          "total_workers_in_profession": 525,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "852",
+          "profession_name": "ELECTRICIAN (GEN )",
+          "share": 0.418,
+          "nationality_workers": 2580,
+          "total_workers_in_profession": 6172,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "580",
+          "profession_name": "LEGAL CONSULTANT",
+          "share": 0.4137,
+          "nationality_workers": 187,
+          "total_workers_in_profession": 452,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "663",
+          "profession_name": "COMMERC  MANAGER",
+          "share": 0.409,
+          "nationality_workers": 301,
+          "total_workers_in_profession": 736,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "667",
+          "profession_name": "INDUST  MANAGER",
+          "share": 0.4071,
+          "nationality_workers": 127,
+          "total_workers_in_profession": 312,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "915",
+          "profession_name": "PATCH WORKER",
+          "share": 0.4014,
+          "nationality_workers": 169,
+          "total_workers_in_profession": 421,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "907",
+          "profession_name": "CERAMIC WORKER",
+          "share": 0.3997,
+          "nationality_workers": 518,
+          "total_workers_in_profession": 1296,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "584",
+          "profession_name": "TILE MAKER.",
+          "share": 0.3985,
+          "nationality_workers": 2544,
+          "total_workers_in_profession": 6384,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "961",
+          "profession_name": "Excutive Head",
+          "share": 0.3964,
+          "nationality_workers": 178,
+          "total_workers_in_profession": 449,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "815",
+          "profession_name": "EMBROIDERER",
+          "share": 0.3857,
+          "nationality_workers": 275,
+          "total_workers_in_profession": 713,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "917",
+          "profession_name": "TAILORING MASTER",
+          "share": 0.3779,
+          "nationality_workers": 401,
+          "total_workers_in_profession": 1061,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "909",
+          "profession_name": "GENERAL COORDINATOR",
+          "share": 0.3752,
+          "nationality_workers": 1210,
+          "total_workers_in_profession": 3225,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "826",
+          "profession_name": "MARBLE TECHNICIAN",
+          "share": 0.3736,
+          "nationality_workers": 387,
+          "total_workers_in_profession": 1036,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "867",
+          "profession_name": "BRICK MASON",
+          "share": 0.3724,
+          "nationality_workers": 3719,
+          "total_workers_in_profession": 9987,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "904",
+          "profession_name": "PLASTER WORKER",
+          "share": 0.3694,
+          "nationality_workers": 2720,
+          "total_workers_in_profession": 7364,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "864",
+          "profession_name": "ASSISTANT MASON",
+          "share": 0.359,
+          "nationality_workers": 182,
+          "total_workers_in_profession": 507,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "865",
+          "profession_name": "CABLING TECH ",
+          "share": 0.3547,
+          "nationality_workers": 1415,
+          "total_workers_in_profession": 3989,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "585",
+          "profession_name": "MASON",
+          "share": 0.3501,
+          "nationality_workers": 8536,
+          "total_workers_in_profession": 24385,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "612",
+          "profession_name": "ELECTRICIAN",
+          "share": 0.3438,
+          "nationality_workers": 1559,
+          "total_workers_in_profession": 4534,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "858",
+          "profession_name": "CARPENTER",
+          "share": 0.3418,
+          "nationality_workers": 4991,
+          "total_workers_in_profession": 14603,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "757",
+          "profession_name": "MEN'S BARBER",
+          "share": 0.3414,
+          "nationality_workers": 2054,
+          "total_workers_in_profession": 6016,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "651",
+          "profession_name": "PROJECTS MANAGER",
+          "share": 0.3399,
+          "nationality_workers": 809,
+          "total_workers_in_profession": 2380,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "752",
+          "profession_name": "BUTCHER",
+          "share": 0.3362,
+          "nationality_workers": 77,
+          "total_workers_in_profession": 229,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "704",
+          "profession_name": "IMAM IN MOSQUE",
+          "share": 0.3354,
+          "nationality_workers": 825,
+          "total_workers_in_profession": 2460,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "573",
+          "profession_name": "ACCOUNTANT",
+          "share": 0.3254,
+          "nationality_workers": 15386,
+          "total_workers_in_profession": 47281,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "869",
+          "profession_name": "REINFORC  FITTER",
+          "share": 0.324,
+          "nationality_workers": 3478,
+          "total_workers_in_profession": 10735,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "564",
+          "profession_name": "PAINTER",
+          "share": 0.3211,
+          "nationality_workers": 4387,
+          "total_workers_in_profession": 13663,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "812",
+          "profession_name": "WOMEN'S TAILOR",
+          "share": 0.3079,
+          "nationality_workers": 363,
+          "total_workers_in_profession": 1179,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "889",
+          "profession_name": "FOREMAN",
+          "share": 0.3063,
+          "nationality_workers": 23897,
+          "total_workers_in_profession": 78010,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        }
+      ],
       "top_professions": [
         {
           "code": "558",
@@ -1143,8 +3578,9 @@
       "pending": 0,
       "cap": 155806,
       "previous_cap": 141642,
+      "projected_outflow": 5699,
       "stock": 126653,
-      "headroom": 29153,
+      "headroom": 33427,
       "utilization": 0.812889105682708,
       "tier_summary": {
         "1": {
@@ -1253,7 +3689,224 @@
           ]
         }
       },
-      "dominance_alerts": [],
+      "dominance_alerts": [
+        {
+          "profession_code": "CUL",
+          "profession_name": "Code_CUL",
+          "share": 0.9901,
+          "nationality_workers": 200,
+          "total_workers_in_profession": 202,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "068",
+          "profession_name": "Care Giver",
+          "share": 0.8867,
+          "nationality_workers": 1369,
+          "total_workers_in_profession": 1544,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "102",
+          "profession_name": "DENTAL ASSISTANT",
+          "share": 0.7518,
+          "nationality_workers": 206,
+          "total_workers_in_profession": 274,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "897",
+          "profession_name": "BABY SITTER",
+          "share": 0.744,
+          "nationality_workers": 218,
+          "total_workers_in_profession": 293,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "935",
+          "profession_name": "MANICURIST",
+          "share": 0.6077,
+          "nationality_workers": 491,
+          "total_workers_in_profession": 808,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "547",
+          "profession_name": "Assistant Nurse",
+          "share": 0.5569,
+          "nationality_workers": 230,
+          "total_workers_in_profession": 413,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "552",
+          "profession_name": "BABYSITTER",
+          "share": 0.542,
+          "nationality_workers": 226,
+          "total_workers_in_profession": 417,
+          "alert_level": "CRITICAL",
+          "is_blocking": true
+        },
+        {
+          "profession_code": "355",
+          "profession_name": "Assistant teacher",
+          "share": 0.4951,
+          "nationality_workers": 456,
+          "total_workers_in_profession": 921,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "901",
+          "profession_name": "ASSITANCE PROFESSOR",
+          "share": 0.4815,
+          "nationality_workers": 182,
+          "total_workers_in_profession": 378,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "910",
+          "profession_name": "FLOWER MAKER",
+          "share": 0.4814,
+          "nationality_workers": 323,
+          "total_workers_in_profession": 671,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "065",
+          "profession_name": "Radiology Technician",
+          "share": 0.4489,
+          "nationality_workers": 123,
+          "total_workers_in_profession": 274,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "885",
+          "profession_name": "BEAUTICIAN",
+          "share": 0.4129,
+          "nationality_workers": 775,
+          "total_workers_in_profession": 1877,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "621",
+          "profession_name": "HAIR BEAUTICIAN",
+          "share": 0.4008,
+          "nationality_workers": 1369,
+          "total_workers_in_profession": 3416,
+          "alert_level": "HIGH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "551",
+          "profession_name": "SERVANT",
+          "share": 0.3802,
+          "nationality_workers": 2611,
+          "total_workers_in_profession": 6867,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "758",
+          "profession_name": "WOMEN HAIRDRESSER",
+          "share": 0.3761,
+          "nationality_workers": 255,
+          "total_workers_in_profession": 678,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "069",
+          "profession_name": "Care Assistant",
+          "share": 0.3745,
+          "nationality_workers": 191,
+          "total_workers_in_profession": 510,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "569",
+          "profession_name": "SECRETARY",
+          "share": 0.3744,
+          "nationality_workers": 3731,
+          "total_workers_in_profession": 9964,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "618",
+          "profession_name": "LAB TECHNICIANS",
+          "share": 0.3638,
+          "nationality_workers": 163,
+          "total_workers_in_profession": 448,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "742",
+          "profession_name": "MAKEUP TECH ",
+          "share": 0.3413,
+          "nationality_workers": 143,
+          "total_workers_in_profession": 419,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "406",
+          "profession_name": "Cosmetologist",
+          "share": 0.3398,
+          "nationality_workers": 454,
+          "total_workers_in_profession": 1336,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "DHF",
+          "profession_name": "Code_DHF",
+          "share": 0.3392,
+          "nationality_workers": 368,
+          "total_workers_in_profession": 1085,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "556",
+          "profession_name": "NURSE",
+          "share": 0.3336,
+          "nationality_workers": 8162,
+          "total_workers_in_profession": 24470,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "442",
+          "profession_name": "Aircraft Technician ",
+          "share": 0.3224,
+          "nationality_workers": 69,
+          "total_workers_in_profession": 214,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        },
+        {
+          "profession_code": "853",
+          "profession_name": "Radiology technologist.",
+          "share": 0.3088,
+          "nationality_workers": 67,
+          "total_workers_in_profession": 217,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        }
+      ],
       "top_professions": [
         {
           "code": "556",
@@ -1366,8 +4019,9 @@
       "pending": 0,
       "cap": 7768,
       "previous_cap": 7062,
+      "projected_outflow": 300,
       "stock": 6683,
-      "headroom": 1085,
+      "headroom": 1310,
       "utilization": 0.8603244078269825,
       "tier_summary": {
         "1": {
@@ -1595,8 +4249,9 @@
       "pending": 0,
       "cap": 1959,
       "previous_cap": 1781,
+      "projected_outflow": 74,
       "stock": 1658,
-      "headroom": 301,
+      "headroom": 356,
       "utilization": 0.846350178662583,
       "tier_summary": {
         "1": {
@@ -1812,8 +4467,9 @@
       "pending": 0,
       "cap": 14949,
       "previous_cap": 13590,
+      "projected_outflow": 589,
       "stock": 13105,
-      "headroom": 1844,
+      "headroom": 2285,
       "utilization": 0.8766472673757442,
       "tier_summary": {
         "1": {
@@ -1917,15 +4573,7 @@
           ]
         }
       },
-      "dominance_alerts": [
-        {
-          "profession_code": "645",
-          "profession_name": "EMPLOYEE",
-          "share": 0.5144,
-          "alert_level": "CRITICAL",
-          "is_blocking": true
-        }
-      ],
+      "dominance_alerts": [],
       "top_professions": [
         {
           "code": "645",
@@ -2038,8 +4686,9 @@
       "pending": 0,
       "cap": 27038,
       "previous_cap": 24580,
+      "projected_outflow": 1049,
       "stock": 23324,
-      "headroom": 3714,
+      "headroom": 4500,
       "utilization": 0.8626377690657593,
       "tier_summary": {
         "1": {
@@ -2261,8 +4910,9 @@
       "pending": 0,
       "cap": 3016,
       "previous_cap": 2742,
+      "projected_outflow": 113,
       "stock": 2532,
-      "headroom": 484,
+      "headroom": 568,
       "utilization": 0.8395225464190982,
       "tier_summary": {
         "1": {
@@ -2485,8 +5135,9 @@
       "pending": 0,
       "cap": 136111,
       "previous_cap": 123738,
+      "projected_outflow": 4557,
       "stock": 101272,
-      "headroom": 34839,
+      "headroom": 38256,
       "utilization": 0.7440397910528906,
       "tier_summary": {
         "1": {
@@ -2596,7 +5247,17 @@
           ]
         }
       },
-      "dominance_alerts": [],
+      "dominance_alerts": [
+        {
+          "profession_code": "728",
+          "profession_name": "QUANT  CALCUL  TECH ",
+          "share": 0.3472,
+          "nationality_workers": 242,
+          "total_workers_in_profession": 697,
+          "alert_level": "WATCH",
+          "is_blocking": false
+        }
+      ],
       "top_professions": [
         {
           "code": "558",
@@ -2700,5 +5361,10 @@
         }
       ]
     }
+  },
+  "global_stats": {
+    "total_professions": 2681,
+    "professions_with_min_size": 447,
+    "min_profession_size_threshold": 200
   }
 }
