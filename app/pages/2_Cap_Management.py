@@ -17,6 +17,7 @@ from datetime import date
 from app.components.styles import apply_custom_css, render_header, render_gold_accent, render_info_box
 from app.components.charts import create_cap_recommendation_chart
 from app.components.cards import render_metric_card
+from app.utils.real_data_loader import get_outflow_capacity
 
 
 st.set_page_config(
@@ -600,7 +601,6 @@ if is_outflow_based:
     """)
     
     # Show monthly capacity info
-    from app.utils.real_data_loader import get_outflow_capacity
     outflow_data = get_outflow_capacity(selected_code)
     if outflow_data:
         st.markdown("#### Monthly Allocation Capacity")

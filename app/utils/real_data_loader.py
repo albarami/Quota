@@ -661,16 +661,17 @@ def get_qvc_summary() -> dict:
 # =============================================================================
 
 # Non-QVC countries that use outflow-based monthly capacity
-NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN']
+NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN', 'AFG']
 
 # Monthly outflow data calculated from 2024-2025 worker movement
-# Left_2025 / 12 months = monthly average outflow
+# Left_2025 / 11 months = monthly average outflow
 MONTHLY_OUTFLOW_DATA = {
-    'EGY': {'left_2025': 8703, 'monthly_avg': 725, 'country': 'Egypt'},
-    'YEM': {'left_2025': 848, 'monthly_avg': 71, 'country': 'Yemen'},
-    'SYR': {'left_2025': 3415, 'monthly_avg': 285, 'country': 'Syria'},
-    'IRQ': {'left_2025': 194, 'monthly_avg': 16, 'country': 'Iraq'},
-    'IRN': {'left_2025': 750, 'monthly_avg': 63, 'country': 'Iran'},
+    'EGY': {'left_2025': 8699, 'monthly_avg': 791, 'country': 'Egypt'},
+    'YEM': {'left_2025': 802, 'monthly_avg': 73, 'country': 'Yemen'},
+    'SYR': {'left_2025': 3405, 'monthly_avg': 310, 'country': 'Syria'},
+    'IRQ': {'left_2025': 189, 'monthly_avg': 17, 'country': 'Iraq'},
+    'IRN': {'left_2025': 732, 'monthly_avg': 67, 'country': 'Iran'},
+    'AFG': {'left_2025': 492, 'monthly_avg': 45, 'country': 'Afghanistan'},
 }
 
 

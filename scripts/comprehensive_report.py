@@ -68,10 +68,18 @@ GROWTH_RATES = {
     'IND': -11.95, 'SYR': -12.37, 'PHL': -13.34, 'LKA': -17.39,
 }
 
-# QVC Daily Capacity (from qvc_capacity.json)
-QVC_DAILY_CAPACITY = {
-    'BGD': 600, 'IND': 800, 'NPL': 400, 'PAK': 500, 'PHL': 350, 'LKA': 300
-}
+# QVC Daily Capacity - loaded from qvc_capacity.json
+def load_qvc_capacity():
+    """Load QVC capacity from real data file."""
+    qvc_file = REAL_DATA_DIR / 'qvc_capacity.json'
+    if qvc_file.exists():
+        import json
+        with open(qvc_file, encoding='utf-8') as f:
+            data = json.load(f)
+        return {code: info['total_daily_capacity'] for code, info in data.get('centers', {}).items()}
+    return {}
+
+QVC_DAILY_CAPACITY = load_qvc_capacity()
 
 
 def load_csv(filename):
