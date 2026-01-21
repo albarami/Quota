@@ -400,9 +400,22 @@ Timestamp breaks ties
 
 ## 9. Cap Recommendation Engine
 
+### Applicability
+
+**IMPORTANT:** Cap recommendations apply ONLY to:
+- **QVC countries** (BGD, IND, NPL, PAK, PHL, LKA) - regardless of growth
+- **Non-QVC countries with POSITIVE growth**
+
+**For non-QVC countries (EGY, YEM, SYR, IRQ, IRN) with negative growth:**
+- **Cap = Current Stock** (frozen at current level)
+- These use **outflow-based allocation** (Section 10.B)
+- Monthly capacity = previous month's outflow
+- Pure replacement model - no growth allowed
+- Example: Egypt stock = 71,574 → Cap = 71,574
+
 ### Recommendation Models
 
-The AI engine provides three cap options:
+For applicable countries, the AI engine provides three cap options:
 
 | Model | Formula | Use Case |
 |-------|---------|----------|
@@ -413,6 +426,12 @@ The AI engine provides three cap options:
 ### Selection Logic
 
 ```
+# First check: Is cap recommendation applicable?
+IF is_non_qvc_country AND growth_rate < 0:
+    recommendation = NONE  # Use outflow-based allocation instead
+    RETURN "Outflow-Based Allocation"
+
+# Standard cap recommendation logic
 IF dominance_alerts > 3 OR has_critical_alert:
     recommendation = CONSERVATIVE
     
@@ -427,6 +446,8 @@ ELSE:
 ```
 
 ### Growth Adjustment
+
+For countries receiving cap recommendations:
 
 ```
 IF growth_rate > 5%:

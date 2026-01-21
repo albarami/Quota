@@ -181,26 +181,14 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
     """
     Build AI recommendation using EXACT formulas from System_Documentation.md Section 9.
     
-    Cap Recommendation Models (Section 9):
+    IMPORTANT - Section 9 Applicability:
+    - For non-QVC countries (EGY, YEM, SYR, IRQ, IRN) with negative growth:
+      Cap = Current Stock (frozen, replacement only via outflow-based allocation)
+    
+    Cap Recommendation Models (for applicable countries):
     - Conservative: Current_Cap × 1.05
     - Moderate: Current_Cap × 1.10  
     - Flexible: Current_Cap × 1.20
-    
-    Selection Logic (Section 9):
-    IF dominance_alerts > 3 OR has_critical_alert:
-        recommendation = CONSERVATIVE
-    ELIF utilization > 90% OR dominance_alerts > 1:
-        recommendation = MODERATE
-    ELIF utilization < 80% AND dominance_alerts == 0:
-        recommendation = FLEXIBLE
-    ELSE:
-        recommendation = MODERATE
-    
-    Growth Adjustment (Section 9):
-    IF growth_rate > 5%:
-        recommended_cap = recommended_cap × 1.05
-    IF growth_rate < -5%:
-        recommended_cap = recommended_cap × 0.95
     """
     stock = data["stock"]
     cap = data["cap"]
@@ -210,29 +198,66 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
     utilization_pct = utilization * 100  # Convert to percentage for comparison
     
     # Growth rates calculated from actual 2024-2025 worker movement data
-    # Formula: (Joined_2025 - Left_2025) / Stock_End_2024 × 100
     GROWTH_RATES = {
-        'BGD': +0.92,   # Bangladesh: GROWING +3,649 workers
-        'PAK': +0.74,   # Pakistan: GROWING +1,443 workers
-        'YEM': -1.26,   # Yemen: -167 workers
-        'IRQ': -6.38,   # Iraq: -113 workers (triggers 5% reduction)
-        'IRN': -6.79,   # Iran: -487 workers (triggers 5% reduction)
-        'NPL': -9.17,   # Nepal: -34,980 workers (triggers 5% reduction)
-        'AFG': -9.47,   # Afghanistan: -265 workers (triggers 5% reduction)
-        'EGY': -10.79,  # Egypt: -8,661 workers (triggers 5% reduction)
-        'IND': -11.95,  # India: -71,868 workers (triggers 5% reduction)
-        'SYR': -12.37,  # Syria: -3,291 workers (triggers 5% reduction)
-        'PHL': -13.34,  # Philippines: -19,490 workers (triggers 5% reduction)
-        'LKA': -17.39,  # Sri Lanka: -21,317 workers (triggers 5% reduction)
+        'BGD': +0.92,   # Bangladesh: GROWING
+        'PAK': +0.74,   # Pakistan: GROWING
+        'YEM': -1.26,   # Yemen: declining
+        'IRQ': -6.38,   # Iraq: declining
+        'IRN': -6.79,   # Iran: declining
+        'NPL': -9.17,   # Nepal: declining
+        'AFG': -9.47,   # Afghanistan: declining
+        'EGY': -10.79,  # Egypt: declining
+        'IND': -11.95,  # India: declining
+        'SYR': -12.37,  # Syria: declining
+        'PHL': -13.34,  # Philippines: declining
+        'LKA': -17.39,  # Sri Lanka: declining
     }
     growth_rate = GROWTH_RATES.get(nationality_code, 0)
     
-    # === STEP 1: Calculate base recommendations (Section 9 formulas) ===
+    # Non-QVC countries with negative growth
+    NON_QVC_COUNTRIES = ['EGY', 'YEM', 'SYR', 'IRQ', 'IRN']
+    
+    country_name = NATIONALITIES.get(nationality_code, nationality_code)
+    
+    # === SECTION 9: Check if non-QVC country with negative growth ===
+    # For these: Cap = Current Stock (frozen, outflow-based replacement only)
+    if nationality_code in NON_QVC_COUNTRIES and growth_rate < 0:
+        return {
+            "nationality_id": data.get("nationality_id", 1),
+            "nationality_code": nationality_code,
+            "current_stock": stock,
+            "current_cap": cap,
+            "conservative_cap": stock,  # All options = stock
+            "moderate_cap": stock,
+            "flexible_cap": stock,
+            "recommended_cap": stock,  # Cap = Stock
+            "recommendation_level": "outflow_based",
+            "rationale": (
+                f"Cap frozen at current stock ({stock:,}) for {country_name}. "
+                f"With negative growth ({growth_rate:+.1f}%), this nationality uses outflow-based allocation. "
+                f"Monthly capacity = previous month's outflow (replacement only). No growth allowed."
+            ),
+            "key_factors": [
+                f"Current stock: {stock:,} workers",
+                f"Growth rate: {growth_rate:+.1f}% YoY (NEGATIVE)",
+                f"Allocation model: Outflow-based (replacement only)",
+                f"Cap = Stock (frozen at current level)",
+                f"Monthly capacity = workers who left previous month",
+            ],
+            "risks": [
+                f"Declining workforce ({growth_rate:+.1f}%)",
+                "Cap frozen at current stock level",
+                "Only replacement hiring allowed via outflow",
+            ],
+            "is_outflow_based": True,
+        }
+    
+    # === Standard cap recommendation for QVC countries or positive growth ===
     conservative = int(cap * 1.05)
     moderate = int(cap * 1.10)
     flexible = int(cap * 1.20)
     
-    # === STEP 2: Selection Logic (EXACT from Section 9) ===
+    # Selection Logic
     if alerts > 3 or has_critical:
         level = "conservative"
         recommended = conservative
@@ -246,7 +271,7 @@ def _build_recommendation_from_real_data(nationality_code: str, data: dict) -> d
         level = "moderate"
         recommended = moderate
     
-    # === STEP 3: Growth Adjustment (Section 9) ===
+    # Growth Adjustment
     if growth_rate > 5:
         recommended = int(recommended * 1.05)
     elif growth_rate < -5:
@@ -477,38 +502,73 @@ render_gold_accent()
 with st.spinner("Generating AI recommendation..."):
     recommendation = fetch_recommendation(selected_code)
 
-rec_cols = st.columns([2, 1])
+# Check if this is an outflow-based country (non-QVC with negative growth)
+is_outflow_based = recommendation.get("is_outflow_based", False)
 
-with rec_cols[0]:
-    # Options chart
-    chart = create_cap_recommendation_chart(
-        current=recommendation["current_cap"],
-        conservative=recommendation["conservative_cap"],
-        moderate=recommendation["moderate_cap"],
-        flexible=recommendation["flexible_cap"],
-        recommended=recommendation["recommended_cap"],
-    )
-    st.plotly_chart(chart, use_container_width=True)
-
-with rec_cols[1]:
+if is_outflow_based:
+    # Special display for outflow-based countries: Cap = Stock
     st.markdown(f"""
     <div style="
-        background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
-        border: 2px solid #D4AF37;
+        background: linear-gradient(135deg, #FFF3E0 0%, #FFFFFF 100%);
+        border: 2px solid #FF9800;
         border-radius: 12px;
         padding: 1.5rem;
+        margin-bottom: 1rem;
     ">
-        <h4 style="color: #7B1E3D; margin: 0 0 1rem 0;">
-            ★ Recommended: {recommendation['recommendation_level'].title()}
+        <h4 style="color: #E65100; margin: 0 0 1rem 0;">
+            📤 Outflow-Based Allocation
         </h4>
-        <div style="font-size: 2rem; font-weight: 700; color: #D4AF37;">
-            {recommendation['recommended_cap']:,}
+        <div style="font-size: 1.5rem; font-weight: 700; color: #E65100;">
+            Cap = Current Stock = {recommendation['recommended_cap']:,}
         </div>
         <p style="color: #5C5C7A; font-size: 0.9rem; margin-top: 1rem;">
             {recommendation['rationale']}
         </p>
     </div>
     """, unsafe_allow_html=True)
+    
+    st.info("""
+    **Why no cap recommendation?**
+    
+    This nationality has **negative growth** and is a **non-QVC country**. Per Section 9 of the documentation:
+    - Cap is frozen at current stock level
+    - Monthly allocation = previous month's outflow (workers who left)
+    - Only replacement hiring is allowed - no growth
+    """)
+else:
+    # Standard cap recommendation display with chart
+    rec_cols = st.columns([2, 1])
+
+    with rec_cols[0]:
+        # Options chart
+        chart = create_cap_recommendation_chart(
+            current=recommendation["current_cap"],
+            conservative=recommendation["conservative_cap"],
+            moderate=recommendation["moderate_cap"],
+            flexible=recommendation["flexible_cap"],
+            recommended=recommendation["recommended_cap"],
+        )
+        st.plotly_chart(chart, use_container_width=True)
+
+    with rec_cols[1]:
+        st.markdown(f"""
+        <div style="
+            background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 12px;
+            padding: 1.5rem;
+        ">
+            <h4 style="color: #7B1E3D; margin: 0 0 1rem 0;">
+                ★ Recommended: {recommendation['recommendation_level'].title()}
+            </h4>
+            <div style="font-size: 2rem; font-weight: 700; color: #D4AF37;">
+                {recommendation['recommended_cap']:,}
+            </div>
+            <p style="color: #5C5C7A; font-size: 0.9rem; margin-top: 1rem;">
+                {recommendation['rationale']}
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # Key factors and risks
 factor_cols = st.columns(2)
@@ -519,64 +579,92 @@ with factor_cols[0]:
         st.markdown(f"- {factor}")
 
 with factor_cols[1]:
-    st.markdown("#### Risks")
+    st.markdown("#### Risks" if not is_outflow_based else "#### Status")
     for risk in recommendation["risks"]:
         st.markdown(f"- ⚠️ {risk}")
 
 # Set new cap form
 st.markdown("<hr style='margin: 2rem 0; border-color: #E0E0E0;'>", unsafe_allow_html=True)
-st.markdown("### Set New Cap")
-render_gold_accent()
 
-render_info_box(
-    "Setting a new cap requires Policy Committee authorization. "
-    "This form is for demonstration purposes only."
-)
-
-form_cols = st.columns([2, 1, 1])
-
-# Initialize session state for cap value
-cap_key = f"new_cap_{selected_code}"
-if cap_key not in st.session_state:
-    st.session_state[cap_key] = recommendation["recommended_cap"]
-
-with form_cols[1]:
-    option = st.radio(
-        "Quick Select",
-        ["Custom", "Conservative", "Moderate", "Flexible"],
-        index=0,
-        horizontal=True,
-        key=f"cap_option_{selected_code}",
-    )
+if is_outflow_based:
+    # For outflow-based countries, cap is frozen at stock
+    st.markdown("### Cap Status")
+    render_gold_accent()
     
-    # Update value based on quick select
-    if option == "Conservative":
-        default_value = recommendation["conservative_cap"]
-    elif option == "Moderate":
-        default_value = recommendation["moderate_cap"]
-    elif option == "Flexible":
-        default_value = recommendation["flexible_cap"]
-    else:  # Custom
-        default_value = st.session_state.get(cap_key, recommendation["recommended_cap"])
+    st.warning(f"""
+    **Cap Frozen at Current Stock: {recommendation['current_stock']:,}**
+    
+    This nationality uses outflow-based allocation due to negative growth.
+    The cap is automatically set to equal the current stock.
+    No manual cap adjustment is available - allocation is controlled by monthly outflow.
+    """)
+    
+    # Show monthly capacity info
+    from app.utils.real_data_loader import get_outflow_capacity
+    outflow_data = get_outflow_capacity(selected_code)
+    if outflow_data:
+        st.markdown("#### Monthly Allocation Capacity")
+        st.metric(
+            "Available Slots per Month", 
+            f"{outflow_data['monthly_capacity']:,}",
+            delta="Based on previous outflow"
+        )
+    
+    new_cap = recommendation["recommended_cap"]  # Cap = Stock
+else:
+    # Standard cap setting form
+    st.markdown("### Set New Cap")
+    render_gold_accent()
 
-with form_cols[0]:
-    new_cap = st.number_input(
-        "New Cap Limit",
-        min_value=1000,
-        max_value=500000,
-        value=default_value,
-        step=500,
-        help="Enter the new annual cap limit for this nationality",
-        key=f"cap_input_{selected_code}",
+    render_info_box(
+        "Setting a new cap requires Policy Committee authorization. "
+        "This form is for demonstration purposes only."
     )
-    # Store user's custom value
-    st.session_state[cap_key] = new_cap
 
-with form_cols[2]:
-    st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("Apply Cap", type="primary", use_container_width=True):
-        # Would call API in production
-        st.success(f"✅ Cap updated to {new_cap:,} for {selected_code} ({NATIONALITIES[selected_code]})")
+    form_cols = st.columns([2, 1, 1])
+
+    # Initialize session state for cap value
+    cap_key = f"new_cap_{selected_code}"
+    if cap_key not in st.session_state:
+        st.session_state[cap_key] = recommendation["recommended_cap"]
+
+    with form_cols[1]:
+        option = st.radio(
+            "Quick Select",
+            ["Custom", "Conservative", "Moderate", "Flexible"],
+            index=0,
+            horizontal=True,
+            key=f"cap_option_{selected_code}",
+        )
+        
+        # Update value based on quick select
+        if option == "Conservative":
+            default_value = recommendation["conservative_cap"]
+        elif option == "Moderate":
+            default_value = recommendation["moderate_cap"]
+        elif option == "Flexible":
+            default_value = recommendation["flexible_cap"]
+        else:  # Custom
+            default_value = st.session_state.get(cap_key, recommendation["recommended_cap"])
+
+    with form_cols[0]:
+        new_cap = st.number_input(
+            "New Cap Limit",
+            min_value=1000,
+            max_value=500000,
+            value=default_value,
+            step=500,
+            help="Enter the new annual cap limit for this nationality",
+            key=f"cap_input_{selected_code}",
+        )
+        # Store user's custom value
+        st.session_state[cap_key] = new_cap
+
+    with form_cols[2]:
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("Apply Cap", type="primary", use_container_width=True):
+            # Would call API in production
+            st.success(f"✅ Cap updated to {new_cap:,} for {selected_code} ({NATIONALITIES[selected_code]})")
 
 # Display impact preview
 if new_cap != cap_data["cap_limit"]:
