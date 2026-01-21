@@ -193,18 +193,53 @@ pytest tests/ --cov=src --cov-report=html
 
 ## Restricted Nationalities
 
-The system manages quotas for 11 restricted nationalities:
+The system manages quotas for 12 restricted nationalities:
 - Egypt (EGY)
 - India (IND)
 - Pakistan (PAK)
 - Nepal (NPL)
 - Bangladesh (BGD)
 - Philippines (PHL)
+- Sri Lanka (LKA)
 - Iran (IRN)
 - Iraq (IRQ)
 - Yemen (YEM)
 - Syria (SYR)
 - Afghanistan (AFG)
+
+## Ministry Data Upload Instructions
+
+When the ministry uploads new worker data, run the following command to regenerate the summary with correct formulas:
+
+```bash
+# Step 1: Place the new CSV files in the real_data/ folder
+# Required files:
+#   - 07_worker_stock.csv (main worker data)
+#   - 01_nationalities.csv (nationality reference)
+#   - 02_professions.csv (profession reference)
+#   - 05_nationality_caps.csv (cap limits)
+
+# Step 2: Regenerate the summary with correct formulas
+python scripts/create_data_summary.py
+
+# Step 3: Verify all formulas match documentation
+python scripts/verify_all_formulas.py
+```
+
+### What the Summary Generation Does
+
+The `create_data_summary.py` script implements all formulas from `System_Documentation.md`:
+
+1. **Tier Classification** (Section 4): `tier_share = workers_in_profession / total_workers_of_nationality`
+2. **Dominance Alerts** (Section 6): `dominance_share = nationality_workers / total_workers_in_profession`
+3. **Headroom** (Section 5): `cap - stock - committed - (pending × 0.8) + (outflow × 0.75)`
+4. **Utilization** (Section 5): `(stock / cap) × 100`
+
+### Important Notes
+
+- **MIN_PROFESSION_SIZE = 200**: Dominance alerts only apply to professions with 200+ total workers
+- The summary file (`real_data/summary_by_nationality.json`) is used by Streamlit Cloud for fast loading
+- After regenerating, commit and push to update the cloud deployment
 
 ## License
 
