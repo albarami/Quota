@@ -73,7 +73,7 @@ NUMERIC_TO_ISO = {v: k for k, v in NATIONALITY_CODES.items()}
 DATA_DIR = Path(__file__).parent.parent.parent / 'real_data'
 
 # Performance mode - use pre-computed summary for fast loading
-USE_PRECOMPUTED = True  # Set to False for full CSV processing
+USE_PRECOMPUTED = False  # DISABLED - Always use full CSV processing for accuracy
 
 
 # =============================================================================
