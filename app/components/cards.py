@@ -569,7 +569,7 @@ def render_cap_formula_breakdown(
             background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
             border-radius: 12px;
             padding: 1.25rem;
-            border: 2px solid {COLORS['gold']};
+            border: 2px solid {COLORS['secondary']};
             font-family: 'Courier New', monospace;
         ">
             <div style="font-weight: 700; color: {COLORS['primary']}; margin-bottom: 1rem; font-family: inherit;">
